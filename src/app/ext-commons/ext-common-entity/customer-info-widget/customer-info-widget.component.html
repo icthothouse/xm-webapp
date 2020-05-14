@@ -1,8 +1,5 @@
 <div class="card mb-5">
   <div class="card-header card-header-icon card-header-primary">
-    <div class="card-icon">
-      <i class="material-icons">assignment_ind</i>
-    </div>
     <h4 class="card-title">
       <span jhiTranslate="nemondo.widget.customerInfo.title"></span>
       <span [ngSwitch]="state">
@@ -147,8 +144,9 @@
       <div *ngIf="form.enabled" class="row">
         <div class="col-md-12">
           <button [disabled]="form.invalid"
-                  class="btn btn-primary pull-right"
-                  mat-raised-button>
+                  class="btn pull-right"
+                  color="primary"
+                  mat-button>
             Submit
           </button>
         </div>
@@ -159,9 +157,6 @@
 
 <div *ngIf="uploadFileEnabled" class="card">
   <div class="card-header card-header-icon card-header-primary">
-    <div class="card-icon">
-      <i class="material-icons">attachment</i>
-    </div>
     <h4 class="card-title">
       <span jhiTranslate="tsg.tsgAttachments"></span>
       <small jhiTranslate="tsg.tsgAddAttachmentsDescription"></small>
@@ -191,8 +186,8 @@
         <button (click)="onAddAttachment()"
                 *permitted="'ATTACHMENT.CREATE'"
                 [class.hidden]="!form.enabled"
-                class="btn btn-primary btn-round pull-right"
-                mat-raised-button>
+                class="btn pull-right"
+                mat-button>
           {{'tsg.tsgAddAttachments' | translate}}
         </button>
       </div>

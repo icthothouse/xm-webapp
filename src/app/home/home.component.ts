@@ -1,33 +1,36 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import { MatDialogRef } from '@angular/material/dialog';
+import { XmEventManager } from '@xm-ngx/core';
+import { Widget } from '@xm-ngx/dynamic';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Account, AuthServerProvider, Principal } from '../shared';
 import { XmConfigService } from '../shared/spec/config.service';
-import { Widget } from '../xm-dashboard';
+import { DashboardBase } from '../xm-dashboard/dashboard/dashboard-base';
 import { DEFAULT_AUTH_TOKEN, DEFAULT_CONTENT_TYPE, XM_EVENT_LIST } from '../xm.constants';
 
 @Component({
     selector: 'xm-home',
+    styleUrls: ['./home.component.scss'],
     templateUrl: './home.component.html',
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent extends DashboardBase implements OnInit, OnDestroy {
 
     public account: Account;
-    public modalRef: NgbModalRef;
+    public modalRef: MatDialogRef<any>;
     public defaultWidget: Widget;
     public defaultLayout: any;
     public signWidget: Widget;
     private eventAuthSubscriber: Subscription;
 
     constructor(private principal: Principal,
-                private eventManager: JhiEventManager,
+                private eventManager: XmEventManager,
                 private xmConfigService: XmConfigService,
                 private http: HttpClient,
                 private authServerProvider: AuthServerProvider) {
+        super();
     }
 
     public ngOnInit(): void {
@@ -87,45 +90,12 @@ export class HomeComponent implements OnInit, OnDestroy {
         const data = new HttpParams().set('grant_type', 'client_credentials');
         const headers = {
             'Content-Type': DEFAULT_CONTENT_TYPE,
-            'Authorization': DEFAULT_AUTH_TOKEN,
+            Authorization: DEFAULT_AUTH_TOKEN,
         };
         return this.http.post<any>('uaa/oauth/token', data, {headers, observe: 'response'})
             .pipe(map((resp) => {
                 this.authServerProvider.loginWithToken(resp.body.access_token, false);
             }));
-    }
-
-    private getWidgetComponent(widget: Widget = {}): Widget {
-        widget.selector = widget.selector ? widget.selector : 'ext-common/xm-widget-welcome';
-        const mapComponents = {
-            'xm-widget-available-offerings': 'ext-common-entity/xm-widget-available-offerings',
-            'xm-widget-clock': 'ext-common/xm-widget-clock',
-            'xm-widget-general-map': 'ext-common-entity/xm-widget-general-map',
-            'xm-widget-stats': 'ext-common-entity/xm-widget-stats',
-            'xm-widget-tasks': 'ext-common-entity/xm-widget-tasks',
-            'xm-widget-weather': 'ext-common/xm-widget-weather',
-            'xm-widget-exchange-calculator': 'ext-common/xm-widget-exchange-calculator',
-            'xm-widget-md': 'ext-common/xm-widget-md',
-            'xm-widget-lots': 'ext-auction/xm-widget-lots',
-            'xm-widget-welcome': 'ext-common/xm-widget-welcome',
-            'xm-widget-sign-in-up': 'ext-common/xm-widget-sign-in-up',
-            'xm-widget-iframe': 'ext-common/xm-widget-iframe',
-        };
-        if (typeof mapComponents[widget.selector] === 'string' || mapComponents[widget.selector] instanceof String) {
-            widget.selector = mapComponents[widget.selector];
-        } else {
-            widget.component = mapComponents[widget.selector];
-        }
-        if (widget.selector.indexOf('/') > 0) {
-            widget.module = widget.selector.split('/')[0];
-            widget.selector = widget.selector.split('/')[1];
-        }
-        widget.config = widget.config || {};
-        Object.assign(widget.config, {
-            id: widget.id,
-            name: widget.name,
-        });
-        return widget;
     }
 
 }

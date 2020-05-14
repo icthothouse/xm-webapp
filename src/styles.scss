@@ -1,12 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
 
-// Import all vendors
-@import 'styles/vendor';
-@include vendor-xm-override();
+// Fonts
+$material-icons-font-path: '~material-icons/iconfont/';
+@import '~material-icons/iconfont/material-icons.scss';
 
-// Todo: Remove material-teal.css after .css migrates to .scss successfully
-@import 'assets/css/themes/material-teal.css';
+// Theme
+@import './styles/theme';
+@import '~@xm-ngx/styles/components';
 
-// xm overrides
-@import 'src/assets/scss/xm-styles.scss';
-@import 'src/assets/scss/theme-override.scss';
+@include xm-ngx-styles-theme($xm-theme);
+
+// Vendors
+@import '~@xm-ngx/styles/src/vendor/index';
+@include xm-angular-material-theme($xm-theme);
+@include xm-angular-material-typography();
+@include xm-vendor-xm-override();
+
+// Components
+@import '~@xm-ngx/styles/src/_loader-placeholder.scss';
+
+@import 'src/app/layouts/main/main-theme';
+@import 'src/app/modules/xm-sidebar/sidebar-theme';
+@import 'src/app/modules/xm-sidebar-right/sidebar-right-theme';
+@import 'src/app/layouts/navbar/_navbar-theme.scss';
+// increase css priority with xm-body class
+.xm-body {
+  @include xm-sidebar-theme($xm-theme);
+}
+@include xm-layout-sidebar-with-mini($xm-theme);
+@include xm-navbar($xm-theme);
+
+// BC deps below will be removed!
+// Backward compatibility
+@import 'styles/backward-compatibility';

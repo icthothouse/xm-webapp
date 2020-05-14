@@ -1,14 +1,14 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatInput } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatInput } from '@angular/material/input';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+
+import { AuthServerProvider } from '@xm-ngx/core/auth';
+import { PasswordSpec } from '@xm-ngx/entity';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-import { AuthServerProvider } from '../../../shared';
-import { XmConfigService } from '../../../shared/spec/config.service';
-import { PasswordSpec } from '../../../xm-entity/shared/password-spec.model';
+import { XmConfigService } from '../../../shared';
 import { DEFAULT_AUTH_TOKEN, DEFAULT_CONTENT_TYPE } from '../../../xm.constants';
 import { PasswordResetFinish } from './password-reset-finish.service';
 
@@ -33,7 +33,7 @@ export class PasswordResetFinishComponent implements OnInit, AfterViewInit {
     public keyUsed: boolean;
     public resetAccount: any;
     public success: string;
-    public modalRef: NgbModalRef;
+    public modalRef: MatDialogRef<any>;
     public key: string;
     public config: IResetPasswordFormConfig;
     public passwordSettings: PasswordSpec;
@@ -68,7 +68,7 @@ export class PasswordResetFinishComponent implements OnInit, AfterViewInit {
                         this.keyExpired = (err.error.error === 'error.reset.code.expired');
                         this.keyUsed = (err.error.error === 'error.reset.code.used');
                     }
-                }
+                },
             });
         });
         this.route.data.subscribe((data) => {

@@ -1,4 +1,6 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { OnInit, Pipe, PipeTransform } from '@angular/core';
+import { LanguageService } from '@xm-ngx/translation';
+import * as _ from 'lodash';
 
 import * as moment from 'moment';
 
@@ -12,15 +14,20 @@ import { XmConfigService } from '../index';
  * and formating also can be override from config UI
  */
 @Pipe({name: 'xmDateTime'})
-export class XmDateTimePipe implements PipeTransform {
+export class XmDateTimePipe implements PipeTransform, OnInit {
 
-    public account: any;
+    public account: {
+        langKey: string;
+        timeZoneOffset: string;
+    };
+    public locale: string;
     public dicFormats: any;
     public dicFormatsConfig: any;
 
     constructor(private principal: Principal,
+                private languageService: LanguageService,
                 private xmConfigService: XmConfigService) {
-        this.principal.identity().then((account) => this.account = account || {langKey: 'en'});
+        this.principal.identity().then((account) => this.account = _.defaultsDeep(account, {langKey: 'en'}));
         this.dicFormats = {en: 'MM/DD/YYYY HH:mm', ru: 'DD.MM.YYYY HH:mm', uk: 'DD.MM.YYYY HH:mm'};
         this.xmConfigService.getUiConfig().subscribe((resp) => this.dicFormatsConfig = resp.datesFormats || {});
     }
@@ -32,15 +39,23 @@ export class XmDateTimePipe implements PipeTransform {
         return timeMoment.format(format ? format : this.getDefaultFormat());
     }
 
+    public ngOnInit(): void {
+        this.locale = this.languageService.locale;
+    }
+
     private getOffset(): string {
-        return this.account.timeZoneOffset || '';
+        return this.account?.timeZoneOffset || '';
     }
 
     private getDefaultFormat(): string {
-        const lang = this.account.langKey;
+        const lang = this.locale;
         let format = this.dicFormats.en;
-        if (lang in this.dicFormats) { format = this.dicFormats[lang]; }
-        if (lang in this.dicFormatsConfig) { format = this.dicFormatsConfig[lang]; }
+        if (lang in this.dicFormats) {
+            format = this.dicFormats[lang];
+        }
+        if (lang in this.dicFormatsConfig) {
+            format = this.dicFormatsConfig[lang];
+        }
         return format;
     }
 }

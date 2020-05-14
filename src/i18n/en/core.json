@@ -1,0 +1,1496 @@
+{
+  "Unauthorized": "Need authorization!",
+  "activate": {
+    "messages": {
+      "error": "<strong>Your user could not be activated.</strong> Please use the registration form to sign up.",
+      "link": "sign in",
+      "register": "Registration",
+      "success": "<strong>Your user account has been activated.</strong> Please&nbsp;"
+    },
+    "title": "Activation"
+  },
+  "admin-config": {
+    "common": {
+      "cancel": "Cancel",
+      "confirm": "Are you sure?",
+      "fields": {
+        "config": "Config",
+        "id": "ID",
+        "layout": "Layout",
+        "name": "Name",
+        "owner": "Owner",
+        "selector": "Selector",
+        "typeKey": "Type Key"
+      },
+      "menu": {
+        "dashboard-mng": "Dashboards Config",
+        "mini": {
+          "dashboard-mng": "D",
+          "specification-mng": "S"
+        },
+        "specification-mng": "Specifications",
+        "title": "Configuration"
+      },
+      "save": "Save"
+    },
+    "dashboard-detail-dialog": {
+      "add": {
+        "success": "Success",
+        "title": "Add a new dashboard"
+      },
+      "edit": {
+        "success": "Success",
+        "title": "Edit a dashboard"
+      }
+    },
+    "dashboard-list-card": {
+      "export-action": "export in JSON",
+      "import-action": "import from JSON",
+      "title": "Dashboards"
+    },
+    "specification-mng": {
+      "entity": {
+        "save": "Update Entity specification",
+        "title": "Entity"
+      },
+      "loading": "loading specification...",
+      "privateui": {
+        "save": "Update private ui specification",
+        "title": "Private UI specification"
+      },
+      "tenant": {
+        "save": "Update Tenant specification",
+        "title": "Tenant"
+      },
+      "timeline": {
+        "save": "Update Timeline specification",
+        "title": "Timeline"
+      },
+      "uaa-login": {
+        "save": "Save Login specification",
+        "title": "Login"
+      },
+      "uaa": {
+        "save": "Save UAA specification",
+        "title": "UAA"
+      },
+      "ui": {
+        "save": "Update UI specification",
+        "title": "UI"
+      },
+      "validate": "Validate"
+    },
+    "widget-detail-dialog": {
+      "add": {
+        "success": "Success",
+        "title": "Add a new widget"
+      },
+      "edit": {
+        "success": "Success",
+        "title": "Edit a widget"
+      }
+    },
+    "widget-list-card": {
+      "title": "Widgets"
+    }
+  },
+  "audits": {
+    "filter": {
+      "from": "from",
+      "title": "Filter per date",
+      "to": "to"
+    },
+    "table": {
+      "data": {
+        "remoteAddress": "Remote Address:"
+      },
+      "header": {
+        "data": "Extra data",
+        "date": "Date",
+        "principal": "User",
+        "status": "State"
+      }
+    },
+    "title": "Audits"
+  },
+  "cancel": "",
+  "clientManagement": {
+    "client": {
+      "already": {
+        "exists": "Client with this ID already exists"
+      }
+    },
+    "clientId": "Client Id",
+    "clientSecret": "Client Secret",
+    "createdBy": "Created By",
+    "createdDate": "Created Date",
+    "delete": {
+      "question": "Are you sure you want to delete client {{ id }}?"
+    },
+    "description": "Description",
+    "detail": {
+      "title": "Client"
+    },
+    "home": {
+      "createOrEditLabel": "Create or edit a client",
+      "title": "Clients"
+    },
+    "lastModifiedBy": "Modified By",
+    "lastModifiedDate": "Modified Date",
+    "role": "Role",
+    "roleKey": "Role",
+    "roles": "Roles",
+    "scopes-add": "Add scopes",
+    "search-by-client-id": "Search by client ID",
+    "validityPeriod": "Validity period"
+  },
+  "entity": {
+    "action": {
+      "back": "Back",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "save": "Save"
+    },
+    "add": "Add",
+    "delete": {
+      "title": "Confirm delete operation"
+    },
+    "detail": {
+      "square": "Square: {{square}} m"
+    },
+    "search": "Search",
+    "validation": {
+      "maxlength": "This field cannot be longer than {{ max }} characters.",
+      "required": "This field is required."
+    }
+  },
+  "error": {
+    "403": "You are not authorized to access the page.",
+    "NotNull": "Field {{ fieldName }} cannot be empty!",
+    "Size": "Field {{ fieldName }} does not meet min/max size requirements!",
+    "accessDenied": "Access denied",
+    "access_denied": "Access denied",
+    "business": "Forwarding error",
+    "emailexists": "Email is already in use!",
+    "idexists": "A new {{ entityName }} cannot already have an ID",
+    "insufficient_scope": "Insufficient scope",
+    "internalServerError": "Internal server error",
+    "invalid_client": "Invalid client",
+    "invalid_grant": "Invalid grant",
+    "invalid_request": "Invalid request",
+    "invalid_scope": "Invalid scope",
+    "invalid_token": "Invalid token",
+    "not": {
+      "enough": {
+        "credits": "Not enough credits!"
+      }
+    },
+    "notfound": "Resource not found",
+    "privilegeInsufficient": "Insufficient privileges '{{ name }}'!",
+    "privilegeOperationWrong": "Operation not supported '{{ name }}'!",
+    "redirect_uri_mismatch": "Redirect uri mismatch",
+    "server": {
+      "not": {
+        "reachable": "Server not reachable"
+      }
+    },
+    "session_expired": "Session expired. Please login.",
+    "title": "Error page!",
+    "unauthorized": "Unauthorized",
+    "unauthorized_client": "Unauthorized client",
+    "unsupported_grant_type": "Unsupported grant type",
+    "unsupported_response_type": "Unsupported response type",
+    "url": {
+      "not": {
+        "found": "Not found"
+      }
+    },
+    "userexists": "Login name already used!",
+    "validation": "Input parameters error",
+    "wallet": {
+      "not": {
+        "active": "Wallet not active!"
+      }
+    }
+  },
+  "errors": {
+    "NotBlank": "Not blank",
+    "NotNull": "Field {{ fieldName }} cannot be empty!",
+    "Size": "Field {{ fieldName }} does not meet min/max size requirements!",
+    "Unauthorized": "Need authorization!",
+    "accessDenied": "Access denied",
+    "access_denied": "Access denied",
+    "emailexists": "Email is already in use!",
+    "error": {
+      "accessDenied": "Access denied",
+      "business": "Forwarding error",
+      "internalServerError": "Internal server error"
+    },
+    "idexists": "A new {{ entityName }} cannot already have an ID",
+    "insufficient_scope": "Insufficient scope",
+    "internalServerError": "Internal server error",
+    "invalid_client": "Invalid client",
+    "invalid_grant": "Invalid grant",
+    "invalid_request": "Invalid request",
+    "invalid_scope": "Invalid scope",
+    "invalid_token": "Invalid token",
+    "notfound": "Resource not found",
+    "privilegeInsufficient": "Insufficient privileges '{{ name }}'!",
+    "privilegeOperationWrong": "Operation not supported '{{ name }}'!",
+    "redirect_uri_mismatch": "Redirect uri mismatch",
+    "server": {
+      "not": {
+        "reachable": "Server not reachable"
+      }
+    },
+    "session_expired": "Session expired. Please login.",
+    "unauthorized": "Unauthorized",
+    "unauthorized_client": "Unauthorized client",
+    "unsupported_grant_type": "Unsupported grant type",
+    "unsupported_response_type": "Unsupported response type",
+    "url": {
+      "not": {
+        "found": "Not found"
+      }
+    },
+    "userexists": "Login name already used!",
+    "validation": "Input parameters error"
+  },
+  "ext-common-entity": {
+    "available-offerings-widget": {
+      "action-dialog": {
+        "question": "Are you sure you want to <b>{{action}}</b> to the <b>{{name}}</b>?"
+      }
+    },
+    "entity-fab-actions": {
+      "operation-error": "Operation fail!",
+      "operation-success": "Operation successful!"
+    }
+  },
+  "ext-common": {
+    "clock-widget": {
+      "title": "Clock"
+    },
+    "exchange-widget": {
+      "code": "Code",
+      "course": "Official course",
+      "currency": "Currency",
+      "from": "From",
+      "number-units": "Number of units",
+      "select-from": "Select currency from",
+      "select-to": "Select currency to",
+      "title": "Exchange calculator"
+    },
+    "sign-in-up-widget": {
+      "sign-in": "Sign in",
+      "sign-up": "Sign up"
+    },
+    "weather-widget": {
+      "humidity": "Humidity",
+      "ms": "m/s",
+      "wind-speed": "Wind speed"
+    }
+  },
+  "formPlayground": {
+    "definition": "Definition",
+    "errors": "— errors from validationErrors():",
+    "liveData": "Live data — from onChanges():",
+    "loading": "(loading form specification...)",
+    "na": "n/a",
+    "output": "Output",
+    "result": "Result",
+    "selectSchema": "SELECT SCHEMA",
+    "valid": "Valid?:"
+  },
+  "gateway": {
+    "routes": {
+      "error": "Warning: no server available!",
+      "servers": "Available servers",
+      "service": "service",
+      "url": "URL"
+    },
+    "title": "Gateway"
+  },
+  "global": {
+    "actionPerformed": "Action performed",
+    "all": "All",
+    "common": {
+      "accept": "Accept",
+      "are-you-sure": "Are you sure?",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "delete-message": "Remove the {{value}}?",
+      "maintenance-description": "It usually takes a few minutes, otherwise contact your system administrator.",
+      "maintenance-message": "Technical work in progress...<br>Please, try again later.",
+      "no": "No",
+      "set": "Set",
+      "yes": "Yes",
+      "yes-exit": "Yes, exit!"
+    },
+    "field": {
+      "id": "ID"
+    },
+    "form": {
+      "confirmpassword": "New password confirmation",
+      "email": "Email",
+      "firstname": "First name",
+      "language": "Language",
+      "lastname": "Last name",
+      "login": "Login",
+      "newpassword": "New password",
+      "oldpassword": "Old password",
+      "otp": "One Time Password",
+      "signin": "sign in"
+    },
+    "item-count": "Showing {{first}} - {{second}} of {{total}} items.",
+    "menu": {
+      "account": {
+        "logout": "Sign out",
+        "mini": {
+          "password": "P",
+          "profile": "SO",
+          "settings": "S"
+        },
+        "password": "Password",
+        "passwordSetup": "Invitation to the system",
+        "profile": "Profile",
+        "settings": "Settings"
+      },
+      "admin": {
+        "apidocs": "API",
+        "audits": "Audits",
+        "clientManagement": "Client management",
+        "dashboard": "Dashboard",
+        "formPlayground": "Form Playground",
+        "gateway": "Gateway",
+        "health": "Health",
+        "logs": "Logs",
+        "main": "Administration",
+        "maintenance": "Maintenance",
+        "metrics": "Metrics",
+        "mini": {
+          "apidocs": "A",
+          "audits": "A",
+          "clientManagement": "C",
+          "dashboard": "D",
+          "formPlayground": "F",
+          "gateway": "G",
+          "health": "H",
+          "logs": "L",
+          "maintenance": "M",
+          "metrics": "M",
+          "rolesManagement": "R",
+          "rolesMatrix": "R",
+          "translation": "T",
+          "userManagement": "U"
+        },
+        "rolesManagement": "Roles Management",
+        "rolesMatrix": "Roles Matrix",
+        "translation": "Translation",
+        "userManagement": "User Management"
+      },
+      "applications": {
+        "application": "Application",
+        "main": "Applications"
+      },
+      "dashboards": {
+        "main": "Dashboards"
+      },
+      "entities": {
+        "attachment": "Attachment",
+        "calendar": "Calendar",
+        "comment": "Comment",
+        "content": "Content",
+        "country": "Country",
+        "event": "Event",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "link": "Link",
+        "location": "Location",
+        "main": "Entities",
+        "rating": "Rating",
+        "tag": "Tag",
+        "vote": "Vote",
+        "xmEntity": "Xm Entity"
+      }
+    },
+    "messages": {
+      "error": {
+        "captchaempty": "Please check captcha.",
+        "dontmatch": "The password and its confirmation do not match!",
+        "upload-fail": "Upload service unavailable!"
+      },
+      "info": {
+        "authenticated": {
+          "link": "sign in",
+          "prefix": "If you want to ",
+          "suffix": ", you can try the default accounts:"
+        }
+      },
+      "validate": {
+        "captcha": {
+          "required": "Captcha is required."
+        },
+        "confirmpassword": {
+          "maxlength": "Your confirmation password cannot be longer than 50 characters.",
+          "minlength": "Your confirmation password is required to be at least 4 characters.",
+          "password-max-length": "Your confirmation password cannot be longer than {{maxLength}} characters.",
+          "password-min-length": "Your confirmation password is required to be at least {{minLength}} characters.",
+          "password-pattern": "Your password dose not match pattern {{pattern}}",
+          "required": "Your confirmation password is required."
+        },
+        "email": {
+          "invalid": "Your email is invalid.",
+          "maxlength": "Your email cannot be longer than 50 characters.",
+          "minlength": "Your email is required to be at least 5 characters.",
+          "required": "Your email is required."
+        },
+        "firstname": {
+          "maxlength": "Your first name cannot be longer than 50 characters",
+          "minlength": "Your first name is required to be at least 1 character",
+          "required": "Your first name is required."
+        },
+        "lastname": {
+          "maxlength": "Your last name cannot be longer than 50 characters",
+          "minlength": "Your last name is required to be at least 1 character",
+          "required": "Your last name is required."
+        },
+        "newpassword": {
+          "maxlength": "Your password cannot be longer than 50 characters.",
+          "minlength": "Your password is required to be at least 4 characters.",
+          "password-max-length": "Your password cannot be longer than {{maxLength}} characters.",
+          "password-min-length": "Your password is required to be at least {{minLength}} characters.",
+          "password-pattern": "Your password dose not match pattern {{pattern}}",
+          "required": "Your password is required.",
+          "strength": "Password strength:"
+        },
+        "oldpassword": {
+          "maxlength": "Old password cannot be longer than 50 characters.",
+          "minlength": "Old password is required to be at least 4 characters.",
+          "password-max-length": "Old password cannot be longer than {{maxLength}} characters.",
+          "password-min-length": "Old password is required to be at least {{minLength}} characters.",
+          "password-pattern": "Your password dose not match pattern {{pattern}}",
+          "required": "Old password is required."
+        }
+      }
+    },
+    "new": "New",
+    "noData": "No data!",
+    "perPage": "items per page",
+    "rest-select-none-option": "None",
+    "rest-select-placeholder-noresults": "No results found",
+    "rest-select-placeholder-search": "",
+    "rest-select-search-more": "More results are available. Refine your search query!",
+    "ribbon": {
+      "dev": "Development"
+    },
+    "shared": {
+      "ext-md-editor": {
+        "placeholder": "Click edit to change the description in the field",
+        "placeholder-empty": "Field is empty! Click edit to add a description in the field",
+        "save-button": "Save changes"
+      },
+      "privacy-and-terms-dialog": {
+        "i-agree": "I agree to Terms of Service and processing of my information as described in the Privacy Policy",
+        "title": "Privacy and Terms"
+      }
+    }
+  },
+  "health": {
+    "details": {
+      "details": "Details",
+      "error": "Error",
+      "name": "Name",
+      "properties": "Properties",
+      "value": "Value"
+    },
+    "indicator": {
+      "binders": "Binders",
+      "cassandra": "Cassandra",
+      "cdb": "CDB",
+      "configServer": "Microservice Config Server",
+      "consul": "Consul",
+      "db": "Database",
+      "discoveryComposite": "Discovery Composite",
+      "diskSpace": "Disk space",
+      "elasticsearch": "Elastic Search",
+      "healthIndicator": "Health Indicator",
+      "hlr": "HLR",
+      "hystrix": "Hystrix",
+      "mail": "Email",
+      "refreshScope": "Microservice Refresh Scope"
+    },
+    "options": {
+      "done": "Close",
+      "instance-name": "Instance",
+      "service-name": "Service name"
+    },
+    "refresh": {
+      "button": "Refresh"
+    },
+    "stacktrace": "Stacktrace",
+    "status": {
+      "DOWN": "DOWN",
+      "OUT_OF_SERVICE": "OUT_OF_SERVICE",
+      "UNKNOWN": "UNKNOWN",
+      "UP": "UP"
+    },
+    "table": {
+      "service": "Service name",
+      "status": "Status"
+    },
+    "title": "Health Checks"
+  },
+  "home": {
+    "subtitle": "This is your homepage",
+    "title": "Welcome!"
+  },
+  "login": {
+    "form": {
+      "button": "Sign in",
+      "hide-password": "Hide password",
+      "otpValidateButton": "Send OTP",
+      "otpValidateCancel": "Cancel",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "show-password": "Show password"
+    },
+    "messages": {
+      "error": {
+        "authentication": "<strong>Failed to sign in!</strong> Please check your credentials and try again."
+      },
+      "otp": {
+        "notification": "Please enter one time password from email"
+      }
+    },
+    "password": {
+      "forgot": "Did you forget your password?"
+    },
+    "signin": "Sign-in",
+    "signup": "Sign-up",
+    "title": "Sign in"
+  },
+  "logs": {
+    "filter": "Filter",
+    "nbloggers": "There are {{ total }} loggers.",
+    "table": {
+      "level": "Level",
+      "name": "Name"
+    },
+    "title": "Logs"
+  },
+  "mat": {
+    "paginator": {
+      "firstPageLabel": "First page",
+      "itemsPerPageLabel": "Items per page:",
+      "lastPageLabel": "Last page",
+      "nextPageLabel": "Next page",
+      "of": "of",
+      "previousPageLabel": "Previous page"
+    }
+  },
+  "metrics": {
+    "datasource": {
+      "count": "Count",
+      "max": "Max",
+      "mean": "Mean",
+      "min": "Min",
+      "p50": "p50",
+      "p75": "p75",
+      "p95": "p95",
+      "p99": "p99",
+      "title": "DataSource statistics (time in millisecond)",
+      "usage": "Usage"
+    },
+    "jvm": {
+      "gc": {
+        "marksweepcount": "Mark Sweep count",
+        "marksweeptime": "Mark Sweep time",
+        "scavengecount": "Scavenge count",
+        "scavengetime": "Scavenge time",
+        "title": "Garbage collections"
+      },
+      "http": {
+        "active": "Active requests:",
+        "code": {
+          "notfound": "Not found",
+          "ok": "Ok",
+          "servererror": "Server Error"
+        },
+        "table": {
+          "average": "Average",
+          "code": "Code",
+          "count": "Count",
+          "mean": "Mean"
+        },
+        "title": "HTTP requests (events per second)",
+        "total": "Total requests:"
+      },
+      "memory": {
+        "heap": "Heap Memory",
+        "nonheap": "Non-Heap Memory",
+        "title": "Memory",
+        "total": "Total Memory"
+      },
+      "threads": {
+        "blocked": "Blocked",
+        "dump": {
+          "blockedcount": "Blocked Count",
+          "blockedtime": "Blocked Time",
+          "hide": "Hide Stacktrace",
+          "lockname": "Lock name",
+          "show": "Show Stacktrace",
+          "title": "Threads dump",
+          "waitedcount": "Waited Count",
+          "waitedtime": "Waited Time"
+        },
+        "runnable": "Runnable",
+        "timedwaiting": "Timed waiting",
+        "title": "Threads",
+        "waiting": "Waiting"
+      },
+      "title": "JVM Metrics"
+    },
+    "options": {
+      "done": "Close",
+      "f-all": "All",
+      "f-blocked": "Blocked",
+      "f-runnable": "Runnable",
+      "f-timed-waiting": "Timed Waiting",
+      "f-waiting": "Waiting",
+      "instance-name": "Instance",
+      "service-name": "Service name"
+    },
+    "servicesstats": {
+      "table": {
+        "count": "Count",
+        "max": "Max",
+        "mean": "Mean",
+        "min": "Min",
+        "name": "Service name",
+        "p50": "p50",
+        "p75": "p75",
+        "p95": "p95",
+        "p99": "p99"
+      },
+      "title": "Services statistics (time in millisecond)"
+    },
+    "title": "Application Metrics",
+    "updating": "Updating..."
+  },
+  "navbar": {
+    "notification": "Notifications",
+    "search": "Search",
+    "toggleNotification": "Toggle navigation"
+  },
+  "password": {
+    "form": {
+      "button": "Save"
+    },
+    "messages": {
+      "error": "<strong>An error has occurred!</strong> The password could not be changed.",
+      "success": "<strong>Password changed!</strong>"
+    },
+    "title": "Password for [<b>{{username}}</b>]"
+  },
+  "register": {
+    "form": {
+      "button": "Register"
+    },
+    "messages": {
+      "error": {
+        "emailempty": "<strong>Email can't be empty!</strong> Please choose one.",
+        "fail": "<strong>Registration failed!</strong> Please try again later.",
+        "userexists": "<strong>Login already registered!</strong> Please choose another one."
+      },
+      "success": "<strong>Registration saved!</strong> Please check your email for confirmation."
+    },
+    "title": "Registration"
+  },
+  "reset": {
+    "finish": {
+      "form": {
+        "button": "Validate new password"
+      },
+      "messages": {
+        "error": "Your password couldn't be reset. Remember a password request is only valid for 24 hours.",
+        "info": "Choose a new password",
+        "keyexpired": "The request key has expired.",
+        "keymissing": "The reset key is missing.",
+        "keyused": "The request key was already used.",
+        "success": "<strong>Your password has been reset.</strong> Please&nbsp;"
+      },
+      "title": "Reset password"
+    },
+    "request": {
+      "form": {
+        "button": "Reset password"
+      },
+      "messages": {
+        "info": "Enter the email address you used to register",
+        "notfound": "<strong>Email address isn't registered!</strong> Please check and try again",
+        "success": "Check your emails for details on how to reset your password."
+      },
+      "title": "Reset your password"
+    },
+    "setup": {
+      "form": {
+        "button": "Setup Password"
+      },
+      "messages": {
+        "error": "Your password couldn't be created. Remember a password request is only valid for 24 hours.",
+        "info": "Create new password",
+        "success": "<strong>Your password has been created.</strong> Please&nbsp;"
+      },
+      "title": "Setup your password"
+    }
+  },
+  "rolesManagement": {
+    "basedOn": "Based On",
+    "chooseRole": "Choose role",
+    "createdBy": "Created by",
+    "createdDate": "Created date",
+    "delete": {
+      "question": "Are you sure you want to delete Role '{{ roleKey }}'?"
+    },
+    "description": "Description",
+    "detail": {
+      "permissions": "permissions",
+      "title": "Role"
+    },
+    "home": {
+      "labelCreate": "Create new Role",
+      "labelEdit": "Edit Role",
+      "title": "Roles"
+    },
+    "key": "Key",
+    "lastModifiedBy": "Modified by",
+    "lastModifiedDate": "Modified date",
+    "matrix": {
+      "title": "Roles Matrix"
+    },
+    "ok": "Ok",
+    "permission": {
+      "checkAll": "Check All",
+      "condition": "Condition",
+      "conditionEnvInfo": "1. use SpEL functionality<br>2. use # before variable<br>3. #subject.role, #subject.userKey, #subject.login are available<br>4. #env['ipAddress'] is available",
+      "conditionResourceInfo": "1. use SpEL functionality<br>2. use # before variable<br>3. #subject.role, #subject.userKey, #subject.login are available",
+      "createCondition": "Create Condition",
+      "desc": "Description",
+      "editCondition": "Edit Condition",
+      "envCondition": "Environment Condition",
+      "msName": "MS name",
+      "notPermitted": "not permitted",
+      "onForbid": "On Forbid",
+      "permit": "Permit",
+      "permitted": "permitted",
+      "permittedAny": "at least one",
+      "privilegeKey": "Privilege key",
+      "resourceCondition": "Resource Condition"
+    },
+    "variables": "Available variables"
+  },
+  "sessions": {
+    "messages": {
+      "error": "<strong>An error has occurred!</strong> The session could not be invalidated.",
+      "success": "<strong>Session invalidated!</strong>"
+    },
+    "table": {
+      "button": "Invalidate",
+      "date": "Date",
+      "ipaddress": "IP address",
+      "useragent": "User Agent"
+    },
+    "title": "Active sessions for [<b>{{username}}</b>]"
+  },
+  "settings": {
+    "form": {
+      "button": "Save",
+      "general": "General info",
+      "local-time": "Local time: ",
+      "logins": "Logins",
+      "offset-time": "Timezone offset: ",
+      "utc-time": "UTC time: "
+    },
+    "messages": {
+      "logins": {
+        "success": "<strong>Logins saved!</strong>"
+      },
+      "success": "<strong>Settings saved!</strong>"
+    },
+    "security": {
+      "autoLogout": "Auto logout",
+      "name": "Security settings",
+      "seconds": "seconds",
+      "twoFAStatus": "Two Factor Authentication"
+    }
+  },
+  "social": {
+    "register": {
+      "errorTitle": "Register with an external account",
+      "messages": {
+        "error": {
+          "fail": "<strong>Registration failed!</strong> A problem occurred during the validation of your external account, we advise you to try with another connection."
+        },
+        "success": "<strong>Registration saved!</strong> Please check your email for confirmation."
+      },
+      "title": "Register with {{ label }}"
+    }
+  },
+  "swagger": {
+    "select-component": "Select component"
+  },
+  "tracker": {
+    "table": {
+      "ipaddress": "IP Address",
+      "page": "Current page",
+      "time": "Time",
+      "userAgent": "User agent",
+      "userlogin": "User"
+    },
+    "title": "Real-time user activities"
+  },
+  "userManagement": {
+    "activated": "Activated",
+    "autoLogout": "Auto logout",
+    "createdBy": "Created by",
+    "createdDate": "Created date",
+    "deactivated": "Deactivated",
+    "delete": {
+      "question": "Are you sure you want to delete user {{ userKey }}?"
+    },
+    "detail": {
+      "title": "User"
+    },
+    "error": "Error",
+    "firstName": "First name",
+    "home": {
+      "createOrEditLabel": "Create or edit a user",
+      "editLoginsLabel": "Update user logins",
+      "title": "Users"
+    },
+    "langKey": "Language",
+    "lastModifiedBy": "Modified by",
+    "lastModifiedDate": "Modified date",
+    "lastName": "Last name",
+    "logins": "Logins",
+    "onlineUsers": "Online users: ",
+    "role": "Role",
+    "search-by-login": "Search by login",
+    "success": "Success",
+    "twoFADisabled": "Two Factor authentication disabled",
+    "twoFAEnabled": "Two Factor authentication enabled",
+    "userKey": "User key"
+  },
+  "wordAutocomplete": {
+    "hint": "Enter Ctrl+Space to display the tooltip",
+    "noVariables": "Word no find"
+  },
+  "xm-balance": {
+    "balance-detail-dialog": {
+      "title": "Balance detail"
+    },
+    "balance-list-card": {
+      "title": "Balances"
+    },
+    "common": {
+      "cancel": "Cancel",
+      "fields": {
+        "amount": "Amount",
+        "end-date": "End date",
+        "label": "Label",
+        "start-date": "Start date"
+      }
+    }
+  },
+  "xm-entity": {
+    "attachment-card": {
+      "delete": {
+        "button": "Yes, delete!",
+        "button-cancel": "Cancel",
+        "remove-error": "Attachment not removed. Try again.",
+        "remove-success": "Attachment removed successfully.",
+        "title": "Are you sure you want to delete Attachment?"
+      },
+      "no-data": "No files attached",
+      "title": "Attachments",
+      "volume": {
+        "GB": "Gb",
+        "KB": "Kb",
+        "MB": "Mb",
+        "PB": "Pb",
+        "TB": "Tb",
+        "bytes": "bytes"
+      }
+    },
+    "attachment-detail-dialog": {
+      "add": {
+        "success": "Attachment added successfully."
+      },
+      "choose-type": "Choose attachment type",
+      "title": "Add new attachment for the",
+      "upload": "Click to upload or drop file here",
+      "wrong-type-error": ""
+    },
+    "calendar-card": {
+      "calendar": {
+        "btn-list-day": "day (list)",
+        "btn-list-week": "week (list)"
+      },
+      "delete": {
+        "button": "Yes, delete!",
+        "button-cancel": "Cancel",
+        "remove-error": "Event not removed. Try again.",
+        "remove-success": "Event removed successfully.",
+        "title": "Are you sure you want to delete Event?"
+      }
+    },
+    "calendar-event-dialog": {
+      "add": {
+        "success": "Event added successfully."
+      },
+      "choose-type": "Choose event type",
+      "title": "Add new event for the"
+    },
+    "comment-detail-dialog": {
+      "add": {
+        "success": "Comment added successfully."
+      },
+      "choose-type": "Choose comment type",
+      "title": "Add new comment for the"
+    },
+    "common": {
+      "add": "Add",
+      "add-avatar": "Add Avatar",
+      "cancel": "Cancel",
+      "change-avatar": "Change Avatar",
+      "close": "Close",
+      "fields": {
+        "addressLine1": "Address Line 1",
+        "addressLine2": "Address Line 2",
+        "city": "City",
+        "description": "Description",
+        "end-date": "End date",
+        "id": "ID",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "message": "Comment",
+        "name": "Name",
+        "region": "Region",
+        "start-date": "Start date",
+        "state": "State",
+        "title": "Title",
+        "type": "Type",
+        "zip": "Zip code"
+      },
+      "save": "Save",
+      "search": "Search",
+      "validation": {
+        "date-time": "This field should be a date and time.",
+        "pattern": "This field does not match the rules",
+        "required": "This field is required."
+      }
+    },
+    "entity-data-card": {
+      "title": "Data",
+      "update-error": "Not updated. Try again.",
+      "update-success": "Updated successfully."
+    },
+    "entity-detail-dialog": {
+      "add": {
+        "choose-type": "Choose entity type",
+        "title": "Add a new entity"
+      },
+      "edit": {
+        "title": "Edit an entity"
+      }
+    },
+    "entity-detail-fab": {
+      "edit-entity": "Edit",
+      "new-attachment": "Add new attachment",
+      "new-comment": "Add new comment",
+      "new-link": "Add new link",
+      "new-location": "Add new location"
+    },
+    "entity-list-card": {
+      "action-dialog": {
+        "question": "Are you sure you want to <b>{{action}}</b> to the <b>{{name}}</b>?"
+      },
+      "delete": {
+        "button": "Yes, delete!",
+        "button-cancel": "Cancel",
+        "remove-error": "Not removed. Try again.",
+        "remove-success": "Removed successfully.",
+        "title": "Are you sure you want to delete?"
+      },
+      "export": {
+        "action": {
+          "csv": "csv",
+          "downloads": "Downloads",
+          "xls": "xls"
+        }
+      },
+      "filters-hide": "Hide filters",
+      "filters-show": "Show filters",
+      "open": "Open",
+      "refresh": "Refresh"
+    },
+    "entity-list-fab": {
+      "new-generated": "Generated!"
+    },
+    "function-list-card": {
+      "change-state": {
+        "button": "Yes, change!",
+        "error": "State not changed. Try again.",
+        "success": "State changed successfully.",
+        "title": "Are you sure you want to change state?"
+      },
+      "current-state": "Current state: ",
+      "general-group": "General Functions",
+      "next-states": "Next states available through the lifecycle:",
+      "other-functions": "Another functions:",
+      "title": "Functions"
+    },
+    "functions": {
+      "linkedin-profile": {
+        "awards": "Awards",
+        "button": "Extract LinkedIn profile",
+        "certifications": "Certifications",
+        "current": "Current",
+        "education": "Education",
+        "experienceCurrent": "Current Experience",
+        "experiencePast": "Past Experience",
+        "interests": "Interests",
+        "languages": "Languages",
+        "location": "Location",
+        "projects": "Projects",
+        "recommendations": "Recommendations",
+        "skills": "Skills",
+        "summary": "Summary",
+        "title": "Title",
+        "volunteer": "Volunteer Causes"
+      }
+    },
+    "link-detail-dialog": {
+      "add-link": "Add",
+      "add": {
+        "build-type-new": "New",
+        "build-type-search": "Search",
+        "error": "Link not added. Try again.",
+        "success": "Link added successfully.",
+        "title": "Add new Link for the"
+      },
+      "show-more": "Show more"
+    },
+    "link-list-card": {
+      "delete": {
+        "button": "Yes, delete!",
+        "button-cancel": "Cancel",
+        "remove-error": "Link not removed. Try again.",
+        "remove-success": "Link removed successfully.",
+        "title": "Are you sure you want to delete Link?"
+      },
+      "list-view": "List view",
+      "tree-view": "Tree view"
+    },
+    "link-list-tree-section": {
+      "collapse": "Collapse this branch"
+    },
+    "location-detail-dialog": {
+      "add": {
+        "success": "Location added successfully.",
+        "title": "Add a new location for the"
+      },
+      "choose-country": "Choose country",
+      "choose-type": "Choose location type (required)",
+      "countries": {
+        "AD": "Andorra",
+        "AE": "United Arab Emirates",
+        "AF": "Afghanistan",
+        "AG": "Antigua and Barbuda",
+        "AI": "Anguilla",
+        "AL": "Albania",
+        "AM": "Armenia",
+        "AO": "Angola",
+        "AQ": "Antarctica",
+        "AR": "Argentina",
+        "AS": "American Samoa",
+        "AT": "Austria",
+        "AU": "Australia",
+        "AW": "Aruba",
+        "AX": "Åland Islands",
+        "AZ": "Azerbaijan",
+        "BA": "Bosnia and Herzegovina",
+        "BB": "Barbados",
+        "BD": "Bangladesh",
+        "BE": "Belgium",
+        "BF": "Burkina Faso",
+        "BG": "Bulgaria",
+        "BH": "Bahrain",
+        "BI": "Burundi",
+        "BJ": "Benin",
+        "BL": "Saint Barthélemy",
+        "BM": "Bermuda",
+        "BN": "Brunei Darussalam",
+        "BO": "Bolivia",
+        "BQ": "Bonaire, Sint Eustatius and Saba",
+        "BR": "Brazil",
+        "BS": "Bahamas",
+        "BT": "Bhutan",
+        "BV": "Bouvet Island",
+        "BW": "Botswana",
+        "BY": "Belarus",
+        "BZ": "Belize",
+        "CA": "Canada",
+        "CC": "Cocos (Keeling) Islands",
+        "CD": "Congo, the Democratic Republic of the",
+        "CF": "Central African Republic",
+        "CG": "Congo",
+        "CH": "Switzerland",
+        "CI": "Cote D'Ivoire",
+        "CK": "Cook Islands",
+        "CL": "Chile",
+        "CM": "Cameroon",
+        "CN": "China",
+        "CO": "Colombia",
+        "CR": "Costa Rica",
+        "CU": "Cuba",
+        "CV": "Cape Verde",
+        "CW": "Curaçao",
+        "CX": "Christmas Island",
+        "CY": "Cyprus",
+        "CZ": "Czech Republic",
+        "DE": "Germany",
+        "DJ": "Djibouti",
+        "DK": "Denmark",
+        "DM": "Dominica",
+        "DO": "Dominican Republic",
+        "DZ": "Algeria",
+        "EC": "Ecuador",
+        "EE": "Estonia",
+        "EG": "Egypt",
+        "EH": "Western Sahara",
+        "ER": "Eritrea",
+        "ES": "Spain",
+        "ET": "Ethiopia",
+        "FI": "Finland",
+        "FJ": "Fiji",
+        "FK": "Falkland Islands (Malvinas)",
+        "FM": "Micronesia, Federated States of",
+        "FO": "Faroe Islands",
+        "FR": "France",
+        "GA": "Gabon",
+        "GB": "United Kingdom",
+        "GD": "Grenada",
+        "GE": "Georgia",
+        "GF": "French Guiana",
+        "GG": "Guernsey",
+        "GH": "Ghana",
+        "GI": "Gibraltar",
+        "GL": "Greenland",
+        "GM": "Gambia",
+        "GN": "Guinea",
+        "GP": "Guadeloupe",
+        "GQ": "Equatorial Guinea",
+        "GR": "Greece",
+        "GS": "South Georgia and the South Sandwich Islands",
+        "GT": "Guatemala",
+        "GU": "Guam",
+        "GW": "Guinea-Bissau",
+        "GY": "Guyana",
+        "HK": "Hong Kong",
+        "HM": "Heard Island and Mcdonald Islands",
+        "HN": "Honduras",
+        "HR": "Croatia",
+        "HT": "Haiti",
+        "HU": "Hungary",
+        "ID": "Indonesia",
+        "IE": "Ireland",
+        "IL": "Israel",
+        "IM": "Isle of Man",
+        "IN": "India",
+        "IO": "British Indian Ocean Territory",
+        "IQ": "Iraq",
+        "IR": "Iran, Islamic Republic of",
+        "IS": "Iceland",
+        "IT": "Italy",
+        "JE": "Jersey",
+        "JM": "Jamaica",
+        "JO": "Jordan",
+        "JP": "Japan",
+        "KE": "Kenya",
+        "KG": "Kyrgyzstan",
+        "KH": "Cambodia",
+        "KI": "Kiribati",
+        "KM": "Comoros",
+        "KN": "Saint Kitts and Nevis",
+        "KP": "North Korea",
+        "KR": "South Korea",
+        "KW": "Kuwait",
+        "KY": "Cayman Islands",
+        "KZ": "Kazakhstan",
+        "LA": "Lao People's Democratic Republic",
+        "LB": "Lebanon",
+        "LC": "Saint Lucia",
+        "LI": "Liechtenstein",
+        "LK": "Sri Lanka",
+        "LR": "Liberia",
+        "LS": "Lesotho",
+        "LT": "Lithuania",
+        "LU": "Luxembourg",
+        "LV": "Latvia",
+        "LY": "Libyan Arab Jamahiriya",
+        "MA": "Morocco",
+        "MC": "Monaco",
+        "MD": "Moldova, Republic of",
+        "ME": "Montenegro",
+        "MF": "Saint Martin (French part)",
+        "MG": "Madagascar",
+        "MH": "Marshall Islands",
+        "MK": "Macedonia, the Former Yugoslav Republic of",
+        "ML": "Mali",
+        "MM": "Myanmar",
+        "MN": "Mongolia",
+        "MO": "Macao",
+        "MP": "Northern Mariana Islands",
+        "MQ": "Martinique",
+        "MR": "Mauritania",
+        "MS": "Montserrat",
+        "MT": "Malta",
+        "MU": "Mauritius",
+        "MV": "Maldives",
+        "MW": "Malawi",
+        "MX": "Mexico",
+        "MY": "Malaysia",
+        "MZ": "Mozambique",
+        "NA": "Namibia",
+        "NC": "New Caledonia",
+        "NE": "Niger",
+        "NF": "Norfolk Island",
+        "NG": "Nigeria",
+        "NI": "Nicaragua",
+        "NL": "Netherlands",
+        "NO": "Norway",
+        "NP": "Nepal",
+        "NR": "Nauru",
+        "NU": "Niue",
+        "NZ": "New Zealand",
+        "OM": "Oman",
+        "PA": "Panama",
+        "PE": "Peru",
+        "PF": "French Polynesia",
+        "PG": "Papua New Guinea",
+        "PH": "Philippines",
+        "PK": "Pakistan",
+        "PL": "Poland",
+        "PM": "Saint Pierre and Miquelon",
+        "PN": "Pitcairn",
+        "PR": "Puerto Rico",
+        "PS": "Palestinian Territory, Occupied",
+        "PT": "Portugal",
+        "PW": "Palau",
+        "PY": "Paraguay",
+        "QA": "Qatar",
+        "RE": "Reunion",
+        "RO": "Romania",
+        "RS": "Serbia",
+        "RU": "Russian Federation",
+        "RW": "Rwanda",
+        "SA": "Saudi Arabia",
+        "SB": "Solomon Islands",
+        "SC": "Seychelles",
+        "SD": "Sudan",
+        "SE": "Sweden",
+        "SG": "Singapore",
+        "SH": "Saint Helena",
+        "SI": "Slovenia",
+        "SJ": "Svalbard and Jan Mayen",
+        "SK": "Slovakia",
+        "SL": "Sierra Leone",
+        "SM": "San Marino",
+        "SN": "Senegal",
+        "SO": "Somalia",
+        "SR": "Suriname",
+        "SS": "South Sudan",
+        "ST": "Sao Tome and Principe",
+        "SV": "El Salvador",
+        "SX": "Sint Maarten (Dutch part)",
+        "SY": "Syrian Arab Republic",
+        "SZ": "Swaziland",
+        "TC": "Turks and Caicos Islands",
+        "TD": "Chad",
+        "TF": "French Southern Territories",
+        "TG": "Togo",
+        "TH": "Thailand",
+        "TJ": "Tajikistan",
+        "TK": "Tokelau",
+        "TL": "Timor-Leste",
+        "TM": "Turkmenistan",
+        "TN": "Tunisia",
+        "TO": "Tonga",
+        "TR": "Turkey",
+        "TT": "Trinidad and Tobago",
+        "TV": "Tuvalu",
+        "TW": "Taiwan",
+        "TZ": "Tanzania, United Republic of",
+        "UA": "Ukraine",
+        "UG": "Uganda",
+        "UM": "United States Minor Outlying Islands",
+        "US": "United States of America",
+        "UY": "Uruguay",
+        "UZ": "Uzbekistan",
+        "VA": "Holy See (Vatican City State)",
+        "VC": "Saint Vincent and the Grenadines",
+        "VE": "Venezuela",
+        "VG": "Virgin Islands, British",
+        "VI": "Virgin Islands, U.S.",
+        "VN": "Viet Nam",
+        "VU": "Vanuatu",
+        "WF": "Wallis and Futuna",
+        "WS": "Samoa",
+        "XK": "Kosovo",
+        "YE": "Yemen",
+        "YT": "Mayotte",
+        "ZA": "South Africa",
+        "ZM": "Zambia",
+        "ZW": "Zimbabwe"
+      },
+      "edit": {
+        "success": "Location changed successfully.",
+        "title": "Edit a location for the"
+      }
+    },
+    "location-list-card": {
+      "delete": {
+        "button": "Yes, delete!",
+        "button-cancel": "Cancel",
+        "remove-error": "Location not removed. Try again.",
+        "remove-success": "Location removed successfully.",
+        "title": "Are you sure you want to delete Location?"
+      },
+      "title": "Locations"
+    },
+    "rating-list-section": {
+      "vote-error": "Your vote is not taken into account.",
+      "vote-success": "Your vote is taken into account.",
+      "votes": "Vote(s)"
+    },
+    "states-management-dialog": {
+      "choose-state": "Choose state",
+      "title": "States detail"
+    },
+    "tag-list-section": {
+      "add-error": "Tag not added. Try again.",
+      "remove-error": "Tag not removed. Try again.",
+      "type-tag": "type tag ..."
+    }
+  },
+  "xm-notifications": {
+    "showAll": "View all"
+  },
+  "xm-timeline": {
+    "common": {
+      "time-ago": {
+        "day": "a day ago",
+        "days": " days ago",
+        "hour": "an hour ago",
+        "hours": " hours ago",
+        "minute": "a minute ago",
+        "minutes": " minutes ago",
+        "month": "a month ago",
+        "months": " months ago",
+        "seconds": "a few seconds ago",
+        "year": "a year ago",
+        "years": " years ago"
+      }
+    },
+    "timeline": {
+      "by": "by",
+      "error": "ERROR",
+      "more": "more timeline events...",
+      "success": "SUCCESS",
+      "title": "Timeline"
+    }
+  },
+  "xm": {
+    "defaultProfile": {
+      "created": "A new Default Profile is created with identifier {{ param }}",
+      "dashboard": "Dashboard",
+      "delete": {
+        "question": "Are you sure you want to delete Default Profile {{ id }}?"
+      },
+      "deleted": "A Default Profile is deleted with identifier {{ param }}",
+      "detail": {
+        "title": "Default Profile"
+      },
+      "home": {
+        "createLabel": "Create a new Default Profile",
+        "createOrEditLabel": "Create or edit a Default Profile",
+        "search": "Search for Default Profile",
+        "title": "Default Profiles"
+      },
+      "roleKey": "Role Key",
+      "updated": "A Default Profile is updated with identifier {{ param }}"
+    },
+    "delete": {
+      "question": "Are you sure you want to delete [ <b>{{name}}</b> ]?"
+    },
+    "profile": {
+      "created": "A new Profile is created with identifier {{ param }}",
+      "dashboards": "Dashboards",
+      "delete": {
+        "question": "Are you sure you want to delete Profile {{ id }}?"
+      },
+      "deleted": "A Profile is deleted with identifier {{ param }}",
+      "detail": {
+        "title": "Profile"
+      },
+      "home": {
+        "createLabel": "Create a new Profile",
+        "createOrEditLabel": "Create or edit a Profile",
+        "search": "Search for Profile",
+        "title": "Profiles"
+      },
+      "login": "Login",
+      "updated": "A Profile is updated with identifier {{ param }}"
+    },
+    "xmEntity": {
+      "add": {
+        "chooseType": "Choose entity type",
+        "title": "Add a new entity"
+      },
+      "addPhoto": "Add Photo",
+      "change": "Change",
+      "data": "Data",
+      "description": "Description",
+      "edit": {
+        "title": "Edit an entity [<b>{{name}}</b>]"
+      },
+      "endDate": "End Date",
+      "functions": "Functions",
+      "lifecycle": {
+        "nextStates": "Next states available through the lifecycle:",
+        "title": "Lifecycle"
+      },
+      "listView": "List view",
+      "locations": "Locations",
+      "name": "Name",
+      "redeem": {
+        "title": "Redeem"
+      },
+      "search": "Search result for ",
+      "showMore": "Show more",
+      "startDate": "Start Date",
+      "state": "State",
+      "tenant": {
+        "error": {
+          "alreadyUsed": "Tenant name already used",
+          "tenantKeyFormat": "Tenant name should be alpha-numeric string with underscores. First alpha character. Not start with 'pg_'. Max length is 48 symbols"
+        }
+      },
+      "title": "Title",
+      "treeView": "Tree view",
+      "type": "Type",
+      "votes": "Vote(s)"
+    }
+  }
+}

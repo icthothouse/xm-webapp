@@ -1,12 +1,12 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CookieService } from 'angular2-cookie/core';
-import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
+import { XmEventManager } from '@xm-ngx/core';
+import { XmToasterService } from '@xm-ngx/toaster';
+import { CookieService } from 'ngx-cookie-service';
 
-import { AuthService, LoginComponent, LoginService } from '../../shared';
-import { StateStorageService } from '../../shared/auth/state-storage.service';
-import { XmConfigService } from '../../shared/spec/config.service';
+import { AuthService, LoginComponent, LoginService, XmConfigService } from '../../shared';
+import { StateStorageService } from '@xm-ngx/core/auth';
 import { XM_EVENT_LIST } from '../../xm.constants';
 
 const SOCIAL_AUTH = 'social-authentication';
@@ -17,14 +17,14 @@ const SOCIAL_AUTH = 'social-authentication';
 })
 export class SocialAuthComponent extends LoginComponent implements OnInit {
 
-    constructor(protected eventManager: JhiEventManager,
+    constructor(protected eventManager: XmEventManager,
                 protected xmConfigService: XmConfigService,
                 protected loginService: LoginService,
                 protected stateStorageService: StateStorageService,
                 protected elementRef: ElementRef,
                 protected router: Router,
-                protected alertService: JhiAlertService,
-                protected modalService: NgbModal,
+                protected alertService: XmToasterService,
+                protected modalService: MatDialog,
                 protected authService: AuthService,
                 protected cookieService: CookieService) {
         super(
@@ -43,7 +43,7 @@ export class SocialAuthComponent extends LoginComponent implements OnInit {
         const token = this.cookieService.get(SOCIAL_AUTH);
         if (token) {
             this.loginService.loginWithToken(token, false).then(() => {
-                this.cookieService.remove(SOCIAL_AUTH);
+                this.cookieService.delete(SOCIAL_AUTH);
                 this.authService.authorize(true)
                     .then(
                         () => {

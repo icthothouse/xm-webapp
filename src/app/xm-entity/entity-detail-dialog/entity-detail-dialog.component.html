@@ -1,14 +1,15 @@
 <form #entityForm="ngForm" (ngSubmit)="onConfirmSave()" class="m-0" name="entityForm" novalidate role="form">
-  <div class="modal-header">
-    <a (click)="onCancel()" class="modal-close material-icons" href="javascript: void(0);">close</a>
+  <div mat-dialog-title>
     <div *ngIf="jsfAttributes?.entity?.formHeaderTitle; then
                 hasHeaderConfig else
                 hasNotHeaderConfig;">
     </div>
   </div>
+
   <ng-template #hasHeaderConfig>
-    <h4 class="modal-title text-left">{{jsfAttributes.entity.formHeaderTitle | i18nName: principal}}</h4>
+    <h4 class="modal-title text-left">{{jsfAttributes.entity.formHeaderTitle | translate}}</h4>
   </ng-template>
+
   <ng-template #hasNotHeaderConfig>
     <h4 *ngIf="!isEdit" class="modal-title text-left">
       <span jhiTranslate="xm-entity.entity-detail-dialog.add.title">Add a new entity</span>
@@ -18,7 +19,7 @@
     </h4>
   </ng-template>
 
-  <div class="modal-body">
+  <div mat-dialog-content>
     <xm-loader [showLoader]="showLoader"></xm-loader>
 
     <div [hidden]="true" class="form-group">
@@ -38,9 +39,8 @@
                     placeholder="{{'xm-entity.entity-detail-dialog.add.choose-type' | translate}}"
                     required>
           <mat-option *ngFor="let spec of availableSpecs"
-                      [selected]="spec.key == xmEntity.typeKey ? true : null"
                       [value]="spec.key">
-            {{(spec.name | i18nName: principal)?.toUpperCase()}}
+            {{spec.name | translate | uppercase}}
           </mat-option>
         </mat-select>
         <mat-error *ngIf="entityType.hasError('required')">
@@ -87,25 +87,28 @@
                       (onChanges)="onChangeForm($event)"
                       *ngIf="!isEdit && jsfAttributes?.schema"
                       [data]="jsfAttributes.data"
-                      [form]="jsfAttributes.form | i18nJsf :principal"
+                      [form]="jsfAttributes.form | i18nJsf"
                       [framework]="'material-design'"
-                      [layout]="jsfAttributes.layout | i18nJsf :principal"
-                      [options]="jsfAttributes.options | i18nJsf :principal"
+                      [layout]="jsfAttributes.layout | i18nJsf"
+                      [options]="jsfAttributes.options | i18nJsf"
                       [schema]="jsfAttributes.schema"
                       [widgets]="jsfAttributes.widgets"
                       class="json-form-hide-submit">
     </json-schema-form>
   </div>
-  <div *ngIf="!(jsfAttributes?.entity?.formDefaultFooterHide)" class="modal-footer">
-    <button (click)="onCancel()" class="btn mr-1" data-dismiss="modal" mat-raised-button type="button">
-      <span *ngIf="jsfAttributes?.entity?.cancelName">{{jsfAttributes.entity.cancelName | i18nName: principal}}</span>
+
+  <div *ngIf="!(jsfAttributes?.entity?.formDefaultFooterHide)" mat-dialog-actions>
+    <button (click)="onCancel()" class="btn mr-1 ml-auto" data-dismiss="modal" mat-button type="button">
+      <span *ngIf="jsfAttributes?.entity?.cancelName">{{jsfAttributes.entity.cancelName | translate}}</span>
       <span *ngIf="!jsfAttributes?.entity?.cancelName" jhiTranslate="xm-entity.common.cancel">Cancel</span>
     </button>
+
     <button [disabled]="entityForm.form.invalid || showLoader || !isJsonFormValid"
-            class="btn btn-primary"
-            mat-raised-button
+            class="btn"
+            mat-button
+            color="primary"
             type="submit">
-      <span *ngIf="jsfAttributes?.entity?.saveName">{{jsfAttributes.entity.saveName | i18nName: principal}}</span>
+      <span *ngIf="jsfAttributes?.entity?.saveName">{{jsfAttributes.entity.saveName | translate}}</span>
       <span *ngIf="!jsfAttributes?.entity?.saveName" jhiTranslate="xm-entity.common.save">Save</span>
     </button>
   </div>

@@ -1,0 +1,114 @@
+@import '~@angular/material/theming';
+
+$xm-mat-secondary-default: 500 !default;
+$xm-mat-secondary-lighter: 100 !default;
+$xm-mat-secondary-darker:  700 !default;
+$xm-mat-secondary-text:    $xm-mat-secondary-default !default;
+
+$mat-elevation-color:      $xm-elevation-color;
+$mat-elevation-opacity:    $xm-elevation-opacity;
+
+// Remove border radius from angular material
+@if ($xm-enable-rounded == false) {
+  // this variables aren't working(because we use compiled angular material)
+  $mat-autocomplete-panel-border-radius:     0;
+  $mat-button-toggle-standard-border-radius: 0;
+  $mat-button-toggle-legacy-border-radius:   0;
+  $mat-card-border-radius:                   0;
+  $mat-dialog-border-radius:                 0;
+  $mat-form-field-fill-border-radius:        0;
+  $mat-form-field-outline-border-radius:     0;
+  $mat-menu-border-radius:                   0;
+  $mat-slide-toggle-bar-border-radius:       0;
+
+  /* Override mat radius
+   * using .xm-body to increase css classes below weight
+   * @todo: integrate source of angular material
+   */
+  .xm-body .mat-menu-panel,
+  .xm-body .mat-form-field-outline,
+  .xm-body .mat-form-field-appearance-fill .mat-form-field-flex,
+  .xm-body .mat-dialog-container,
+  .xm-body .mat-card,
+  .xm-body .mat-button-base:not(.mat-mini-fab):not(.mat-fab),
+  .xm-body .mat-button-toggle-standalone,
+  .xm-body .mat-button-toggle-group,
+  .xm-body .mat-button-toggle-standalone.mat-button-toggle-appearance-standard,
+  .xm-body .mat-button-toggle-group-appearance-standard,
+  .xm-body .mat-slide-toggle-bar,
+  .xm-body .mat-slide-toggle-thumb,
+  .xm-body .mat-select-panel {
+    border-radius: 0;
+  }
+}
+
+@include mat-core();
+
+@mixin xm-angular-material-theme($theme) {
+  $primary:        map-get($theme, primary-palette);
+  $secondary:      map-get($theme, secondary-palette);
+  $warn:           map-get($theme, warn-palette);
+
+  // @todo: pass $default, $light and $dark
+  $xm-mat-primary: mat-palette($primary);
+  $xm-mat-accent:  mat-palette(
+                       $secondary,
+                       $xm-mat-secondary-default,
+                       $xm-mat-secondary-lighter,
+                       $xm-mat-secondary-darker,
+                       $xm-mat-secondary-text);
+  $xm-mat-warn:    mat-palette($warn);
+
+  $xm-mat-theme:   mat-light-theme($xm-mat-primary, $xm-mat-accent, $xm-mat-warn);
+
+  @include angular-material-theme($xm-mat-theme);
+}
+
+@mixin angular-material-xm-override() {
+  /**
+   * Backward compatibility: full width for all input inside of .form-group.
+   * @todo: research
+   */
+  .form-group > mat-form-field {
+    width: 100%;
+  }
+
+  /**
+   * Backward compatibility: the icons shouldn't be overridden like this
+   * @todo: resolve cases locally
+   */
+  a .material-icons {
+    vertical-align: middle;
+  }
+
+  /**
+   * Bootstrap conflict: bootstrap _reboot.scss assign button:focus
+   * @todo: remove bootstrap
+   */
+  .mat-button:focus,
+  .mat-button-base:focus {
+    outline:    0;
+    box-shadow: none;
+  }
+}
+
+$xm-mat-typography:        mat-typography-config(
+                             $font-family:  $xm-font-family,
+                             $display-4:    $xm-display-4,
+                             $display-3:    $xm-display-3,
+                             $display-2:    $xm-display-2,
+                             $display-1:    $xm-display-1,
+                             $headline:     $xm-headline,
+                             $title:        $xm-title,
+                             $subheading-2: $xm-subheading-2,
+                             $subheading-1: $xm-subheading-1,
+                             $body-2:       $xm-body-2,
+                             $body-1:       $xm-body-1,
+                             $caption:      $xm-caption,
+                             $button:       $xm-button,
+                             $input:        $xm-input
+                           );
+
+@mixin xm-angular-material-typography() {
+  @include angular-material-typography($xm-mat-typography);
+}

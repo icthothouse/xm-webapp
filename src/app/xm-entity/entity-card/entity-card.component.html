@@ -5,7 +5,7 @@
         <i class="material-icons">{{xmEntitySpec.icon}}</i>
       </div>
     </ng-container>
-    <h4 class="card-title"><b>{{xmEntitySpec.name | i18nName: principal}}</b> - {{xmEntity.name}}</h4>
+    <h4 class="card-title"><b>{{xmEntitySpec.name | translate}}</b> - {{xmEntity.name}}</h4>
   </div>
 
   <div class="card-menu">
@@ -35,7 +35,7 @@
           <img src="{{xmEntity.avatarUrl ? xmEntity.avatarUrl : './assets/img/placeholder.png'}}">
           <i *ngIf="xmEntitySpec.icon && !xmEntity.avatarUrl" class="material-icons">{{xmEntitySpec.icon}}</i>
           <button (click)="onAvatarChangeClick()"
-                  class="btn btn-sm btn-just-icon btn-round btn-icon edit-avatar"
+                  class="btn btn-sm btn-just-icon rounded-circle btn-icon edit-avatar"
                   role="button">
             <mat-icon>edit</mat-icon>
           </button>

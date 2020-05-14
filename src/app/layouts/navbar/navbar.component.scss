@@ -1,212 +1,262 @@
+@import 'navbar-toggler';
+
 @mixin flex() {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
 }
 
 @mixin inline-flex {
-    display: -webkit-inline-box;
-    display: -webkit-inline-flex;
-    display: -moz-inline-flex;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 @mixin flex-direction($value: row) {
-    @if $value == row-reverse {
-        -webkit-box-direction: reverse;
-        -webkit-box-orient:    horizontal;
-    }
- @else if $value == column {
-        -webkit-box-direction: normal;
-        -webkit-box-orient:    vertical;
-    }
- @else if $value == column-reverse {
-        -webkit-box-direction: reverse;
-        -webkit-box-orient:    vertical;
-    }
- @else {
-        -webkit-box-direction: normal;
-        -webkit-box-orient:    horizontal;
-    }
-    -webkit-flex-direction: $value;
-    -moz-flex-direction:    $value;
-    -ms-flex-direction:     $value;
-    flex-direction:         $value;
+  @if $value == row-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient:    horizontal;
+  } @else if $value == column {
+    -webkit-box-direction: normal;
+    -webkit-box-orient:    vertical;
+  } @else if $value == column-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient:    vertical;
+  } @else {
+    -webkit-box-direction: normal;
+    -webkit-box-orient:    horizontal;
+  }
+  -webkit-flex-direction: $value;
+  -moz-flex-direction:    $value;
+  -ms-flex-direction:     $value;
+  flex-direction:         $value;
 }
 
 @mixin flex-grow($int: 0) {
-    -webkit-box-flex:  $int;
-    -webkit-flex-grow: $int;
-    -moz-flex-grow:    $int;
-    -ms-flex-positive: $int;
-    flex-grow:         $int;
+  -webkit-box-flex:  $int;
+  -webkit-flex-grow: $int;
+  -moz-flex-grow:    $int;
+  -ms-flex-positive: $int;
+  flex-grow:         $int;
 }
 
 @mixin flex-wrap($value: nowrap) {
-    // No Webkit Box fallback.
-    -webkit-flex-wrap: $value;
-    -moz-flex-wrap:    $value;
-    @if $value == nowrap {
-        -ms-flex-wrap: none;
-    }
- @else {
-        -ms-flex-wrap: $value;
-    }
-    flex-wrap:         $value;
+  // No Webkit Box fallback.
+  -webkit-flex-wrap: $value;
+  -moz-flex-wrap:    $value;
+  @if $value == nowrap {
+    -ms-flex-wrap: none;
+  } @else {
+    -ms-flex-wrap: $value;
+  }
+  flex-wrap:         $value;
 }
 
-.xm-navbar-container {
+// TODO; redesign and remove ng-deep
+::ng-deep {
+  .xm-navbar-container {
     @include flex();
     @include flex-direction(row);
     @include flex-wrap(nowrap);
     align-items: center;
 
-    .navbar-minimize,
     .navbar-brand,
     .navbar-header {
-        float: none;
+      float: none;
     }
 
-    .navbar-toggler {
-        display: none;
-    }
-
-    .navbar-minimize {
-        padding: 0;
+    ::ng-deep .navbar-toggler {
+      display: none;
     }
 
     .navbar-form {
-        white-space: nowrap;
+      white-space: nowrap;
     }
 
     .navbar-collapse {
-        padding: 0;
+      padding: 0;
     }
 
     .navbar-container-part {
-        &.title-part {
-            min-width:     0;
-            @include flex-grow(1);
-            padding:       10px 15px;
-            font-size:     18px;
-            line-height:   30px;
-            white-space:   nowrap;
-            overflow:      hidden;
-            text-overflow: ellipsis;
-            position:      relative;
-            box-sizing:    border-box;
-        }
+      &.title-part {
+        box-sizing:    border-box;
+        @include flex-grow(1);
+        font-size:     18px;
+        line-height:   30px;
+        min-width:     0;
+        overflow:      hidden;
+        padding:       10px 15px;
+        position:      relative;
+        text-overflow: ellipsis;
+        white-space:   nowrap;
+      }
 
-        &.search-part {
-            min-width: 220px;
-        }
+      &.search-part {
+        min-width: 220px;
+      }
     }
 
     .search-input {
-        margin-top: 6px;
+      margin-top:       6px;
+      background-color: inherit;
+      border:           0;
+      background:       center bottom no-repeat,center calc(100% - 1px);
+      background-size:  0 100%, 100% 100%;
+      transition:       all ease-out 300ms;
+    }
+    .search-input:focus {
+      outline: none;
+      background-size: 100% 100%, 100% 100%;
     }
 
     .overflowed-text {
-        white-space:   nowrap;
-        overflow:      hidden;
-        text-overflow: ellipsis;
+      overflow:      hidden;
+      text-overflow: ellipsis;
+      white-space:   nowrap;
     }
 
     .navbar-right {
-        margin: 0;
+      margin: 0;
     }
 
     .btn-back {
-        margin-left: 0;
+      margin-left: 0;
     }
 
     .dropdown-toggle {
-        text-align: center;
+      text-align: center;
     }
 
     .drawer-toggle {
-        padding: 0 15px 0 0;
+      padding: 0 15px 0 0;
     }
 
 
-}
+  }
 
-@media (max-width: 991px) {
+  @media (max-width: 991px) {
     .navbar .dropdown .dropdown-menu, .navbar .dropdown.show .dropdown-menu {
-        border:                   0;
-        padding:                  0.3125rem 0 !important;
-        -webkit-transform:        scale(1) !important;
-        transform:                scale(1) !important;
-        width:                    auto;
-        padding-top:              auto;
-        height:                   auto;
-        -webkit-animation:        none;
-        animation:                none;
-        opacity:                  0;
-        overflow-y:               auto !important;
-        -webkit-transform-origin: 0 0;
-        transform-origin:         0 0;
-        will-change:              transform, opacity;
-        transition:               transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      -webkit-animation:        none;
+      animation:                none;
+      background-clip:          padding-box;
+      background-color:         #fff;
+      border:                   0;
+      border-radius:            .25rem;
+      box-shadow:               0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+      color:                    #212529;
+      float:                    left;
+      font-size:                1rem;
+      height:                   auto;
+      list-style:               none;
+      margin:                   .125rem 0 0;
+      min-width:                10rem;
+      opacity:                  0;
 
-        position:                 absolute;
+      overflow-y:               auto !important;
 
-        z-index:                  1000;
-        float:                    left;
-        min-width:                10rem;
-        margin:                   0.125rem 0 0;
-        font-size:                1rem;
-        color:                    #212529;
-        text-align:               left;
-        list-style:               none;
-        background-color:         #fff;
-        background-clip:          padding-box;
-        border-radius:            0.25rem;
-        box-shadow:               0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+      padding:                  .3125rem 0 !important;
+      padding-top:              auto;
+      position:                 absolute;
+      text-align:               left;
+      -webkit-transform:        scale(1) !important;
+      transform:                scale(1) !important;
+      -webkit-transform-origin: 0 0;
+      transform-origin:         0 0;
+      transition:               transform .3s cubic-bezier(.4, 0, .2, 1), opacity .2s cubic-bezier(.4, 0, .2, 1), -webkit-transform .3s cubic-bezier(.4, 0, .2, 1) !important;
+      width:                    auto;
+      will-change:              transform, opacity;
+      z-index:                  1000;
     }
 
     .navbar .dropdown.show .dropdown-menu {
-        opacity: 1;
+      opacity: 1;
     }
 
     .navbar .dropdown-menu .dropdown-item {
-        margin-left:  0.3125rem;
-        margin-right: 0.3125rem;
+      margin-left:  .3125rem;
+      margin-right: .3125rem;
     }
-}
+  }
 
-.xm-langs-chooser {
+  .xm-langs-chooser {
     .langs-drop-container {
-        position: absolute !important;
+      position: absolute !important;
     }
 
     .nav-link {
-        margin-top: 2px;
-        color:      rgb(85, 85, 85);
+      color:      rgb(85, 85, 85);
+      margin-top: 2px;
 
-        &:hover {
-            color: rgb(85, 85, 85);
-        }
+      &:hover {
+        color: rgb(85, 85, 85);
+      }
 
-        .material-icons {
-            font-size: 20px;
-        }
+      .material-icons {
+        font-size: 20px;
+      }
     }
-}
+  }
 
-@media (max-width: 991px) {
+  @media (max-width: 991px) {
     .xm-navbar-container {
-        .navbar-toggler {
-            display:      block;
-            margin-right: -5px;
-        }
+      .navbar-toggler {
+        display:      block;
+        margin-right: -5px;
+      }
     }
-}
+  }
 
-
-.top-0 {
+  .top-0 {
     top: 0;
+  }
+
+  // @todo: refactor
+  .xm-guest-layout .navbar.navbar-transparent {
+    background:    #fff !important;
+    border-radius: 0;
+    box-shadow:    0 2px 2px 0 rgba(0, 0, 0, .1);
+  }
+
+  // @todo: refactor
+  .xm-guest-layout .sidbar-toggle {
+    display: none !important;
+  }
+
+  .xm-guest-layout .xm-nav-logo {
+    // @todo: refactor, implement with .ts
+    display: block !important;
+  }
+
+  .xm-nav-logo {
+    // @todo: refactor, implement with .ts
+    display: none;
+
+    img {
+      display:    block;
+      margin:     0 auto;
+      max-height: 42px;
+      max-width:  42px;
+    }
+
+    .logo-text {
+      color:          #3c4858;
+      display:        inline-block;
+      font-size:      18px;
+      font-weight:    400;
+      line-height:    30px;
+      margin:         0 0 0 10px;
+      overflow:       hidden;
+      vertical-align: middle;
+      white-space:    nowrap;
+      width:          165px;
+
+      @media (max-width: 480px) {
+        display: none;
+      }
+    }
+  }
 }

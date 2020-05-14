@@ -1,0 +1,96 @@
+<div class="row mb-5">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-icon card-header-primary">
+        <h4 jhiTranslate="rolesManagement.home.title">Roles</h4>
+      </div>
+
+      <div class="card-body">
+        <xm-loader [showLoader]="showLoader"></xm-loader>
+        <div *ngIf="roles?.length">
+          <div class="material-datatables table-responsive">
+            <table cellspacing="0" class="table table-striped table-no-bordered table-hover" id="datatables"
+                   style="width:100%" width="100%">
+              <thead>
+              <tr [(ascending)]="reverse" [(predicate)]="predicate" [callback]="onTransition.bind(this)" jhiSort>
+                <th jhiSortBy="roleKey"><span jhiTranslate="rolesManagement.key">Key</span> <span
+                  class="fa fa-sort"></span></th>
+                <th><span jhiTranslate="rolesManagement.description">Description</span></th>
+                <th jhiSortBy="createdBy"><span jhiTranslate="rolesManagement.createdBy">Created by</span> <span
+                  class="fa fa-sort"></span></th>
+                <th jhiSortBy="createdDate"><span jhiTranslate="rolesManagement.createdDate">Created Date</span> <span
+                  class="fa fa-sort"></span></th>
+                <th jhiSortBy="updatedBy"><span jhiTranslate="rolesManagement.lastModifiedBy">Modified By</span> <span
+                  class="fa fa-sort"></span></th>
+                <th jhiSortBy="updatedDate"><span jhiTranslate="rolesManagement.lastModifiedDate">Modified Date</span>
+                  <span class="fa fa-sort"></span></th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of roles">
+                <td><a [routerLink]="['/administration/role-management', item.roleKey]">{{item.roleKey}}</a></td>
+                <td>{{item.description}}</td>
+                <td>{{item.createdBy}}</td>
+                <td>{{item.createdDate | date}}</td>
+                <td>{{item.updatedBy}}</td>
+                <td>{{item.updatedDate | date}}</td>
+                <td class="text-right nowrap">
+                  <a (click)="onEdit(item)"
+                     *permitted="'ROLE.UPDATE'"
+                     href="javascript: void(0);">
+                    <i class="material-icons">edit</i>
+                  </a>
+                  <a (click)="onDelete(item)" *permitted="'ROLE.DELETE'"
+                     class="ml-1"
+                     href="javascript: void(0);">
+                    <i class="material-icons">close</i>
+                  </a>
+                  <!--<a [routerLink]="[{ outlets: { popup: 'role-management/'+ item.roleKey + '/edit'} }]"-->
+                  <!--replaceUrl="true" *permitted="'ROLE.UPDATE'">-->
+                  <!--<i class="material-icons">edit</i>-->
+                  <!--</a>-->
+                  <!--<a class="ml-1" [routerLink]="[{ outlets: { popup: 'role-management/'+ item.roleKey + '/delete'} }]"-->
+                  <!--replaceUrl="true" *permitted="'ROLE.DELETE'">-->
+                  <!--<i class="material-icons">close</i>-->
+                  <!--</a>-->
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="row align-items-center list-pagination">
+            <div class="col-auto mt-1 mb-1">
+              <xm-per-page (onChange)="onChangePerPage()" [(itemsPerPage)]="itemsPerPage"></xm-per-page>
+            </div>
+            <div class="col-auto mt-1 mb-1">
+              <jhi-item-count [itemsPerPage]="itemsPerPage" [page]="page" [total]="totalItems"></jhi-item-count>
+            </div>
+            <div class="col-sm"></div>
+            <div class="col-auto mt-1 mb-1">
+              <ngb-pagination (pageChange)="onLoadPage($event)"
+                              [(page)]="page"
+                              [collectionSize]="totalItems"
+                              [maxSize]="5"
+                              [pageSize]="itemsPerPage">
+
+              </ngb-pagination>
+            </div>
+          </div>
+        </div>
+
+        <no-data [show]="!roles?.length"></no-data>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="xm-fab">
+  <button (click)="onAdd()"
+          *permitted="'ROLE.CREATE'"
+          class="btn btn-primary btn-icon btn-just-icon rounded-circle btn-lg"
+          mat-button>
+    <i class="material-icons">add</i>
+  </button>
+</div>

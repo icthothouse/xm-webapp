@@ -29,7 +29,7 @@ export class ApplicationResolvePagingParams implements Resolve<any> {
 
 export const applicationRoute: Routes = [
     {
-        path: 'application/:key',
+        path: ':key',
         component: ApplicationComponent,
         resolve: {
             pagingParams: ApplicationResolvePagingParams,
@@ -45,7 +45,7 @@ export const applicationRoute: Routes = [
         canActivate: [UserRouteAccessService],
     },
     {
-        path: 'application/:key/:id',
+        path: ':key/:id',
         component: EntityDetailComponent,
         data: {
             authorities: ['ROLE_USER'],

@@ -1,8 +1,5 @@
 <div class="card">
   <div class="card-header card-header-icon card-header-primary">
-    <div class="card-icon">
-      <i class="material-icons">location_on</i>
-    </div>
     <h4 class="card-title">{{name}}</h4>
   </div>
   <div class="card-body">
@@ -10,8 +7,8 @@
       <button (click)="showGroup(group)"
               *ngFor="let group of groups"
               [class.disabled]="currentGroup === group"
-              class="btn btn-primary btn-sm btn-round"
-              mat-raised-button>
+              class="btn btn-primary btn-sm"
+              mat-button>
         {{group.name}}
       </button>
     </div>

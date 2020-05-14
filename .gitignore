@@ -13,6 +13,7 @@ package-lock.json
 local.proxy.conf.js
 .vscode/
 
+src/i18n/ext
 src/i18n/en.json
 src/i18n/ru.json
 src/i18n/uk.json
@@ -25,3 +26,15 @@ src/app/ext/*
 src/assets/img/ext/
 angular.json
 
+# Theme - this file is used to define the default theme
+src/styles/_theme.scss
+
+# Logs
+/logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+/src/assets/themes/*.css

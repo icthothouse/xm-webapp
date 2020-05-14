@@ -1,7 +1,8 @@
-<div class="modal-header">
-  <a (click)="clear()" class="modal-close material-icons" href="javascript: void(0);">close</a>
+<div mat-dialog-title>
+  {{'xm-entity.common.search' | translate}}
 </div>
-<div class="modal-body">
+
+<div mat-dialog-content>
   <div class="row">
     <div class="col">
       <div class="form-group">
@@ -31,7 +32,7 @@
           <span *ngIf="!rel.tags?.wikipedia">{{rel.tags?.name}}</span>
         </td>
         <td>
-          <button (click)="addPolygon(rel)" class="btn btn-primary btn-round btn-sm">
+          <button (click)="addPolygon(rel)" class="btn btn-primary rounded-circle btn-sm">
             <span jhiTranslate="xm-entity.common.add">Add</span>
           </button>
         </td>
@@ -40,8 +41,9 @@
     </table>
   </div>
 </div>
-<div class="modal-footer">
-  <button (click)="clear()" class="btn" data-dismiss="modal" mat-raised-button type="button">
+
+<div mat-dialog-actions>
+  <button (click)="clear()" class="btn ml-auto" data-dismiss="modal" mat-button type="button">
     <span jhiTranslate="xm-entity.common.cancel">Cancel</span>
   </button>
 </div>

@@ -1,6 +1,6 @@
 import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http';
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { JsonSchemaFormService } from 'angular2-json-schema-form';
+import { JsonSchemaFormService } from '@ajsf/core';
 
 @Component({
     selector: 'xm-ajfs-file-upload',

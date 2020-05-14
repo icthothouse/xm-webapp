@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
-import { JhiEventManager } from 'ng-jhipster';
+import { XmEventManager } from '@xm-ngx/core';
+import { XmToasterService } from '@xm-ngx/toaster';
 import { Subscription } from 'rxjs';
-
 import { Principal } from '../../../shared';
+
 import {
     EntityDetailDialogComponent,
     Spec,
@@ -15,8 +16,6 @@ import {
 } from '../../../xm-entity';
 import { FunctionCallDialogComponent } from '../../../xm-entity/function-call-dialog/function-call-dialog.component';
 import { XM_EVENT_LIST } from '../../../xm.constants';
-
-declare let swal: any;
 
 const ENTITY_SELECTED = 'xm-entity-selected';
 
@@ -41,11 +40,12 @@ export class EntityFabActionsComponent implements OnInit, OnDestroy {
     public routingUrl: string;
 
     constructor(
-        public principal: Principal,
+        private principal: Principal,
         private router: Router,
         protected translateService: TranslateService,
-        protected modalService: NgbModal,
-        protected eventManager: JhiEventManager,
+        protected toasterService: XmToasterService,
+        protected modalService: MatDialog,
+        protected eventManager: XmEventManager,
         protected xmEntitySpecWrapperService: XmEntitySpecWrapperService,
     ) {
         this.spec = null;
@@ -106,7 +106,7 @@ export class EntityFabActionsComponent implements OnInit, OnDestroy {
     }
 
     public callEntityDetailAction(key: string): any {
-        const modalRef = this.modalService.open(EntityDetailDialogComponent, {backdrop: 'static'});
+        const modalRef = this.modalService.open(EntityDetailDialogComponent, {width: '500px'});
         modalRef.componentInstance.xmEntitySpec = this.getType(key);
         modalRef.componentInstance.spec = this.spec;
         modalRef.componentInstance.onSuccess = () => {
@@ -119,12 +119,7 @@ export class EntityFabActionsComponent implements OnInit, OnDestroy {
                     : this.navigate(path, {});
                 return;
             }
-            swal({
-                type: 'success',
-                text: this.translateService.instant('ext-common-entity.entity-fab-actions.operation-success'),
-                buttonsStyling: false,
-                confirmButtonClass: 'btn btn-primary',
-            });
+            this.toasterService.success('ext-common-entity.entity-fab-actions.operation-success');
         };
         return modalRef;
     }
@@ -135,7 +130,7 @@ export class EntityFabActionsComponent implements OnInit, OnDestroy {
         const functionSpecArray = entitySpec.functions || [];
         const functionSpec = functionSpecArray.filter((x) => x.key === funcName).shift();
         const title = functionSpec.actionName ? functionSpec.actionName : functionSpec.name;
-        const modalRef = this.modalService.open(FunctionCallDialogComponent, {backdrop: 'static'});
+        const modalRef = this.modalService.open(FunctionCallDialogComponent, {width: '500px'});
 
         // setup xmEntity only if selected
         if (this.selectedNode) {
@@ -147,12 +142,7 @@ export class EntityFabActionsComponent implements OnInit, OnDestroy {
         modalRef.componentInstance.buttonTitle = title;
         modalRef.componentInstance.onSuccess = () => {
             this.eventManager.broadcast({name: XM_EVENT_LIST.XM_FUNCTION_CALL_SUCCESS});
-            swal({
-                type: 'success',
-                text: this.translateService.instant('ext-common-entity.entity-fab-actions.operation-success'),
-                buttonsStyling: false,
-                confirmButtonClass: 'btn btn-primary',
-            });
+            this.toasterService.success('ext-common-entity.entity-fab-actions.operation-success');
         };
 
         return modalRef;

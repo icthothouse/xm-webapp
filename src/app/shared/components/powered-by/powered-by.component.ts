@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { Principal } from '../../auth/principal.service';
-import { I18nNamePipe } from '../../language/i18n-name.pipe';
+import { I18nNamePipe } from '@xm-ngx/components/language';
 import { PoweredBy } from './powered-by.model';
 
 @Component({
@@ -14,7 +14,7 @@ export class PoweredByComponent implements OnInit {
     @Input() public config: PoweredBy;
     public altText: string;
 
-    constructor(public principal: Principal, protected i18nNamePipe: I18nNamePipe) {}
+    constructor(protected principal: Principal, protected i18nNamePipe: I18nNamePipe) {}
 
     public ngOnInit(): void {
         this.altText = this.config && this.config.altText

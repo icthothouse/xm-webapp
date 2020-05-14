@@ -1,17 +1,16 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
+import { XmEventManager } from '@xm-ngx/core';
+import { XmToasterService } from '@xm-ngx/toaster';
 
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TERMS_ERROR, XM_EVENT_LIST } from '../../xm.constants';
 import { StateStorageService } from '../auth/state-storage.service';
-import {
-    PrivacyAndTermsDialogComponent,
-} from '../components/privacy-and-terms-dialog/privacy-and-terms-dialog.component';
+import { PrivacyAndTermsDialogComponent } from '../components/privacy-and-terms-dialog/privacy-and-terms-dialog.component';
 import { XmConfigService } from '../spec/config.service';
-import { LoginService } from './login.service';
+import { LoginService } from '../auth/login.service';
 
 declare let $: any;
 
@@ -44,14 +43,14 @@ export class LoginComponent implements OnInit, AfterViewInit {
     public checkTermsOfConditions: boolean;
 
     constructor(
-        protected eventManager: JhiEventManager,
+        protected eventManager: XmEventManager,
         protected xmConfigService: XmConfigService,
         protected loginService: LoginService,
         protected stateStorageService: StateStorageService,
         protected elementRef: ElementRef,
         protected router: Router,
-        protected alertService: JhiAlertService,
-        protected modalService: NgbModal,
+        protected alertService: XmToasterService,
+        protected modalService: MatDialog,
     ) {
         this.checkOTP = false;
         this.credentials = {};
@@ -173,7 +172,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
             const errObj = err.error || null;
             const termsErr = errObj && errObj.error === TERMS_ERROR;
             const termsToken = errObj.oneTimeToken || null;
-            if (termsErr && termsToken) { this.pushTermsAccepting(termsToken); }
+            if (termsErr && termsToken) {
+                this.pushTermsAccepting(termsToken);
+            }
             this.authenticationError = !termsErr;
             this.successRegistration = false;
             this.isDisabled = false;
@@ -209,10 +210,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
     }
 
     private pushTermsAccepting(token: string): void {
-        const modalRef = this.modalService.open(PrivacyAndTermsDialogComponent, {size: 'lg', backdrop: 'static'});
+        const modalRef = this.modalService.open(PrivacyAndTermsDialogComponent, {width: '500px'});
         modalRef.componentInstance.config = this.config;
         modalRef.componentInstance.termsToken = token;
-        modalRef.result.then((r) => {
+        modalRef.afterClosed().subscribe((r) => {
             if (r === 'accept') {
                 this.login();
             }

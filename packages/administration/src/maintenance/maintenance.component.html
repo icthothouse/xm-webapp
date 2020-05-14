@@ -1,0 +1,26 @@
+<mat-card class="text-center">
+
+  <button mat-button
+          color="primary"
+          (click)="reindexElastic()"
+          *xmPermitted="['ELASTICSEARCH.INDEX']">
+    Reindex elastic
+  </button>
+
+  <button mat-button
+          color="primary"
+          (click)="updateTenantsConfiguration()"
+          *xmPermitted="['CONFIG.ADMIN.REFRESH']">
+    <mat-icon>warning</mat-icon>
+    Update tenants configuration
+  </button>
+
+  <button mat-button
+          color="primary"
+          (click)="updateTenantConfiguration()"
+          [ngClass]="{'loading' : isTenantCfgUpdating}"
+          *xmPermitted="['CONFIG.CLIENT.REFRESH']">
+    Update tenant configuration
+  </button>
+
+</mat-card>

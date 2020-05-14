@@ -1,0 +1,110 @@
+$xm-sidebar-background: #fff !default;
+$xm-sidebar-width:      260px !default;
+$xm-sidebar-z-index:    $zindex-fixed !default;
+$xm-sidebar-transition: 300ms cubic-bezier(0.685, 0.0473, 0.346, 1) !default;
+
+// @todo: take from global variables
+$breakpoint-tablet:     991px !default;
+
+@mixin main-with-sidebar {
+  ::ng-deep .nav-open {
+    @content;
+  }
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin main-without-sidebar {
+  ::ng-deep :not(.nav-open) {
+    @content;
+  }
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin sidebar() {
+
+  .sidebar {
+    position:   fixed;
+    bottom:     0;
+    left:       0;
+    top:        0;
+    background: $xm-sidebar-background;
+    width:      $xm-sidebar-width;
+    z-index:    $xm-sidebar-z-index;
+    display:    block;
+    height:     100vh;
+
+    @include transition(width $xm-sidebar-transition);
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    .sidebar {
+      left:  auto;
+      right: 0;
+      @include transition($xm-sidebar-transition);
+      @include transform(translate3d($xm-sidebar-width, 0, 0));
+    }
+
+    .nav-open .sidebar {
+      @include transform(translate3d(0, 0, 0));
+    }
+  }
+
+  // utils
+  // @todo:
+  .perfect-scrollbar-on {
+    .sidebar,
+    .main-panel {
+      height:     100%;
+      max-height: 100%;
+    }
+  }
+
+  ::ng-deep .visible-on-sidebar-regular {
+    display: inline-block;
+  }
+
+}
+
+@mixin main-panel() {
+
+  .main-panel {
+    position:    relative;
+    margin-left: $xm-sidebar-width;
+
+    @include transition($xm-sidebar-transition);
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    .main-panel {
+      margin-left: 0;
+    }
+
+    .nav-open .main-panel {
+      left: 0;
+      @include transform(translate3d(-$xm-sidebar-width, 0, 0));
+    }
+  }
+
+}
+
+@mixin xm-guest() {
+
+  .xm-guest-layout .sidebar {
+    display: none !important;
+  }
+
+  .xm-guest-layout .main-panel {
+    margin-left: 0;
+    transition:  none;
+  }
+}
+
+@mixin xm-layout-sidebar-with-mini($theme) {
+  @include sidebar();
+  @include main-panel();
+  @include xm-guest();
+}

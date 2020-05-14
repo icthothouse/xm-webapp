@@ -1,12 +1,11 @@
 <form #commentForm="ngForm" (ngSubmit)="onConfirmSave()" class="m-0" name="commentForm" novalidate role="form">
-  <div class="modal-header">
-    <a (click)="onCancel()" class="modal-close material-icons" href="javascript: void(0);">close</a>
+  <div mat-dialog-title>
     <h4 class="modal-title text-left">
       <span jhiTranslate="xm-entity.comment-detail-dialog.title">Add new comment for the</span>
       [<b>{{xmEntity.name}}</b>]
     </h4>
   </div>
-  <div class="modal-body">
+  <div mat-dialog-content>
     <xm-loader [showLoader]="showLoader"></xm-loader>
     <div [hidden]="!(commentSpecs?.length > 1)" class="form-group">
       <mat-form-field>
@@ -16,7 +15,7 @@
                     name="typeKey"
                     placeholder="{{'xm-entity.comment-detail-dialog.choose-type' | translate}}">
           <mat-option *ngFor="let commentSpec of commentSpecs" [value]="commentSpec.key">
-            {{(commentSpec.name | i18nName: principal)?.toUpperCase()}}
+            {{commentSpec.name | translate | uppercase}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -38,11 +37,19 @@
       </mat-form-field>
     </div>
   </div>
-  <div class="modal-footer">
-    <button (click)="onCancel()" class="btn mr-1" data-dismiss="modal" mat-raised-button type="button">
+  <div mat-dialog-actions>
+    <button (click)="onCancel()"
+            class="btn mr-1 ml-auto"
+            data-dismiss="modal"
+            mat-button
+            type="button">
       <span jhiTranslate="xm-entity.common.cancel">Cancel</span>
     </button>
-    <button [disabled]="commentForm.form.invalid || showLoader" class="btn btn-primary" mat-raised-button type="submit">
+
+    <button [disabled]="commentForm.form.invalid || showLoader"
+            color="primary"
+            mat-button
+            type="submit">
       <span jhiTranslate="xm-entity.common.save">Save</span>
     </button>
   </div>

@@ -1,6 +1,6 @@
 
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { JsonSchemaFormService } from 'angular2-json-schema-form';
+import { JsonSchemaFormService } from '@ajsf/core';
 
 import { buildMapId, buildPinSymbol } from '../../../helpers/google-map-helper';
 import { CurrentLocationOptions } from './current-location-options.model';

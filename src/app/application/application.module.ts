@@ -1,19 +1,11 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import {
-    Framework,
-    FrameworkLibraryService,
-    JsonSchemaFormModule,
-    JsonSchemaFormService,
-    MaterialDesignFramework,
-    MaterialDesignFrameworkModule,
-    WidgetLibraryService,
-} from 'angular2-json-schema-form';
+import { XmBalanceModule } from '@xm-ngx/xm-balance';
 import { TagInputModule } from 'ngx-chips';
-import { RatingModule } from 'ngx-rating';
+
+import { RatingModule } from '@xm-ngx/components/xm-rating';
 import { XmSharedModule } from '../shared/shared.module';
-import { XmBalanceModule } from '../xm-balance/xm-balance.module';
-import { XmDashboardModule } from '../xm-dashboard/xm-dashboard.module';
+import { XmDynamicModule } from '@xm-ngx/dynamic';
 import { XmEntityModule } from '../xm-entity/xm-entity.module';
 import { ApplicationComponent } from './application.component';
 import { ApplicationResolvePagingParams, applicationRoute } from './application.route';
@@ -24,32 +16,18 @@ import { EntityDetailComponent } from './entity-detail.component';
         XmSharedModule,
         RouterModule.forChild(applicationRoute),
         TagInputModule,
-        MaterialDesignFrameworkModule,
-        {
-            ngModule: JsonSchemaFormModule,
-            providers: [
-                JsonSchemaFormService,
-                FrameworkLibraryService,
-                WidgetLibraryService,
-                {provide: Framework, useClass: MaterialDesignFramework, multi: true},
-            ],
-        },
         RatingModule,
-        XmDashboardModule,
         XmEntityModule,
         XmBalanceModule,
+        XmDynamicModule,
     ],
     declarations: [
         ApplicationComponent,
         EntityDetailComponent,
     ],
-    entryComponents: [
-        ApplicationComponent,
-    ],
     providers: [
         ApplicationResolvePagingParams,
     ],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ApplicationModule {
 }

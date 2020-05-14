@@ -1,20 +1,20 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogRef } from '@angular/material/dialog';
+
 import { TranslateService } from '@ngx-translate/core';
-import { JhiEventManager } from 'ng-jhipster';
+import { XmEventManager } from '@xm-ngx/core';
+import { XmToasterService } from '@xm-ngx/toaster';
 import { Observable } from 'rxjs';
 import { finalize, map, startWith } from 'rxjs/operators';
 
 import { XmConfigService } from '../../shared';
-import { Principal } from '../../shared/auth/principal.service';
 import { LocationSpec } from '../shared/location-spec.model';
 import { Location } from '../shared/location.model';
 import { LocationService } from '../shared/location.service';
 import { XmEntity } from '../shared/xm-entity.model';
 import { ISO3166_CODES } from './iso-3166-codes';
 
-declare let swal: any;
 declare let google: any;
 
 export interface CountryOption {
@@ -42,13 +42,13 @@ export class LocationDetailDialogComponent implements OnInit {
     public filteredCountryOptions: Observable<CountryOption[]>;
     public countryOptions: CountryOption[];
 
-    constructor(private activeModal: NgbActiveModal,
+    constructor(private activeModal: MatDialogRef<LocationDetailDialogComponent>,
                 private locationService: LocationService,
-                private eventManager: JhiEventManager,
+                private xmToasterService: XmToasterService,
+                private eventManager: XmEventManager,
                 private translateService: TranslateService,
                 private xmConfigService: XmConfigService,
-                private fb: FormBuilder,
-                public principal: Principal) {
+                private fb: FormBuilder) {
     }
 
     public get coordinatesInvalid(): boolean {
@@ -136,7 +136,7 @@ export class LocationDetailDialogComponent implements OnInit {
     }
 
     public onCancel(): void {
-        this.activeModal.dismiss('cancel');
+        this.activeModal.close(false);
     }
 
     private loadMap(): any {
@@ -204,20 +204,11 @@ export class LocationDetailDialogComponent implements OnInit {
         this.form.reset({...this.location});
     }
 
-    private onSaveSuccess(key: string): void {
+    private onSaveSuccess(text: string): void {
         // TODO: use constant for the broadcast and analyse listeners
         this.eventManager.broadcast({name: 'locationListModification'});
-        this.activeModal.dismiss(true);
-        this.alert('success', key);
-    }
-
-    private alert(type: string, key: string): void {
-        swal({
-            type,
-            text: this.translateService.instant(key),
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-primary',
-        });
+        this.activeModal.close(true);
+        this.xmToasterService.create({type: 'success', text}).subscribe();
     }
 
     private _filterCountry(value: string): CountryOption[] {

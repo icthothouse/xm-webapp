@@ -1,12 +1,11 @@
 import { AfterViewInit, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 import { Router } from '@angular/router';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import { XmAlertService } from '@xm-ngx/alert';
+import { XmEventManager } from '@xm-ngx/core';
 import { BehaviorSubject, merge, Observable, of } from 'rxjs';
 import { catchError, filter, finalize, share, tap } from 'rxjs/operators';
-import { Principal } from '../../shared/auth/principal.service';
-import { ContextService } from '../../shared/context/context.service';
 import { getFileNameFromResponseContentDisposition, saveFile } from '../../shared/helpers/file-download-helper';
 import { buildJsfAttributes } from '../../shared/jsf-extention/jsf-attributes-helper';
 import { XM_EVENT_LIST } from '../../xm.constants';
@@ -14,7 +13,6 @@ import { FunctionSpec } from '../shared/function-spec.model';
 import { FunctionService } from '../shared/function.service';
 import { XmEntity } from '../shared/xm-entity.model';
 
-declare let swal: any;
 declare let $: any;
 
 @Component({
@@ -37,18 +35,15 @@ export class FunctionCallDialogComponent implements OnInit, AfterViewInit {
     public showLoader$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     public showSecondStep$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-    constructor(private activeModal: NgbActiveModal,
+    constructor(private activeModal: MatDialogRef<FunctionCallDialogComponent>,
                 private functionService: FunctionService,
-                private eventManager: JhiEventManager,
-                private contextService: ContextService,
-                public principal: Principal,
+                private eventManager: XmEventManager,
+                private alertService: XmAlertService,
                 private ref: ChangeDetectorRef,
                 private router: Router) {
     }
 
     public ngOnInit(): void {
-        // TODO: this is workaround to get eventManager from root injector
-        this.eventManager = this.contextService.eventManager;
         // TODO think about correct way to work with context
         $.xmEntity = this.xmEntity;
         if (this.functionSpec) {
@@ -100,7 +95,7 @@ export class FunctionCallDialogComponent implements OnInit, AfterViewInit {
     }
 
     public onCancel(): void {
-        this.activeModal.dismiss('cancel');
+        this.activeModal.close(false);
     }
 
     public onChangeForm(data: any): void {
@@ -120,17 +115,17 @@ export class FunctionCallDialogComponent implements OnInit, AfterViewInit {
         const data = r.body && r.body.data;
         // if onSuccess handler passes, close popup and pass processing to function
         if (this.onSuccess) {
-            this.activeModal.dismiss(true);
+            this.activeModal.close(true);
             this.onSuccess(data, this.formData);
             // if response should be shown but there are no form provided
         } else if (data && this.functionSpec.showResponse && !this.functionSpec.contextDataForm) {
-            this.activeModal.dismiss(true);
-            swal({
+            this.activeModal.close(true);
+            this.alertService.open({
                 type: 'success',
                 html: `<pre style="text-align: left"><code>${JSON.stringify(data, null, '  ')}</code></pre>`,
                 buttonsStyling: false,
                 confirmButtonClass: 'btn btn-primary',
-            });
+            }).subscribe();
         } else if (data && this.functionSpec.showResponse && this.functionSpec.contextDataForm) {
             this.showSecondStep$.next(true);
             this.jsfAttributes = buildJsfAttributes(
@@ -139,19 +134,19 @@ export class FunctionCallDialogComponent implements OnInit, AfterViewInit {
             this.jsfAttributes.data = data;
             // if contains a location header, go to location specified
         } else if (r.headers.get('location')) {
-            this.activeModal.dismiss(true);
+            this.activeModal.close(true);
             this.router.navigate(
                 [r.headers.get('location')],
                 {queryParams: data},
             );
         } else {
-            this.activeModal.dismiss(true);
+            this.activeModal.close(true);
         }
     }
 
     private saveAsFile(r: any): void {
         const filename = JSON.parse(getFileNameFromResponseContentDisposition(r));
         saveFile(r.body, filename, r.headers.get('content-type'));
-        this.activeModal.dismiss(true);
+        this.activeModal.close(true);
     }
 }

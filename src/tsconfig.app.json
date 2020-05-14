@@ -3,7 +3,7 @@
     "compilerOptions": {
         "resolveJsonModule": true,
         "outDir": "../out-tsc/app",
-        "types": []
+        "types": ["node"]
     },
     "files": [
         "./main.ts",
@@ -14,7 +14,9 @@
     ],
     "exclude": [
         "./test.ts",
-        "./**/*.spec.ts"
+        "./**/*.spec.ts",
+        "./**/*.e2e-spec.ts",
+        "./**/*.po.ts"
     ],
     "angularCompilerOptions": {
         "annotateForClosureCompiler": true,

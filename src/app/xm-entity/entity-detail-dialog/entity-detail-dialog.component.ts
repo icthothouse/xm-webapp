@@ -1,11 +1,21 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
+import { AfterViewInit, ChangeDetectorRef, Component, Input, NgModule, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { LanguageModule } from '@xm-ngx/components/language';
+import { LoaderModule } from '@xm-ngx/components/loader';
+import { XmEventManager } from '@xm-ngx/core';
+import { XmJsonSchemeFormModule } from '@xm-ngx/json-scheme-form';
+import { XmTranslationModule } from '@xm-ngx/translation';
+
 import { UUID } from 'angular2-uuid';
-import { JhiEventManager } from 'ng-jhipster';
 import { finalize } from 'rxjs/operators';
 import * as formatString from 'string-template';
 
-import { Principal } from '../../shared/auth/principal.service';
 import { buildJsfAttributes, nullSafe } from '../../shared/jsf-extention/jsf-attributes-helper';
 import { XM_EVENT_LIST } from '../../xm.constants';
 import { Spec } from '../shared/spec.model';
@@ -35,11 +45,10 @@ export class EntityDetailDialogComponent implements OnInit, AfterViewInit {
     public isJsonFormValid: boolean = true;
     public smartDescription: any;
 
-    constructor(private activeModal: NgbActiveModal,
+    constructor(private activeModal: MatDialogRef<EntityDetailDialogComponent>,
                 private changeDetector: ChangeDetectorRef,
                 private xmEntityService: XmEntityService,
-                private eventManager: JhiEventManager,
-                public principal: Principal) {
+                private eventManager: XmEventManager) {
         this.nameValidPattern = null;
         this.smartDescription = {
             active: false,
@@ -113,7 +122,7 @@ export class EntityDetailDialogComponent implements OnInit, AfterViewInit {
     }
 
     public onCancel(): void {
-        this.activeModal.dismiss('cancel');
+        this.activeModal.close(false);
     }
 
     public onChangeForm(data: any): void {
@@ -134,7 +143,7 @@ export class EntityDetailDialogComponent implements OnInit, AfterViewInit {
             entityId: entity.id,
             entityType: entity.typeKey,
         });
-        this.activeModal.dismiss(true);
+        this.activeModal.close(true);
         if (this.onSuccess) {
             this.onSuccess();
         }
@@ -145,4 +154,25 @@ export class EntityDetailDialogComponent implements OnInit, AfterViewInit {
             this.smartDescription.value = formatString(this.smartDescription.template, data);
         }
     }
+}
+
+@NgModule({
+    imports: [
+        LoaderModule,
+        MatDialogModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        CommonModule,
+        XmJsonSchemeFormModule,
+        MatButtonModule,
+        LanguageModule,
+        MatInputModule,
+        XmTranslationModule,
+    ],
+    exports: [EntityDetailDialogComponent],
+    declarations: [EntityDetailDialogComponent],
+    providers: [],
+})
+export class EntityDetailDialogModule {
 }

@@ -1,8 +1,5 @@
 <div class="card">
   <div class="card-header card-header-icon card-header-primary">
-    <div class="card-icon">
-      <i class="material-icons">place</i>
-    </div>
     <h4 class="card-title" jhiTranslate="xm-entity.location-list-card.title">Locations</h4>
   </div>
   <div class="card-body">
@@ -23,7 +20,7 @@
             <h4 class="panel-title">
               <span class="row">
                 <span class="col">
-                  <em>({{getLocationSpec(location).name | i18nName: principal | uppercase}}
+                  <em>({{getLocationSpec(location).name | translate | uppercase}}
                       )</em>{{location | locationAddress}}
                 </span>
                 <span class="col-auto">

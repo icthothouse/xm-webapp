@@ -1,0 +1,35 @@
+$icon-size:              42px !default;
+$icon-size-x:            $icon-size !default;
+$icon-size-y:            $icon-size !default;
+
+$user-img-border:        solid 1px #fff !default;
+$user-img-border-radius: 50% !default;
+
+$user-padding-y:         15px !default;
+$user-padding-x:         12px !default;
+
+:host {
+  .user-img {
+    height:        $icon-size-y;
+    width:         $icon-size-x;
+    min-width:     $icon-size-x;
+    border:        $user-img-border;
+    border-radius: $user-img-border-radius;
+  }
+
+  .user-title {
+    display:        flex;
+    flex-direction: row;
+    align-items:    center;
+    vertical-align: center;
+    padding:        $user-padding-y $user-padding-x;
+  }
+
+  .user-name {
+    padding-left:  $user-padding-x;
+    text-overflow: ellipsis;
+    overflow:      hidden;
+    white-space:   nowrap;
+  }
+
+}

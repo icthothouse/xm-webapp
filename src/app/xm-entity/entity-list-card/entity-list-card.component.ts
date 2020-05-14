@@ -1,28 +1,25 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
-
+import { XmAlertService } from '@xm-ngx/alert';
+import { XmEventManager } from '@xm-ngx/core';
+import { Spec, XmEntity, XmEntityService, XmEntitySpec, XmEntitySpecWrapperService } from '@xm-ngx/entity';
+import { buildJsfAttributes, transpilingForIE } from '@xm-ngx/json-scheme-form';
+import { XmToasterService } from '@xm-ngx/toaster';
 import * as _ from 'lodash';
-import { JhiEventManager } from 'ng-jhipster';
 import { Observable, of, Subscription } from 'rxjs';
 import { catchError, finalize, map, tap } from 'rxjs/operators';
 
-import { ContextService, I18nNamePipe, ITEMS_PER_PAGE, Principal, XmConfigService } from '../../shared';
+import { ContextService, ITEMS_PER_PAGE, Principal, XmConfigService } from '../../shared';
 import { getFieldValue } from '../../shared/helpers/entity-list-helper';
 import { saveFile } from '../../shared/helpers/file-download-helper';
-import { buildJsfAttributes, transpilingForIE } from '../../shared/jsf-extention/jsf-attributes-helper';
+import { I18nNamePipe } from '@xm-ngx/components/language';
 import { XM_EVENT_LIST } from '../../xm.constants';
 import { FunctionCallDialogComponent } from '../function-call-dialog/function-call-dialog.component';
-import { Spec } from '../shared/spec.model';
-import { XmEntitySpecWrapperService } from '../shared/xm-entity-spec-wrapper.service';
-import { XmEntitySpec } from '../shared/xm-entity-spec.model';
-import { XmEntity } from '../shared/xm-entity.model';
-import { XmEntityService } from '../shared/xm-entity.service';
 import { ActionOptions, EntityListCardOptions, EntityOptions, FieldOptions } from './entity-list-card-options.model';
 
-declare let swal: any;
 
 @Component({
     selector: 'xm-entity-list-card',
@@ -52,14 +49,16 @@ export class EntityListCardComponent implements OnInit, OnChanges, OnDestroy {
 
     constructor(private xmEntitySpecWrapperService: XmEntitySpecWrapperService,
                 private xmEntityService: XmEntityService,
-                private eventManager: JhiEventManager,
-                private modalService: NgbModal,
+                private eventManager: XmEventManager,
+                private modalService: MatDialog,
                 private xmConfigService: XmConfigService,
                 private translateService: TranslateService,
+                private toasterService: XmToasterService,
+                private alertService: XmAlertService,
                 private i18nNamePipe: I18nNamePipe,
                 private router: Router,
                 private contextService: ContextService,
-                public principal: Principal) {
+                private principal: Principal) {
         this.entitiesPerPage = ITEMS_PER_PAGE;
         this.firstPage = 1;
         this.activeItemId = 0;
@@ -182,13 +181,13 @@ export class EntityListCardComponent implements OnInit, OnChanges, OnDestroy {
         this.loadEntities(entityOptions).subscribe((resp) => this.list[this.activeItemId].entities = resp);
     }
 
-    public onAction(entityOptions: EntityOptions, xmEntity: XmEntity, action: ActionOptions): NgbModalRef | null {
+    public onAction(entityOptions: EntityOptions, xmEntity: XmEntity, action: ActionOptions): MatDialogRef<any> | null {
         if (action.handler) {
             action.handler(xmEntity);
             return null;
         }
 
-        const modalRef = this.modalService.open(FunctionCallDialogComponent, {backdrop: 'static'});
+        const modalRef = this.modalService.open(FunctionCallDialogComponent, {width: '500px'});
         this.translateService.get('xm-entity.entity-list-card.action-dialog.question', {
             action: this.i18nNamePipe.transform(action.name, this.principal),
             name: xmEntity.name,
@@ -220,24 +219,24 @@ export class EntityListCardComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     public onRemove(xmEntity: XmEntity): void {
-        swal({
-            title: this.translateService.instant('xm-entity.entity-list-card.delete.title'),
+        this.alertService.open({
+            title: 'xm-entity.entity-list-card.delete.title',
             showCancelButton: true,
             buttonsStyling: false,
-            confirmButtonClass: 'btn mat-raised-button btn-primary',
-            cancelButtonClass: 'btn mat-raised-button',
-            confirmButtonText: this.translateService.instant('xm-entity.entity-list-card.delete.button'),
+            confirmButtonClass: 'btn mat-button btn-primary',
+            cancelButtonClass: 'btn mat-button',
+            confirmButtonText: 'xm-entity.entity-list-card.delete.button',
             cancelButtonText: this.translateService.instant('xm-entity.entity-list-card.delete.button-cancel'),
-        }).then((result) => {
+        }).subscribe((result) => {
             if (result.value) {
                 this.xmEntityService.delete(xmEntity.id).subscribe(
                     () => {
                         this.eventManager.broadcast({
                             name: XM_EVENT_LIST.XM_ENTITY_LIST_MODIFICATION,
                         });
-                        this.alert('success', 'xm-entity.entity-list-card.delete.remove-success');
+                        this.toasterService.success('xm-entity.entity-list-card.delete.remove-success');
                     },
-                    () => this.alert('error', 'xm-entity.entity-list-card.delete.remove-error'),
+                    () => this.toasterService.error('xm-entity.entity-list-card.delete.remove-error'),
                 );
             }
         });
@@ -408,15 +407,6 @@ export class EntityListCardComponent implements OnInit, OnChanges, OnDestroy {
             entity.state = states.filter((s) => s.key === entity.stateKey).shift();
         }
         return entity;
-    }
-
-    private alert(type: any, key: string): void {
-        swal({
-            type,
-            text: this.translateService.instant(key),
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-primary',
-        });
     }
 
 }

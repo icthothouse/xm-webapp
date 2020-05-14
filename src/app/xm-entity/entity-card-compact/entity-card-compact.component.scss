@@ -80,7 +80,7 @@
     }
 }
 
-::ng-deep {
+:host ::ng-deep {
     .card {
         &-menu {
             position: absolute;

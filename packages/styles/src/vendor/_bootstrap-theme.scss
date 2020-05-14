@@ -1,0 +1,50 @@
+// Colors
+$primary:                $xm-primary;
+$secondary:              $xm-secondary;
+$success:                $xm-success;
+$info:                   $xm-hint;
+$warning:                $xm-warn;
+$danger:                 $xm-error;
+
+$light:                  $xm-text-light;
+$dark:                   $xm-text-dark;
+
+$body-bg:                $xm-background;
+$body-color:             $xm-text;
+
+// Card
+$card-bg:                $xm-surface;
+$card-border-color:      $card-bg;
+$card-cap-bg:            $card-bg;
+
+$enable-rounded:         $xm-enable-rounded;
+
+/**
+ * Override
+ */
+$link-hover-decoration:  none;
+
+// Typography
+$font-size-base:         1rem * 0.875;
+$font-family-sans-serif: $xm-font-family;
+
+$display1-size:          map_get($xm-display-1, font-size);
+$display2-size:          map_get($xm-display-2, font-size);
+$display3-size:          map_get($xm-display-3, font-size);
+$display4-size:          map_get($xm-display-4, font-size);
+
+$font-size-lg:           $xm-font-size-lg;
+$font-size-sm:           $xm-font-size-sm;
+
+$lead-font-size:         map_get($xm-subheading-1, font-size);
+
+// Remove border radius from bootstrap
+@if ($xm-enable-rounded == false) {
+  $border-radius:    0;
+  $border-radius-lg: 0;
+  $border-radius-sm: 0;
+}
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';

@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { buildFormGroup, JsonSchemaFormService, removeRecursiveReferences } from 'angular2-json-schema-form';
+import { buildFormGroup, JsonSchemaFormService, removeRecursiveReferences } from '@ajsf/core';
 
 import { JhiLanguageHelper } from '../../../index';
 import { XmConfigService } from '../../../spec/config.service';

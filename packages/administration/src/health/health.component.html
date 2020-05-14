@@ -1,0 +1,102 @@
+<div class="row mb-5">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-icon card-header-primary">
+        <h4 jhiTranslate="health.title"></h4>
+      </div>
+
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-sm-3">
+            <div class="form-group">
+              <mat-form-field>
+                <mat-select [(ngModel)]="selectedService"
+                            (selectionChange)="onServiceSelect()"
+                            placeholder="{{'metrics.options.service-name' | translate}}">
+                  <mat-option *ngFor="let s of services" [value]="s.name">
+                    {{s.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <mat-form-field>
+                <mat-select [(ngModel)]="selectedInstance"
+                            (selectionChange)="mapHealthCheck(selectedInstance)"
+                            placeholder="{{'metrics.options.instance-name' | translate}}">
+                  <mat-option *ngFor="let i of instances" [value]="i.id">
+                    {{i.address}}:{{i.port}} ({{i.id}})
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-sm-3" *ngIf="selectedInstanceStatus">
+            <div class="form-group mt-0">
+              <span class="badge"
+                    [class.badge-default]="selectedInstanceStatus === 'OUT_OF_SERVICE'"
+                    [class.badge-danger]="selectedInstanceStatus === 'DOWN'"
+                    [class.badge-success]="selectedInstanceStatus === 'UP'"
+                    [class.badge-warning]="selectedInstanceStatus === 'UNKNOWN'"
+                    jhiTranslate="health.status.{{selectedInstanceStatus}}">
+                {{selectedInstanceStatus}}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <xm-loader [showLoader]="showLoader"></xm-loader>
+        <div class="table-responsive" *ngIf="healthData?.length">
+          <table id="healthCheck" class="table table-striped">
+            <thead>
+            <tr>
+              <th jhiTranslate="health.table.service">Service Name</th>
+              <th class="text-center" jhiTranslate="health.table.status">Status</th>
+              <th class="text-center" jhiTranslate="health.details.details">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let health of healthData">
+              <td>{{'health.indicator.' + baseName(health.name) | translate}} {{subSystemName(health.name)}}</td>
+              <td class="text-center">
+                  <span class="badge"
+                        [class.badge-default]="health.status === 'OUT_OF_SERVICE'"
+                        [class.badge-danger]="health.status === 'DOWN'"
+                        [class.badge-success]="health.status === 'UP'"
+                        [class.badge-warning]="health.status === 'UNKNOWN'"
+                        jhiTranslate="health.status.{{health.status}}">
+                    {{health.status}}
+                  </span>
+              </td>
+              <td class="text-center">
+                <div class="view-action">
+                  <button type="button"
+                          mat-button
+                          (click)="showHealth(health)"
+                          class="btn btn-sm btn-icon btn-just-icon btn-link action"
+                          *ngIf="health.details || health.error">
+                    <mat-icon [color]="'primary'">visibility</mat-icon>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <no-data [show]="!healthData?.length"></no-data>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="xm-fab">
+  <button mat-button
+          class="btn btn-primary btn-icon btn-just-icon rounded-circle btn-lg"
+          (click)="initHealthCheck()"
+          [disabled]="showLoader">
+    <i class="material-icons">refresh</i>
+  </button>
+</div>

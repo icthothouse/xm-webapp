@@ -11,9 +11,6 @@ import { PhoneNumberChoiceWidgetComponent } from './phone-number-choice-widget/p
     declarations: [
         PhoneNumberChoiceWidgetComponent,
     ],
-    entryComponents: [
-        PhoneNumberChoiceWidgetComponent,
-    ],
     providers: [
         {
             provide: 'phone-number-choice-widget', useValue: PhoneNumberChoiceWidgetComponent,

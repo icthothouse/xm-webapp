@@ -1,8 +1,8 @@
-import { BaseEntity } from '../../shared';
+import { BaseEntity } from './base-entity';
 import { Content } from './content.model';
 import { XmEntity } from './xm-entity.model';
 
-export interface Attachment extends BaseEntity {
+export interface Attachment<B = any> extends BaseEntity {
     id?: number;
     typeKey?: string;
     name?: string;
@@ -15,5 +15,5 @@ export interface Attachment extends BaseEntity {
     content?: Content;
     contentChecksum?: string;
     xmEntity?: XmEntity;
-    body?: any;
+    body?: B;
 }

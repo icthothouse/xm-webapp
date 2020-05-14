@@ -40,9 +40,10 @@
             </div>
           </div>
           <div class="col-auto pl-0">
-            <button mat-raised-button
-                    class="btn btn-primary upload-file"
+            <button mat-button
+                    class="btn upload-file"
                     type="button"
+                    color="primary"
                     (click)="uploadFile(file)"
                     [disabled]="progress || !file">
               <mat-icon *ngIf="!progress">cloud_upload</mat-icon>

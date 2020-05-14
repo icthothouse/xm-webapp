@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { XmSharedModule } from '../../shared/shared.module';
-import { XmBalanceModule } from '../../xm-balance/xm-balance.module';
+import { XmBalanceModule } from '@xm-ngx/xm-balance';
 import { XmEntityModule } from '../../xm-entity/xm-entity.module';
 import { XmTimelineModule } from '../../xm-timeline/xm-timeline.module';
 import {
@@ -27,19 +27,6 @@ import {
         XmTimelineModule,
     ],
     declarations: [
-        AvailableOfferingsWidgetComponent,
-        ChartistLineWidgetComponent,
-        CustomerInfoWidgetComponent,
-        EntityFabActionsComponent,
-        EntityListWidgetComponent,
-        EntityWidgetComponent,
-        LocationCountriesWidgetComponent,
-        LocationMapWidgetComponent,
-        MdTableComponent,
-        StatsWidgetComponent,
-        TasksWidgetComponent,
-    ],
-    entryComponents: [
         AvailableOfferingsWidgetComponent,
         ChartistLineWidgetComponent,
         CustomerInfoWidgetComponent,

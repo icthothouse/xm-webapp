@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { XmEventManager } from '@xm-ngx/core';
 import { Subscription } from 'rxjs';
 
 import { AttachmentDetailDialogComponent } from '../attachment-detail-dialog/attachment-detail-dialog.component';
@@ -27,8 +27,8 @@ export class EntityDetailFabComponent implements OnInit, OnChanges, OnDestroy {
     public showEditSubOptions: boolean = false;
     private eventSubscriber: Subscription;
 
-    constructor(private eventManager: JhiEventManager,
-                private modalService: NgbModal) {
+    constructor(private eventManager: XmEventManager,
+                private modalService: MatDialog) {
         this.registerChangeInXmEntities();
     }
 
@@ -97,7 +97,7 @@ export class EntityDetailFabComponent implements OnInit, OnChanges, OnDestroy {
     public onAddALocation(): void {
         this.openDialog(LocationDetailDialogComponent, (modalRef) => {
             modalRef.componentInstance.locationSpecs = this.xmEntitySpec.locations;
-        }, {size: 'lg', backdrop: 'static'});
+        }, {width: '500px'});
     }
 
     public onEdit(): void {
@@ -120,8 +120,8 @@ export class EntityDetailFabComponent implements OnInit, OnChanges, OnDestroy {
             (this.xmEntitySpec && this.xmEntitySpec.links && this.xmEntitySpec.links.length > 0);
     }
 
-    private openDialog(dialogClass: any, operation: any, options?: any): NgbModalRef {
-        const modalRef = this.modalService.open(dialogClass, options ? options : {backdrop: 'static'});
+    private openDialog(dialogClass: any, operation: any, options?: any): MatDialogRef<any> {
+        const modalRef = this.modalService.open<any>(dialogClass, options ? options : {width: '500px'});
         modalRef.componentInstance.xmEntity = this.xmEntity;
         operation(modalRef);
         return modalRef;

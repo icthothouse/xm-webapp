@@ -1,11 +1,11 @@
 import { AfterViewInit, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateService } from '@ngx-translate/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { XmEventManager } from '@xm-ngx/core';
+
+import { XmToasterService } from '@xm-ngx/toaster';
 import { UUID } from 'angular2-uuid';
-import { JhiEventManager } from 'ng-jhipster';
 import { finalize } from 'rxjs/operators';
 
-import { Principal } from '../../shared/auth/principal.service';
 import { buildJsfAttributes, nullSafe } from '../../shared/jsf-extention/jsf-attributes-helper';
 import { LinkSpec } from '../shared/link-spec.model';
 import { Link } from '../shared/link.model';
@@ -15,7 +15,6 @@ import { XmEntity } from '../shared/xm-entity.model';
 import { XmEntityService } from '../shared/xm-entity.service';
 
 declare let $: any;
-declare let swal: any;
 
 @Component({
     selector: 'xm-link-detail-new-section',
@@ -36,12 +35,11 @@ export class LinkDetailNewSectionComponent implements OnInit, OnDestroy, AfterVi
     public isJsonFormValid: boolean = true;
     public isEdit: boolean;
 
-    constructor(private activeModal: NgbActiveModal,
+    constructor(private activeModal: MatDialogRef<LinkDetailNewSectionComponent>,
                 private xmEntityService: XmEntityService,
                 private changeDetector: ChangeDetectorRef,
-                private eventManager: JhiEventManager,
-                private translateService: TranslateService,
-                public principal: Principal) {
+                private eventManager: XmEventManager,
+                private toasterService: XmToasterService) {
         $.isAddNewLink = true;
     }
 
@@ -95,7 +93,7 @@ export class LinkDetailNewSectionComponent implements OnInit, OnDestroy, AfterVi
     }
 
     public onCancel(): void {
-        this.activeModal.dismiss('cancel');
+        this.activeModal.close(false);
     }
 
     public onChangeForm(data: any): void {
@@ -110,17 +108,8 @@ export class LinkDetailNewSectionComponent implements OnInit, OnDestroy, AfterVi
         // TODO: use constant for the broadcast and analyse listeners
         this.eventManager.broadcast({name: 'xmEntityListModification'});
         this.eventManager.broadcast({name: 'linkListModification'});
-        this.activeModal.dismiss(true);
-        this.alert('success', 'xm-entity.link-detail-dialog.add.success');
-    }
-
-    private alert(type: string, key: string): void {
-        swal({
-            type,
-            text: this.translateService.instant(key),
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-primary',
-        });
+        this.activeModal.close(true);
+        this.toasterService.success('xm-entity.link-detail-dialog.add.success');
     }
 
 }

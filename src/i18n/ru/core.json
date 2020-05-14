@@ -1,0 +1,1485 @@
+{
+  "Unauthorized": "Нужна авторизация!",
+  "activate": {
+    "messages": {
+      "error": "<strong>Ваш аккаунт не может быть активирован.</strong> Пожалуйста, воспользуйтесь формой регистрации.",
+      "link": "войдите",
+      "register": "Registration",
+      "success": "<strong>Ваш аккаут был активиронан.</strong> Пожалуйста,&nbsp;"
+    },
+    "title": "Активация"
+  },
+  "admin-config": {
+    "common": {
+      "cancel": "Отменить",
+      "confirm": "Вы уверены?",
+      "fields": {
+        "config": "Конфигурация",
+        "id": "ID",
+        "layout": "Раскладка",
+        "name": "Название",
+        "owner": "Владелец",
+        "selector": "Селектор",
+        "typeKey": "Код Типа"
+      },
+      "menu": {
+        "dashboard-mng": "Конфигураци Панели",
+        "mini": {
+          "dashboard-mng": "КП",
+          "specification-mng": "С"
+        },
+        "specification-mng": "Спецификации",
+        "title": "Конфигурация"
+      },
+      "save": "Сохранить"
+    },
+    "dashboard-detail-dialog": {
+      "add": {
+        "success": "Успешно",
+        "title": "Добавить новую панель"
+      },
+      "edit": {
+        "success": "Успешно",
+        "title": "Редактировать панель"
+      }
+    },
+    "dashboard-list-card": {
+      "export-action": "экспорт в JSON",
+      "import-action": "импорт из JSON",
+      "title": "Панели"
+    },
+    "specification-mng": {
+      "entity": {
+        "save": "Обновить спецификацию Модели",
+        "title": "Модель"
+      },
+      "loading": "загрузка спецификации...",
+      "privateui": {
+        "save": "Обновить приватную спецификацию Интерфейса",
+        "title": "Приватная спецификация Интерфейса"
+      },
+      "tenant": {
+        "save": "Обновить спецификацию Тенанта",
+        "title": "Тенант"
+      },
+      "timeline": {
+        "save": "Обновить спецификацию Истории",
+        "title": "История"
+      },
+      "uaa-login": {
+        "save": "Обновить спецификацию Логина",
+        "title": "Логин"
+      },
+      "uaa": {
+        "save": "Обновить спецификацию UAA",
+        "title": "UAA"
+      },
+      "ui": {
+        "save": "Обновить спецификацию Интерфейса",
+        "title": "Интерфейс"
+      },
+      "validate": "Проверка"
+    },
+    "widget-detail-dialog": {
+      "add": {
+        "success": "Успешно",
+        "title": "Добавить новый виджет"
+      },
+      "edit": {
+        "success": "Успешно",
+        "title": "Редактировать виджет"
+      }
+    },
+    "widget-list-card": {
+      "title": "Виджеты"
+    }
+  },
+  "audits": {
+    "filter": {
+      "from": "от",
+      "title": "Фильтр по дате",
+      "to": "до"
+    },
+    "table": {
+      "data": {
+        "remoteAddress": "Удалённый адрес:"
+      },
+      "header": {
+        "data": "Доп. инф.",
+        "date": "Дата",
+        "principal": "Пользователь",
+        "status": "Состояние"
+      }
+    },
+    "title": "Аудит"
+  },
+  "cancel": "",
+  "clientManagement": {
+    "client": {
+      "already": {
+        "exists": "Клиент с таким ID уже существует"
+      }
+    },
+    "clientId": "Идентификатор клиента",
+    "clientSecret": "Пароль клиента",
+    "createdBy": "Создано",
+    "createdDate": "Дата создания",
+    "delete": {
+      "question": "Вы уверены, что хотите удалить клиента {{ id }}?"
+    },
+    "description": "Описание",
+    "detail": {
+      "title": "Клиент"
+    },
+    "home": {
+      "createOrEditLabel": "Создать или отредактировать клиента",
+      "title": "Клиенты"
+    },
+    "lastModifiedBy": "Изменено",
+    "lastModifiedDate": "Дата изменения",
+    "role": "Роль",
+    "roleKey": "Роль",
+    "roles": "Роли",
+    "scopes-add": "Добавить области",
+    "search-by-client-id": "Поиск по ID клиента",
+    "validityPeriod": "Срок действия"
+  },
+  "entity": {
+    "action": {
+      "back": "Назад",
+      "cancel": "Отмена",
+      "delete": "Удалить",
+      "save": "Сохранить"
+    },
+    "add": "Добавить",
+    "delete": {
+      "title": "Подтвердите операцию удаления"
+    },
+    "detail": {
+      "square": "Площадь: {{square}} м"
+    },
+    "search": "Поиск",
+    "validation": {
+      "maxlength": "Это поле не может быть длинее, чем {{max}} символов.",
+      "required": "Это поле обязательно к заполнению."
+    }
+  },
+  "error": {
+    "403": "Вы не авторизованы для доступа к странице",
+    "NotNull": "Поле {{fieldName}} не может быть пустым!",
+    "Size": "Поле {{fieldName}} не отвечает требованиям мин/макс.го размера!",
+    "accessDenied": "Доступ запрещен",
+    "access_denied": "Доступ закрыт",
+    "business": "Ошибка переадресации",
+    "emailexists": "Эл. почта уже используется!!",
+    "idexists": "Новый {{entityName}} не может иметь данный ID",
+    "insufficient_scope": "Insufficient scope",
+    "internalServerError": "Внутренняя ошибка сервера",
+    "invalid_client": "Недопустимый клиент",
+    "invalid_grant": "Недействительный грант",
+    "invalid_request": "Неверный запрос",
+    "invalid_scope": "Invalid scope",
+    "invalid_token": "Недопустимый токен",
+    "notfound": "Запрашиваемый ресурс не найден",
+    "privilegeInsufficient": "Недостатньо привілеї '{{ name }}'!",
+    "privilegeOperationWrong": "Тип операції не підтримує '{{ name }}'!",
+    "redirect_uri_mismatch": "Неверный URL перенаправления",
+    "server": {
+      "not": {
+        "reachable": "Сервер не доступен"
+      }
+    },
+    "session_expired": "Сессия истекла. Пожалуйста, войдите.",
+    "title": "Ошибка!",
+    "unauthorized": "Необходима авторизация",
+    "unauthorized_client": "Неавторизованный клиент",
+    "unsupported_grant_type": "Неподдерживаемый тип прав",
+    "unsupported_response_type": "Неподдерживаемый тип ответа",
+    "url": {
+      "not": {
+        "found": "Не найдено"
+      }
+    },
+    "userexists": "Имя пользователя уже используется!",
+    "validation": "Неверные входящие параметры"
+  },
+  "errors": {
+    "NotBlank": "Не пустой",
+    "NotNull": "Поле {{fieldName}} не может быть пустым!",
+    "Size": "Поле {{fieldName}} не отвечает требованиям мин/макс.го размера!",
+    "Unauthorized": "Нужна авторизация!",
+    "accessDenied": "Доступ запрещен",
+    "access_denied": "Доступ закрыт",
+    "emailexists": "Эл. почта уже используется!!",
+    "error": {
+      "accessDenied": "Access denied",
+      "business": "Ошибка переадресации",
+      "internalServerError": "Внутренняя ошибка сервера"
+    },
+    "idexists": "Новый {{entityName}} не может иметь данный ID",
+    "insufficient_scope": "Недостаточный охват",
+    "internalServerError": "Внутренняя ошибка сервера",
+    "invalid_client": "Недопустимый клиент",
+    "invalid_grant": "Недействительный грант",
+    "invalid_request": "Неверный запрос",
+    "invalid_scope": "Недопустимая область",
+    "invalid_token": "Недопустимый токен",
+    "notfound": "Запрашиваемый ресурс не найден",
+    "privilegeInsufficient": "недостаточно привилегий '{{ name }}'!",
+    "privilegeOperationWrong": "Операция не поддерживается '{{ name }}'!",
+    "redirect_uri_mismatch": "Неверный URL перенаправления",
+    "server": {
+      "not": {
+        "reachable": "Сервер не доступен"
+      }
+    },
+    "session_expired": "Сессия истекла. Пожалуйста, войдите.",
+    "unauthorized": "Необходима авторизация",
+    "unauthorized_client": "Неавторизованный клиент",
+    "unsupported_grant_type": "Неподдерживаемый тип прав",
+    "unsupported_response_type": "Неподдерживаемый тип ответа",
+    "url": {
+      "not": {
+        "found": "Не найдено"
+      }
+    },
+    "userexists": "Имя пользователя уже используется!",
+    "validation": "Неверные входящие параметры"
+  },
+  "ext-common-entity": {
+    "available-offerings-widget": {
+      "action-dialog": {
+        "question": "Вы уверены, что хотите <b>{{action}}</b> для <b>{{name}}</b>?"
+      }
+    },
+    "entity-fab-actions": {
+      "operation-error": "Операция не успешна!",
+      "operation-success": "Операция успешна!"
+    }
+  },
+  "ext-common": {
+    "clock-widget": {
+      "title": "Часы"
+    },
+    "exchange-widget": {
+      "code": "Код",
+      "course": "Официальный курс",
+      "currency": "Валюта",
+      "from": "Из",
+      "number-units": "Количество единиц",
+      "select-from": "Выберите валюту из",
+      "select-to": "Выберите валюту в",
+      "title": "Калькулятор обмена"
+    },
+    "sign-in-up-widget": {
+      "sign-in": "Войти в систему",
+      "sign-up": "Зарегистрироваться"
+    },
+    "weather-widget": {
+      "humidity": "Влажность",
+      "ms": "м/с",
+      "wind-speed": "Скорость ветра"
+    }
+  },
+  "formPlayground": {
+    "definition": "Определение",
+    "errors": "— errors from validationErrors():",
+    "liveData": "Live data — from onChanges():",
+    "loading": "(loading form specification...)",
+    "na": "n/a",
+    "output": "Вывод",
+    "result": "результат",
+    "selectSchema": "SELECT SCHEMA",
+    "valid": "Валидно?:"
+  },
+  "gateway": {
+    "routes": {
+      "error": "Warning: no server available!",
+      "servers": "Available servers",
+      "service": "service",
+      "url": "URL"
+    },
+    "title": "Gateway"
+  },
+  "global": {
+    "actionPerformed": "Action performed",
+    "all": "Все",
+    "common": {
+      "accept": "Принять",
+      "are-you-sure": "Вы уверены?",
+      "cancel": "Отменить",
+      "delete": "Удалить",
+      "delete-message": "Удалить {{value}}?",
+      "maintenance-description": "Обычно это занимает несколько минут, в противном случае свяжитесь с системным администратром.",
+      "maintenance-message": "Технические работы в процессе ... <br> Пожалуйста, попробуйте позже.",
+      "no": "Нет",
+      "set": "Задать",
+      "yes": "Да",
+      "yes-exit": "Да, выйти!"
+    },
+    "field": {
+      "id": "ID"
+    },
+    "form": {
+      "confirmpassword": "Подтверждение нового пароля",
+      "email": "Email",
+      "firstname": "Имя",
+      "language": "Язык",
+      "lastname": "Фамилия",
+      "login": "Логин",
+      "newpassword": "Новый пароль",
+      "oldpassword": "Старый пароль",
+      "otp": "One Time Password",
+      "signin": "войти в систему"
+    },
+    "item-count": "Отображено {{first}} - {{second}} из {{total}} элементов.",
+    "menu": {
+      "account": {
+        "logout": "Выйти",
+        "mini": {
+          "password": "П",
+          "profile": "В",
+          "settings": "Н"
+        },
+        "password": "Пароль",
+        "passwordSetup": "Приглашение в систему",
+        "profile": "Профиль",
+        "settings": "Настройки"
+      },
+      "admin": {
+        "apidocs": "API",
+        "audits": "Аудит",
+        "clientManagement": "Управление клиентами",
+        "dashboard": "Панель управления",
+        "formPlayground": "Игровая площадка форм",
+        "gateway": "Шлюз",
+        "health": "Состояние",
+        "logs": "Логи",
+        "main": "Администрирование",
+        "maintenance": "Обслуживание",
+        "metrics": "Метрики",
+        "mini": {
+          "apidocs": "A",
+          "audits": "А",
+          "clientManagement": "К",
+          "formPlayground": "И",
+          "gateway": "Ш",
+          "health": "С",
+          "logs": "Л",
+          "maintenance": "О",
+          "metrics": "М",
+          "rolesManagement": "Р",
+          "rolesMatrix": "Р",
+          "translation": "П",
+          "userManagement": "П"
+        },
+        "rolesManagement": "Управление ролями",
+        "rolesMatrix": "Матрица ролей",
+        "translation": "Переводы",
+        "userManagement": "Управление пользователями"
+      },
+      "applications": {
+        "application": "Приложение",
+        "main": "Приложения"
+      },
+      "dashboards": {
+        "main": "Панели управления"
+      },
+      "entities": {
+        "attachment": "Прикрепление",
+        "calendar": "Календарь",
+        "comment": "Комментарий",
+        "content": "Cодержание",
+        "country": "Страна",
+        "event": "Мероприятие",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "link": "Ссылка",
+        "location": "Место нахождения",
+        "main": "Сущности",
+        "rating": "Рейтинг",
+        "tag": "Тег",
+        "vote": "Голос",
+        "xmEntity": "Xm Entity"
+      }
+    },
+    "messages": {
+      "error": {
+        "captchaempty": "Пожалуйста, проверьте captcha.",
+        "dontmatch": "Пароль и его подтверждение не совпадают!",
+        "upload-fail": "Сервис загрузки недоступен!"
+      },
+      "info": {
+        "authenticated": {
+          "link": "войти в систему",
+          "prefix": "Если вы хотите ",
+          "suffix": ", вы можете попробовать учетные записи по умолчанию:"
+        }
+      },
+      "validate": {
+        "captcha": {
+          "required": "Требуется сaptcha."
+        },
+        "confirmpassword": {
+          "maxlength": "Подтверждение пароля не может быть больше чем 50 символов",
+          "minlength": "Длина подтверждения пароля должна быть хотя-бы 5 символов",
+          "password-max-length": "Подтверждение пароля не может быть больше чем {{maxLength}} символов.",
+          "password-min-length": "Длина подтверждения пароля должна быть хотя-бы {{minLength}} символов.",
+          "password-pattern": "Пароль не отвечает шаблону {{pattern}}",
+          "required": "подтверждение пароля должно быть указано."
+        },
+        "email": {
+          "invalid": "Email не верен.",
+          "maxlength": "Email не может быть длиннее чем 50 символов",
+          "minlength": "Длина email должна быть хотя-бы 5 символов",
+          "required": "Email должен быть указан."
+        },
+        "firstname": {
+          "maxlength": "Имя не может быть длиннее чем 50 символов",
+          "minlength": "Длина имени должна быть хотя-бы 1 символ",
+          "required": "Имя должно быть указано."
+        },
+        "lastname": {
+          "maxlength": "Фамилия не может быть длиннее чем 50 символов",
+          "minlength": "Длина фамилии должна быть хотя-бы 1 символ",
+          "required": "Фамилия должна быть указана."
+        },
+        "newpassword": {
+          "maxlength": "Пароль не может быть длиннее чем 50 символов",
+          "minlength": "Длина пароля должна быть хотя-бы 5 символов",
+          "password-max-length": "Пароль не может быть длиннее чем {{maxLength}} символов.",
+          "password-min-length": "Длина пароля должна быть хотя-бы {{minLength}} символов.",
+          "password-pattern": "Пароль не отвечает шаблону {{pattern}}",
+          "required": "Пароль должен быть указан.",
+          "strength": "Сложность пароля:"
+        },
+        "oldpassword": {
+          "maxlength": "Старый пароль не может быть длиннее чем 50 символов",
+          "minlength": "Длина старого пароля должна быть хотя-бы 5 символов",
+          "password-max-length": "Старый пароль не может быть длиннее чем {{maxLength}} символов.",
+          "password-min-length": "Длина старого пароля должна быть хотя-бы {{minLength}} символов.",
+          "password-pattern": "Пароль не отвечает шаблону {{pattern}}",
+          "required": "Старый пароль должен быть указан."
+        }
+      }
+    },
+    "new": "Новый",
+    "noData": "Нет данных!",
+    "perPage": "элементов на странице",
+    "rest-select-none-option": "Ничего",
+    "rest-select-placeholder-noresults": "Ничего не найдено",
+    "rest-select-placeholder-search": "",
+    "rest-select-search-more": "Доступны еще результаты. Уточните поисковый запрос!",
+    "ribbon": {
+      "dev": "Development"
+    },
+    "shared": {
+      "ext-md-editor": {
+        "placeholder": "Нажмите кнопку редактировать чтобы изменить описание в поле",
+        "placeholder-empty": "Поле пустое! Нажмите кнопку редактировать чтобы добавить описание в поле",
+        "save-button": "Сохранить изменения"
+      },
+      "privacy-and-terms-dialog": {
+        "i-agree": "Я согласен с Условиями Обслуживания и обработкой своей информации, как описано в Политике Конфиденциальности",
+        "title": "Конфиденциальность и Условия"
+      }
+    }
+  },
+  "health": {
+    "details": {
+      "details": "Детали",
+      "error": "Ошибка",
+      "name": "Имя",
+      "properties": "Параметры",
+      "value": "Значение"
+    },
+    "indicator": {
+      "binders": "Биндеры",
+      "cassandra": "Cassandra",
+      "cdb": "CDB",
+      "configServer": "Microservice Config Server",
+      "consul": "Consul",
+      "db": "База данных",
+      "discoveryComposite": "Discovery Composite",
+      "diskSpace": "Место на диске",
+      "elasticsearch": "Elastic Search",
+      "healthIndicator": "Health Indicator",
+      "hlr": "HLR",
+      "hystrix": "Hystrix",
+      "mail": "Email",
+      "refreshScope": "Microservice Refresh Scope"
+    },
+    "options": {
+      "done": "Закрыть",
+      "instance-name": "Инстанс",
+      "service-name": "Название сервиса"
+    },
+    "refresh": {
+      "button": "Обновить"
+    },
+    "stacktrace": "Stacktrace",
+    "status": {
+      "DOWN": "DOWN",
+      "OUT_OF_SERVICE": "OUT_OF_SERVICE",
+      "UNKNOWN": "UNKNOWN",
+      "UP": "UP"
+    },
+    "table": {
+      "service": "Название сервиса",
+      "status": "Статус"
+    },
+    "title": "Состояние"
+  },
+  "home": {
+    "subtitle": "Это ваша домашняя страница",
+    "title": "Добро пожаловать!"
+  },
+  "login": {
+    "form": {
+      "button": "Войти",
+      "hide-password": "Скрыть пароль",
+      "otpValidateButton": "Send OTP",
+      "otpValidateCancel": "Cancel",
+      "password": "Пароль",
+      "rememberMe": "Запомни меня",
+      "show-password": "Показать пароль"
+    },
+    "messages": {
+      "error": {
+        "authentication": "<strong>Не удалось войти!</strong> Пожалуйста, проверьте ваши учетные данные и попробуйте еще раз."
+      },
+      "otp": {
+        "notification": "Please enter one time password from email"
+      }
+    },
+    "password": {
+      "forgot": "Вы забыли ваш пароль?"
+    },
+    "signin": "Войти в систему",
+    "signup": "Зарегистрироваться",
+    "title": "Авторизация"
+  },
+  "logs": {
+    "filter": "Фильтр",
+    "nbloggers": "Есть {{ total }} логгеров.",
+    "table": {
+      "level": "Уровень",
+      "name": "Название"
+    },
+    "title": "Логи"
+  },
+  "mat": {
+    "paginator": {
+      "firstPageLabel": "Первая страница",
+      "itemsPerPageLabel": "Показывать по:",
+      "lastPageLabel": "Последняя страница",
+      "nextPageLabel": "Следующая страница",
+      "of": "c",
+      "previousPageLabel": "Предыдущая страница"
+    }
+  },
+  "metrics": {
+    "datasource": {
+      "count": "Count",
+      "max": "Максимум",
+      "mean": "Среднее",
+      "min": "Минимум",
+      "p50": "p50",
+      "p75": "p75",
+      "p95": "p95",
+      "p99": "p99",
+      "title": "Статистика DataSource (время в миллисекундах)",
+      "usage": "Usage"
+    },
+    "jvm": {
+      "gc": {
+        "marksweepcount": "Mark Sweep количество",
+        "marksweeptime": "Mark Sweep время",
+        "scavengecount": "Сборка мусора количество",
+        "scavengetime": "Сборка мусора время",
+        "title": "Сборщики мусора"
+      },
+      "http": {
+        "active": "Активные запросы:",
+        "code": {
+          "notfound": "Не найдено",
+          "ok": "Ок",
+          "servererror": "Ошибка сервера"
+        },
+        "table": {
+          "average": "Среднее",
+          "code": "Код",
+          "count": "Количество",
+          "mean": "Среднее"
+        },
+        "title": "HTTP запросы (событий в секунду)",
+        "total": "Всего запросов:"
+      },
+      "memory": {
+        "heap": "Куча",
+        "nonheap": "Не куча",
+        "title": "Память",
+        "total": "Всего памяти"
+      },
+      "threads": {
+        "blocked": "Заблокированные",
+        "dump": {
+          "blockedcount": "Заблокированные Количество",
+          "blockedtime": "Заблокированные Время",
+          "hide": "Скрыть",
+          "lockname": "Название блокировки",
+          "show": "Показать",
+          "title": "Дамп потоков",
+          "waitedcount": "Ожидающие Количество",
+          "waitedtime": "Ожидающие Время"
+        },
+        "runnable": "Активные",
+        "timedwaiting": "Временное ожидание",
+        "title": "Потоки",
+        "waiting": "Ожидание"
+      },
+      "title": "JVM Метрики"
+    },
+    "options": {
+      "done": "Закрыть",
+      "f-all": "All",
+      "f-blocked": "Blocked",
+      "f-runnable": "Runnable",
+      "f-timed-waiting": "Timed Waiting",
+      "f-waiting": "Waiting",
+      "instance-name": "Инстанс",
+      "service-name": "Название сервиса"
+    },
+    "servicesstats": {
+      "table": {
+        "count": "Количество",
+        "max": "Макс",
+        "mean": "Среднее",
+        "min": "Мин",
+        "name": "Название сервиса",
+        "p50": "p50",
+        "p75": "p75",
+        "p95": "p95",
+        "p99": "p99"
+      },
+      "title": "Статистика сервисов (время в милисекундах)"
+    },
+    "title": "Метрики приложения",
+    "updating": "Обновление..."
+  },
+  "navbar": {
+    "notification": "Уведомления",
+    "search": "Поиск",
+    "toggleNotification": "Переключить навигацию"
+  },
+  "password": {
+    "form": {
+      "button": "Сохранить"
+    },
+    "messages": {
+      "error": "<strong>Произошла ошибка!</strong> Не удалось изменить пароль.",
+      "success": "<strong>Пароль изменен!</strong>"
+    },
+    "title": "Пароль для [<b>{{username}}</b>]"
+  },
+  "register": {
+    "form": {
+      "button": "Зарегистрироваться"
+    },
+    "messages": {
+      "error": {
+        "emailempty": "<strong>Email не может быть пустым!</strong> Пожалуйста, выберите email.",
+        "fail": "<strong>Ошибка при регистрации!</strong> Пожалуйста, попробуйте позже.",
+        "userexists": "<strong>Аккаунт с таким логином уже зарегистрирован!</strong> Пожалуйста, выберите другой логин."
+      },
+      "success": "<strong>Регистрация успешна!</strong> Пожалуйста, проверьте ваш email для подтверждения."
+    },
+    "title": "Регистрация"
+  },
+  "reset": {
+    "finish": {
+      "form": {
+        "button": "Подтвердить новый пароль"
+      },
+      "messages": {
+        "error": "Ваш пароль не может быть сброшен. Запомнить, запрос пароля действителен только в течение 24 часов.",
+        "info": "Выберите новый пароль",
+        "keyexpired": "Срок действия ключа запроса истек.",
+        "keymissing": "Ключ сброса отсутствует.",
+        "keyused": "Ключ запроса уже использовался.",
+        "success": "<strong>Ваш пароль был сброшен.</strong> Пожалуйста,&nbsp;"
+      },
+      "title": "Сброс пароля"
+    },
+    "request": {
+      "form": {
+        "button": "Сбросить пароль"
+      },
+      "messages": {
+        "info": "Введите email, указанный при регистрации",
+        "notfound": "<strong>Email адрес не зарегистрирован!</strong> Пожалуйста проверьте и попробуйте снова",
+        "success": "Проверьте ваш email для подробной информации о том, как сбросить пароль."
+      },
+      "title": "Сброс пароля"
+    },
+    "setup": {
+      "form": {
+        "button": "Установить пароль"
+      },
+      "messages": {
+        "error": "Ваш пароль не может быть создан. Помните, запрос пароля действителен только в течение 24 часов.",
+        "info": "Создать новый пароль",
+        "success": "<strong>Ваш пароль был создан.</strong> Пожалуйста,&nbsp;"
+      },
+      "title": "Установка пароля"
+    }
+  },
+  "rolesManagement": {
+    "basedOn": "Основано на",
+    "chooseRole": "Выберите роль",
+    "createdBy": "Создано",
+    "createdDate": "Дата создания",
+    "delete": {
+      "question": "Вы действительно хотите удалить роль '{{ roleKey }}'?"
+    },
+    "description": "Описание",
+    "detail": {
+      "permissions": "права доступа",
+      "title": "Роль"
+    },
+    "home": {
+      "labelCreate": "Создание новой роли",
+      "labelEdit": "Редактирование роли",
+      "title": "Роли"
+    },
+    "key": "Имя",
+    "lastModifiedBy": "Модифицировано",
+    "lastModifiedDate": "Дата модификации",
+    "matrix": {
+      "title": "Матрица ролей"
+    },
+    "ok": "Ok",
+    "permission": {
+      "checkAll": "Отметить все",
+      "condition": "Условие",
+      "conditionEnvInfo": "1. используйте SpEL функциональность<br>2. используйте # перед переменной<br>3. #subject.role, #subject.userKey, #subject.login переменные доступны<br>4. #env['ipAddress'] переменная доступна",
+      "conditionResourceInfo": "1. используйте SpEL функциональность<br>2. используйте # перед переменной<br>3. #subject.role, #subject.userKey, #subject.login переменные доступны",
+      "createCondition": "Создание условия",
+      "desc": "Описание",
+      "editCondition": "Редактирование условия",
+      "envCondition": "Условия окружения",
+      "msName": "Название МС",
+      "notPermitted": "неразрешенные",
+      "onForbid": "При запрете",
+      "permit": "Разрешить",
+      "permitted": "разрешенные",
+      "permittedAny": "хотябы один",
+      "privilegeKey": "Ключ привилегии",
+      "resourceCondition": "Условия ресурса"
+    },
+    "variables": "Допустимые переменные"
+  },
+  "sessions": {
+    "messages": {
+      "error": "<strong>Произошла ошибка!</strong> Сессия не может быть завершена.",
+      "success": "<strong>Сессия истекла!</strong>"
+    },
+    "table": {
+      "button": "Завершить",
+      "date": "Дата",
+      "ipaddress": "IP адрес",
+      "useragent": "User Agent"
+    },
+    "title": "Активные сессии для [<b>{{username}}</b>]"
+  },
+  "settings": {
+    "form": {
+      "button": "Сохранить",
+      "general": "Основная информация",
+      "local-time": "Местное время: ",
+      "logins": "Логины",
+      "offset-time": "Смещение часового пояса: ",
+      "utc-time": "Время UTC: "
+    },
+    "messages": {
+      "logins": {
+        "success": "<strong>Логины сохранены!</strong>"
+      },
+      "success": "<strong>Настройки сохранены!</strong>"
+    },
+    "security": {
+      "autoLogout": "Авто выход",
+      "name": "Настройки безопасности",
+      "seconds": "секунды",
+      "twoFAStatus": "Двухфакторная аутентификация"
+    }
+  },
+  "social": {
+    "register": {
+      "errorTitle": "Регистрация с внешней учетной записью",
+      "messages": {
+        "error": {
+          "fail": "<strong>Регистрация не удалась!</strong> Возникла проблема во время проверки внешней учетной записи, мы советуем вам попробовать с другим соединением."
+        },
+        "success": "<strong>Регистрация сохранен!</strong> Пожалуйста, проверьте Email для подтверждения."
+      },
+      "title": "Регистрация с {{ label }}"
+    }
+  },
+  "swagger": {
+    "select-component": "Выберите компонент"
+  },
+  "tracker": {
+    "table": {
+      "ipaddress": "IP Адрес",
+      "page": "Текущая страница",
+      "time": "Время",
+      "userAgent": "User agent",
+      "userlogin": "Пользователь"
+    },
+    "title": "Активность пользователей в реальном времени"
+  },
+  "userManagement": {
+    "activated": "Активен",
+    "autoLogout": "Авто выход",
+    "createdBy": "Создал",
+    "createdDate": "Дата создания",
+    "deactivated": "Неактивен",
+    "delete": {
+      "question": "Вы уверены, что хотите удалить пользователя {{ userKey }}?"
+    },
+    "detail": {
+      "title": "Пользователь"
+    },
+    "error": "Error",
+    "firstName": "Имя",
+    "home": {
+      "createOrEditLabel": "Создать или отредактировать пользователя",
+      "editLoginsLabel": "Отредактировать логины пользователя",
+      "title": "Пользователи"
+    },
+    "langKey": "Язык",
+    "lastModifiedBy": "Изменено",
+    "lastModifiedDate": "Дата изменения",
+    "lastName": "Фамилия",
+    "logins": "Логины",
+    "onlineUsers": "Пользователей онлайн: ",
+    "role": " Роль",
+    "search-by-login": "Поиск по логину",
+    "success": "Success",
+    "twoFADisabled": "Two Factor authentication disabled",
+    "twoFAEnabled": "Two Factor authentication enabled",
+    "userKey": "Ключ пользователя"
+  },
+  "wordAutocomplete": {
+    "hint": "Введите Ctrl+Space для отображения подсказки",
+    "noVariables": "Слово не найдено"
+  },
+  "xm-balance": {
+    "balance-detail-dialog": {
+      "title": "Детали баланса"
+    },
+    "balance-list-card": {
+      "title": "Балансы"
+    },
+    "common": {
+      "cancel": "Отмена",
+      "fields": {
+        "amount": "Количество",
+        "end-date": "Дата окончания",
+        "label": "Mетка",
+        "start-date": "Дата начала"
+      }
+    }
+  },
+  "xm-entity": {
+    "attachment-card": {
+      "delete": {
+        "button": "Да, удалите!",
+        "button-cancel": "Отмена",
+        "remove-error": "Вложение не удалено. Попробуй еще раз.",
+        "remove-success": "Вложение успешно удалено.",
+        "title": "Вы действительно хотите удалить вложение?"
+      },
+      "no-data": "Нет сохраненних вложений",
+      "title": "Вложения",
+      "volume": {
+        "GB": "Гб",
+        "KB": "Кб",
+        "MB": "Мб",
+        "PB": "Пб",
+        "TB": "Тб",
+        "bytes": "байт"
+      }
+    },
+    "attachment-detail-dialog": {
+      "add": {
+        "success": "Вложение успешно добавлено."
+      },
+      "choose-type": "Выберите тип вложения",
+      "title": "Добавить новое вложение для",
+      "upload": "Нажмите, чтобы загрузить или перетащите файл сюда.",
+      "wrong-type-error": ""
+    },
+    "calendar-card": {
+      "calendar": {
+        "btn-list-day": "День (список)",
+        "btn-list-week": "Неделя (список)"
+      },
+      "delete": {
+        "button": "Да, удалите!",
+        "button-cancel": "Отмена",
+        "remove-error": "Событие не удалено. Попробуй еще раз.",
+        "remove-success": "Событие успешно удалено.",
+        "title": "Вы действительно хотите удалить событие?"
+      }
+    },
+    "calendar-event-dialog": {
+      "add": {
+        "success": "Событие добавлено успешно."
+      },
+      "choose-type": "Выберите тип события",
+      "title": "Добавить новое событие для"
+    },
+    "comment-detail-dialog": {
+      "add": {
+        "success": "Комментарий добавлен успешно."
+      },
+      "choose-type": "Выберите тип комментария",
+      "title": "Добавить комментарий для"
+    },
+    "common": {
+      "add": "Добавить",
+      "add-avatar": "Добавить Аватар",
+      "cancel": "Отменить",
+      "change-avatar": "Изменить Аватар",
+      "close": "Закрыть",
+      "fields": {
+        "addressLine1": "Адресная Строка 1",
+        "addressLine2": "Адресная Строка 2",
+        "city": "Населенный пункт",
+        "description": "Описание",
+        "end-date": "Дата окончания",
+        "id": "ID",
+        "latitude": "Широта",
+        "longitude": "Долгота",
+        "message": "Комментарий",
+        "name": "Имя/Название",
+        "region": "Область",
+        "start-date": "Дата начала",
+        "state": "Состояние",
+        "title": "Заголовок",
+        "type": "Тип",
+        "zip": "Почтовый индекс"
+      },
+      "save": "Сохранить",
+      "search": "Поиск",
+      "validation": {
+        "date-time": "Это поле должно быть дата и время.",
+        "pattern": "Это поле не соответствует правилам",
+        "required": "Поле обязательно к заполнению."
+      }
+    },
+    "entity-data-card": {
+      "title": "Данные",
+      "update-error": "Не обновлено. Попробуй еще раз.",
+      "update-success": "Успешно обновлено."
+    },
+    "entity-detail-dialog": {
+      "add": {
+        "choose-type": "Выберите тип",
+        "title": "Добавить новую сущность"
+      },
+      "edit": {
+        "title": "Редактировать сущность"
+      }
+    },
+    "entity-detail-fab": {
+      "edit-entity": "Редактировать",
+      "new-attachment": "Добавить файл",
+      "new-comment": "Добавить комментарий",
+      "new-link": "Добавить ссылку",
+      "new-location": "Добавить локацию"
+    },
+    "entity-list-card": {
+      "action-dialog": {
+        "question": "Вы уверены, что хотите <b>{{action}}</b> для <b>{{name}}</b>?"
+      },
+      "delete": {
+        "button": "Да, удалите!",
+        "button-cancel": "Отмена",
+        "remove-error": "Не удалено. Попробуй еще раз.",
+        "remove-success": "Успешно удалено.",
+        "title": "Вы действительно хотите удалить?"
+      },
+      "export": {
+        "action": {
+          "csv": "csv",
+          "downloads": "Загрузить",
+          "xls": "xls"
+        }
+      },
+      "filters-hide": "Спрятать фильтры",
+      "filters-show": "Показать фильтры",
+      "open": "Открыть",
+      "refresh": "Обновить"
+    },
+    "entity-list-fab": {
+      "new-generated": "Сгенерировано!"
+    },
+    "function-list-card": {
+      "change-state": {
+        "button": "Да, изменить!",
+        "error": "Состояние не изменилось. Попробуй еще раз.",
+        "success": "Состояние успешно изменено.",
+        "title": "Вы действительно хотите изменить состояние?"
+      },
+      "current-state": "Текущее состояние: ",
+      "general-group": "Общие Функции",
+      "next-states": "Следующие состояния доступны по жизненному циклу:",
+      "other-functions": "Другие Функции:",
+      "title": "Функции"
+    },
+    "functions": {
+      "linkedin-profile": {
+        "awards": "Награды",
+        "button": "Извлечь профиль LinkedIn",
+        "certifications": "Сертификаты",
+        "current": "Текущий",
+        "education": "Образование",
+        "experienceCurrent": "Текущий опыт",
+        "experiencePast": "Прошлый опыт",
+        "interests": "Интересы",
+        "languages": "Языки",
+        "location": "Место нахождения",
+        "projects": "Проекты",
+        "recommendations": "Рекомендации",
+        "skills": "Навыки",
+        "summary": "Резюме",
+        "title": "Название",
+        "volunteer": "Волонтерские причины"
+      }
+    },
+    "link-detail-dialog": {
+      "add-link": "Добавить",
+      "add": {
+        "build-type-new": "Новая",
+        "build-type-search": "Поиск",
+        "error": "Ссылка не добавлена. Попробуй еще раз.",
+        "success": "Ссылка успешно добавлена.",
+        "title": "Добавить новую Ссылку для"
+      },
+      "show-more": "Показать больше"
+    },
+    "link-list-card": {
+      "delete": {
+        "button": "Да, удалить!",
+        "button-cancel": "Отмена",
+        "remove-error": "Ссылка не удалена. Попробуй еще раз.",
+        "remove-success": "Ссылка удалена успешно.",
+        "title": "Вы действительно хотите удалить ссылку?"
+      },
+      "list-view": "Просмотр списком",
+      "tree-view": "Просмотр деревом"
+    },
+    "link-list-tree-section": {
+      "collapse": "Свернуть эту ветку"
+    },
+    "location-detail-dialog": {
+      "add": {
+        "success": "Местоположение успешно добавлено.",
+        "title": "Добавить новое местоположение для"
+      },
+      "choose-country": "Выберите страну",
+      "choose-type": "Выберите тип местоположения (обязательно)",
+      "countries": {
+        "AD": "Андорра",
+        "AE": "ОАЭ",
+        "AF": "Афганистан",
+        "AG": "Антигуа и Барбуда",
+        "AI": "Ангилья",
+        "AL": "Албания",
+        "AM": "Армения",
+        "AO": "Ангола",
+        "AQ": "Антарктида",
+        "AR": "Аргентина",
+        "AS": "Американское Самоа",
+        "AT": "Австрия",
+        "AU": "Австралия",
+        "AW": "Аруба",
+        "AX": "Аландские острова",
+        "AZ": "Азербайджан",
+        "BA": "Босния и Герцеговина",
+        "BB": "Барбадос",
+        "BD": "Бангладеш",
+        "BE": "Бельгия",
+        "BF": "Буркина-Фасо",
+        "BG": "Болгария",
+        "BH": "Бахрейн",
+        "BI": "Бурунди",
+        "BJ": "Бенин",
+        "BL": "Сен-Бартелеми",
+        "BM": "Бермуды",
+        "BN": "Бруней",
+        "BO": "Боливия",
+        "BQ": "Бонэйр, Синт-Эстатиус и Саба",
+        "BR": "Бразилия",
+        "BS": "Багамы",
+        "BT": "Бутан",
+        "BV": "Остров Буве",
+        "BW": "Ботсвана",
+        "BY": "Беларусь",
+        "BZ": "Белиз",
+        "CA": "Канада",
+        "CC": "Кокосовые острова",
+        "CD": "Демократическая Республика Конго",
+        "CF": "ЦАР",
+        "CG": "Республика Конго",
+        "CH": "Швейцария",
+        "CI": "Кот-д’Ивуар",
+        "CK": "Острова Кука",
+        "CL": "Чили",
+        "CM": "Камерун",
+        "CN": "КНР (Китайская Народная Республика)",
+        "CO": "Колумбия",
+        "CR": "Коста-Рика",
+        "CU": "Куба",
+        "CV": "Кабо-Верде",
+        "CW": "Кюрасао",
+        "CX": "Остров Рождества",
+        "CY": "Кипр",
+        "CZ": "Чехия",
+        "DE": "Германия",
+        "DJ": "Джибути",
+        "DK": "Дания",
+        "DM": "Доминика",
+        "DO": "Доминиканская Республика",
+        "DZ": "Алжир",
+        "EC": "Эквадор",
+        "EE": "Эстония",
+        "EG": "Египет",
+        "EH": "САДР",
+        "ER": "Эритрея",
+        "ES": "Испания",
+        "ET": "Эфиопия",
+        "FI": "Финляндия",
+        "FJ": "Фиджи",
+        "FK": "Фолклендские острова",
+        "FM": "Микронезия",
+        "FO": "Фареры",
+        "FR": "Франция",
+        "GA": "Габон",
+        "GB": "Великобритания",
+        "GD": "Гренада",
+        "GE": "Грузия",
+        "GF": "Гвиана",
+        "GG": "Гернси",
+        "GH": "Гана",
+        "GI": "Гибралтар",
+        "GL": "Гренландия",
+        "GM": "Гамбия",
+        "GN": "Гвинея",
+        "GP": "Гваделупа",
+        "GQ": "Экваториальная Гвинея",
+        "GR": "Греция",
+        "GS": "Южная Георгия и Южные Сандвичевы Острова",
+        "GT": "Гватемала",
+        "GU": "Гуам",
+        "GW": "Гвинея-Бисау",
+        "GY": "Гайана",
+        "HK": "Гонконг",
+        "HM": "Херд и Макдональд",
+        "HN": "Гондурас",
+        "HR": "Хорватия",
+        "HT": "Гаити",
+        "HU": "Венгрия",
+        "ID": "Индонезия",
+        "IE": "Ирландия",
+        "IL": "Израиль",
+        "IM": "Остров Мэн",
+        "IN": "Индия",
+        "IO": "Британская территория в Индийском океане",
+        "IQ": "Ирак",
+        "IR": "Иран",
+        "IS": "Исландия",
+        "IT": "Италия",
+        "JE": "Джерси",
+        "JM": "Ямайка",
+        "JO": "Иордания",
+        "JP": "Япония",
+        "KE": "Кения",
+        "KG": "Киргизия",
+        "KH": "Камбоджа",
+        "KI": "Кирибати",
+        "KM": "Коморы",
+        "KN": "Сент-Китс и Невис",
+        "KP": "КНДР (Корейская Народно-Демократическая Республика)",
+        "KR": "Республика Корея",
+        "KW": "Кувейт",
+        "KY": "Острова Кайман",
+        "KZ": "Казахстан",
+        "LA": "Лаос",
+        "LB": "Ливан",
+        "LC": "Сент-Люсия",
+        "LI": "Лихтенштейн",
+        "LK": "Шри-Ланка",
+        "LR": "Либерия",
+        "LS": "Лесото",
+        "LT": "Литва",
+        "LU": "Люксембург",
+        "LV": "Латвия",
+        "LY": "Ливия",
+        "MA": "Марокко",
+        "MC": "Монако",
+        "MD": "Молдавия",
+        "ME": "Черногория",
+        "MF": "Сен-Мартен",
+        "MG": "Мадагаскар",
+        "MH": "Маршалловы Острова",
+        "MK": "Македония",
+        "ML": "Мали",
+        "MM": "Мьянма",
+        "MN": "Монголия",
+        "MO": "Макао",
+        "MP": "Северные Марианские Острова",
+        "MQ": "Мартиника",
+        "MR": "Мавритания",
+        "MS": "Монтсеррат",
+        "MT": "Мальта",
+        "MU": "Маврикий",
+        "MV": "Мальдивы",
+        "MW": "Малави",
+        "MX": "Мексика",
+        "MY": "Малайзия",
+        "MZ": "Мозамбик",
+        "NA": "Намибия",
+        "NC": "Новая Каледония",
+        "NE": "Нигер",
+        "NF": "Остров Норфолк",
+        "NG": "Нигерия",
+        "NI": "Никарагуа",
+        "NL": "Нидерланды",
+        "NO": "Норвегия",
+        "NP": "Непал",
+        "NR": "Науру",
+        "NU": "Ниуэ",
+        "NZ": "Новая Зеландия",
+        "OM": "Оман",
+        "PA": "Панама",
+        "PE": "Перу",
+        "PF": "Французская Полинезия",
+        "PG": "Папуа — Новая Гвинея",
+        "PH": "Филиппины",
+        "PK": "Пакистан",
+        "PL": "Польша",
+        "PM": "Сен-Пьер и Микелон",
+        "PN": "Острова Питкэрн",
+        "PR": "Пуэрто-Рико",
+        "PS": "Государство Палестина",
+        "PT": "Португалия",
+        "PW": "Палау",
+        "PY": "Парагвай",
+        "QA": "Катар",
+        "RE": "Реюньон",
+        "RO": "Румыния",
+        "RS": "Сербия",
+        "RU": "Россия",
+        "RW": "Руанда",
+        "SA": "Саудовская Аравия",
+        "SB": "Соломоновы Острова",
+        "SC": "Сейшельские Острова",
+        "SD": "Судан",
+        "SE": "Швеция",
+        "SG": "Сингапур",
+        "SH": "Острова Святой Елены, Вознесения и Тристан-да-Кунья",
+        "SI": "Словения",
+        "SJ": "Шпицберген и Ян-Майен",
+        "SK": "Словакия",
+        "SL": "Сьерра-Леоне",
+        "SM": "Сан-Марино",
+        "SN": "Сенегал",
+        "SO": "Сомали",
+        "SR": "Суринам",
+        "SS": "Южный Судан",
+        "ST": "Сан-Томе и Принсипи",
+        "SV": "Сальвадор",
+        "SX": "Синт-Мартен",
+        "SY": "Сирия",
+        "SZ": "Свазиленд",
+        "TC": "Теркс и Кайкос",
+        "TD": "Чад",
+        "TF": "Французские Южные и Антарктические Территории",
+        "TG": "Того",
+        "TH": "Таиланд",
+        "TJ": "Таджикистан",
+        "TK": "Токелау",
+        "TL": "Восточный Тимор",
+        "TM": "Туркмения",
+        "TN": "Тунис",
+        "TO": "Тонга",
+        "TR": "Турция",
+        "TT": "Тринидад и Тобаго",
+        "TV": "Тувалу",
+        "TW": "Китайская Республика",
+        "TZ": "Танзания",
+        "UA": "Украина",
+        "UG": "Уганда",
+        "UM": "Внешние малые острова (США)",
+        "US": "США",
+        "UY": "Уругвай",
+        "UZ": "Узбекистан",
+        "VA": "Ватикан",
+        "VC": "Сент-Винсент и Гренадины",
+        "VE": "Венесуэла",
+        "VG": "Виргинские Острова (Великобритания)",
+        "VI": "Виргинские Острова (США)",
+        "VN": "Вьетнам",
+        "VU": "Вануату",
+        "WF": "Уоллис и Футуна",
+        "WS": "Самоа",
+        "XK": "Косово",
+        "YE": "Йемен",
+        "YT": "Майотта",
+        "ZA": "ЮАР",
+        "ZM": "Замбия",
+        "ZW": "Зимбабве"
+      },
+      "edit": {
+        "success": "Местоположение успешно изменено.",
+        "title": "Отредактируйте местоположение для"
+      }
+    },
+    "location-list-card": {
+      "delete": {
+        "button": "Да, удалить!",
+        "button-cancel": "Отмена",
+        "remove-error": "Местонахождение не удалено. Попробуй еще раз.",
+        "remove-success": "Местонахождение успешно удалено.",
+        "title": "Вы действительно хотите удалить местоположение?"
+      },
+      "title": "Местонахождения"
+    },
+    "rating-list-section": {
+      "vote-error": "Ваш голос не учитывается.",
+      "vote-success": "Ваш голос учитывается.",
+      "votes": "Голос(а)"
+    },
+    "states-management-dialog": {
+      "choose-state": "Выберите ключ",
+      "title": "Детальная информация состояний"
+    },
+    "tag-list-section": {
+      "add-error": "Тег не добавлен. Попробуй еще раз.",
+      "remove-error": "Тег не удален. Попробуй еще раз.",
+      "type-tag": "добавить тег ..."
+    }
+  },
+  "xm-notifications": {
+    "showAll": "Смотреть все"
+  },
+  "xm-timeline": {
+    "common": {
+      "time-ago": {
+        "day": "день назад",
+        "days": " дней назад",
+        "hour": "час назад",
+        "hours": " часов назад",
+        "minute": "минуту назад",
+        "minutes": " минут назад",
+        "month": "месяц назад",
+        "months": " месяцев назад",
+        "seconds": "несколько секунд назад",
+        "year": "год назад",
+        "years": " лет назад"
+      }
+    },
+    "timeline": {
+      "by": "от",
+      "error": "ОШИБКА",
+      "more": "больше событий...",
+      "success": "УСПЕШНО",
+      "title": "История"
+    }
+  },
+  "xm": {
+    "defaultProfile": {
+      "created": "Новый Default Profile создан с идентификатором {{ param }}",
+      "dashboard": "Панель управления",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Default Profile {{ id }}?"
+      },
+      "deleted": "Default Profile удален с идентификатором {{ param }}",
+      "detail": {
+        "title": "Default Profile"
+      },
+      "home": {
+        "createLabel": "Создать новый Default Profile",
+        "createOrEditLabel": "Создать или отредактировать Default Profile",
+        "search": "Найти Default Profile",
+        "title": "Default Profiles"
+      },
+      "roleKey": "Role Key",
+      "updated": "Default Profile обновлен с идентификатором {{ param }}"
+    },
+    "delete": {
+      "question": "Вы уверены что хотите удалить [ <b>{{name}}</b> ]?"
+    },
+    "profile": {
+      "created": "Новый Profile создан с идентификатором {{ param }}",
+      "dashboards": "Панели управления",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Profile {{ id }}?"
+      },
+      "deleted": "Profile удален с идентификатором {{ param }}",
+      "detail": {
+        "title": "Profile"
+      },
+      "home": {
+        "createLabel": "Создать новый Profile",
+        "createOrEditLabel": "Создать или отредактировать Profile",
+        "search": "Найти Profile",
+        "title": "Profiles"
+      },
+      "login": "Login",
+      "updated": "Profile обновлен с идентификатором {{ param }}"
+    },
+    "xmEntity": {
+      "add": {
+        "chooseType": "Выберите тип объекта",
+        "title": "Добавить новую сущность"
+      },
+      "addPhoto": "Добавить фото",
+      "change": "Изменить",
+      "data": "Данные",
+      "description": "Описание",
+      "edit": {
+        "title": "Редактировать сущность [<b>{{name}}</b>]"
+      },
+      "endDate": "Дата окончания",
+      "functions": "Функции",
+      "lifecycle": {
+        "nextStates": "Следующие состояния доступны через жизненный цикл:",
+        "title": "Жизненный цикл"
+      },
+      "listView": "В виде списка",
+      "locations": "Места",
+      "name": "Название",
+      "redeem": {
+        "title": "Выкупить"
+      },
+      "search": "Результат поиска для",
+      "showMore": "Показать больше",
+      "startDate": "Дата начала",
+      "state": "Состояние",
+      "tenant": {
+        "error": {
+          "alreadyUsed": "Имя тенанта уже используется",
+          "tenantKeyFormat": "Имя тенанта должно содержать только буквы, цифры и нижнее подчеркивание. Первый символ должен быть буквой. Не должно начинатся на 'pg_'. Максимальная длина 48 символов"
+        }
+      },
+      "title": "Заглавие",
+      "treeView": "В виде дерева",
+      "type": "Тип",
+      "votes": "Голос(а)"
+    }
+  }
+}

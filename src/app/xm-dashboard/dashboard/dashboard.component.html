@@ -7,7 +7,7 @@
 </div>
 
 <ng-template #dashboardItem let-item="item">
-  <div *ngIf="!!item.class" [className]="item.class">
+  <div @appearUp *ngIf="!!item.class" [className]="item.class">
     <ng-container *ngTemplateOutlet="dashboardContent;context:{item: item}"></ng-container>
   </div>
 

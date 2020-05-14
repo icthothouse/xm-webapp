@@ -1,23 +1,23 @@
-<div class="modal-header">
-  <a (click)="onCancel()" class="modal-close material-icons" href="javascript: void(0);">close</a>
+<div mat-dialog-title>
   <h4 class="modal-title text-left">
     <span jhiTranslate="xm-entity.link-detail-dialog.add.title">Add new Link for the</span> [<b>{{xmEntity.name}}</b>]
   </h4>
 </div>
-<div class="modal-body">
+
+<div mat-dialog-content>
   <div *ngIf="linkSpec.builderType === 'NEW-OR-SEARCH'" class="raw col-sm-12 text-center">
     <div class="btn-group">
       <button (click)="mode = 'NEW';"
               [disabled]="mode === 'NEW'"
-              class="btn btn-primary btn-sm btn-round"
-              mat-raised-button
+              class="btn btn-primary btn-sm rounded-circle"
+              mat-button
               type="button">
         <span jhiTranslate="xm-entity.link-detail-dialog.add.build-type-new">New</span>
       </button>
       <button (click)="mode = 'SEARCH';"
               [disabled]="mode === 'SEARCH'"
-              class="btn btn-primary btn-sm btn-round"
-              mat-raised-button
+              class="btn btn-primary btn-sm rounded-circle"
+              mat-button
               type="button">
         <span jhiTranslate="xm-entity.link-detail-dialog.add.build-type-search">Search</span>
       </button>

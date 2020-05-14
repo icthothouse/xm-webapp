@@ -6,7 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
     {
-        path: 'dashboard',
+        path: '',
         component: DashboardComponent,
         data: {
             privileges: {
@@ -17,7 +17,7 @@ const routes: Routes = [
         canActivate: [UserRouteAccessService],
     },
     {
-        path: 'dashboard/:id',
+        path: ':id',
         component: DashboardComponent,
         data: {
             privileges: {

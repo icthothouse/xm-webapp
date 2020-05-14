@@ -1,8 +1,7 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
-import { XmSharedModule } from '../shared/shared.module';
-import { XmDashboardModule } from '../xm-dashboard/xm-dashboard.module';
+import { XmDynamicModule } from '@xm-ngx/dynamic';
+import { XmSharedModule } from '@xm-ngx/shared';
 import { HomeComponent } from './';
 import { HOME_ROUTE } from './home.route';
 
@@ -10,14 +9,12 @@ import { HOME_ROUTE } from './home.route';
     imports: [
         XmSharedModule,
         RouterModule.forChild([HOME_ROUTE]),
-        XmDashboardModule,
+        XmDynamicModule,
     ],
     declarations: [
         HomeComponent,
     ],
-    entryComponents: [],
     providers: [],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class GateHomeModule {
 }

@@ -1,18 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import {
-    Framework,
-    FrameworkLibraryService,
-    JsonSchemaFormModule,
-    JsonSchemaFormService,
-    MaterialDesignFramework,
-    MaterialDesignFrameworkModule,
-    WidgetLibraryService,
-} from 'angular2-json-schema-form';
+import { EntityStateModule } from '@xm-ngx/entity/entity-state';
+import { StatesManagementDialogModule } from '@xm-ngx/entity/states-management-dialog';
 import { TagInputModule } from 'ngx-chips';
 import { ImageCropperModule } from 'ngx-img-cropper';
-import { RatingModule } from 'ngx-rating';
+import { RatingModule } from '@xm-ngx/components/xm-rating';
+
 import { XmSharedModule } from '../shared/shared.module';
 import {
     AreaComponent,
@@ -32,11 +26,10 @@ import {
     EntityCardCompactComponent,
     EntityCardComponent,
     EntityDataCardComponent,
-    EntityDetailDialogComponent,
+    EntityDetailDialogModule,
     EntityDetailFabComponent,
     EntityListCardComponent,
     EntityListFabComponent,
-    EntityStateComponent,
     EventService,
     FunctionCallDialogComponent,
     FunctionContextService,
@@ -60,37 +53,32 @@ import {
     OverpassApiService,
     RatingListSectionComponent,
     RatingService,
-    StatesManagementDialogComponent,
     TagListSectionComponent,
     TagService,
     VoteService,
     XmEntityService,
     XmEntitySpecService,
-    XmEntitySpecWrapperService,
 } from './';
 import { AttachmentListBaseComponent } from './attachment-list/attachment-list-base.component';
 import { AttachmentListSimplifiedComponent } from './attachment-list/attachment-list-simplified.component';
 
 import { StateChangeDialogComponent } from './state-change-dialog/state-change-dialog.component';
 
+const MODULES = [
+    StatesManagementDialogModule,
+    EntityStateModule,
+    EntityDetailDialogModule,
+];
+
 @NgModule({
     imports: [
         CommonModule,
         XmSharedModule,
         RouterModule,
-        MaterialDesignFrameworkModule,
-        {
-            ngModule: JsonSchemaFormModule,
-            providers: [
-                JsonSchemaFormService,
-                FrameworkLibraryService,
-                WidgetLibraryService,
-                {provide: Framework, useClass: MaterialDesignFramework, multi: true},
-            ],
-        },
         ImageCropperModule,
         RatingModule,
         TagInputModule,
+        MODULES,
     ],
     declarations: [
         AreaComponent,
@@ -106,11 +94,9 @@ import { StateChangeDialogComponent } from './state-change-dialog/state-change-d
         EntityCardComponent,
         EntityCardCompactComponent,
         EntityDataCardComponent,
-        EntityDetailDialogComponent,
         EntityDetailFabComponent,
         EntityListCardComponent,
         EntityListFabComponent,
-        EntityStateComponent,
         FunctionCallDialogComponent,
         StateChangeDialogComponent,
         FunctionListSectionComponent,
@@ -130,17 +116,14 @@ import { StateChangeDialogComponent } from './state-change-dialog/state-change-d
         TagListSectionComponent,
         EntityListFabComponent,
         LocationCardNamePipe,
-        StatesManagementDialogComponent,
         AttachmentListSimplifiedComponent,
         AttachmentListBaseComponent,
     ],
     entryComponents: [
-        StatesManagementDialogComponent,
         AttachmentDetailDialogComponent,
         AvatarDialogComponent,
         CalendarEventDialogComponent,
         CommentDetailDialogComponent,
-        EntityDetailDialogComponent,
         FunctionCallDialogComponent,
         StateChangeDialogComponent,
         LinkDetailDialogComponent,
@@ -148,6 +131,7 @@ import { StateChangeDialogComponent } from './state-change-dialog/state-change-d
         OsmPolygonDialogComponent,
     ],
     exports: [
+        MODULES,
         AreaComponent,
         AttachmentCardComponent,
         AttachmentListComponent,
@@ -161,7 +145,6 @@ import { StateChangeDialogComponent } from './state-change-dialog/state-change-d
         EntityDetailFabComponent,
         EntityListCardComponent,
         EntityListFabComponent,
-        EntityStateComponent,
         FunctionListSectionComponent,
         FunctionListSectionCompactComponent,
         LinkDetailNewSectionComponent,
@@ -171,7 +154,6 @@ import { StateChangeDialogComponent } from './state-change-dialog/state-change-d
         LocationListCardComponent,
         RatingListSectionComponent,
         TagListSectionComponent,
-        StatesManagementDialogComponent,
     ],
     providers: [
         AttachmentService,
@@ -189,9 +171,7 @@ import { StateChangeDialogComponent } from './state-change-dialog/state-change-d
         VoteService,
         XmEntityService,
         XmEntitySpecService,
-        XmEntitySpecWrapperService,
     ],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class XmEntityModule {
 }

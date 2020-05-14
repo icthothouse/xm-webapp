@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, NgModule, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 enum KEY_CODE {
@@ -167,4 +167,13 @@ export class WordAutocompleteDirective implements OnInit {
         this.elementRef.nativeElement.value = this.replaceStr.replace('{}', word);
     }
 
+}
+
+@NgModule({
+    imports: [],
+    exports: [WordAutocompleteDirective],
+    declarations: [WordAutocompleteDirective],
+    providers: [],
+})
+export class WordAutocompleteModule {
 }

@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, NgModule } from '@angular/core';
 
-import { Principal } from '../../shared/auth/principal.service';
-import { StateSpec } from '../shared/state-spec.model';
+import { StateSpec } from '@xm-ngx/entity';
+import { XmSharedModule } from '@xm-ngx/shared';
 
 @Component({
     selector: 'xm-entity-state',
@@ -9,10 +9,15 @@ import { StateSpec } from '../shared/state-spec.model';
     styleUrls: ['./entity-state.component.scss'],
 })
 export class EntityStateComponent {
-
     @Input() public stateSpec: StateSpec;
+}
 
-    constructor(public principal: Principal) {
-    }
-
+@NgModule({
+    imports: [XmSharedModule],
+    exports: [EntityStateComponent],
+    declarations: [EntityStateComponent],
+    entryComponents: [EntityStateComponent],
+    providers: [],
+})
+export class EntityStateModule {
 }

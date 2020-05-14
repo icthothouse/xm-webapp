@@ -1,6 +1,6 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { LanguageModule } from '@xm-ngx/components/language';
 
 import { XmSharedModule } from '../shared/shared.module';
 import {
@@ -18,11 +18,13 @@ import {
     SocialRegisterComponent,
 } from './';
 import { accountState } from './account.route';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
     imports: [
         XmSharedModule,
         RouterModule.forChild(accountState),
+        LanguageModule,
     ],
     declarations: [
         SocialRegisterComponent,
@@ -33,15 +35,14 @@ import { accountState } from './account.route';
         PasswordResetInitComponent,
         PasswordResetFinishComponent,
         SettingsComponent,
+        LogoutComponent,
     ],
     providers: [
         Activate,
         Password,
         PasswordResetInit,
         PasswordResetFinish,
-        NgbActiveModal,
     ],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class GateAccountModule {
 }

@@ -39,7 +39,7 @@ body {
         &-wrapper {
             height: calc(100vh - 70px) !important;
 
-            &.bottom-spacer {
+            &.bottom-spacer  {
                 height: calc(100vh - 120px) !important;
             }
         }
@@ -62,12 +62,6 @@ body {
 .bootstrap-select {
   background: none !important;
   margin-top: 0;
-}
-
-.json-form-hide-submit {
-  submit-widget, material-button-widget {
-    display: none;
-  }
 }
 
 .btn-back {
@@ -112,7 +106,7 @@ xm-per-page {
 
 .checkbox.changed {
 
-  .checkbox-material::before {
+  .checkbox-material:before {
     opacity: 0.1;
   }
 }
@@ -125,8 +119,8 @@ xm-per-page {
 }
 
 .btn {
-    &::before {
-        content: '';
+    &:before {
+        content: "";
         display: none;
         width: 20px;
         height: 20px;
@@ -136,8 +130,8 @@ xm-per-page {
         margin: -10px 0 0 -10px;
     }
 
-    &::after {
-        content: '';
+    &:after {
+        content: "";
         display: none;
         position: absolute;
         left: 50%;
@@ -147,7 +141,7 @@ xm-per-page {
         height: 20px;
         border-radius: 50%;
         border: 2px solid #fff;
-        border-color: #fff transparent;
+        border-color: #fff transparent #fff transparent;
         animation: lds-dual-ring 1.2s linear infinite;
     }
 
@@ -155,14 +149,14 @@ xm-per-page {
         color: transparent !important;
         position: relative;
 
-        &::before, &::after {
+        &:before, &:after {
             display: block;
         }
 
         &.dark-loader {
-            &::after {
+            &:after {
                 border: 2px solid #222;
-                border-color: #222 transparent;
+                border-color: #222 transparent #222 transparent;
             }
         }
     }
@@ -219,7 +213,7 @@ xm-per-page {
     &.has-ackground {
         .navbar.navbar-transparent {
             background: #fff !important;
-            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 2px 0 rgba(0,0,0, .1);
             border-radius: 0;
         }
     }
@@ -227,125 +221,12 @@ xm-per-page {
     .xm-nav-logo {
         display: block;
         padding-right: 15px;
-        border-right: 1px solid rgba(#000, 0.2);
+        border-right: 1px solid rgba(#000, .2);
     }
 
     .sidebar, .sidbar-toggle, .drawer-toggle {
         display: none !important;
     }
 }
-
-@keyframes lds-dual-ring {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.picker-red {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        color: rgba(255, 255, 255, 0.85);
-        background-color: #f44336;
-    }
-}
-.picker-pink {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #e91e63;
-    }
-}
-.picker-purple {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #9c27b0;
-    }
-}
-.picker-deep-purple {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #673ab7;
-    }
-}
-.picker-indigo {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #3f51b5;
-    }
-}
-.picker-blue {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #2196f3;
-    }
-}
-.picker-light-blue {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #03a9f4;
-    }
-}
-.picker-cyan {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #00bcd4;
-    }
-}
-.picker-teal {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #009688;
-    }
-}
-.picker-green {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #4caf50;
-    }
-}
-.picker-light-green {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #8bc34a;
-    }
-}
-.picker-lime {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #cddc39;
-    }
-}
-.picker-yellow {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #ffeb3b;
-    }
-}
-.picker-amber {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #ffc107;
-    }
-}
-.picker-orange {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #ff9800;
-    }
-}
-.picker-deep-orange {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #ff5722;
-    }
-}
-.picker-brown {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #795548;
-    }
-}
-.picker-grey {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #9e9e9e;
-    }
-}
-
-.picker-blue-grey {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #607d8b;
-    }
-}
-.picker-blue-grey {
-    .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-        background-color: #607d8b;
-    }
-}
-
 
 

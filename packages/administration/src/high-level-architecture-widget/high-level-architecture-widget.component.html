@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-sm-3 offset-3">
+    <mat-form-field>
+      <mat-label>{{'admin-webapp-ext.common.project' | translate}}</mat-label>
+      <mat-select>
+        <mat-option (onSelectionChange)="onProjectSelectionChange({isUserInput: true})"
+                    [value]="">
+        </mat-option>
+        <mat-option (onSelectionChange)="onProjectSelectionChange($event)"
+                    *ngFor="let project of config?.projects"
+                    [value]="project">
+          {{project.name | translate}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="col-sm-3 pt-2">
+    <button (click)="doDownloadPng('high-level-architecture')"
+            color="primary"
+            mat-stroked-button>
+      {{'admin-webapp-ext.common.save' | translate}} PNG
+    </button>
+
+    <a #downloadLink class="hidden"></a>
+  </div>
+</div>
+
+<div #canvasHolder
+     (mousedown)="mouseDown($event)"
+     (mousemove)="mouseMove($event)"
+     (mouseup)="mouseUp()"
+     class="text-center"
+     id="canvasHolder">
+  <div class="actions text-right">
+    <button (click)="magnifyViewport(2)"
+            class="btn"
+            mat-icon-button
+            type="button">
+      <i class="material-icons">zoom_in</i>
+    </button>
+    <button (click)="resetViewport()"
+            class="btn"
+            mat-icon-button
+            type="button">
+      <i class="material-icons">center_focus_strong</i>
+    </button>
+    <button (click)="magnifyViewport(-2)"
+            class="btn"
+            mat-icon-button
+            type="button">
+      <i class="material-icons">zoom_out</i>
+    </button>
+  </div>
+
+  <canvas #canvas id="canvas"></canvas>
+</div>

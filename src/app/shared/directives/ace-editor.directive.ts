@@ -1,21 +1,23 @@
-import { Directive, ElementRef, EventEmitter, Input, Output } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 
 import 'brace';
 import 'brace/mode/json';
 import 'brace/mode/yaml';
 import 'brace/mode/html';
 import 'brace/theme/chrome';
+import 'brace/ext/searchbox';
+import { Editor } from 'brace';
 
 declare const ace: any;
 
 @Directive({
     selector: '[xmAceEditor]',
 })
-export class AceEditorDirective {
+export class AceEditorDirective implements OnDestroy{
 
     public _highlightActiveLine: boolean = true;
     public _showGutter: boolean = true;
-    public editor: any;
+    public editor: Editor;
     public oldText: any;
     @Output('textChanged') public textChanged: EventEmitter<any> = new EventEmitter();
     public _options: any = {};
@@ -32,12 +34,12 @@ export class AceEditorDirective {
         this.initEvents();
     }
 
-    @Input() set options(options: any) {
+    @Input() public set options(options: any) {
         this._options = options;
         this.editor.setOptions(options || {});
     }
 
-    @Input() set readOnly(readOnly: any) {
+    @Input() public set readOnly(readOnly: any) {
         this._readOnly = readOnly;
         this.editor.setReadOnly(readOnly);
     }
@@ -111,4 +113,19 @@ export class AceEditorDirective {
         this.oldText = newVal;
     }
 
+    public ngOnDestroy(): void {
+        this.editor.destroy();
+    }
+
+}
+
+import { NgModule } from '@angular/core';
+
+@NgModule({
+    imports: [],
+    exports: [AceEditorDirective],
+    declarations: [AceEditorDirective],
+    providers: [],
+})
+export class AceEditorModule {
 }

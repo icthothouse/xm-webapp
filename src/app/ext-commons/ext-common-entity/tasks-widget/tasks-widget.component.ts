@@ -1,7 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import { MatDialog } from '@angular/material/dialog';
+import { XmEventManager } from '@xm-ngx/core';
 import { Subscription } from 'rxjs';
 
 import { EntityDetailDialogComponent, Spec, XmEntity, XmEntityService, XmEntitySpec } from '../../../xm-entity';
@@ -30,8 +30,8 @@ export class TasksWidgetComponent implements OnInit, OnDestroy {
     private xmEntityListModificationSubscriber: Subscription;
     private xmEntityDetailModificationSubscriber: Subscription;
 
-    constructor(private eventManager: JhiEventManager,
-                private modalService: NgbModal,
+    constructor(private eventManager: XmEventManager,
+                private modalService: MatDialog,
                 private xmEntityService: XmEntityService) {
     }
 
@@ -119,7 +119,7 @@ export class TasksWidgetComponent implements OnInit, OnDestroy {
     }
 
     public onEdit(item: any): void {
-        const modalRef = this.modalService.open(EntityDetailDialogComponent, {backdrop: 'static'});
+        const modalRef = this.modalService.open(EntityDetailDialogComponent, {width: '500px'});
         modalRef.componentInstance.xmEntity = Object.assign({}, item.xmEntity);
         modalRef.componentInstance.xmEntitySpec = this.getType(item.typeKey);
     }

@@ -1,9 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { XmSessionService } from '@xm-ngx/core';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { DEFAULT_AUTH_TOKEN, DEFAULT_CONTENT_TYPE } from '../../xm.constants';
 import { CustomUriEncoder } from '../helpers/custom-uri-encoder';
@@ -31,7 +32,7 @@ const WIDGET_DATA = 'widget:data';
 export const TOKEN_URL = _TOKEN_URL;
 export const CONFIG_SETTINGS_API = _CONFIG_SETTINGS_API;
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class AuthServerProvider {
 
     private updateTokenTimer: any;
@@ -39,6 +40,7 @@ export class AuthServerProvider {
     constructor(
         private principal: Principal,
         private http: HttpClient,
+        private sessionService: XmSessionService,
         private $localStorage: LocalStorageService,
         private $sessionStorage: SessionStorageService,
         private stateStorageService: StateStorageService,
@@ -86,8 +88,9 @@ export class AuthServerProvider {
             }
         }
 
-        return this.getAccessToken(data, DEFAULT_HEADERS, credentials.rememberMe);
-
+        return this.getAccessToken(data, DEFAULT_HEADERS, credentials.rememberMe).pipe(
+            tap(() => this.sessionService.create()),
+        );
     }
 
     public loginWithToken(jwt: string, rememberMe: boolean): Promise<never> | Promise<unknown> {
@@ -132,8 +135,9 @@ export class AuthServerProvider {
             clearTimeout(this.updateTokenTimer);
             observer.next();
             observer.complete();
-        });
-
+        }).pipe(
+            tap(() => this.sessionService.clear()),
+        );
     }
 
     private storeAT(resp: any, rememberMe: boolean): string {
@@ -207,11 +211,13 @@ export class AuthServerProvider {
             .subscribe((data) => {
                 this.storeAT(data, rememberMe);
                 this.storeRT(data, rememberMe);
+                this.sessionService.update();
             }, (error) => {
                 console.info('Refresh token fails: %o', error); // tslint:disable-line
                 this.logout().subscribe();
                 this.principal.logout();
                 this.router.navigate(['']);
+                this.sessionService.clear();
             });
 
     }
@@ -229,6 +235,7 @@ export class AuthServerProvider {
                         this.refreshTokens(rememberMe);
                     }
                 }, timeout);
+                this.sessionService.create();
             } else {
                 this.refreshTokens(rememberMe);
             }

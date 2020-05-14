@@ -1,0 +1,19 @@
+<form (ngSubmit)="confirmDelete(user.userKey)" class="m-0" name="deleteForm">
+  <div mat-dialog-title>
+    <h4 class="modal-title text-left" jhiTranslate="entity.delete.title">Confirm delete operation</h4>
+  </div>
+  <div mat-dialog-content>
+    <xm-loader [showLoader]="showLoader"></xm-loader>
+    <p jhiTranslate="userManagement.delete.question" translateValues="{userKey: '{{user.userKey}}'}">Are you sure you
+                                                                                                     want to delete this
+                                                                                                     User?</p>
+  </div>
+  <div mat-dialog-actions>
+    <button (click)="clear()" class="btn mr-1 ml-auto" data-dismiss="modal" mat-button type="button">
+      <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+    </button>
+    <button [disabled]="showLoader" class="btn btn-danger" mat-button type="submit">
+      <span class="fa fa-trash"></span>&nbsp;<span jhiTranslate="entity.action.delete">Delete</span>
+    </button>
+  </div>
+</form>

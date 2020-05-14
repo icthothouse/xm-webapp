@@ -37,7 +37,7 @@
         <td>{{xmEntity.name}}</td>
         <td>{{xmEntity.description}}</td>
         <td>
-          <button (click)="onAdd(xmEntity)" class="btn btn-primary btn-round btn-sm">
+          <button (click)="onAdd(xmEntity)" class="btn btn-primary rounded-circle btn-sm">
             <span jhiTranslate="xm-entity.link-detail-dialog.add-link">add</span>
           </button>
         </td>
@@ -48,16 +48,16 @@
 
   <div class="row">
     <div class="col-sm-12 text-center">
-      <button (click)="onShowMore()" *ngIf="searchXmEntities?.length < total" [disabled]="showLoader" class="btn btn-primary btn-round"
-              mat-raised-button>
+      <button (click)="onShowMore()" *ngIf="searchXmEntities?.length < total" [disabled]="showLoader" class="btn btn-primary rounded-circle"
+              mat-button>
         <span jhiTranslate="xm-entity.link-detail-dialog.show-more">Show more</span>
       </button>
     </div>
   </div>
 </div>
 
-<div class="modal-footer">
-  <button (click)="onCancel()" class="btn" data-dismiss="modal" mat-raised-button type="button">
+<div mat-dialog-actions>
+  <button (click)="onCancel()" class="btn ml-auto" data-dismiss="modal" mat-button type="button">
     <span jhiTranslate="xm-entity.common.cancel">Cancel</span>
   </button>
 </div>

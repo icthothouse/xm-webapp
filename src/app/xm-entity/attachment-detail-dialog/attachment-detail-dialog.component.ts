@@ -1,7 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogRef } from '@angular/material/dialog';
+
 import { TranslateService } from '@ngx-translate/core';
-import { JhiDataUtils, JhiEventManager } from 'ng-jhipster';
+import { XmEventManager } from '@xm-ngx/core';
+import { XmToasterService } from '@xm-ngx/toaster';
+import { JhiDataUtils } from 'ng-jhipster';
 
 import { Principal } from '../../shared/auth/principal.service';
 import { AttachmentSpec } from '../shared/attachment-spec.model';
@@ -9,7 +12,6 @@ import { Attachment } from '../shared/attachment.model';
 import { AttachmentService } from '../shared/attachment.service';
 import { XmEntity } from '../shared/xm-entity.model';
 
-declare let swal: any;
 
 const ATTACHMENT_EVENT = 'attachmentListModification';
 
@@ -28,15 +30,16 @@ export class AttachmentDetailDialogComponent implements OnInit {
     public readOnlyInputs: boolean;
     public wrongFileType: string;
 
-    constructor(private activeModal: NgbActiveModal,
-                private attachmentService: AttachmentService,
-                private eventManager: JhiEventManager,
-                private dataUtils: JhiDataUtils,
-                private translateService: TranslateService,
-                public principal: Principal) {
+    constructor(protected activeModal: MatDialogRef<AttachmentDetailDialogComponent>,
+                protected attachmentService: AttachmentService,
+                protected eventManager: XmEventManager,
+                protected dataUtils: JhiDataUtils,
+                protected toasterService: XmToasterService,
+                protected translateService: TranslateService,
+                protected principal: Principal) {
     }
 
-    get acceptedFileTypes(): string[] | '' {
+    public get acceptedFileTypes(): string[] | '' {
         const attachmentSpec = this.attachmentSpecs.filter((att: any) => att.key === this.attachment.typeKey).shift();
         return (attachmentSpec && attachmentSpec.contentTypes) ?
             attachmentSpec.contentTypes : '';
@@ -103,24 +106,15 @@ export class AttachmentDetailDialogComponent implements OnInit {
     }
 
     public onCancel(): void {
-        this.activeModal.dismiss('cancel');
+        this.activeModal.close(false);
     }
 
     private onSaveSuccess(): void {
         // TODO: use constant for the broadcast and analyse listeners
         console.info('Fire %s', ATTACHMENT_EVENT);
         this.eventManager.broadcast({name: ATTACHMENT_EVENT});
-        this.activeModal.dismiss(true);
-        this.alert('success');
-    }
-
-    private alert(type: string): void {
-        swal({
-            type,
-            text: this.translateService.instant('xm-entity.attachment-detail-dialog.add.success'),
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-primary',
-        });
+        this.activeModal.close(true);
+        this.toasterService.success('xm-entity.attachment-detail-dialog.add.success');
     }
 
 }

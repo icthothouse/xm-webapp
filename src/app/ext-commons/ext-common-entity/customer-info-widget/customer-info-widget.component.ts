@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-expressions */
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
+import { MatDialog } from '@angular/material/dialog';
+import { XmEventManager } from '@xm-ngx/core';
+import { XmToasterService } from '@xm-ngx/toaster';
 import { interval, Observable, of, Subscription } from 'rxjs';
 import { catchError, finalize, map, mergeMap, startWith, take } from 'rxjs/operators';
 
@@ -37,9 +38,9 @@ export class CustomerInfoWidgetComponent implements OnInit, OnDestroy {
 
     constructor(private fb: FormBuilder,
                 private principal: Principal,
-                private alertService: JhiAlertService,
-                private eventManager: JhiEventManager,
-                private modalService: NgbModal,
+                private alertService: XmToasterService,
+                private eventManager: XmEventManager,
+                private modalService: MatDialog,
                 private xmEntityService: XmEntityService,
                 private xmAttachmentService: AttachmentService) {
     }
@@ -200,7 +201,7 @@ export class CustomerInfoWidgetComponent implements OnInit, OnDestroy {
 
     public onAddAttachment(): void {
         this.profile.pipe(take(1)).subscribe((profile) => {
-            const modalRef = this.modalService.open(AttachmentDetailDialogComponent, {backdrop: 'static'});
+            const modalRef = this.modalService.open(AttachmentDetailDialogComponent, {width: '500px'});
             modalRef.componentInstance.xmEntity = profile;
             modalRef.componentInstance.attachmentSpecs = [{key: 'DOCUMENTS.ACCOUNT.USER', name: 'Documents'}];
         });

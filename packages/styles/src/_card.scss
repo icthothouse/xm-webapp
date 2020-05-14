@@ -1,0 +1,13 @@
+$xm-card-margin: 16px !default;
+
+@mixin xm-card($theme) {
+  .card {
+    margin-bottom: $xm-card-margin;
+    margin-top:    $xm-card-margin;
+
+    // Backward compatibility, for a vertical dots button
+    position:      relative;
+
+    @include xm-shadow-xs();
+  }
+}

@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/prefer-string-starts-ends-with */
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogRef } from '@angular/material/dialog';
+import { NoDataModule } from '@xm-ngx/components/no-data';
+import { EntityStateModule } from '@xm-ngx/entity/entity-state';
+import { XmSharedModule } from '@xm-ngx/shared';
+
 import { Observable, Subject } from 'rxjs';
 import { map, startWith, tap } from 'rxjs/operators';
 import { NextSpec, XmEntitySpec } from '..';
@@ -25,7 +29,7 @@ export class StatesManagementDialogComponent implements OnInit {
 
     constructor(
         private xmEntitySpecWrapperService: XmEntitySpecWrapperService,
-        private activeModal: NgbActiveModal,
+        private activeModal: MatDialogRef<StatesManagementDialogComponent>,
     ) {
     }
 
@@ -86,11 +90,21 @@ export class StatesManagementDialogComponent implements OnInit {
     }
 
     public onCancel(): void {
-        this.activeModal.dismiss('cancel');
+        this.activeModal.close(false);
     }
 
     private _filterSpec(value: string): XmEntitySpec[] {
         return this.specs
             .filter((option) => option.key.toLowerCase().indexOf(value.toLowerCase()) === 0);
     }
+}
+
+@NgModule({
+    imports: [XmSharedModule, NoDataModule, EntityStateModule],
+    exports: [StatesManagementDialogComponent],
+    declarations: [StatesManagementDialogComponent],
+    entryComponents: [StatesManagementDialogComponent],
+    providers: [],
+})
+export class StatesManagementDialogModule {
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { VERSION } from '../../../app/xm.constants';
+import { VERSION } from '../../xm.constants';
 
 const THEME_STARTEGY = {
     DEFAULT: 'THEME',
@@ -9,7 +9,7 @@ const THEME_STARTEGY = {
     TENANT_ONLY: 'TENANT_ONLY',
 };
 const DEFAULT_THEME_NAME = 'teal';
-const DEFAULT_THEME = `/assets/css/themes/material-${DEFAULT_THEME_NAME}.css`;
+const DEFAULT_THEME = `/assets/themes/${DEFAULT_THEME_NAME}.css`;
 
 @Injectable()
 export class XmApplicationConfigService {
@@ -30,6 +30,10 @@ export class XmApplicationConfigService {
         return this.http.get(this.configUrl).toPromise().then((data: any) => {
             this.appConfig = data;
             if (data) {
+                if (!data.theme) {
+                    this.setResolved(true);
+                    return;
+                }
                 const themeName = data.theme ? data.theme : DEFAULT_THEME_NAME;
                 const themeStrategy = data.themeStrategy ? data.themeStrategy : THEME_STARTEGY.DEFAULT;
                 const themePath = this.resolveThemePath(themeStrategy, themeName);
@@ -80,7 +84,7 @@ export class XmApplicationConfigService {
         if (THEME_STARTEGY.TENANT_ONLY === strategy) {
             return `/assets/css/ext/${themeName}.css`;
         } else {
-            return `/assets/css/themes/material-${themeName}.css`;
+            return `/assets/themes/${themeName}.css`;
         }
     }
 

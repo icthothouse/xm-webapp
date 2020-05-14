@@ -1,15 +1,15 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { JhiEventManager } from 'ng-jhipster';
+import { XmAlertService } from '@xm-ngx/alert';
+import { XmEventManager } from '@xm-ngx/core';
+import { XmToasterService } from '@xm-ngx/toaster';
 
-import { Principal } from '../../shared/auth/principal.service';
 import { saveFile, saveFileFromUrl } from '../../shared/helpers/file-download-helper';
 import { AttachmentSpec } from '../shared/attachment-spec.model';
 import { Attachment } from '../shared/attachment.model';
 import { AttachmentService } from '../shared/attachment.service';
 
-declare let swal: any;
 
 @Component({
     selector: 'xm-attachment-card',
@@ -29,9 +29,10 @@ export class AttachmentCardComponent implements OnInit {
         'dwg', 'gz', 'jpg', 'pdf', 'psd', 'tiff'];
 
     constructor(private attachmentService: AttachmentService,
-                private eventManager: JhiEventManager,
-                private translateService: TranslateService,
-                public principal: Principal) {
+                private alertService: XmAlertService,
+                private toasterService: XmToasterService,
+                private eventManager: XmEventManager,
+                private translateService: TranslateService) {
     }
 
     public ngOnInit(): void {
@@ -100,24 +101,24 @@ export class AttachmentCardComponent implements OnInit {
     }
 
     public onRemove(): void {
-        swal({
-            title: this.translateService.instant('xm-entity.attachment-card.delete.title'),
+        this.alertService.open({
+            title: 'xm-entity.attachment-card.delete.title',
             showCancelButton: true,
             buttonsStyling: false,
-            confirmButtonClass: 'btn mat-raised-button btn-primary',
-            cancelButtonClass: 'btn mat-raised-button',
-            confirmButtonText: this.translateService.instant('xm-entity.attachment-card.delete.button'),
+            confirmButtonClass: 'btn mat-button btn-primary',
+            cancelButtonClass: 'btn mat-button',
+            confirmButtonText: 'xm-entity.attachment-card.delete.button',
             cancelButtonText: this.translateService.instant('xm-entity.attachment-card.delete.button-cancel'),
-        }).then((result) => {
+        }).subscribe((result) => {
             if (result.value) {
                 this.attachmentService.delete(this.attachment.id).subscribe(
                     () => {
                         this.eventManager.broadcast({
                             name: 'attachmentListModification',
                         });
-                        this.alert('success', 'xm-entity.attachment-card.delete.remove-success');
+                        this.toasterService.success('xm-entity.attachment-card.delete.remove-success');
                     },
-                    () => this.alert('error', 'xm-entity.attachment-card.delete.remove-error'),
+                    () => this.toasterService.error('xm-entity.attachment-card.delete.remove-error'),
                 );
             }
         });
@@ -133,15 +134,6 @@ export class AttachmentCardComponent implements OnInit {
         const blob = new Blob([ab], {type: body.valueContentType});
         const filename = body.contentUrl;
         saveFile(blob, filename, body.valueContentType);
-    }
-
-    private alert(type: string, key: string): void {
-        swal({
-            type,
-            text: this.translateService.instant(key),
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-primary',
-        });
     }
 
 }

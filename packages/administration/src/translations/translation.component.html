@@ -1,0 +1,148 @@
+<div class="row">
+  <div class="col-md-12 text-center">
+    <span>
+      <button (click)="zipTranslations()"
+              class="btn"
+              color="primary"
+              mat-button
+              type="submit">Upload result</button>
+    </span>
+    <span>
+      <button (click)="resetLocalStorage()"
+              class="btn"
+              color="primary"
+              mat-button
+              type="submit">Reset local storage</button>
+    </span>
+    <span *ngFor="let lang of settings.langs">
+      <button (click)="translateAllTo(lang)"
+              *ngIf="lang != 'en'"
+              class="btn"
+              color="primary"
+              mat-button>
+        Translate ALL to {{lang}}</button>
+    </span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-icon card-header-primary">
+       <h4 class="card-title" jhiTranslate="global.menu.admin.translation"></h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-4">
+            <ul class="nav nav-pills flex-column">
+              <li *ngFor="let location of settings.locations; let first = first;" [class.active]="first">
+                <a data-toggle="tab" href="#function-{{location}}">{{location}}</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-8">
+            <div class="tab-content">
+              <div *ngFor="let location of settings.locations; let first = first;" [class.active]="first"
+                   class="tab-pane" id="function-{{location}}">
+                <span *ngFor="let lang of settings.langs">
+                  <button (click)="translateLocationTo(location, lang)"
+                          *ngIf="lang != 'en'"
+                          class="btn btn-sm"
+                          color="primary"
+                          mat-button>Translate {{location}} to {{lang}}</button>
+                </span>
+
+                <table class="table">
+                  <thead class="text-primary">
+                  <tr>
+                    <th>key</th>
+                    <th>translations</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let property of localization[location]">
+                    <td>{{property.property}}</td>
+                    <td>
+                      <table>
+                        <tbody>
+                        <tr (click)="startEdit(property)" *ngFor="let lang of settings.langs">
+                          <td>
+                            {{lang}}
+                          </td>
+                          <td>
+                            <span *ngIf="!property.editing">{{property.langs[lang]}}</span>
+                            <textarea (change)="onChangePropery($event, property, lang)"
+                                      *ngIf="property.editing"
+                                      rows="2"
+                                      style="width: 100%; height: 100%; min-width: 400px;"
+                            >{{property.langs[lang]}}</textarea>
+                          </td>
+                          <td>
+                            <a (click)="translate(property, lang)" *ngIf="lang!='en'">
+                              <i class="material-icons">g_translate</i>
+                            </a>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="missedTranslations.length > 0" class="row">
+  <div class="col-md-12">
+    <div class="card ui-specification">
+      <div class="card-header card-header-icon card-header-primary">
+        <h4 class="card-title">Missed location</h4>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead class="text-primary">
+          <tr>
+            <th>Key</th>
+            <th>Default value</th>
+            <th>Target files</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let missedTranslation of missedTranslations">
+            <td>{{missedTranslation.key}}</td>
+            <td>
+              {{missedTranslation.defaultValue}}
+            </td>
+
+            <td>
+              <ng-container *ngFor="let langFile of missedTranslation.langFiles;  let i = index;">
+                <div class="radio">
+                  <label>
+                    <input (click)="missedTranslation.targetFile = langFile" [name]="missedTranslation.key"
+                           checked="false"
+                           type="radio">
+                    {{langFile}}
+                  </label>
+                </div>
+
+                <button (click)="addTranslationToFile(i, missedTranslation)"
+                        *ngIf="missedTranslation.targetFile"
+                        color="primary"
+                        mat-button>Move to file
+                </button>
+              </ng-container>
+            </td>
+
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

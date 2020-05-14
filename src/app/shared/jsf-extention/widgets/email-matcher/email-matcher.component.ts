@@ -1,10 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { JsonSchemaFormService } from 'angular2-json-schema-form';
+import { JsonSchemaFormService } from '@ajsf/core';
 
 import { UUID } from 'angular2-uuid';
 import { debounceTime, tap } from 'rxjs/operators';
-import { Principal } from '../../../auth/principal.service';
 
 @Component({
     selector: 'xm-ajsf-email-matcher',
@@ -22,7 +21,7 @@ export class EmailMatcherComponent implements OnInit {
     public options: any;
     @Input() public layoutNode: any;
 
-    constructor(private jsf: JsonSchemaFormService, public principal: Principal) {
+    constructor(private jsf: JsonSchemaFormService) {
         this.controlNameOriginal = UUID.UUID();
         this.controlNameMatcher = UUID.UUID();
     }

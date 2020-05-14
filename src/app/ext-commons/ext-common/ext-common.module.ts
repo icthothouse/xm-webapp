@@ -1,9 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS, HttpClientJsonpModule } from '@angular/common/http';
+import { HttpClientJsonpModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
-
-import { AuthInterceptor } from '../../blocks/interceptor/auth.interceptor';
 import { XmSharedModule } from '../../shared/shared.module';
 import {
     ClockWidgetComponent,
@@ -38,31 +35,11 @@ import {
         WeatherWidgetComponent,
         WelcomeWidgetComponent,
     ],
-    entryComponents: [
-        ClockWidgetComponent,
-        ExchangeWidgetComponent,
-        IframeWidgetComponent,
-        MdWidgetComponent,
-        NewsWidgetComponent,
-        SignInUpWidgetComponent,
-        TwitterTimelineWidgetComponent,
-        WeatherWidgetComponent,
-        WelcomeWidgetComponent,
-    ],
     providers: [
         FeedService,
         FinanceService,
         TwitterTimelineService,
         WeatherService,
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: AuthInterceptor,
-            multi: true,
-            deps: [
-                LocalStorageService,
-                SessionStorageService,
-            ],
-        },
         {provide: 'xm-widget-clock', useValue: ClockWidgetComponent},
         {provide: 'xm-widget-exchange-calculator', useValue: ExchangeWidgetComponent},
         {provide: 'xm-widget-iframe', useValue: IframeWidgetComponent},

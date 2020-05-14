@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
-
-import { JhiEventManager } from 'ng-jhipster';
+import { XmEventManager } from '@xm-ngx/core';
+import { XmToasterService } from '@xm-ngx/toaster';
 import { finalize } from 'rxjs/operators';
 import { Principal } from '../../shared/auth/principal.service';
 import { buildJsfAttributes, nullSafe } from '../../shared/jsf-extention/jsf-attributes-helper';
@@ -10,7 +10,6 @@ import { EntityCardComponent } from '../entity-card/entity-card.component';
 import { RatingListSectionComponent } from '../rating-list-section/rating-list-section.component';
 import { XmEntityService } from '../shared/xm-entity.service';
 
-declare let swal: any;
 
 @Component({
     selector: 'xm-entity-card-compact',
@@ -29,9 +28,10 @@ export class EntityCardCompactComponent extends EntityCardComponent implements O
     public isDescFull: boolean;
 
     constructor(
-        protected modalService: NgbModal,
-        public principal: Principal,
-        protected eventManager: JhiEventManager,
+        protected modalService: MatDialog,
+        protected principal: Principal,
+        private toasterService: XmToasterService,
+        protected eventManager: XmEventManager,
         protected translateService: TranslateService,
         protected xmEntityService: XmEntityService,
     ) {
@@ -51,11 +51,11 @@ export class EntityCardCompactComponent extends EntityCardComponent implements O
                 (res) => {
                     this.eventManager.broadcast({name: 'xmEntityDetailModification', content: {entity: res.body}});
                     this.xmEntity = Object.assign(this.xmEntity, res.body);
-                    this.alert('success', 'xm-entity.entity-data-card.update-success');
+                    this.toasterService.success('xm-entity.entity-data-card.update-success');
                 },
                 (err) => {
                     if (!this.preventDefaultUpdateError) {
-                        this.alert('error', 'xm-entity.entity-data-card.update-error');
+                        this.toasterService.error('xm-entity.entity-data-card.update-error');
                     } else {
                         this.onSaveError.emit(err);
                     }
@@ -68,15 +68,6 @@ export class EntityCardCompactComponent extends EntityCardComponent implements O
             this.jsfAttributes = buildJsfAttributes(this.xmEntitySpec.dataSpec, this.xmEntitySpec.dataForm);
             this.jsfAttributes.data = Object.assign(nullSafe(this.jsfAttributes.data), nullSafe(this.xmEntity.data));
         }
-    }
-
-    protected alert(type: string, key: string): void {
-        swal({
-            type,
-            text: this.translateService.instant(key),
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-primary',
-        });
     }
 
 }

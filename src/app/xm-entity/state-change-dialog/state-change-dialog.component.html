@@ -1,30 +1,29 @@
 <form (ngSubmit)="onChangeState()" class="m-0" name="changeStateForm">
-  <div class="modal-header">
-    <a (click)="onCancel()" class="modal-close material-icons" href="javascript: void(0);">close</a>
-    <h4 [innerHTML]="dialogTitle | i18nName : principal" class="modal-title text-left"></h4>
+  <div mat-dialog-title>
+    <h4 [innerHTML]="dialogTitle | translate" class="modal-title text-left"></h4>
   </div>
-  <div class="modal-body">
+  <div mat-dialog-content>
     <xm-loader [showLoader]="showLoader"></xm-loader>
     <json-schema-form (formLayout)="jsfAttributes.formLayout"
                       (isValid)="isJsonFormValid = $event"
                       (onChanges)="onChangeForm($event)"
                       *ngIf="xmEntity && jsfAttributes?.schema"
                       [data]="jsfAttributes.data"
-                      [form]="jsfAttributes.form | i18nJsf :principal"
+                      [form]="jsfAttributes.form | i18nJsf"
                       [framework]="'material-design'"
-                      [layout]="jsfAttributes.layout | i18nJsf :principal"
-                      [options]="jsfAttributes.options | i18nJsf :principal"
+                      [layout]="jsfAttributes.layout | i18nJsf"
+                      [options]="jsfAttributes.options | i18nJsf"
                       [schema]="jsfAttributes.schema"
                       [widgets]="jsfAttributes.widgets"
                       class="json-form-hide-submit">
     </json-schema-form>
   </div>
-  <div class="modal-footer">
-    <button (click)="onCancel()" class="btn mr-1" data-dismiss="modal" mat-raised-button type="button">
+  <div mat-dialog-actions>
+    <button (click)="onCancel()" class="btn mr-1 ml-auto" data-dismiss="modal" mat-button type="button">
       <span jhiTranslate="xm-entity.common.cancel">Cancel</span>
     </button>
-    <button [disabled]="showLoader || !isJsonFormValid" class="btn btn-primary" mat-raised-button type="submit">
-      <span>{{buttonTitle | i18nName : principal}}</span>
+    <button [disabled]="showLoader || !isJsonFormValid" color="primary" mat-button type="submit">
+      <span>{{buttonTitle | translate}}</span>
     </button>
   </div>
 </form>

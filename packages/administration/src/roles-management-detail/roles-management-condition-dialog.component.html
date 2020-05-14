@@ -1,0 +1,50 @@
+<div mat-dialog-title>
+  <h4 class="modal-title text-left">
+    <span *ngIf="isAddMode" jhiTranslate="rolesManagement.permission.createCondition">Create Condition</span>
+    <span *ngIf="!isAddMode" jhiTranslate="rolesManagement.permission.editCondition">Edit Condition</span>
+  </h4>
+</div>
+
+<div mat-dialog-content>
+  <form #editForm="ngForm" (ngSubmit)="onSave()" class="m-0" name="deleteForm" novalidate>
+    <p jhiTranslate="{{transInfo}}"></p>
+
+    <div class="form-group">
+      <mat-form-field>
+        <input [value]="permission.privilegeKey"
+               disabled
+               matInput
+               placeholder="{{'rolesManagement.permission.privilegeKey' | translate}}"
+               type="text">
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field>
+            <textarea [(ngModel)]="condition"
+                      [wordAutocomplete]="variables"
+                      id="condition"
+                      matInput
+                      name="condition"
+                      placeholder="{{'rolesManagement.permission.condition' | translate}}"
+                      rows="4"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <label>
+        <span jhiTranslate="rolesManagement.variables">Variable(s)</span>:
+        <span *ngFor="let item of variables; last as last">{{item}}<span *ngIf="!last">, </span></span>
+      </label>
+    </div>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button (click)="onCancel()" class="btn mr-1 ml-auto" data-dismiss="modal" mat-button type="button">
+    <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+  </button>
+  <button color="primary" (click)="onSave()" mat-button type="submit">
+    <i class="material-icons">done</i>&nbsp;<span jhiTranslate="rolesManagement.ok">Ok</span>
+  </button>
+</div>

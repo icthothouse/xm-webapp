@@ -1,8 +1,6 @@
 <div class="location-detail-dialog">
   <form (ngSubmit)="onConfirmSave()" *ngIf="xmEntity" [formGroup]="form">
-    <div class="modal-header">
-      <a (click)="onCancel()" class="modal-close material-icons" href="javascript: void(0);">close</a>
-
+    <div mat-dialog-title>
       <h4 class="modal-title text-left">
         <span jhiTranslate="{{form.value.id ? 'xm-entity.location-detail-dialog.edit.title' : 'xm-entity.location-detail-dialog.add.title'}}">
           {{ form.value.id ? 'Edit a location for the' : 'Add a new location for the' }}
@@ -12,7 +10,7 @@
       </h4>
     </div>
 
-    <div class="modal-body">
+    <div mat-dialog-content>
       <xm-loader [showLoader]="showLoader"></xm-loader>
 
       <input
@@ -32,7 +30,7 @@
               placeholder="{{'xm-entity.location-detail-dialog.choose-type' | translate}}"
             >
               <mat-option *ngFor="let locationSpec of locationSpecs" [value]="locationSpec.key">
-                {{(locationSpec.name | i18nName: principal).toUpperCase()}}
+                {{(locationSpec.name | translate | uppercase)}}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -151,7 +149,7 @@
           <button
             (click)="applyCoordinates()"
             [disabled]="coordinatesInvalid"
-            class="btn btn-primary btn-icon btn-just-icon btn-round"
+            class="btn btn-primary btn-icon btn-just-icon rounded-circle"
             mat-icon-button
             type="button"
           >
@@ -168,11 +166,11 @@
         </div>
       </div>
     </div>
-    <div class="modal-footer">
-      <button (click)="onCancel()" class="btn mr-1" data-dismiss="modal" mat-raised-button type="button">
+    <div mat-dialog-actions>
+      <button (click)="onCancel()" class="btn mr-1 ml-auto" data-dismiss="modal" mat-button type="button">
         <span jhiTranslate="xm-entity.common.cancel">Cancel</span>
       </button>
-      <button [disabled]="!form.valid || showLoader" class="btn btn-primary" mat-raised-button type="submit">
+      <button [disabled]="!form.valid || showLoader" color="primary" mat-button type="submit">
         <span jhiTranslate="xm-entity.common.save">Save</span>
       </button>
     </div>

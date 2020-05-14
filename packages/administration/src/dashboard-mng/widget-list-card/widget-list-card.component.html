@@ -1,0 +1,51 @@
+<div class="row mb-5">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-icon card-header-primary">
+        <h4 class="card-title" jhiTranslate="admin-config.widget-list-card.title">Widgets</h4>
+      </div>
+
+      <div class="card-body">
+        <xm-loader [showLoader]="showLoader"></xm-loader>
+        <div *ngIf="list?.length" class="material-datatables table-responsive">
+          <table cellspacing="0" class="table table-striped table-no-bordered table-hover" id="datatables" width="100%">
+            <thead>
+            <tr [(ascending)]="reverse" [(predicate)]="predicate" [callback]="transition.bind(this)" jhiSort>
+              <th><span jhiTranslate="admin-config.common.fields.id">ID</span> <span class="fa fa-sort"></span></th>
+              <th><span jhiTranslate="admin-config.common.fields.selector">Selector</span>
+                <span class="fa fa-sort"></span></th>
+              <th><span jhiTranslate="admin-config.common.fields.name"></span> <span class="fa fa-sort"></span></th>
+              <th><span jhiTranslate="admin-config.common.fields.config"></span> <span class="fa fa-sort"></span></th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let widget of list; trackBy: trackIdentity">
+              <td>{{widget.id}}</td>
+              <td>{{widget.selector}}</td>
+              <td>{{widget.name}}</td>
+              <td>{{!!widget.config}}</td>
+              <td class="text-right">
+                <a (click)="onEdit(widget)" href="javascript: void(0);">
+                  <i class="material-icons">edit</i>
+                </a>
+                <a (click)="deleteItem(widget)" href="javascript: void(0);">
+                  <i class="material-icons">close</i>
+                </a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <no-data [show]="!list?.length"></no-data>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="xm-fab">
+  <button (click)="onAddNew()" class="btn btn-primary btn-icon btn-just-icon rounded-circle btn-lg" mat-button>
+    <i class="material-icons">add</i>
+  </button>
+</div>

@@ -3,7 +3,7 @@
     <div class="card-icon">
       <i class="material-icons">{{isBackLink ? 'link' : linkSpec.model.icon}}</i>
     </div>
-    <h4 class="card-title">{{linkSpec.model.name | i18nName: principal}}</h4>
+    <h4 class="card-title">{{linkSpec.model.name | translate}}</h4>
   </div>
 
   <div class="card-body">
@@ -11,15 +11,17 @@
       <div *ngIf="modes.length > 1" class="btn-group">
         <button (click)="mode = 'list';"
                 [disabled]="mode === 'list'"
-                class="btn btn-primary btn-sm btn-round"
-                mat-raised-button
+                class="btn rounded-circle"
+                color="primary"
+                mat-flat-button
                 type="button">
           <span jhiTranslate="xm-entity.link-list-card.list-view">List view</span>
         </button>
         <button (click)="mode = 'tree';"
                 [disabled]="mode === 'tree'"
-                class="btn btn-primary btn-sm btn-round"
-                mat-raised-button
+                class="btn rounded-circle"
+                mat-flat-button
+                color="primary"
                 type="button">
           <span jhiTranslate="xm-entity.link-list-card.tree-view">Tree view</span>
         </button>
@@ -32,7 +34,7 @@
         <tr>
           <th></th>
           <th *ngFor="let field of fields">
-            <span>{{field.title | i18nName :principal}}</span>
+            <span>{{field.title | translate}}</span>
           </th>
           <th *ngIf="!isBackLink"></th>
         </tr>

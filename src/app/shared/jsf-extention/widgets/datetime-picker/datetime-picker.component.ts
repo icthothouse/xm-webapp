@@ -1,10 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { JsonSchemaFormService } from 'angular2-json-schema-form';
+import { JsonSchemaFormService } from '@ajsf/core';
 import { DateTimeAdapter, OwlDateTimeIntl } from 'ng-pick-datetime';
 
-import { Principal } from '../../../auth/principal.service';
-import { ModulesLanguageHelper } from '../../../language/modules-language.helper';
+import { ModulesLanguageHelper } from '@xm-ngx/components/language';
 import { DatetimePickerOptionsModel } from './datetime-picker-options.model';
 
 declare let moment;
@@ -27,8 +26,7 @@ export class DatetimePickerComponent implements OnInit {
                 private translateService: TranslateService,
                 private dateTimeAdapter: DateTimeAdapter<any>,
                 private dateTimeAdapterLabels: OwlDateTimeIntl,
-                private modulesLanguageHelper: ModulesLanguageHelper,
-                public principal: Principal) {
+                private modulesLanguageHelper: ModulesLanguageHelper) {
         this.dateTimeAdapter.setLocale(this.modulesLanguageHelper.getLangKey());
     }
 

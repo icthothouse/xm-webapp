@@ -1,17 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateService } from '@ngx-translate/core';
-import { JhiEventManager } from 'ng-jhipster';
-import { finalize } from 'rxjs/operators';
+import { MatDialogRef } from '@angular/material/dialog';
 
-import { Principal } from '../../shared/auth/principal.service';
-import { ContextService } from '../../shared/context/context.service';
+import { XmAlertService } from '@xm-ngx/alert';
+import { XmToasterService } from '@xm-ngx/toaster';
+import { finalize } from 'rxjs/operators';
 import { buildJsfAttributes } from '../../shared/jsf-extention/jsf-attributes-helper';
 import { NextSpec } from '../shared/state-spec.model';
 import { XmEntity } from '../shared/xm-entity.model';
 import { XmEntityService } from '../shared/xm-entity.service';
 
-declare let swal: any;
 declare let $: any;
 
 @Component({
@@ -31,19 +28,13 @@ export class StateChangeDialogComponent implements OnInit {
     public showLoader: boolean;
     public isJsonFormValid: boolean = true;
 
-    constructor(private activeModal: NgbActiveModal,
+    constructor(private activeModal: MatDialogRef<StateChangeDialogComponent>,
                 private xmEntityService: XmEntityService,
-                private translateService: TranslateService,
-                // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-                // @ts-ignore
-                private eventManager: JhiEventManager,
-                private contextService: ContextService,
-                public principal: Principal) {
+                private alertService: XmAlertService,
+                private toasterService: XmToasterService) {
     }
 
     public ngOnInit(): void {
-        // TODO: this is workaround to get eventManager from root injector
-        this.eventManager = this.contextService.eventManager;
         // TODO think about correct way to work with context
         $.xmEntity = this.xmEntity;
         if (this.nextSpec && this.nextSpec.inputSpec) {
@@ -61,41 +52,31 @@ export class StateChangeDialogComponent implements OnInit {
             (r) => {
                 this.onSuccessFunctionCall(r);
             },
-            () => this.alert('error', 'xm-entity.function-list-card.change-state.error'),
+            () => this.toasterService.error('xm-entity.function-list-card.change-state.error'),
         );
-
     }
 
     public onSuccessFunctionCall(r: any): void {
         const data = r.body;
         if (data && this.nextSpec.showResponse) {
-            swal({
+            this.alertService.open({
                 type: 'success',
                 html: `<pre style="text-align: left"><code>${JSON.stringify(data, null, '  ')}</code></pre>`,
                 buttonsStyling: false,
                 confirmButtonClass: 'btn btn-primary',
-            });
+            }).subscribe();
         } else {
-            this.alert('success', 'xm-entity.function-list-card.change-state.success');
+            this.toasterService.success('xm-entity.function-list-card.change-state.success');
         }
-        this.activeModal.dismiss('OK');
+        this.activeModal.close('OK');
     }
 
     public onCancel(): void {
-        this.activeModal.dismiss('cancel');
+        this.activeModal.close(false);
     }
 
     public onChangeForm(data: any): void {
         this.formData = data;
-    }
-
-    private alert(type: string, key: string): void {
-        swal({
-            type,
-            text: this.translateService.instant(key),
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-primary',
-        });
     }
 
 }

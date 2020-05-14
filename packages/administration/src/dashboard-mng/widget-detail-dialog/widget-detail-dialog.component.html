@@ -1,0 +1,71 @@
+<form #widgetForm="ngForm" (ngSubmit)="onConfirmSave()" class="m-0" name="widgetForm" novalidate role="form">
+  <div mat-dialog-title>
+    <h4 *ngIf="!widget.id" class="modal-title text-left">
+      <span jhiTranslate="admin-config.widget-detail-dialog.add.title">Add a new widget</span>
+    </h4>
+    <h4 *ngIf="widget.id" class="modal-title text-left">
+      <span jhiTranslate="admin-config.widget-detail-dialog.edit.title">Edit a widget</span>
+    </h4>
+  </div>
+  <div mat-dialog-content>
+    <xm-loader [showLoader]="showLoader"></xm-loader>
+
+    <input *ngIf="widget.id" [(ngModel)]="widget.id" class="form-control" id="id" name="id" readonly
+           type="hidden"/>
+
+    <div class="form-group">
+      <mat-form-field>
+        <input #widgetSelector="ngModel"
+               [(ngModel)]="widget.selector"
+               matInput
+               name="selector"
+               placeholder="{{'admin-config.common.fields.selector' | translate}}"
+               required
+               type="text">
+        <mat-error *ngIf="widgetSelector.hasError('required')">
+          <span jhiTranslate="xm-entity.common.validation.required">This field is required.</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group label-floating">
+      <mat-form-field>
+        <input #widgetName="ngModel"
+               [(ngModel)]="widget.name"
+               matInput
+               name="name"
+               placeholder="{{'admin-config.common.fields.name' | translate}}"
+               required
+               type="text">
+        <mat-error *ngIf="widgetName.hasError('required')">
+          <span jhiTranslate="xm-entity.common.validation.required">This field is required.</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" jhiTranslate="admin-config.common.fields.config">Config</label>
+      <div (textChanged)="onConfigChange($event)"
+           [autoUpdateContent]="true"
+           [mode]="'json'"
+           [readOnly]="false"
+           [style.min-height]="'200px'"
+           [style.width]="'100%'"
+           [text]="configStringIn"
+           xmAceEditor>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button (click)="onCancel()" class="btn mr-1 ml-auto" data-dismiss="modal" mat-button type="button">
+      <span jhiTranslate="admin-config.common.cancel">Cancel</span>
+    </button>
+    <button [disabled]="widgetForm.form.invalid || showLoader"
+            color="primary"
+            class="btn"
+            mat-button
+            type="submit">
+      <span jhiTranslate="admin-config.common.save">Save</span>
+    </button>
+  </div>
+</form>

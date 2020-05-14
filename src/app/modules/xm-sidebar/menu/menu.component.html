@@ -1,0 +1,45 @@
+<ng-container *ngFor="let category of categories$ | async">
+
+  <!-- category-link -->
+  <ng-template #categoryLink>
+    <div (submit)="toggleMenu(category)"
+         *permitted="category.permission"
+         [item]="category"
+         xm-menu-link>
+    </div>
+  </ng-template>
+
+  <!-- category list -->
+  <ng-container *ngIf="!category.isLink ; else categoryLink">
+    <ng-container *ngIf="category?.children?.length">
+
+      <div (click)="toggleMenu(category)"
+           *permitted="category.permission"
+           (keyup.enter)="toggleMenu(category)"
+           [ngClass]="getCategoryState(category)"
+           class="menu-title menu-link"
+           role="button"
+           tabindex="0">
+        <mat-icon class="menu-icon">{{category.icon}}</mat-icon>
+        <span>{{category.title | translate}}</span>
+        <i [@indicatorRotate]="getCategoryState(category)"
+           class="mat-expansion-indicator"></i>
+      </div>
+
+      <ul [@bodyExpansion]="getCategoryState(category)"
+          [ngClass]="getCategoryState(category)"
+          class="menu-list">
+        <ng-container *ngFor="let item of category.children">
+          <li *permitted="item.permission"
+              [item]="item"
+              class="menu-item {{ item.class }}"
+              xm-menu-link>
+          </li>
+        </ng-container>
+      </ul>
+
+    </ng-container>
+  </ng-container>
+  <!-- ./category list -->
+
+</ng-container>

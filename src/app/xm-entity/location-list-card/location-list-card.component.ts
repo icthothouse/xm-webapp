@@ -1,11 +1,12 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
-import { JhiEventManager } from 'ng-jhipster';
+import { XmAlertService } from '@xm-ngx/alert';
+import { XmEventManager } from '@xm-ngx/core';
+import { XmToasterService } from '@xm-ngx/toaster';
 
 import { Subscription } from 'rxjs';
-import { Principal } from '../../shared/auth/principal.service';
 import { LocationDetailDialogComponent } from '../location-detail-dialog/location-detail-dialog.component';
 import { LocationSpec } from '../shared/location-spec.model';
 import { Location } from '../shared/location.model';
@@ -15,7 +16,6 @@ import { XmEntityService } from '../shared/xm-entity.service';
 
 declare let $: any;
 declare let google: any;
-declare let swal: any;
 
 @Component({
     selector: 'xm-location-list-card',
@@ -54,10 +54,11 @@ export class LocationListCardComponent implements OnInit, OnChanges, OnDestroy {
 
     constructor(private xmEntityService: XmEntityService,
                 private locationService: LocationService,
-                private modalService: NgbModal,
-                private eventManager: JhiEventManager,
-                private translateService: TranslateService,
-                public principal: Principal) {
+                private modalService: MatDialog,
+                private eventManager: XmEventManager,
+                private alertService: XmAlertService,
+                private toasterService: XmToasterService,
+                private translateService: TranslateService) {
     }
 
     public ngOnInit(): void {
@@ -109,31 +110,31 @@ export class LocationListCardComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     public onManage(location: any): void {
-        const modalRef = this.modalService.open(LocationDetailDialogComponent, {size: 'lg', backdrop: 'static'});
+        const modalRef = this.modalService.open(LocationDetailDialogComponent, {width: '500px'});
         modalRef.componentInstance.xmEntity = this.xmEntity;
         modalRef.componentInstance.locationSpecs = this.locationSpecs;
         modalRef.componentInstance.location = Object.assign({}, location);
     }
 
     public onRemove(location: Location): void {
-        swal({
-            title: this.translateService.instant('xm-entity.location-list-card.delete.title'),
+        this.alertService.open({
+            title: 'xm-entity.location-list-card.delete.title',
             showCancelButton: true,
             buttonsStyling: false,
-            confirmButtonClass: 'btn mat-raised-button btn-primary',
-            cancelButtonClass: 'btn mat-raised-button',
-            confirmButtonText: this.translateService.instant('xm-entity.location-list-card.delete.button'),
+            confirmButtonClass: 'btn mat-button btn-primary',
+            cancelButtonClass: 'btn mat-button',
+            confirmButtonText: 'xm-entity.location-list-card.delete.button',
             cancelButtonText: this.translateService.instant('xm-entity.location-list-card.delete.button-cancel'),
-        }).then((result) => {
+        }).subscribe((result) => {
             if (result.value) {
                 this.locationService.delete(location.id).subscribe(
                     () => {
                         this.eventManager.broadcast({
                             name: 'locationListModification',
                         });
-                        this.alert('success', 'xm-entity.location-list-card.delete.remove-success');
+                        this.toasterService.success('xm-entity.location-list-card.delete.remove-success');
                     },
-                    () => this.alert('error', 'xm-entity.location-list-card.delete.remove-error'),
+                    () => this.toasterService.error('xm-entity.location-list-card.delete.remove-error'),
                 );
             }
         });
@@ -154,15 +155,6 @@ export class LocationListCardComponent implements OnInit, OnChanges, OnDestroy {
                     this.locations = [...xmEntity.body.locations];
                 }
             });
-    }
-
-    private alert(type: string, key: string): void {
-        swal({
-            type,
-            text: this.translateService.instant(key),
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-primary',
-        });
     }
 
 }

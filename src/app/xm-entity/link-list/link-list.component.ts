@@ -1,10 +1,9 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
-
-import { JhiEventManager } from 'ng-jhipster';
+import { XmEventManager } from '@xm-ngx/core';
 import { Observable, of, Subscription } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { Principal } from '../../shared';
+import { Principal } from '@xm-ngx/core/auth';
 import { FullLinkSpec, LinkSpec } from '../shared/link-spec.model';
 import { Link } from '../shared/link.model';
 import { XmEntity } from '../shared/xm-entity.model';
@@ -25,7 +24,7 @@ export class LinkListComponent implements OnDestroy, OnChanges {
     private modificationSubscription: Subscription;
 
     constructor(private xmEntityService: XmEntityService,
-                private eventManager: JhiEventManager,
+                private eventManager: XmEventManager,
                 private principal: Principal) {
         this.registerModificationSubscription();
     }

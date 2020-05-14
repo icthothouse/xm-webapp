@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { JhiEventManager } from 'ng-jhipster';
+import { XmEventManager } from '@xm-ngx/core';
 import { Subscription } from 'rxjs';
-import { Principal } from '../../shared/auth/principal.service';
+import { Principal } from '@xm-ngx/core/auth';
 import { XM_EVENT_LIST } from '../../xm.constants';
 import { ProfileInfo } from './profile-info.model';
 import { ProfileService } from './profile.service';
@@ -14,6 +14,7 @@ import { ProfileService } from './profile.service';
     styleUrls: [
         'page-ribbon.css',
     ],
+    providers: [ProfileService],
 })
 export class PageRibbonComponent implements OnInit, OnDestroy {
 
@@ -24,7 +25,7 @@ export class PageRibbonComponent implements OnInit, OnDestroy {
     constructor(
         private principal: Principal,
         private profileService: ProfileService,
-        private eventManager: JhiEventManager,
+        private eventManager: XmEventManager,
     ) {
         this.registerChangeAuth();
     }

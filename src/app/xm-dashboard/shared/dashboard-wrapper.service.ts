@@ -1,83 +1,106 @@
 import { Injectable } from '@angular/core';
-
-import { from, iif, Observable, of } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
-import { Dashboard } from './dashboard.model';
+import { RequestCache, RequestCacheFactoryService } from '@xm-ngx/core';
+import * as _ from 'lodash';
+import { MonoTypeOperatorFunction, Observable, of, throwError } from 'rxjs';
+import { catchError, map, pluck, shareReplay, switchMap, take } from 'rxjs/operators';
+import { Dashboard, DashboardWithWidgets } from './dashboard.model';
 import { DashboardService } from './dashboard.service';
 
 @Injectable()
 export class DashboardWrapperService {
 
-    private promise: Promise<Dashboard[]>;
-    private _dashboards: Dashboard[];
+    private _dashboards: RequestCache<Dashboard[]>;
+    private dashboardsWithWidgetsCache: { [id: number]: Observable<DashboardWithWidgets> } = {};
 
-    constructor(private dashboardService: DashboardService) {
+    constructor(private cacheFactoryService: RequestCacheFactoryService,
+                private dashboardService: DashboardService) {
+        this._dashboards = this.cacheFactoryService.create<Dashboard[]>({
+            request: () => this.loadDashboards(),
+            onlyWithUserSession: true,
+        });
     }
 
-    // tslint:disable-next-line:cognitive-complexity
-    public dashboards(force: boolean = false, mockDashboards: boolean = false): Promise<Dashboard[]> {
-        if (!environment.production) { console.info(`DBG Get dashboards: ${force}`); }
-        if (!force && this.promise) {
-            return this.promise;
-        } else {
-            return this.promise = new Promise((resolve, reject) => {
-                if (force === true) {
-                    this._dashboards = undefined;
-                }
-
-                // check and see if we have retrieved the dashboards data from the server.
-                // if we have, reuse it by immediately resolving
-                if (this._dashboards) {
-                    this.promise = null;
-                    resolve(this._dashboards);
-                    return;
-                }
-
-                // retrieve the dashboards data from the server, update the dashboardList object, and then resolve.
-                this.dashboardService.query().toPromise().then((dashboardList) => {
-                    this.promise = null;
-                    if (dashboardList.body) {
-                        this._dashboards = dashboardList.body;
-                    } else {
-                        this._dashboards = null;
-                    }
-                    resolve(this._dashboards);
-                }).catch((err) => {
-                    this.promise = null;
-                    if (mockDashboards) {
-                        this._dashboards = [];
-                        resolve(this._dashboards);
-                    } else {
-                        this._dashboards = null;
-                        throw (err);
-                    }
-                });
-            });
-        }
+    public dashboards$(): Observable<Dashboard[] | null> {
+        return this._dashboards.get();
     }
 
-    public getDashboardByIdOrSlug(idOrSlug: number | string,
-                                  force: boolean = false): Observable<Dashboard | undefined> {
+    public getBySlug(slug: string): Observable<DashboardWithWidgets | null> {
+        return this.dashboards$().pipe(
+            map<Dashboard[] | null, Dashboard[]>((ds) => ds || []),
+            map((ds) => ds.find((d) => (d.config && d.config.slug === slug))),
+            this.getFromCacheOrLoad(),
+        );
+    }
 
-        const predicate = (d: Dashboard) => (d.config && d.config.slug === idOrSlug) ||
-            d.id === parseInt(idOrSlug as string, 10);
+    public forceReload(): void {
+        this._dashboards.forceReload();
+    }
 
-        const getDash = (dashboards: Dashboard[]) => dashboards.filter(predicate).shift();
+    public getById(id: number): Observable<DashboardWithWidgets | null> {
+        return this.dashboards$().pipe(
+            map<Dashboard[] | null, Dashboard[]>((ds) => ds || []),
+            map((ds) => ds.find((d) => (d.id === id))),
+            this.getFromCacheOrLoad(),
+        );
+    }
 
-        // if present, use existing
-        if (!force && this._dashboards && this._dashboards.length) {
-            return of(getDash(this._dashboards));
-        }
+    public getByIdOrSlug(idOrSlug: number | string): Observable<DashboardWithWidgets | null> {
+        return this.dashboards$().pipe(
+            map<Dashboard[] | null, Dashboard[]>((ds) => ds || []),
+            map((ds) => ds.find((d) => (d.id === Number(idOrSlug)) || (d.config && d.config.slug === idOrSlug))),
+            this.getFromCacheOrLoad(),
+        );
+    }
 
-        // else, get dashboards and process result
-        return from(this.dashboards(force))
-            .pipe(
-                mergeMap((dashboards) => iif(
-                    () => dashboards && dashboards.length > 0,
-                    of(getDash(dashboards)),
-                    of(getDash([]))),
-                ));
+    /** @deprecated */
+    public dashboards(): Promise<Dashboard[]> {
+        return this.dashboards$().pipe(
+            take(1),
+            map((i) => _.cloneDeep(i)),
+        ).toPromise();
+    }
 
+    public getDashboardByIdOrSlug(idOrSlug: number | string): Observable<DashboardWithWidgets> {
+        return this.getByIdOrSlug(idOrSlug).pipe(
+            take(1),
+            map((i) => _.cloneDeep(i)),
+        );
+    }
+
+    private getFromCacheOrLoad<T>(): MonoTypeOperatorFunction<DashboardWithWidgets | null> {
+        return switchMap((d) => {
+            if (d && d.id) {
+                if (this.hasCache(d.id)) {
+                    return this.getFromCache(d.id);
+                }
+                return this.getAndCache(d.id);
+            } else {
+                return of(d);
+            }
+        });
+    }
+
+    private hasCache(id: number): boolean {
+        return Boolean(this.dashboardsWithWidgetsCache[id]);
+    }
+
+    private getFromCache(id: number): Observable<DashboardWithWidgets> {
+        return this.dashboardsWithWidgetsCache[id];
+    }
+
+    private getAndCache(id: number): Observable<DashboardWithWidgets> {
+        return this.dashboardsWithWidgetsCache[id] = this.dashboardService.find(id).pipe(
+            map((i) => i.body),
+            catchError((err) => {
+                delete this.dashboardsWithWidgetsCache;
+                return throwError(err);
+            }),
+            shareReplay(1),
+        );
+    }
+
+    private loadDashboards(): Observable<Dashboard[]> {
+        this.dashboardsWithWidgetsCache = {};
+        return this.dashboardService.query().pipe(pluck('body'));
     }
 }

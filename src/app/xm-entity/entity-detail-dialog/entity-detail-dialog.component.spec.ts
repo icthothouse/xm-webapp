@@ -2,16 +2,19 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { MatInputModule, MatSelectModule } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateModule } from '@ngx-translate/core';
-import { JhiAlertService, JhiConfigService, JhiDateUtils, JhiEventManager, JhiModuleConfig } from 'ng-jhipster';
-
+import { XmEventManager } from '@xm-ngx/core';
+import { XmSharedTestingModule } from '@xm-ngx/shared';
+import { XmToasterService } from '@xm-ngx/toaster';
+import { JhiConfigService, JhiDateUtils, JhiModuleConfig } from 'ng-jhipster';
 import { NgxWebstorageModule } from 'ngx-webstorage';
-import { XmEntityService } from '..';
 
+import { XmEntityService } from '..';
 import { AccountService } from '../../shared';
 import { Principal } from '../../shared/auth/principal.service';
 import { I18nJsfPipe } from '../../shared/language/i18n-jsf.pipe';
@@ -27,12 +30,12 @@ describe('Entity detail dialog Component', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
+                XmSharedTestingModule,
                 FormsModule,
                 MatSelectModule,
                 NoopAnimationsModule,
                 MatInputModule,
                 NgxWebstorageModule.forRoot(),
-                TranslateModule.forRoot(),
             ],
             declarations: [
                 EntityDetailDialogComponent,
@@ -40,17 +43,18 @@ describe('Entity detail dialog Component', () => {
                 I18nJsfPipe,
             ],
             providers: [
-                NgbActiveModal,
+                MatDialog,
+                {provide: MatDialogRef, useValue: {}},
                 XmEntityService,
                 I18nJsfPipe,
                 I18nNamePipe,
                 HttpClient,
                 HttpHandler,
                 JhiDateUtils,
-                JhiEventManager,
+                XmEventManager,
                 Principal,
                 AccountService,
-                JhiAlertService,
+                XmToasterService,
                 {
                     provide: JhiConfigService,
                     useValue: new JhiConfigService({defaultI18nLang: 'en', i18nEnabled: true}),
@@ -92,7 +96,9 @@ describe('Entity detail dialog Component', () => {
         component.nameValidPattern = PATTERN;
         fixture.detectChanges();
         component.xmEntity.name = '@w';
-        for (let i = 0; i < 100; i++) {tick(1); }
+        for (let i = 0; i < 100; i++) {
+            tick(1);
+        }
         fixture.detectChanges();
         element = fixture.debugElement.query(By.css('#field_name'));
         const classArr = element.nativeElement.classList;

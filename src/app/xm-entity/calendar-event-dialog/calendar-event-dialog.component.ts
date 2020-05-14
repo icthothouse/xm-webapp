@@ -1,11 +1,11 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateService } from '@ngx-translate/core';
+import { MatDialogRef } from '@angular/material/dialog';
+
+import { XmToasterService } from '@xm-ngx/toaster';
 import { JhiDateUtils } from 'ng-jhipster';
 import { finalize } from 'rxjs/operators';
 
-import { Principal } from '../../shared/auth/principal.service';
 import { CalendarSpec } from '../shared/calendar-spec.model';
 import { Calendar } from '../shared/calendar.model';
 import { CalendarService } from '../shared/calendar.service';
@@ -13,7 +13,6 @@ import { Event } from '../shared/event.model';
 import { EventService } from '../shared/event.service';
 import { XmEntity } from '../shared/xm-entity.model';
 
-declare let swal: any;
 
 @Component({
     selector: 'xm-calendar-event-dialog',
@@ -32,12 +31,11 @@ export class CalendarEventDialogComponent implements OnInit {
     public event: Event = {};
     public showLoader: boolean;
 
-    constructor(private activeModal: NgbActiveModal,
+    constructor(private activeModal: MatDialogRef<CalendarEventDialogComponent>,
                 private eventService: EventService,
                 private calendarService: CalendarService,
                 private dateUtils: JhiDateUtils,
-                private translateService: TranslateService,
-                public principal: Principal) {
+                private toasterService: XmToasterService) {
     }
 
     public ngOnInit(): void {
@@ -71,23 +69,14 @@ export class CalendarEventDialogComponent implements OnInit {
     }
 
     public onCancel(): void {
-        this.activeModal.dismiss('cancel');
+        this.activeModal.close(false);
     }
 
     private onSaveSuccess(calendarId: number, event: Event): void {
-        this.activeModal.dismiss(true);
-        this.alert('success', 'xm-entity.calendar-event-dialog.add.success');
+        this.activeModal.close(true);
+        this.toasterService.success('xm-entity.calendar-event-dialog.add.success');
         this.calendar.id = calendarId;
         this.onAddEvent(event);
-    }
-
-    private alert(type: string, key: string): void {
-        swal({
-            type,
-            text: this.translateService.instant(key),
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-primary',
-        });
     }
 
 }

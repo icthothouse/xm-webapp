@@ -1,24 +1,31 @@
-import { Injectable } from '@angular/core';
-import { JhiEventManager, JhiLanguageService } from 'ng-jhipster';
+import { Injectable, OnDestroy } from '@angular/core';
+import { XmEventManager } from '@xm-ngx/core';
+import { JhiLanguageService } from 'ng-jhipster';
+import { Subscription } from 'rxjs';
+
 import { XM_EVENT_LIST } from '../../../xm.constants';
-import { Principal } from '../../auth/principal.service';
+import { Principal } from '@xm-ngx/core/auth';
 import { XmConfigService } from '../../spec/config.service';
 import { UserLogin } from './user-login.model';
 
 @Injectable()
-export class UserLoginService {
+export class UserLoginService implements OnDestroy {
 
     private promise: Promise<any>;
     private allLogins: any = {};
-
+    private eventManagerSubscription: Subscription;
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private specService: XmConfigService,
-        private eventManager: JhiEventManager,
+        private eventManager: XmEventManager,
         private principal: Principal,
     ) {
         this.getAllLogins().then((logins) => this.allLogins = logins);
         this.registerChangeAuth();
+    }
+
+    public ngOnDestroy(): void {
+        this.eventManagerSubscription.unsubscribe();
     }
 
     public getAllLogins(): Promise<any> {
@@ -62,7 +69,7 @@ export class UserLoginService {
     }
 
     private registerChangeAuth(): void {
-        this.eventManager.subscribe(XM_EVENT_LIST.XM_SUCCESS_AUTH, () => {
+        this.eventManagerSubscription = this.eventManager.subscribe(XM_EVENT_LIST.XM_SUCCESS_AUTH, () => {
             this.allLogins = {};
             this.promise = null;
             this.getAllLogins().then((logins) => this.allLogins = logins);

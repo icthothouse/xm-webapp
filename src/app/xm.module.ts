@@ -1,21 +1,21 @@
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
-import { APP_INITIALIZER, Injector, NgModule } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { JhiEventManager } from 'ng-jhipster';
+import { XmAlertModule } from '@xm-ngx/alert';
+
+import { XmApplicationConfigService, XmCoreModule } from '@xm-ngx/core';
+import { UserRouteAccessService } from '@xm-ngx/core/auth';
+import { XmDashboardModule } from '@xm-ngx/dynamic';
+import { HttpLoaderFactory, XmTranslationModule } from '@xm-ngx/translation';
+import { CookieService } from 'ngx-cookie-service';
 import { MarkdownModule } from 'ngx-markdown';
-import { LocalStorageService, NgxWebstorageModule, SessionStorageService } from 'ngx-webstorage';
-import { PaginationConfig } from './blocks/config/uib-pagination.config';
-import { AuthExpiredInterceptor } from './blocks/interceptor/auth-expired.interceptor';
-import { AuthInterceptor } from './blocks/interceptor/auth.interceptor';
-import { ErrorHandlerInterceptor } from './blocks/interceptor/errorhandler.interceptor';
-import { ProfileService, XmMainComponent } from './layouts';
+import { NgxWebstorageModule } from 'ngx-webstorage';
+import { ADMIN_ELEMENTS } from './admin/admin.registry';
+import { XmMainComponent } from './layouts';
 import { LayoutModule } from './layouts/layout.module';
-import { HttpLoaderFactory, XmTranslationModule } from './modules/xm-translation/xm-translation.module';
-import { UserRouteAccessService } from './shared';
-import { XmApplicationConfigService } from './shared/spec/xm-config.service';
-import { XmDashboardModule } from './xm-dashboard/xm-dashboard.module';
+import { XmCoreAuthModule } from './modules/xm-core-auth/src/xm-core-auth.module';
 import { XmRoutingModule } from './xm-routing.module';
 
 export function appInitializerFn(appConfig: XmApplicationConfigService): () => Promise<any> {
@@ -32,17 +32,21 @@ export function appInitializerFn(appConfig: XmApplicationConfigService): () => P
         HttpClientModule,
         BrowserAnimationsModule,
         XmRoutingModule,
+        XmCoreModule.forRoot(),
+        XmCoreAuthModule.forRoot(),
         NgxWebstorageModule.forRoot({prefix: 'jhi', separator: '-'}),
         TranslateModule.forRoot({
             isolate: false,
-            loader: { deps: [HttpClient], provide: TranslateLoader, useFactory: HttpLoaderFactory },
+            loader: {deps: [HttpClient], provide: TranslateLoader, useFactory: HttpLoaderFactory},
         }),
+        XmAlertModule.forRoot(),
         XmTranslationModule.forRoot(),
         XmDashboardModule.forRoot(),
         MarkdownModule.forRoot(),
         LayoutModule,
     ],
     providers: [
+        ADMIN_ELEMENTS,
         XmApplicationConfigService,
         {
             provide: APP_INITIALIZER,
@@ -50,32 +54,8 @@ export function appInitializerFn(appConfig: XmApplicationConfigService): () => P
             multi: true,
             deps: [XmApplicationConfigService],
         },
-        ProfileService,
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: AuthInterceptor,
-            multi: true,
-            deps: [
-                LocalStorageService,
-                SessionStorageService,
-            ],
-        },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: AuthExpiredInterceptor,
-            multi: true,
-            deps: [
-                Injector,
-            ],
-        },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: ErrorHandlerInterceptor,
-            multi: true,
-            deps: [JhiEventManager],
-        },
-        PaginationConfig,
         UserRouteAccessService,
+        CookieService,
     ],
     bootstrap: [XmMainComponent],
 })

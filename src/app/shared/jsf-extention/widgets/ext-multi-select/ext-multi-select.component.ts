@@ -1,3 +1,4 @@
+import { buildFormGroup, JsonSchemaFormService, removeRecursiveReferences } from '@ajsf/core';
 import {
     AfterViewInit,
     ChangeDetectorRef,
@@ -5,17 +6,17 @@ import {
     Input,
     OnDestroy,
     OnInit,
+    VERSION,
     Version,
     ViewChild,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatSelect, VERSION } from '@angular/material';
-import { buildFormGroup, JsonSchemaFormService, removeRecursiveReferences } from 'angular2-json-schema-form';
+import { MatSelect } from '@angular/material/select';
+import { I18nNamePipe } from '@xm-ngx/components/language';
+import { Principal } from '@xm-ngx/core/auth';
 import { ReplaySubject, Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 
-import { Principal } from '../../../auth/principal.service';
-import { I18nNamePipe } from '../../../language/i18n-name.pipe';
 import { ExtSelectService } from '../ext-select/ext-select-service';
 import { ExtMultiSelectOptions } from './ext-multi-select-options.model';
 
@@ -45,7 +46,7 @@ export class ExtMultiSelectComponent implements OnInit, OnDestroy, AfterViewInit
                 private selectService: ExtSelectService,
                 private i18nNamePipe: I18nNamePipe,
                 private changeDetectorRef: ChangeDetectorRef,
-                public principal: Principal) {
+                private principal: Principal) {
     }
 
     public ngOnInit(): void {

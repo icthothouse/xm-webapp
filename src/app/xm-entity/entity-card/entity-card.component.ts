@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
-import { JhiEventManager } from 'ng-jhipster';
+import { MatDialog } from '@angular/material/dialog';
+import { XmEventManager } from '@xm-ngx/core';
 import { FunctionSpec, NextSpec, StateSpec } from '..';
 import { Principal } from '../../shared/auth/principal.service';
 import { XM_EVENT_LIST } from '../../xm.constants';
@@ -22,24 +21,23 @@ export class EntityCardComponent implements OnInit {
     public isAvatarEnabled: boolean;
 
     constructor(
-        protected modalService: NgbModal,
-        public principal: Principal,
-        protected eventManager: JhiEventManager,
-    ) {}
+        protected modalService: MatDialog,
+        protected principal: Principal,
+        protected eventManager: XmEventManager,
+    ) {
+    }
 
-    get commonFunctionSpec(): FunctionSpec[] {
+    public get commonFunctionSpec(): FunctionSpec[] {
         return (this.xmEntitySpec && this.xmEntitySpec.functions) ?
-            this.xmEntitySpec
-                .functions
+            this.xmEntitySpec.functions
                 .filter((item) => !item.withEntityId)
                 .filter((item) => this.hasPrivilege(item))
                 .filter((item) => this.allowedByState(item)) : [];
     }
 
-    get entityFunctionSpec(): FunctionSpec[] {
+    public get entityFunctionSpec(): FunctionSpec[] {
         return (this.xmEntitySpec && this.xmEntitySpec.functions) ?
-            this.xmEntitySpec
-                .functions
+            this.xmEntitySpec.functions
                 .filter((item) => item.withEntityId)
                 .filter((item) => this.hasPrivilege(item))
                 .filter((item) => this.allowedByState(item, this.xmEntity.stateKey)) : [];
@@ -55,7 +53,7 @@ export class EntityCardComponent implements OnInit {
     }
 
     public onAvatarChangeClick(): void {
-        const modalRef = this.modalService.open(AvatarDialogComponent, {backdrop: 'static'});
+        const modalRef = this.modalService.open(AvatarDialogComponent, {width: '500px'});
         modalRef.componentInstance.xmEntity = this.xmEntity;
     }
 

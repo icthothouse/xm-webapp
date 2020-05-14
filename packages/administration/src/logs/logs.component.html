@@ -1,0 +1,68 @@
+<div class="card logs-card">
+  <xm-loader [showLoader]="showLoader"></xm-loader>
+
+  <div class="card-header">
+    <h4 jhiTranslate="logs.title">Logs</h4>
+
+    <p [innerHTML]="'logs.nbloggers' | translate : {total: (loggers$ | async)?.length || '0'}"></p>
+
+    <div class="d-md-flex">
+      <mat-form-field class="mr-3">
+        <mat-select (selectionChange)="getLoggers()"
+                    [(ngModel)]="selectedService"
+                    placeholder="{{'metrics.options.service-name' | translate}}">
+          <mat-option *ngFor="let s of services" [value]="s.name">
+            {{s.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input [(ngModel)]="filter" matInput placeholder="{{'logs.filter' | translate}}" type="text">
+      </mat-form-field>
+    </div>
+
+  </div>
+
+  <div class="card-body table-responsive">
+
+    <ng-container *ngIf="(loggers$ | async) as loggers">
+      <table class="table table-condensed table-striped table-bordered">
+
+        <thead>
+        <tr title="click to order">
+          <th (click)="orderProp = 'name'; reverse=!reverse"><span jhiTranslate="logs.table.name">Name</span></th>
+          <th (click)="orderProp = 'level'; reverse=!reverse"><span jhiTranslate="logs.table.level">Level</span></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let logger of loggers | pureFilter:filter:'name'">
+          <td class="text-left text-wrap text-break">{{logger.name}}</td>
+          <td class="text-center">
+            <button (click)="changeLevel(logger.name, 'TRACE')"
+                    [ngClass]="(logger.level=='TRACE') ? 'btn-danger' : 'btn-default'" class="btn btn-sm">TRACE
+            </button>
+            <button (click)="changeLevel(logger.name, 'DEBUG')"
+                    [ngClass]="(logger.level=='DEBUG') ? 'btn-warning' : 'btn-default'" class="btn btn-sm">DEBUG
+            </button>
+            <button (click)="changeLevel(logger.name, 'INFO')"
+                    [ngClass]="(logger.level=='INFO') ? 'btn-info' : 'btn-default'" class="btn btn-sm">INFO
+            </button>
+            <button (click)="changeLevel(logger.name, 'WARN')"
+                    [ngClass]="(logger.level=='WARN') ? 'btn-success' : 'btn-default'" class="btn btn-sm">WARN
+            </button>
+            <button (click)="changeLevel(logger.name, 'ERROR')"
+                    [ngClass]="(logger.level=='ERROR') ? 'btn-primary' : 'btn-default'" class="btn btn-sm">ERROR
+            </button>
+          </td>
+        </tr>
+        </tbody>
+
+      </table>
+    </ng-container>
+
+    <no-data [show]="!((loggers$ | async)?.length > 0) && !showLoader"></no-data>
+  </div>
+
+</div>

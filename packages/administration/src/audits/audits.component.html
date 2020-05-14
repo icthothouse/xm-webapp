@@ -1,0 +1,99 @@
+<div *ngIf="audits" class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-icon">
+        <h4 jhiTranslate="audits.title">Audits</h4>
+      </div>
+
+      <div class="card-body">
+        <xm-loader [showLoader]="showLoader"></xm-loader>
+        <legend jhiTranslate="audits.filter.title">Filter by date</legend>
+        <div class="row">
+          <div class="col-sm-2">
+            <mat-form-field>
+              <input (ngModelChange)="onChangeDate()"
+                     [(ngModel)]="fromDate"
+                     [matDatepicker]="fromDatePicker"
+                     matInput
+                     placeholder="{{'audits.filter.from' | translate}}"
+                     required>
+              <mat-datepicker-toggle [for]="fromDatePicker" matSuffix></mat-datepicker-toggle>
+              <mat-datepicker #fromDatePicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-2">
+            <mat-form-field>
+              <input (ngModelChange)="onChangeDate()"
+                     [(ngModel)]="toDate"
+                     [matDatepicker]="toDatePicker"
+                     matInput
+                     placeholder="{{'audits.filter.to' | translate}}"
+                     required>
+              <mat-datepicker-toggle [for]="toDatePicker" matSuffix></mat-datepicker-toggle>
+              <mat-datepicker #toDatePicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <ng-container *ngIf="audits?.length > 0">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+              <thead>
+              <tr>
+                <th (click)="sortAudits(audits, 'timestamp')">
+                  <span jhiTranslate="audits.table.header.date">Date</span>
+                </th>
+                <th (click)="sortAudits(audits, 'principal')">
+                  <span jhiTranslate="audits.table.header.principal">User</span>
+                </th>
+                <th (click)="sortAudits(audits, 'type')">
+                  <span jhiTranslate="audits.table.header.status">State</span>
+                </th>
+                <th (click)="sortAudits(audits, 'data.remoteAddress')">
+                  <span jhiTranslate="audits.table.header.data">Extra data</span>
+                </th>
+              </tr>
+              </thead>
+              <tr *ngFor="let audit of audits">
+                <td><span>{{audit.timestamp| date:'medium'}}</span></td>
+                <td>
+                  <small>{{audit.principal}}</small>
+                </td>
+                <td>{{audit.type}}</td>
+                <td>
+                  <span *ngIf="audit.data">{{audit.data.message}}</span>
+                  <span *ngIf="audit.data">
+                    <span jhiTranslate="audits.table.data.remoteAddress">Remote Address</span>
+                    {{audit.data.remoteAddress}}
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div *ngIf="audits?.length" class="row align-items-center list-pagination">
+            <div class="col-auto">
+              <xm-per-page (onChange)="onChangeDate()" [(itemsPerPage)]="itemsPerPage"></xm-per-page>
+            </div>
+            <div class="col-auto">
+              <jhi-item-count [itemsPerPage]="itemsPerPage" [page]="page" [total]="totalItems"></jhi-item-count>
+            </div>
+            <div class="col-sm"></div>
+            <div class="col-auto">
+              <ngb-pagination (pageChange)="loadPage($event)"
+                              [(page)]="page"
+                              [collectionSize]="totalItems"
+                              [maxSize]="5"
+                              [pageSize]="itemsPerPage">
+
+              </ngb-pagination>
+            </div>
+          </div>
+        </ng-container>
+
+
+        <no-data [show]="!audits?.length"></no-data>
+      </div>
+    </div>
+  </div>
+</div>

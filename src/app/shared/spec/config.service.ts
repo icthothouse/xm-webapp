@@ -2,9 +2,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AsyncSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { PasswordSpec } from '../../xm-entity/shared/password-spec.model';
-import { ModulesLanguageHelper } from '../language/modules-language.helper';
+import { PasswordSpec } from './password-spec.model';
+import { ModulesLanguageHelper } from '../language';
 import { XmApplicationConfigService } from './xm-config.service';
+
+interface IUIConfig {
+    logoUrl?: string;
+    name?: string;
+    iconsInMenu?: string;
+}
+
+export type UIConfig = IUIConfig | any;
 
 @Injectable()
 export class XmConfigService {
@@ -14,7 +22,7 @@ export class XmConfigService {
     private uaaPasswordConfigUrl: string = 'uaa/api/uaa/properties/settings-public';
     private elasticReindexUrl: string = '/entity/api/elasticsearch/index';
 
-    private uiConfig: any;
+    private uiConfig: UIConfig;
     private uiConfigState: AsyncSubject<any> = new AsyncSubject<any>();
 
     constructor(
@@ -34,6 +42,7 @@ export class XmConfigService {
             map((res: any) => res));
     }
 
+    /** @deprecated use XmEntitySpecService update instead */
     public updateXmEntitySpec(configContent: string): Observable<any> {
         return this.http.post('entity/api/xm-entity-specs', configContent, this.headers()).pipe(
             map((res: any) => res));
@@ -70,7 +79,7 @@ export class XmConfigService {
         }
     }
 
-    public getUiConfig(): Observable<any> {
+    public getUiConfig(): Observable<UIConfig> {
         return of(this.appConfig.getAppConfig());
     }
 

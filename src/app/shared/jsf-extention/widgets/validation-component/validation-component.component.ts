@@ -1,8 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormGroup } from '@angular/forms';
-import { JsonSchemaFormService } from 'angular2-json-schema-form';
-
-import { JhiEventManager } from 'ng-jhipster';
+import { XmEventManager } from '@xm-ngx/core';
+import { JsonSchemaFormService } from '@ajsf/core';
 import { fromEvent as observableFromEvent, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
@@ -17,9 +16,9 @@ export class ValidationComponent implements OnInit, OnDestroy {
     public click: Subscription;
 
     public options: any;
-
+    private eventManagerSubscription: Subscription;
     constructor(private jsf: JsonSchemaFormService,
-                private eventManager: JhiEventManager) {
+                private eventManager: XmEventManager) {
     }
 
     // tslint:disable-next-line:cognitive-complexity
@@ -41,7 +40,7 @@ export class ValidationComponent implements OnInit, OnDestroy {
                 formGroup.updateValueAndValidity({emitEvent: true});
             });
 
-        this.eventManager.subscribe('xm.ValidationError', (it) => {
+        this.eventManagerSubscription = this.eventManager.subscribe('xm.ValidationError', (it) => {
             const path = it.content.validationField;
             if (path) {
                 const control = this.resolveComponentByPath(formGroup, path.split('[')
@@ -90,6 +89,7 @@ export class ValidationComponent implements OnInit, OnDestroy {
     }
 
     public ngOnDestroy(): void {
+        this.eventManagerSubscription.unsubscribe();
         this.click.unsubscribe();
     }
 

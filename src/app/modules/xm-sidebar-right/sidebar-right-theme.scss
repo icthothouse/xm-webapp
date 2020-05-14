@@ -1,0 +1,18 @@
+@import 'theme';
+
+$xm-sidebar-transition: 300ms cubic-bezier(0.685, 0.0473, 0.346, 1) !default;
+
+xm-sidebar-right {
+  display:    inline-block;
+  position:   fixed;
+  height:     100%;
+  width:      0;
+  right:      0;
+  top:        0;
+  bottom:     0;
+  z-index:    $xm-sidebar-z-index;
+  overflow:   hidden;
+  background: $xm-surface;
+  @include transition(width $xm-sidebar-transition);
+  @include xm-shadow-xs();
+}

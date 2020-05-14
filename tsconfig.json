@@ -1,32 +1,54 @@
 {
-    "compileOnSave": true,
-    "compilerOptions": {
-        "importHelpers": true,
-        "outDir": "./dist/out-tsc",
-        "baseUrl": "./",
-        "sourceMap": true,
-        "declaration": true,
-        "downlevelIteration": true,
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "target": "es5",
-        "typeRoots": [
-            "node_modules/@types"
-        ],
-        "lib": [
-            "es2018",
-            "dom"
-        ],
-        "inlineSources": true,
-        "module": "esnext",
-        "stripInternal": false,
-        "noUnusedLocals": true,
-        "noImplicitThis": true,
-        "noImplicitReturns": true,
-        "newLine": "lf",
-        "strictFunctionTypes": true,
-        "noFallthroughCasesInSwitch": true,
-        "resolveJsonModule": true
-    }
+  "compileOnSave": true,
+  "compilerOptions": {
+    "importHelpers": true,
+    "outDir": "./dist/out-tsc",
+    "baseUrl": "./",
+    "sourceMap": true,
+    "declaration": true,
+    "downlevelIteration": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "@xm-ngx/styles": ["packages/styles"],
+      "@xm-ngx/administration/*": ["packages/administration/src/*"],
+      "@xm-ngx/components/*": ["packages/components/src/*"],
+      "@xm-ngx/core": ["src/app/modules/xm-core"],
+      "@xm-ngx/core/auth": ["src/app/modules/xm-core-auth"],
+      "@xm-ngx/ext/*": ["src/app/ext/*"],
+      "@xm-ngx/core/environment": ["src/environments"],
+      "@xm-ngx/core/permission": ["src/app/shared/privilege"],
+      "@xm-ngx/alert": ["src/app/modules/xm-alert"],
+      "@xm-ngx/json-scheme-form": ["src/app/shared/jsf-extention"],
+      "@xm-ngx/toaster": ["src/app/shared/toaster"],
+      "@xm-ngx/shared": ["src/app/modules/xm-shared"],
+      "@xm-ngx/shared/operators": ["src/app/modules/xm-shared-operators"],
+      "@xm-ngx/translation": ["packages/xm-translation/src"],
+      "@xm-ngx/entity": ["src/app/xm-entity/shared"],
+      "@xm-ngx/entity/*": ["src/app/xm-entity/*"],
+      "@xm-ngx/dynamic": ["src/app/xm-dashboard"],
+      "@xm-ngx/xm-balance": ["src/app/xm-balance"],
+      "@xm-ngx/components/language": ["src/app/shared/language"]
+
+    },
+    "inlineSources": true,
+    "module": "esnext",
+    "stripInternal": false,
+    "noUnusedLocals": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "newLine": "lf",
+    "strictFunctionTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true
+  }
 }

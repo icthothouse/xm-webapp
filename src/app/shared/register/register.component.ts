@@ -1,13 +1,13 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { ReCaptchaComponent } from 'angular2-recaptcha';
-import { JhiEventManager, JhiLanguageService } from 'ng-jhipster';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { XmEventManager } from '@xm-ngx/core';
 
-import { PasswordSpec } from '../../xm-entity/shared/password-spec.model';
+import { ReCaptchaComponent } from 'angular2-recaptcha';
+import { JhiLanguageService } from 'ng-jhipster';
+
+import { PasswordSpec } from '../spec/password-spec.model';
 import { XM_EVENT_LIST } from '../../xm.constants';
-import {
-    PrivacyAndTermsDialogComponent,
-} from '../components/privacy-and-terms-dialog/privacy-and-terms-dialog.component';
+import { PrivacyAndTermsDialogComponent } from '../components/privacy-and-terms-dialog/privacy-and-terms-dialog.component';
 import { XmConfigService } from '../spec/config.service';
 import { RegisterService } from './register.service';
 
@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
     public captchaRequired: string;
     public registerAccount: any;
     public success: boolean;
-    public modalRef: NgbModalRef;
+    public modalRef: MatDialogRef<any>;
     public needCaptcha: boolean = false;
     public language: string = 'en';
     public publicKey: string;
@@ -42,8 +42,8 @@ export class RegisterComponent implements OnInit {
     constructor(private jhiLanguageService: JhiLanguageService,
                 private xmConfigService: XmConfigService,
                 private registerService: RegisterService,
-                private eventManager: JhiEventManager,
-                private modalService: NgbModal) {
+                private eventManager: XmEventManager,
+                private modalService: MatDialog) {
 
         this.jhiLanguageService.getCurrent().then((lang) => {
             this.language = lang;
@@ -74,16 +74,13 @@ export class RegisterComponent implements OnInit {
         } else {
             if (this.config && this.config.privacyAndTermsEnabled) {
                 const modalRef = this.modalService.open(PrivacyAndTermsDialogComponent, {
-                    size: 'lg',
-                    backdrop: 'static',
+                    width: '500px',
                 });
                 modalRef.componentInstance.config = this.config;
-                modalRef.result.then((r) => {
+                modalRef.afterClosed().subscribe((r) => {
                     if (r === 'accept') {
                         this.registration();
                     }
-                }).catch((err) => {
-                    console.info(err);
                 });
             } else {
                 this.registration();
@@ -130,7 +127,9 @@ export class RegisterComponent implements OnInit {
         } else {
             this.error = 'ERROR';
         }
-        if (this.captcha) {this.captcha.reset(); }
+        if (this.captcha) {
+            this.captcha.reset();
+        }
     }
 
     private makeLogins(): void {

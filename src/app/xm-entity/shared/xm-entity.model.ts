@@ -1,5 +1,5 @@
-import { BaseEntity } from './../../shared';
 import { Attachment } from './attachment.model';
+import { BaseEntity } from './base-entity';
 import { Calendar } from './calendar.model';
 import { Comment } from './comment.model';
 import { Event } from './event.model';
@@ -7,12 +7,14 @@ import { FunctionContext } from './function-context.model';
 import { Link } from './link.model';
 import { Location } from './location.model';
 import { Rating } from './rating.model';
+import { StateSpec } from './state-spec.model';
 import { Tag } from './tag.model';
 import { Vote } from './vote.model';
+import { XmEntitySpec } from './xm-entity-spec.model';
 
-export interface XmEntity extends BaseEntity {
-    state?: any;
-    type?: any;
+export interface XmEntity<D = any> extends BaseEntity {
+    type?: XmEntitySpec;
+    state?: StateSpec;
     id?: number;
     key?: string;
     typeKey?: string;
@@ -23,7 +25,7 @@ export interface XmEntity extends BaseEntity {
     endDate?: string | Date;
     avatarUrl?: string;
     description?: string;
-    data?: any;
+    data?: D;
     removed?: boolean;
     attachments?: Attachment[];
     calendars?: Calendar[];
@@ -36,4 +38,5 @@ export interface XmEntity extends BaseEntity {
     targets?: Link[];
     functionContexts?: FunctionContext[];
     events?: Event[];
+    createdBy?: string;
 }

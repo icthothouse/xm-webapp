@@ -1,5 +1,5 @@
+import { JsonSchemaFormService } from '@ajsf/core';
 import { Component, Input, OnInit } from '@angular/core';
-import { JsonSchemaFormService } from 'angular2-json-schema-form';
 
 import { ExtTextareaOptions } from './ext-textarea-options.model';
 

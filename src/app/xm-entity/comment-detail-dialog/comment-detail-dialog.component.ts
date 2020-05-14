@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateService } from '@ngx-translate/core';
-import { JhiEventManager } from 'ng-jhipster';
+import { MatDialogRef } from '@angular/material/dialog';
+import { XmEventManager } from '@xm-ngx/core';
+
+import { XmToasterService } from '@xm-ngx/toaster';
 
 import { Principal } from '../../shared/auth/principal.service';
 import { CommentSpec } from '../shared/comment-spec.model';
@@ -9,7 +10,6 @@ import { Comment } from '../shared/comment.model';
 import { CommentService } from '../shared/comment.service';
 import { XmEntity } from '../shared/xm-entity.model';
 
-declare let swal: any;
 
 @Component({
     selector: 'xm-comment-detail-dialog',
@@ -24,11 +24,11 @@ export class CommentDetailDialogComponent implements OnInit {
     public comment: Comment = {};
     public showLoader: boolean;
 
-    constructor(private activeModal: NgbActiveModal,
+    constructor(private activeModal: MatDialogRef<CommentDetailDialogComponent>,
                 private commentService: CommentService,
-                private eventManager: JhiEventManager,
-                private translateService: TranslateService,
-                public principal: Principal) {
+                private eventManager: XmEventManager,
+                private toasterService: XmToasterService,
+                private principal: Principal) {
     }
 
     public ngOnInit(): void {
@@ -49,7 +49,7 @@ export class CommentDetailDialogComponent implements OnInit {
     }
 
     public onCancel(): void {
-        this.activeModal.dismiss('cancel');
+        this.activeModal.close(false);
     }
 
     private onError(e: any): void {
@@ -60,17 +60,8 @@ export class CommentDetailDialogComponent implements OnInit {
     private onSaveSuccess(): void {
         // TODO: use constant for the broadcast and analyse listeners
         this.eventManager.broadcast({name: 'commentListModification'});
-        this.activeModal.dismiss(true);
-        this.alert('success', 'xm-entity.comment-detail-dialog.add.success');
-    }
-
-    private alert(type: string, key: string): void {
-        swal({
-            type,
-            text: this.translateService.instant(key),
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-primary',
-        });
+        this.activeModal.close(true);
+        this.toasterService.success('xm-entity.comment-detail-dialog.add.success');
     }
 
 }

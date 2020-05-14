@@ -38,7 +38,7 @@
           <img src="{{xmEntity.avatarUrl ? xmEntity.avatarUrl : './assets/img/placeholder.png'}}">
           <i *ngIf="xmEntitySpec.icon && !xmEntity.avatarUrl" class="material-icons">{{xmEntitySpec.icon}}</i>
           <button (click)="onAvatarChangeClick()"
-                  class="btn btn-sm btn-just-icon btn-round btn-icon edit-avatar"
+                  class="btn btn-sm btn-just-icon rounded-circle btn-icon edit-avatar"
                   role="button">
             <mat-icon>edit</mat-icon>
           </button>
@@ -48,7 +48,7 @@
       <div class="col">
         <div class="row">
           <div class="col-auto" style="margin-top: 6px; font-size: 18px;">
-            <b>{{xmEntitySpec.name | i18nName: principal}}</b></div>
+            <b>{{xmEntitySpec.name | translate}}</b></div>
 
           <div class="col-auto">
             <xm-function-list-section-compact
@@ -93,10 +93,10 @@
                         (onSubmit)="onSubmitForm($event)"
                         *ngIf="jsfAttributes?.schema"
                         [data]="jsfAttributes.data"
-                        [form]="jsfAttributes.form | i18nJsf :principal"
+                        [form]="jsfAttributes.form | i18nJsf"
                         [framework]="'material-design'"
-                        [layout]="jsfAttributes.layout | i18nJsf :principal"
-                        [options]="jsfAttributes.options | i18nJsf :principal"
+                        [layout]="jsfAttributes.layout | i18nJsf"
+                        [options]="jsfAttributes.options | i18nJsf"
                         [schema]="jsfAttributes.schema"
                         [widgets]="jsfAttributes.widgets">
       </json-schema-form>

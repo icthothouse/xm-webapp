@@ -1,0 +1,29 @@
+<div *ngIf="swaggerResources" class="xm-swagger-container card">
+  <div class="container-fluid">
+    <div class="row align-items-center flex-nowrap">
+
+      <div class="col-6">
+        <div class="swag-title text-primary">
+          {{'swagger.select-component' | translate}}
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="swagger-ui">
+          <mat-form-field>
+            <mat-select (selectionChange)="updateSwagger(currentResource)"
+                        [(ngModel)]="currentResource"
+                        name='swagRes'>
+              <mat-option *ngFor="let resource of swaggerResources" [value]="resource.location">
+                {{resource.name}} {{resource.location}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="swaggerHolder"></div>

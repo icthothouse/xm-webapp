@@ -1,0 +1,33 @@
+@keyframes animationLoader {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+.loader-placeholder {
+  background-color: whitesmoke;
+  position:         relative;
+  overflow:         hidden;
+}
+
+.loader-placeholder::before {
+  content:    '';
+  width:      100%;
+  height:     100%;
+  position:   absolute;
+  left:       0;
+  top:        0;
+  background: rgba(255, 255, 255, 1);
+  background: radial-gradient(
+                  circle,
+                  rgba(255, 255, 255, 1) 0%,
+                  rgba(255, 255, 255, 0) 100%
+              );
+  animation:  animationLoader 1.2s cubic-bezier(0.645, 0.045, 0.355, 1) both infinite;
+}
+
+.loader-placeholder {
+}

@@ -1,8 +1,8 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
-import { JhiEventManager } from 'ng-jhipster';
+import { XmEventManager } from '@xm-ngx/core';
 import { Subscription } from 'rxjs';
 
 import { I18nNamePipe, Principal } from '../../../shared/';
@@ -23,11 +23,11 @@ export class AvailableOfferingsWidgetComponent implements OnInit, OnDestroy {
     public noOfferings: boolean = false;
     private availableOfferingActionSuccessSubscription: Subscription;
 
-    constructor(public principal: Principal,
-                private eventManager: JhiEventManager,
+    constructor(private principal: Principal,
+                private eventManager: XmEventManager,
                 private xmEntityService: XmEntityService,
                 private functionService: FunctionService,
-                private modalService: NgbModal,
+                private modalService: MatDialog,
                 private translateService: TranslateService,
                 private i18nNamePipe: I18nNamePipe) {
     }
@@ -76,7 +76,7 @@ export class AvailableOfferingsWidgetComponent implements OnInit, OnDestroy {
     }
 
     public onAction(offering: any): void {
-        const modalRef = this.modalService.open(FunctionCallDialogComponent, {backdrop: 'static'});
+        const modalRef = this.modalService.open(FunctionCallDialogComponent, {width: '500px'});
         modalRef.componentInstance.xmEntity = offering;
         modalRef.componentInstance.functionSpec = {key: this.config.action.functionKey};
         this.translateService.get('ext-common-entity.available-offerings-widget.action-dialog.question', {

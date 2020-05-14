@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CovalentTextEditorModule } from '@covalent/text-editor';
-import { CookieOptions, CookieService } from 'angular2-cookie/core';
+import { XmJsonSchemeFormModule } from '@xm-ngx/json-scheme-form';
 import { ReCaptchaModule } from 'angular2-recaptcha';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
@@ -17,18 +17,11 @@ import {
     CSRFService,
     FocusDirective,
     HasAnyAuthorityDirective,
-    I18nJsfPipe,
-    I18nNamePipe,
     InputPreventPasteDirective,
     JhiSocialComponent,
-    LoaderComponent,
     LoginComponent,
     LoginService,
-    MaintenanceComponent,
-    NoDataComponent,
     ParseByPathService,
-    PermitDirective,
-    PerPageComponent,
     PoweredByComponent,
     PrivilegeService,
     RegisterComponent,
@@ -37,19 +30,12 @@ import {
     UserLoginFormComponent,
     UserLoginService,
     UserService,
-    WordAutocompleteDirective,
     XmConfigService,
     XmConfirmDialogComponent,
     XmGMapApiInitDirective,
-    XmPasswordNeededComponent,
-    XmPrivilegeDirective,
 } from './';
-import {
-    PrivacyAndTermsDialogComponent,
-} from './components/privacy-and-terms-dialog/privacy-and-terms-dialog.component';
-import { AceEditorDirective } from './directives/ace-editor.directive';
+import { PrivacyAndTermsDialogComponent } from './components/privacy-and-terms-dialog/privacy-and-terms-dialog.component';
 import { DigitOnlyDirective } from './directives/digit-only.directive';
-import { InputPatternDirective } from './directives/input-pattern.directive';
 import { SafeNamePipe } from './helpers/safe-name.pipe';
 import { XmCondition } from './helpers/xm-condition';
 import { XmDateTimePipe } from './helpers/xm-date-time.pipe';
@@ -73,7 +59,6 @@ import { TextSectionComponent } from './jsf-extention/widgets/text-section/text-
 import { ValidationComponent } from './jsf-extention/widgets/validation-component/validation-component.component';
 import { PasswordStrengthBarComponent } from './password-strength-bar/password-strength-bar.component';
 import { RoleService } from './role/role.service';
-import { GateSharedCommonModule } from './shared-common.module';
 import { GateSharedLibsModule } from './shared-libs.module';
 
 const PIPES = [
@@ -82,8 +67,8 @@ const PIPES = [
 
 @NgModule({
     imports: [
+        XmJsonSchemeFormModule,
         GateSharedLibsModule,
-        GateSharedCommonModule,
         ReCaptchaModule,
         MarkdownModule.forChild(),
         MatModule,
@@ -93,32 +78,21 @@ const PIPES = [
         OwlNativeDateTimeModule,
     ],
     declarations: [
-        AceEditorDirective,
         JhiSocialComponent,
         LoginComponent,
         RegisterComponent,
         HasAnyAuthorityDirective,
-        I18nNamePipe,
-        I18nJsfPipe,
         SafeNamePipe,
         XmCondition,
         XmEntityStateSpecPipe,
         XmDateTimePipe,
         UserLoginFormComponent,
-        LoaderComponent,
-        WordAutocompleteDirective,
         FocusDirective,
         InputPreventPasteDirective,
         DigitOnlyDirective,
-        PerPageComponent,
-        NoDataComponent,
         PoweredByComponent,
-        MaintenanceComponent,
-        PermitDirective,
-        XmPrivilegeDirective,
         XmGMapApiInitDirective,
         PasswordStrengthBarComponent,
-        XmPasswordNeededComponent,
         XmConfirmDialogComponent,
         CurrentLocationComponent,
         ExtSelectComponent,
@@ -136,32 +110,8 @@ const PIPES = [
         FileUploadComponent,
         PrivacyAndTermsDialogComponent,
         PIPES,
-        InputPatternDirective,
-    ],
-    entryComponents: [
-        LoginComponent,
-        RegisterComponent,
-        UserLoginFormComponent,
-        PasswordStrengthBarComponent,
-        CurrentLocationComponent,
-        ExtSelectComponent,
-        ExtAutocompleteComponent,
-        ExtMultiSelectComponent,
-        ExtQuerySelectComponent,
-        ValidationComponent,
-        ExtTextareaComponent,
-        ExtMdEditorComponent,
-        MultilingualInputComponent,
-        DatetimeUtcComponent,
-        DatetimePickerComponent,
-        EmailMatcherComponent,
-        TextSectionComponent,
-        FileUploadComponent,
-        PrivacyAndTermsDialogComponent,
     ],
     providers: [
-        CookieService,
-        {provide: CookieOptions, useValue: {}},
         ContextService,
         LoginService,
         RegisterService,
@@ -176,8 +126,6 @@ const PIPES = [
         ExtAutocompleteService,
         UserLoginService,
         DatePipe,
-        I18nNamePipe,
-        I18nJsfPipe,
         SafeNamePipe,
         XmCondition,
         XmDateTimePipe,
@@ -189,34 +137,23 @@ const PIPES = [
         PIPES,
     ],
     exports: [
-        AceEditorDirective,
-        GateSharedCommonModule,
+        GateSharedLibsModule,
         JhiSocialComponent,
         LoginComponent,
         UserLoginFormComponent,
         RegisterComponent,
         HasAnyAuthorityDirective,
         DatePipe,
-        I18nNamePipe,
-        I18nJsfPipe,
         SafeNamePipe,
         XmCondition,
         XmEntityStateSpecPipe,
         XmDateTimePipe,
-        LoaderComponent,
-        PerPageComponent,
-        NoDataComponent,
         PoweredByComponent,
-        MaintenanceComponent,
-        WordAutocompleteDirective,
         FocusDirective,
         InputPreventPasteDirective,
         DigitOnlyDirective,
-        PermitDirective,
-        XmPrivilegeDirective,
         XmGMapApiInitDirective,
         PasswordStrengthBarComponent,
-        XmPasswordNeededComponent,
         XmConfirmDialogComponent,
         CurrentLocationComponent,
         ExtSelectComponent,
@@ -235,9 +172,8 @@ const PIPES = [
         FileUploadComponent,
         GooglePlaceModule,
         PIPES,
-        InputPatternDirective,
+        XmJsonSchemeFormModule,
     ],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
 })
 export class XmSharedModule {

@@ -1,0 +1,1447 @@
+{
+  "Unauthorized": "Потрібна авторизація!",
+  "activate": {
+    "messages": {
+      "error": "<strong>Ваш користувач не може бути активований.</strong> Для реєстрації використовуйте реєстраційну форму.",
+      "link": "увійдіть",
+      "register": "Реєстрація",
+      "success": "<strong>Ваш обліковий запис користувача активовано.</strong> Будь ласка,&nbsp;"
+    },
+    "title": "Активація"
+  },
+  "admin-config": {
+    "common": {
+      "cancel": "Скасувати",
+      "confirm": "Ви впевненi?",
+      "fields": {
+        "config": "Конфігурація",
+        "id": "ID",
+        "layout": "Розкладка",
+        "name": "Назва",
+        "owner": "Власник",
+        "selector": "Селектор",
+        "typeKey": "Код Типу"
+      },
+      "menu": {
+        "dashboard-mng": "Конфігурація Панелі",
+        "mini": {
+          "dashboard-mng": "КП",
+          "specification-mng": "С"
+        },
+        "specification-mng": "Специфікації",
+        "title": "Конфігурація"
+      },
+      "save": "Зберегти"
+    },
+    "dashboard-detail-dialog": {
+      "add": {
+        "success": "Успішно",
+        "title": "Додати нову панель"
+      },
+      "edit": {
+        "success": "Успішно",
+        "title": "Редагувати панель"
+      }
+    },
+    "dashboard-list-card": {
+      "export-action": "експорт в JSON",
+      "import-action": "імпорт з JSON",
+      "title": "Панелі"
+    },
+    "specification-mng": {
+      "entity": {
+        "save": "Оновити специфікацію Моделі",
+        "title": "Модель"
+      },
+      "loading": "завантаження специфікації...",
+      "privateui": {
+        "save": "Оновити приватну специфікацію Інтерфейсу",
+        "title": "Приватна специфікація Інтерфейсу"
+      },
+      "tenant": {
+        "save": "Оновити специфікацію Тенанта",
+        "title": "Тенант"
+      },
+      "timeline": {
+        "save": "Оновити специфікацію Історії",
+        "title": "Історія"
+      },
+      "uaa-login": {
+        "save": "Оновити специфікацію Логіна",
+        "title": "Логін"
+      },
+      "uaa": {
+        "save": "Оновити специфікацію UAA",
+        "title": "UAA"
+      },
+      "ui": {
+        "save": "Оновити специфікацію Інтерфейсу",
+        "title": "Інтерфейс"
+      },
+      "validate": "Перевірка"
+    },
+    "widget-detail-dialog": {
+      "add": {
+        "success": "Успішно",
+        "title": "Додати новий віджет"
+      },
+      "edit": {
+        "success": "Успішно",
+        "title": "Редагувати віджет"
+      }
+    },
+    "widget-list-card": {
+      "title": "Віджети"
+    }
+  },
+  "audits": {
+    "filter": {
+      "from": "від",
+      "title": "Фільтр за датою",
+      "to": "до"
+    },
+    "table": {
+      "data": {
+        "remoteAddress": "Дистанційна адреса:"
+      },
+      "header": {
+        "data": "Додаткові дані",
+        "date": "Дата",
+        "principal": "Користувач",
+        "status": "Стан"
+      }
+    },
+    "title": "Аудит"
+  },
+  "cancel": "",
+  "clientManagement": {
+    "client": {
+      "already": {
+        "exists": "Клієнт з цим ID вже існує"
+      }
+    },
+    "clientId": "Ідентифікатор кліента",
+    "clientSecret": "Пароль кліента",
+    "createdBy": "Створено",
+    "createdDate": "Дата створення",
+    "delete": {
+      "question": "Ви впевнені, що хочете видалити користувача {{id}}?"
+    },
+    "description": "Опис",
+    "detail": {
+      "title": "Кліент"
+    },
+    "home": {
+      "createOrEditLabel": "Створіть або відредагуйте користувача",
+      "title": "Кліенти"
+    },
+    "lastModifiedBy": "Змінено",
+    "lastModifiedDate": "Дата зміни",
+    "role": "Роль",
+    "roleKey": "Роль",
+    "roles": "Ролі",
+    "scopes-add": "Додати обсяги",
+    "search-by-client-id": "Пошук за ID клієнта",
+    "validityPeriod": "Термін дії"
+  },
+  "entity": {
+    "action": {
+      "back": "Назад",
+      "cancel": "Скасувати",
+      "delete": "Видалити",
+      "save": "Зберегти"
+    },
+    "add": "Додати",
+    "delete": {
+      "title": "Підтвердьте операцію видалення"
+    },
+    "detail": {
+      "square": "Площа: {{квадратний}} м"
+    },
+    "search": "Пошук",
+    "validation": {
+      "maxlength": "Це поле не може перевищувати {{max}} символів.",
+      "required": "Це поле є обов&#39;язковим."
+    }
+  },
+  "error": {
+    "403": "Ви не маєте дозволу на доступ до цієї сторінки.",
+    "NotNull": "Поле {{fieldName}} не може бути порожнім!",
+    "Size": "Поле {{fieldName}} не відповідає мінімальному / максовому розміру!",
+    "accessDenied": "Доступ заборонено",
+    "access_denied": "Доступ заборонено",
+    "business": "Помилка переадресації",
+    "emailexists": "Електронна пошта вже використовується!",
+    "idexists": "Новий {{entityName}} не може вже мати ідентифікатор",
+    "insufficient_scope": "Недостатній обсяг",
+    "internalServerError": "Внутрішня помилка сервера",
+    "invalid_client": "Недійсний клієнт",
+    "invalid_grant": "Недійсний грант",
+    "invalid_request": "Невірний запит",
+    "invalid_scope": "Неправильний обсяг",
+    "invalid_token": "Неприпустимий маркер",
+    "notfound": "Ресурс не знайдено",
+    "privilegeInsufficient": "Недостаточно привилегений '{{ name }}'!",
+    "privilegeOperationWrong": "Operation not supported '{{ name }}'!",
+    "redirect_uri_mismatch": "Переспрямовувати uri невідповідність",
+    "server": {
+      "not": {
+        "reachable": "Сервер недоступний"
+      }
+    },
+    "session_expired": "Сесія закінчилася. Будь ласка, увійдіть",
+    "title": "Сторінка помилки!",
+    "unauthorized": "Необхідна авторизація",
+    "unauthorized_client": "Неавторизований клієнт",
+    "unsupported_grant_type": "Непідтримуваний тип гранту",
+    "unsupported_response_type": "Непідтримуваний тип відповіді",
+    "url": {
+      "not": {
+        "found": "Не знайдено"
+      }
+    },
+    "userexists": "Ім&#39;я входу вже використовується!",
+    "validation": "Помилка вхідних параметрів"
+  },
+  "errors": {
+    "NotBlank": "Не пустий",
+    "NotNull": "Поле {{fieldName}} не може бути порожнім!",
+    "Size": "Поле {{fieldName}} не відповідає мінімальному / максовому розміру!",
+    "Unauthorized": "Потрібна авторизація!",
+    "accessDenied": "Доступ заборонено",
+    "access_denied": "Доступ заборонено",
+    "emailexists": "Електронна пошта вже використовується!",
+    "error": {
+      "accessDenied": "Access denied",
+      "business": "Помилка переадресації",
+      "internalServerError": "Внутрішня помилка сервера"
+    },
+    "idexists": "Новий {{entityName}} не може вже мати ідентифікатор",
+    "insufficient_scope": "Недостатній обсяг",
+    "internalServerError": "Внутрішня помилка сервера",
+    "invalid_client": "Недійсний клієнт",
+    "invalid_grant": "Недійсний грант",
+    "invalid_request": "Невірний запит",
+    "invalid_scope": "Неправильний обсяг",
+    "invalid_token": "Неприпустимий маркер",
+    "notfound": "Ресурс не знайдено",
+    "privilegeInsufficient": "Недостатньо привілеїв '{{ name }}'!",
+    "privilegeOperationWrong": "Операція не підтримується '{{ name }}'!",
+    "redirect_uri_mismatch": "Переспрямовувати uri невідповідність",
+    "server": {
+      "not": {
+        "reachable": "Сервер недоступний"
+      }
+    },
+    "session_expired": "Сесія закінчилася. Будь ласка, увійдіть",
+    "unauthorized": "Необхідна авторизація",
+    "unauthorized_client": "Неавторизований клієнт",
+    "unsupported_grant_type": "Непідтримуваний тип гранту",
+    "unsupported_response_type": "Непідтримуваний тип відповіді",
+    "url": {
+      "not": {
+        "found": "Не знайдено"
+      }
+    },
+    "userexists": "Ім&#39;я входу вже використовується!",
+    "validation": "Помилка вхідних параметрів"
+  },
+  "ext-common-entity": {
+    "available-offerings-widget": {
+      "action-dialog": {
+        "question": "Ви впевнені, що хочете <b>{{action}}</b> для <b>{{name}}</b>?"
+      }
+    },
+    "entity-fab-actions": {
+      "operation-error": "Операція не успішна!",
+      "operation-success": "Операція успішна!"
+    }
+  },
+  "ext-common": {
+    "clock-widget": {
+      "title": "Годинник"
+    },
+    "exchange-widget": {
+      "code": "Код",
+      "course": "Офіційний курс",
+      "currency": "Валюта",
+      "from": "Від",
+      "number-units": "Кількість одиниць",
+      "select-from": "Виберіть валюту з",
+      "select-to": "Виберіть валюту в",
+      "title": "Обмінний калькулятор"
+    },
+    "sign-in-up-widget": {
+      "sign-in": "Увійти",
+      "sign-up": "Зареєструватися"
+    },
+    "weather-widget": {
+      "humidity": "Вологість",
+      "ms": "м/с",
+      "wind-speed": "Швидкість вітру"
+    }
+  },
+  "formPlayground": {
+    "definition": "Визначення",
+    "errors": "- помилки з валідації помилок ():",
+    "liveData": "Живі дані - з onChanges ():",
+    "loading": "(специфікація форми завантаження ...)",
+    "na": "н.д.",
+    "output": "Вихідні дані",
+    "result": "Результат",
+    "selectSchema": "ВИБЕРІТЬ СХЕМУ",
+    "valid": "Коректно?:"
+  },
+  "gateway": {
+    "routes": {
+      "error": "Увага! Сервер не доступний!",
+      "servers": "Доступні сервери",
+      "service": "сервіс",
+      "url": "URL-адреса"
+    },
+    "title": "Шлюз"
+  },
+  "global": {
+    "actionPerformed": "Action performed",
+    "all": "Все",
+    "common": {
+      "accept": "Прийняти",
+      "are-you-sure": "Ви впевнені?",
+      "cancel": "Скасувати",
+      "delete": "Видалити",
+      "delete-message": "Видалити {{value}}?",
+      "maintenance-description": "Зазвичай це займає кілька хвилин, в іншому випадку зверніться до системного адміністратром.",
+      "maintenance-message": "Технічні роботи... <br> Будь ласка, спробуйте пізніше.",
+      "no": "Ні",
+      "set": "Задати",
+      "yes": "Так",
+      "yes-exit": "Так, вийти!"
+    },
+    "field": {
+      "id": "Ідентифікатор"
+    },
+    "form": {
+      "confirmpassword": "Нове підтвердження пароля",
+      "email": "Електронна пошта",
+      "firstname": "Ім'я",
+      "language": "Мова",
+      "lastname": "Прізвище",
+      "login": "Увійти",
+      "newpassword": "Новий пароль",
+      "oldpassword": "Старий пароль",
+      "otp": "One Time Password",
+      "signin": "увійти"
+    },
+    "item-count": "Показано {{first}} - {{second}} із {{total}} елементів.",
+    "menu": {
+      "account": {
+        "logout": "Вийти",
+        "mini": {
+          "password": "П",
+          "profile": "В",
+          "settings": "Н"
+        },
+        "password": "Пароль",
+        "passwordSetup": "Запрошення до системи",
+        "profile": "Профіль",
+        "settings": "Налаштування"
+      },
+      "admin": {
+        "apidocs": "API",
+        "audits": "Аудит",
+        "clientManagement": "Керування клієнтами",
+        "dashboard": "Панель управління",
+        "formPlayground": "Тестовый майданчик форми",
+        "gateway": "Шлюз",
+        "health": "Здоров'я",
+        "logs": "Журнали",
+        "main": "Адміністрування",
+        "maintenance": "Обслуговування",
+        "metrics": "Показники",
+        "mini": {
+          "apidocs": "А.",
+          "audits": "А.",
+          "clientManagement": "К",
+          "formPlayground": "Г",
+          "gateway": "Ш",
+          "health": "С",
+          "logs": "Л",
+          "maintenance": "О",
+          "metrics": "М",
+          "rolesManagement": "Р",
+          "rolesMatrix": "Р",
+          "translation": "П",
+          "userManagement": "К"
+        },
+        "rolesManagement": "Управління ролями",
+        "rolesMatrix": "Матриця ролей",
+        "translation": "Переклади",
+        "userManagement": "Керування користувачами"
+      },
+      "applications": {
+        "application": "Програма",
+        "main": "Програми"
+      },
+      "dashboards": {
+        "main": "Інформаційні панелі"
+      },
+      "entities": {
+        "attachment": "Вкладення",
+        "calendar": "Календар",
+        "comment": "Коментар",
+        "content": "Вміст",
+        "country": "Країна",
+        "event": "Подія",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "link": "Посилання",
+        "location": "Місцезнаходження",
+        "main": "Об'єкти",
+        "rating": "Рейтинг",
+        "tag": "Тег",
+        "vote": "Голосувати",
+        "xmEntity": "Xm Entity"
+      }
+    },
+    "messages": {
+      "error": {
+        "captchaempty": "Будь ласка, перевірте captcha.",
+        "dontmatch": "Пароль та його підтвердження не збігаються!",
+        "upload-fail": "Сервіс завантаження недосяжний!"
+      },
+      "info": {
+        "authenticated": {
+          "link": "увійти",
+          "prefix": "Якщо ти хочеш ",
+          "suffix": ", ви можете спробувати облікові записи за умовчанням:"
+        }
+      },
+      "validate": {
+        "captcha": {
+          "required": "Потрібна сaptcha."
+        },
+        "confirmpassword": {
+          "maxlength": "Ваш пароль підтвердження не може перевищувати 50 символів.",
+          "minlength": "Ваш пароль підтвердження повинен складатися не менше 4 символів.",
+          "password-max-length": "Ваш пароль підтвердження не може перевищувати {{maxLength}} символів.",
+          "password-min-length": "Ваш пароль підтвердження повинен складатися не менше {{minLength}} символів.",
+          "password-pattern": "Ваш пароль не відповідає шаблону {{pattern}}",
+          "required": "Ваш пароль для підтвердження необхідний."
+        },
+        "email": {
+          "invalid": "Ваша електронна адреса недійсна.",
+          "maxlength": "Ваш електронний лист не може перевищувати 50 символів.",
+          "minlength": "Ваша електронна адреса повинна містити принаймні 5 символів.",
+          "required": "Ваша електронна адреса обов&#39;язкова."
+        },
+        "firstname": {
+          "maxlength": "Ваше ім&#39;я не може перевищувати 50 символів",
+          "minlength": "Ваше ім&#39;я має містити принаймні 1 символ",
+          "required": "Ваше ім&#39;я обов&#39;язкове."
+        },
+        "lastname": {
+          "maxlength": "Ваше прізвище не може перевищувати 50 символів",
+          "minlength": "Ваше прізвище має містити принаймні 1 символ",
+          "required": "Ваше прізвище потрібно."
+        },
+        "newpassword": {
+          "maxlength": "Ваш пароль не може перевищувати 50 символів.",
+          "minlength": "Ваш пароль повинен складатися не менше 4 символів.",
+          "password-max-length": "Ваш пароль не може перевищувати {{maxLength}} символів.",
+          "password-min-length": "Ваш пароль повинен складатися не менше {{minLength}} символів.",
+          "password-pattern": "Ваш пароль не відповідає шаблону {{pattern}}",
+          "required": "Ваш пароль потрібен.",
+          "strength": "Надійність паролю:"
+        },
+        "oldpassword": {
+          "maxlength": "Старий пароль не може перевищувати 50 символів.",
+          "minlength": "Старий пароль повинен складатися не менше 4 символів.",
+          "password-max-length": "Старий пароль не може перевищувати {{maxLength}} символів.",
+          "password-min-length": "Старий пароль повинен складатися не менше {{minLength}} символів.",
+          "password-pattern": "Ваш пароль не відповідає шаблону {{pattern}}",
+          "required": "Потрібний старий пароль."
+        }
+      }
+    },
+    "new": "Новий",
+    "noData": "Немає даних!",
+    "perPage": "елементів на сторінці",
+    "rest-select-none-option": "Нічого",
+    "rest-select-placeholder-noresults": "Нічого не знайдено",
+    "rest-select-placeholder-search": "",
+    "rest-select-search-more": "Доступні ще результати. Уточніть пошуковий запит!",
+    "ribbon": {
+      "dev": "Розвиток"
+    },
+    "shared": {
+      "ext-md-editor": {
+        "placeholder": "Натисніть кнопку редагувати щоб змінити опис в полі",
+        "placeholder-empty": "Поле пусте! Натисніть кнопку редагувати щоб додати опис в полі",
+        "save-button": "Зберегти зміни"
+      },
+      "privacy-and-terms-dialog": {
+        "i-agree": "Я згоден з Умовами Обслуговування і обробкою своєї інформації, як описано в Політиці Конфіденційності",
+        "title": "Конфіденційність і Умови"
+      }
+    }
+  },
+  "health": {
+    "details": {
+      "details": "Подробиці",
+      "error": "Помилка",
+      "name": "Ім&#39;я",
+      "properties": "Властивості",
+      "value": "Значення"
+    },
+    "indicator": {
+      "binders": "Біндери",
+      "cassandra": "Cassandra",
+      "cdb": "CDB",
+      "configServer": "Сервер конфігурації Microservice",
+      "consul": "Консул",
+      "db": "База даних",
+      "discoveryComposite": "Discovery Composite",
+      "diskSpace": "Дисковий простір",
+      "elasticsearch": "Elastic Search",
+      "healthIndicator": "Health Indicator",
+      "hlr": "HLR",
+      "hystrix": "Hystrix",
+      "mail": "Електронна пошта",
+      "refreshScope": "Обновити обсяги Microservice"
+    },
+    "options": {
+      "done": "Закрити",
+      "instance-name": "Інстанс",
+      "service-name": "Назва сервісу"
+    },
+    "refresh": {
+      "button": "Оновити"
+    },
+    "stacktrace": "Стаккрайс",
+    "status": {
+      "DOWN": "DOWN",
+      "OUT_OF_SERVICE": "OUT_OF_SERVICE",
+      "UNKNOWN": "UNKNOWN",
+      "UP": "UP"
+    },
+    "table": {
+      "service": "Назва служби",
+      "status": "Статус"
+    },
+    "title": "Перевірки здоров&#39;я"
+  },
+  "home": {
+    "subtitle": "Це ваша домашня сторінка",
+    "title": "Ласкаво просимо!"
+  },
+  "login": {
+    "form": {
+      "button": "Увійти",
+      "hide-password": "Приховати пароль",
+      "otpValidateButton": "Send OTP",
+      "otpValidateCancel": "Cancel",
+      "password": "Пароль",
+      "rememberMe": "Пам&#39;ятай мене",
+      "show-password": "Показати пароль"
+    },
+    "messages": {
+      "error": {
+        "authentication": "<strong>Не вдалося ввійти!</strong> Будь ласка, перевірте свої облікові дані та повторіть спробу."
+      },
+      "otp": {
+        "notification": "Please enter one time password from email"
+      }
+    },
+    "password": {
+      "forgot": "Ви забули свій пароль?"
+    },
+    "signin": "Увійти",
+    "signup": "Зареєструватися",
+    "title": "Увійти"
+  },
+  "logs": {
+    "filter": "Фільтрувати",
+    "nbloggers": "Є лічильники {{total}}.",
+    "table": {
+      "level": "Рівень",
+      "name": "Ім&#39;я"
+    },
+    "title": "Журнали"
+  },
+  "mat": {
+    "paginator": {
+      "firstPageLabel": "Перша сторінка",
+      "itemsPerPageLabel": "Показувати по:",
+      "lastPageLabel": "Остання сторінка",
+      "nextPageLabel": "Наступна сторінка",
+      "of": "з",
+      "previousPageLabel": "Попередня сторінка"
+    }
+  },
+  "metrics": {
+    "datasource": {
+      "count": "Рахувати",
+      "max": "Макс",
+      "mean": "Середня",
+      "min": "Хв",
+      "p50": "p50",
+      "p75": "p75",
+      "p95": "p95",
+      "p99": "p99",
+      "title": "Статистика даних (час у мілісекунди)",
+      "usage": "Використання"
+    },
+    "jvm": {
+      "gc": {
+        "marksweepcount": "Відмітити знак &quot;Розминути&quot;",
+        "marksweeptime": "Позначити Sweep час",
+        "scavengecount": "Підраховувати втрати",
+        "scavengetime": "Вичерпати час",
+        "title": "Сміттєві колекції"
+      },
+      "http": {
+        "active": "Активні запити:",
+        "code": {
+          "notfound": "Не знайдено",
+          "ok": "Добре",
+          "servererror": "помилка серверу"
+        },
+        "table": {
+          "average": "Середній",
+          "code": "Код",
+          "count": "Рахувати",
+          "mean": "Середня"
+        },
+        "title": "HTTP-запити (події в секунду)",
+        "total": "Загальна кількість запитів:"
+      },
+      "memory": {
+        "heap": "Купа пам&#39;яті",
+        "nonheap": "Без пам&#39;яті",
+        "title": "Пам&#39;ять",
+        "total": "Загальна пам&#39;ять"
+      },
+      "threads": {
+        "blocked": "Заблоковано",
+        "dump": {
+          "blockedcount": "Заблокований граф",
+          "blockedtime": "Заблокований час",
+          "hide": "Приховати стаккрайс",
+          "lockname": "Закріпити ім&#39;я",
+          "show": "Показати Стаккрайс",
+          "title": "Нитки скидання",
+          "waitedcount": "Чекав графа",
+          "waitedtime": "Очікуване час"
+        },
+        "runnable": "Runnable",
+        "timedwaiting": "Час очікування",
+        "title": "Нитки",
+        "waiting": "Очікування"
+      },
+      "title": "JVM Metrics"
+    },
+    "options": {
+      "done": "Закрити",
+      "f-all": "All",
+      "f-blocked": "Blocked",
+      "f-runnable": "Runnable",
+      "f-timed-waiting": "Timed Waiting",
+      "f-waiting": "Waiting",
+      "instance-name": "Інстанс",
+      "service-name": "Назва сервісу"
+    },
+    "servicesstats": {
+      "table": {
+        "count": "Рахувати",
+        "max": "Макс",
+        "mean": "Середня",
+        "min": "Хв",
+        "name": "Назва служби",
+        "p50": "p50",
+        "p75": "p75",
+        "p95": "p95",
+        "p99": "p99"
+      },
+      "title": "Статистика послуг (час у мілісекунди)"
+    },
+    "title": "Метрики додатків",
+    "updating": "Оновлення ..."
+  },
+  "navbar": {
+    "notification": "Сповіщення",
+    "search": "Пошук",
+    "toggleNotification": "Переключити навігацію"
+  },
+  "password": {
+    "form": {
+      "button": "Зберегти"
+    },
+    "messages": {
+      "error": "<strong>Сталася помилка!</strong> Пароль не може бути змінений.",
+      "success": "<strong>Пароль змінено!</strong>"
+    },
+    "title": "Пароль для [ <b>{{username}}</b> ]"
+  },
+  "register": {
+    "form": {
+      "button": "Зареєструватися"
+    },
+    "messages": {
+      "error": {
+        "emailempty": "<strong>Email не може бути порожнім!</strong> Будь ласка, виберіть один.",
+        "fail": "<strong>Реєстрація не вдалося!</strong> Будь-ласка спробуйте пізніше.",
+        "userexists": "<strong>Логін вже зареєстрований!</strong> Будь ласка, виберіть інший."
+      },
+      "success": "<strong>Реєстрація збережена!</strong> Будь ласка, перевірте свою електронну пошту для підтвердження."
+    },
+    "title": "Реєстрація"
+  },
+  "reset": {
+    "finish": {
+      "form": {
+        "button": "Перевірити новий пароль"
+      },
+      "messages": {
+        "error": "Ваш пароль неможливо скинути. Пам&#39;ятайте, що запит на введення пароля дійсний лише 24 години.",
+        "info": "Виберіть новий пароль",
+        "keyexpired": "Ключ запиту вже не дійсний.",
+        "keymissing": "Ключ скидання відсутній.",
+        "keyused": "Ключ запиту вже використовувався.",
+        "success": "<strong>Ваш пароль був скинутий.</strong> Будь ласка&nbsp;"
+      },
+      "title": "Скинути пароль"
+    },
+    "request": {
+      "form": {
+        "button": "Скинути пароль"
+      },
+      "messages": {
+        "info": "Введіть електронну адресу, яку ви використовували для реєстрації",
+        "notfound": "<strong>Електронна адреса не зареєстрована!</strong> Будь ласка, перевірте та повторіть спробу",
+        "success": "Перегляньте свої електронні листи, щоб дізнатись, як змінити пароль."
+      },
+      "title": "Скинути пароль"
+    },
+    "setup": {
+      "form": {
+        "button": "Встановити пароль"
+      },
+      "messages": {
+        "error": "Ваш пароль неможливо створити. Пам&#39;ятайте, що запит на введення пароля дійсний лише 24 години.",
+        "info": "Вигадайте новий пароль",
+        "success": "<strong>Ваш пароль було створено.</strong> Будь ласка,&nbsp;"
+      },
+      "title": "Налаштуйте свій пароль"
+    }
+  },
+  "rolesManagement": {
+    "basedOn": "На основі",
+    "chooseRole": "Виберіть роль",
+    "createdBy": "Створено",
+    "createdDate": "Дата створення",
+    "delete": {
+      "question": "Ви впевнені, що хочете видалити роль '{{ roleKey }}'?"
+    },
+    "description": "Опис",
+    "detail": {
+      "permissions": "права доступу",
+      "title": "Роль"
+    },
+    "home": {
+      "labelCreate": "Створити нову роль",
+      "labelEdit": "Редагувати роль",
+      "title": "Ролі"
+    },
+    "key": "Ім'я",
+    "lastModifiedBy": "Змінено",
+    "lastModifiedDate": "Дата зміни",
+    "matrix": {
+      "title": "Матриця ролей"
+    },
+    "ok": "Ok",
+    "permission": {
+      "checkAll": "Відзначити всі",
+      "condition": "Умова",
+      "conditionEnvInfo": "1. використовуйте SpEL функцiональнiсть<br>2. використовуйте # перед змiнною<br>3. #subject.role, #subject.userKey, #subject.login змiннi доступнi<br>4. #env['ipAddress'] змiнна доступна",
+      "conditionResourceInfo": "1. використовуйте SpEL функцiональнiсть<br>2. використовуйте # перед змiнною<br>3. #subject.role, #subject.userKey, #subject.login змiннi доступнi",
+      "createCondition": "Створення умови",
+      "desc": "Опис",
+      "editCondition": "Редагування умови",
+      "envCondition": "Умови середовища",
+      "msName": "Назва МС",
+      "notPermitted": "недозволенi",
+      "onForbid": "При забороні",
+      "permit": "Дозвіл",
+      "permitted": "дозволенi",
+      "permittedAny": "принаймні один",
+      "privilegeKey": "Ключ привілею",
+      "resourceCondition": "Умови ресурсу"
+    },
+    "variables": "Доступні змінні"
+  },
+  "settings": {
+    "form": {
+      "button": "Зберегти",
+      "general": "Загальна інформація",
+      "local-time": "Місцевий час: ",
+      "logins": "Логіни",
+      "offset-time": "Зміщення часового поясу: ",
+      "utc-time": "UTC-час: "
+    },
+    "messages": {
+      "logins": {
+        "success": "<strong>Логін збережений!</strong>"
+      },
+      "success": "<strong>Налаштування збережено!</strong>"
+    },
+    "security": {
+      "autoLogout": "Авто вихід",
+      "name": "Параметри безпеки",
+      "seconds": "секунди",
+      "twoFAStatus": "Двофакторна аутентифікація"
+    }
+  },
+  "social": {
+    "register": {
+      "errorTitle": "Зареєструйтеся за допомогою зовнішнього облікового запису",
+      "messages": {
+        "error": {
+          "fail": "<strong>Реєстрація не вдалося!</strong> Під час валідації вашого зовнішнього облікового запису сталася помилка, ми радимо спробувати інше з'єднання."
+        },
+        "success": "<strong>Реєстрація збережена!</strong> Будь ласка, перевірте свою електронну пошту для підтвердження."
+      },
+      "title": "Зареєструватися за {{label}}"
+    }
+  },
+  "swagger": {
+    "select-component": "Оберiть компонент"
+  },
+  "userManagement": {
+    "activated": "Активовано",
+    "autoLogout": "Автоматичний вихід",
+    "createdBy": "Створений",
+    "createdDate": "Створена дата",
+    "deactivated": "Деактивовано",
+    "delete": {
+      "question": "Ви впевнені, що хочете видалити користувача {{userKey}}?"
+    },
+    "detail": {
+      "title": "Користувач"
+    },
+    "error": "Error",
+    "firstName": "Ім&#39;я",
+    "home": {
+      "createOrEditLabel": "Створіть або відредагуйте користувача",
+      "editLoginsLabel": "Оновити логіни користувачів",
+      "title": "Користувачі"
+    },
+    "langKey": "Мова",
+    "lastModifiedBy": "Змінено на",
+    "lastModifiedDate": "Змінена дата",
+    "lastName": "Прізвище",
+    "logins": "Логіни",
+    "onlineUsers": "Користувачів онлайн: ",
+    "role": "Роль",
+    "search-by-login": "Шукати за логіном",
+    "success": "Success",
+    "twoFADisabled": "Two Factor authentication disabled",
+    "twoFAEnabled": "Two Factor authentication enabled",
+    "userKey": "Ключ користувача"
+  },
+  "wordAutocomplete": {
+    "hint": "Введіть Ctrl+Space для відображення підказки",
+    "noVariables": "Слово не знайдено"
+  },
+  "xm-balance": {
+    "balance-detail-dialog": {
+      "title": "Деталізація балансу"
+    },
+    "balance-list-card": {
+      "title": "Баланси"
+    },
+    "common": {
+      "cancel": "Скасувати",
+      "fields": {
+        "amount": "Кількість",
+        "end-date": "Дата закінчення",
+        "label": "Позначка",
+        "start-date": "Дата початку"
+      }
+    }
+  },
+  "xm-entity": {
+    "attachment-card": {
+      "delete": {
+        "button": "Так, видалити!",
+        "button-cancel": "Скасувати",
+        "remove-error": "Вкладення не видалено. Спробуй ще раз.",
+        "remove-success": "Вкладення успішно видалено.",
+        "title": "Ви дійсно хочете видалити вкладення?"
+      },
+      "no-data": "Ще не додано жодного файлу",
+      "title": "Файли",
+      "volume": {
+        "GB": "Гб",
+        "KB": "Кб",
+        "MB": "Мб",
+        "PB": "Пб",
+        "TB": "Тб",
+        "bytes": "байт"
+      }
+    },
+    "attachment-detail-dialog": {
+      "add": {
+        "success": "Вкладення успішно додано."
+      },
+      "choose-type": "Виберіть тип вкладення",
+      "title": "Додати нове вкладення для",
+      "upload": "Натисніть, щоб завантажити або киньте файл тут.",
+      "wrong-type-error": "Заборонений тип файлу {{fileType}}"
+    },
+    "calendar-card": {
+      "calendar": {
+        "btn-list-day": "День (список)",
+        "btn-list-week": "Тиждень (список)"
+      },
+      "delete": {
+        "button": "Так, видалити!",
+        "button-cancel": "Скасувати",
+        "remove-error": "Подію не видалено. Спробуй ще раз.",
+        "remove-success": "Подію успішно видалено.",
+        "title": "Ви дійсно хочете видалити подію?"
+      }
+    },
+    "calendar-event-dialog": {
+      "add": {
+        "success": "Подію додано успішно."
+      },
+      "choose-type": "Виберіть тип події",
+      "title": "Додати нову подію для"
+    },
+    "comment-detail-dialog": {
+      "add": {
+        "success": "Коментар успішно додано."
+      },
+      "choose-type": "Виберіть тип коментаря",
+      "title": "Додати коментар для"
+    },
+    "common": {
+      "add": "Додати",
+      "add-avatar": "Добавити Аватар",
+      "cancel": "Скасувати",
+      "change-avatar": "Звінити Аватар",
+      "close": "Закрити",
+      "fields": {
+        "addressLine1": "Адресний Рядок 1",
+        "addressLine2": "Адресний Рядок 2",
+        "city": "Населений пункт",
+        "description": "Опис",
+        "end-date": "Дата закінчення",
+        "id": "ID",
+        "latitude": "Широта",
+        "longitude": "Довгота",
+        "message": "Коментар",
+        "name": "Ім'я/Назва",
+        "region": "Область",
+        "start-date": "Дата початку",
+        "state": "Стан",
+        "title": "Тема",
+        "type": "Тип",
+        "zip": "Поштовий індекс"
+      },
+      "save": "Зберегти",
+      "search": "Пошук",
+      "validation": {
+        "date-time": "Це поле повинно бути дата і час.",
+        "pattern": "Це поле не відповідає правилам",
+        "required": "Поле обов'язково до заповнення."
+      }
+    },
+    "entity-data-card": {
+      "title": "Дані",
+      "update-error": "Не оновлено. Спробуйте ще раз.",
+      "update-success": "Оновлено успішно."
+    },
+    "entity-detail-dialog": {
+      "add": {
+        "choose-type": "Виберіть тип",
+        "title": "Додати новий запис"
+      },
+      "edit": {
+        "title": "Редагування об'єкта"
+      }
+    },
+    "entity-detail-fab": {
+      "edit-entity": "Редагувати",
+      "new-attachment": "Додати файл",
+      "new-comment": "Додати кометар",
+      "new-link": "Додати посилання",
+      "new-location": "Додати локацiю"
+    },
+    "entity-list-card": {
+      "action-dialog": {
+        "question": "Ви впевнені, що хочете <b>{{action}}</b> для <b>{{name}}</b>?"
+      },
+      "delete": {
+        "button": "Так, видалити!",
+        "button-cancel": "Скасувати",
+        "remove-error": "Не видалено. Спробуй ще раз.",
+        "remove-success": "Успішно видалено.",
+        "title": "Ви дійсно хочете видалити?"
+      },
+      "export": {
+        "action": {
+          "csv": "csv",
+          "downloads": "Завантажити",
+          "xls": "xls"
+        }
+      },
+      "filters-hide": "Сховаты фільтри",
+      "filters-show": "Показати фільтри",
+      "open": "Відкрити",
+      "refresh": "Оновити"
+    },
+    "entity-list-fab": {
+      "new-generated": "Згенеровано!"
+    },
+    "function-list-card": {
+      "change-state": {
+        "button": "Так, змінити!",
+        "error": "Стан не змінився. Спробуй ще раз.",
+        "success": "Стан успішно змінено.",
+        "title": "Ви дійсно хочете змінити стан?"
+      },
+      "current-state": "Поточний стан: ",
+      "general-group": "Загальні Функції",
+      "next-states": "Наступні стани доступні по життєвому циклу:",
+      "other-functions": "Інші Функції:",
+      "title": "Функції"
+    },
+    "functions": {
+      "linkedin-profile": {
+        "awards": "Нагороди",
+        "button": "Витягнути профіль LinkedIn",
+        "certifications": "Сертифікати",
+        "current": "Струм",
+        "education": "Освіта",
+        "experienceCurrent": "Поточний досвід",
+        "experiencePast": "Минулий досвід",
+        "interests": "Інтереси",
+        "languages": "Мови",
+        "location": "Місцезнаходження",
+        "projects": "Проекти",
+        "recommendations": "Рекомендації",
+        "skills": "Навички",
+        "summary": "Резюме",
+        "title": "Назва",
+        "volunteer": "Волонтерська причина"
+      }
+    },
+    "link-detail-dialog": {
+      "add-link": "Додати",
+      "add": {
+        "build-type-new": "Нова",
+        "build-type-search": "Пошук",
+        "error": "Посилання не додане. Спробуй ще раз.",
+        "success": "Посилання успішно додане.",
+        "title": "Додати нове Посилання для"
+      },
+      "show-more": "Показати більше"
+    },
+    "link-list-card": {
+      "delete": {
+        "button": "Так, видалити!",
+        "button-cancel": "Скасувати",
+        "remove-error": "Посилання не видалене. Спробуй ще раз.",
+        "remove-success": "Посилання видалене успішно.",
+        "title": "Ви дійсно хочете видалити посилання?"
+      },
+      "list-view": "Перегляд списком",
+      "tree-view": "Перегляд деревом"
+    },
+    "link-list-tree-section": {
+      "collapse": "Згорнути цю гілку"
+    },
+    "location-detail-dialog": {
+      "add": {
+        "success": "Місцезнаходження успішно додано.",
+        "title": "Додати нове місце розташування для"
+      },
+      "choose-country": "Виберіть країну",
+      "choose-type": "Виберіть тип розташування (обов'язково)",
+      "countries": {
+        "AD": "Андорра",
+        "AE": "Об'єднані Арабські Емірати",
+        "AF": "Афганістан",
+        "AG": "Антигуа і Барбуда",
+        "AI": "Ангілья",
+        "AL": "Албанія",
+        "AM": "Арменія",
+        "AO": "Ангола",
+        "AQ": "Антарктида",
+        "AR": "Аргентина",
+        "AS": "Американське Самоа",
+        "AT": "Австрія",
+        "AU": "Австралія",
+        "AW": "Аруба",
+        "AX": "Аландські острови",
+        "AZ": "Азербайджан",
+        "BA": "Боснія і Герцеговина",
+        "BB": "Барбадос",
+        "BD": "Бангладеш",
+        "BE": "Бельгія",
+        "BF": "Буркіна-Фасо",
+        "BG": "Болгарія",
+        "BH": "Бахрейн",
+        "BI": "Бурунді",
+        "BJ": "Бенін",
+        "BL": "Сен-Бартельмі",
+        "BM": "Бермуди",
+        "BN": "Бруней Даруссалам",
+        "BO": "Болівія",
+        "BQ": "Карибські Нідерланди",
+        "BR": "Бразилія",
+        "BS": "Багами",
+        "BT": "Бутан",
+        "BV": "Острів Буве",
+        "BW": "Ботсвана",
+        "BY": "Білорусь",
+        "BZ": "Беліз",
+        "CA": "Канада",
+        "CC": "Кокосові острови",
+        "CD": "Демократична Республіка Конго",
+        "CF": "Центральноафриканська Республіка",
+        "CG": "Республіка Конго",
+        "CH": "Швейцарія",
+        "CI": "Кот-д'Івуар",
+        "CK": "Острови Кука",
+        "CL": "Чілі",
+        "CM": "Камерун",
+        "CN": "КНР (Китайська Народна Республіка)",
+        "CO": "Колумбія",
+        "CR": "Коста-Рика",
+        "CU": "Куба",
+        "CV": "Кабо-Верде",
+        "CW": "Кюрасао",
+        "CX": "Острів Різдва",
+        "CY": "Кіпр",
+        "CZ": "Чехія",
+        "DE": "Німеччина",
+        "DJ": "Джибуті",
+        "DK": "Данія",
+        "DM": "Домініка",
+        "DO": "Домініканська Республіка",
+        "DZ": "Алжир",
+        "EC": "Еквадор",
+        "EE": "Естонія",
+        "EG": "Єгипет",
+        "EH": "САДР",
+        "ER": "Еритрея",
+        "ES": "Іспанія",
+        "ET": "Ефіопія",
+        "FI": "Фінляндія",
+        "FJ": "Фіджі",
+        "FK": "Фолклендські Острови",
+        "FM": "Мікронезія",
+        "FO": "Фарерські острови",
+        "FR": "Франція",
+        "GA": "Габон",
+        "GB": "Великобританія",
+        "GD": "Гренада",
+        "GE": "Грузія",
+        "GF": "Гвіана",
+        "GG": "Гернсі",
+        "GH": "Гана",
+        "GI": "Гібралтар",
+        "GL": "Ґренландія",
+        "GM": "Гамбія",
+        "GN": "Гвінея",
+        "GP": "Гваделупа",
+        "GQ": "Екваторіальна Гвінея",
+        "GR": "Греція",
+        "GS": "Південна Джорджія та Південні Сандвічеві Острови",
+        "GT": "Гватемала",
+        "GU": "Гуам",
+        "GW": "Гвінея-Бісау",
+        "GY": "Гаяна",
+        "HK": "Гонконг",
+        "HM": "Острів Герд і острови Макдональд",
+        "HN": "Гондурас",
+        "HR": "Хорватія",
+        "HT": "Гаїті",
+        "HU": "Угорщина",
+        "ID": "Індонезія",
+        "IE": "Ірландія",
+        "IL": "Ізраїль",
+        "IM": "Острів Мен",
+        "IN": "Індія",
+        "IO": "Британська Територія в Індійському Океані",
+        "IQ": "Ірак",
+        "IR": "Іран",
+        "IS": "Ісландія",
+        "IT": "Італія",
+        "JE": "Джерсі",
+        "JM": "Ямайка",
+        "JO": "Йорданія",
+        "JP": "Японія",
+        "KE": "Кенія",
+        "KG": "Киргизстан",
+        "KH": "Камбоджа",
+        "KI": "Кірибаті",
+        "KM": "Коморські Острови",
+        "KN": "Сент-Кіттс і Невіс",
+        "KP": "КНДР (Корейська Народно-Демократична Республіка)",
+        "KR": "Південна Корея",
+        "KW": "Кувейт",
+        "KY": "Кайманові Острови",
+        "KZ": "Казахстан",
+        "LA": "Лаос",
+        "LB": "Ліван",
+        "LC": "Сент-Люсія",
+        "LI": "Ліхтенштейн",
+        "LK": "Шрі-Ланка",
+        "LR": "Ліберія",
+        "LS": "Лесото",
+        "LT": "Литва",
+        "LU": "Люксембург",
+        "LV": "Латвія",
+        "LY": "Лівія",
+        "MA": "Марокко",
+        "MC": "Монако",
+        "MD": "Молдова",
+        "ME": "Чорногорія",
+        "MF": "Сен-Мартен",
+        "MG": "Мадагаскар",
+        "MH": "Маршаллові Острови",
+        "MK": "Македонія",
+        "ML": "Малі",
+        "MM": "М'янма",
+        "MN": "Монголія",
+        "MO": "Аоминь",
+        "MP": "Північні Маріанські Острови",
+        "MQ": "Мартиніка",
+        "MR": "Мавританія",
+        "MS": "Монтсеррат",
+        "MT": "Мальта",
+        "MU": "Маврикій",
+        "MV": "Мальдівы",
+        "MW": "Малаві",
+        "MX": "Мексика",
+        "MY": "Малайзія",
+        "MZ": "Мозамбік",
+        "NA": "Намібія",
+        "NC": "Нова Каледонія",
+        "NE": "Нігер",
+        "NF": "Острів Норфолк",
+        "NG": "Нігерія",
+        "NI": "Нікарагуа",
+        "NL": "Нідерланди",
+        "NO": "Норвегія",
+        "NP": "Непал",
+        "NR": "Науру",
+        "NU": "Ніуе",
+        "NZ": "Нова Зеландія",
+        "OM": "Оман",
+        "PA": "Панама",
+        "PE": "Перу",
+        "PF": "Французька Полінезія",
+        "PG": "Папуа Нова Гвінея",
+        "PH": "Філіппіни",
+        "PK": "Пакистан",
+        "PL": "Польша",
+        "PM": "Сен-П'єр і Мікелон",
+        "PN": "Піткерн",
+        "PR": "Пуерто-Ріко",
+        "PS": "Палестинська держава",
+        "PT": "Португалія",
+        "PW": "Палау",
+        "PY": "Парагвай",
+        "QA": "Катар",
+        "RE": "Реюньйон",
+        "RO": "Румунія",
+        "RS": "Сербія",
+        "RU": "Росія",
+        "RW": "Руанда",
+        "SA": "Саудівська Аравія",
+        "SB": "Соломонові Острови",
+        "SC": "Сейшельські Острови",
+        "SD": "Судан",
+        "SE": "Швеція",
+        "SG": "Сінгапур",
+        "SH": "Острови Святої Єлени, Вознесіння і Тристан-да-Кунья",
+        "SI": "Словенія",
+        "SJ": "Свальбард і Ян-Маєн",
+        "SK": "Словаччина",
+        "SL": "Сьєрра-Леоне",
+        "SM": "Сан-Маріно",
+        "SN": "Сенегал",
+        "SO": "Сомалі",
+        "SR": "Суринам",
+        "SS": "Південний Судан",
+        "ST": "Сан-Томе і Принсіпі",
+        "SV": "Сальвадор",
+        "SX": "Сінт-Мартен",
+        "SY": "Сірія",
+        "SZ": "Свазіленд",
+        "TC": "Острови Теркс і Кайкос",
+        "TD": "Чад",
+        "TF": "Французькі Південні і Антарктичні Території",
+        "TG": "Того",
+        "TH": "Таїланд",
+        "TJ": "Таджикистан",
+        "TK": "Токелау",
+        "TL": "Східний Тимор",
+        "TM": "Туркменістан",
+        "TN": "Туніс",
+        "TO": "Тонга",
+        "TR": "Турція",
+        "TT": "Тринідад і Тобаго",
+        "TV": "Тувалу",
+        "TW": "Республіка Китай",
+        "TZ": "Танзанія",
+        "UA": "Україна",
+        "UG": "Уганда",
+        "UM": "Зовнішні малі острови (США)",
+        "US": "США",
+        "UY": "Уругвай",
+        "UZ": "Узбекистан",
+        "VA": "Ватикан",
+        "VC": "Сент-Вінсент і Гренадини",
+        "VE": "Венесуела",
+        "VG": "Британські Віргінські Острови",
+        "VI": "Віргінські Острови (США)",
+        "VN": "В'єтнам",
+        "VU": "Вануату",
+        "WF": "Волліс і Футуна",
+        "WS": "Самоа",
+        "XK": "Косово",
+        "YE": "Ємен",
+        "YT": "Майотта",
+        "ZA": "ПАР",
+        "ZM": "Замбія",
+        "ZW": "Зімбабве"
+      },
+      "edit": {
+        "success": "Місцезнаходження успішно змінено.",
+        "title": "Відредагуйте розташування для"
+      }
+    },
+    "location-list-card": {
+      "delete": {
+        "button": "Так, видалити!",
+        "button-cancel": "Скасувати",
+        "remove-error": "Місцезнаходження не видалено. Спробуй ще раз.",
+        "remove-success": "Місцезнаходження успішно видалено.",
+        "title": "Ви дійсно хочете видалити місце розташування?"
+      },
+      "title": "Місцезнаходження"
+    },
+    "rating-list-section": {
+      "vote-error": "Ваш голос не приймається до уваги.",
+      "vote-success": "Ваш голос приймається до уваги.",
+      "votes": "Голос(а)"
+    },
+    "states-management-dialog": {
+      "choose-state": "Виберіть ключ",
+      "title": "Детальна інформація станів"
+    },
+    "tag-list-section": {
+      "add-error": "Тег не додано. Спробуй ще раз.",
+      "remove-error": "Тег не видалений. Спробуй ще раз.",
+      "type-tag": "додати тег ..."
+    }
+  },
+  "xm-notifications": {
+    "showAll": "Смотреть все"
+  },
+  "xm-timeline": {
+    "common": {
+      "time-ago": {
+        "day": "день тому",
+        "days": "днів тому",
+        "hour": "годину назад",
+        "hours": "години тому",
+        "minute": "хвилину тому",
+        "minutes": "хвилин тому",
+        "month": "місяць тому",
+        "months": "місяці тому",
+        "seconds": "кілька секунд назад",
+        "year": "рік назад",
+        "years": "багато років тому"
+      }
+    },
+    "timeline": {
+      "by": "по",
+      "error": "ПОМИЛКА",
+      "more": "більше часових подій ...",
+      "success": "УСПІШНО",
+      "title": "Історія"
+    }
+  },
+  "xm": {
+    "dashboard": {
+      "config": "Конфігурація",
+      "created": "Нова інформаційна панель створена з ідентифікатором {{param}}",
+      "delete": {
+        "question": "Ви впевнені, що хочете видалити інформаційну панель {{id}}?"
+      },
+      "deleted": "Інформаційна панель видаляється з ідентифікатором {{param}}",
+      "detail": {
+        "title": "Панель приладів"
+      },
+      "home": {
+        "createLabel": "Створіть нову інформаційну панель",
+        "createOrEditLabel": "Створення або редагування інформаційної панелі",
+        "search": "Пошук інформаційної панелі",
+        "title": "Інформаційні панелі"
+      },
+      "isPublic": "Є громадським",
+      "layout": "Макет",
+      "name": "Ім&#39;я",
+      "owner": "Власник",
+      "updated": "Інформаційна панель оновлюється за ідентифікатором {{param}}",
+      "widgets": "Віджети"
+    },
+    "delete": {
+      "question": "Ви впевнені, що хочете видалити [ <b>{{name}}</b> ]?"
+    },
+    "xmEntity": {
+      "add": {
+        "chooseType": "Виберіть тип юридичної особи",
+        "title": "Додати новий запис"
+      },
+      "addPhoto": "Додати фотографію",
+      "change": "Змінити",
+      "data": "Дані",
+      "description": "Опис",
+      "edit": {
+        "title": "Редагування об'єкта [ <b>{{name}}</b> ]"
+      },
+      "endDate": "Дата закінчення",
+      "functions": "Функції",
+      "lifecycle": {
+        "nextStates": "Наступні стани доступні через життєвий цикл:",
+        "title": "Життєвий цикл"
+      },
+      "listView": "Перелік списку",
+      "locations": "Місця розташування",
+      "name": "Ім'я/Назва",
+      "redeem": {
+        "title": "Викупити"
+      },
+      "search": "Результат пошуку для",
+      "showMore": "Показати більше",
+      "startDate": "Дата початку",
+      "state": "Стан",
+      "tenant": {
+        "error": {
+          "alreadyUsed": "Ім'я тенанта вже використовується",
+          "tenantKeyFormat": "Ім'я тенанта повинно містити тільки букви, цифри та нижнє підкреслення. Перший символ повинен бути літерою. Не повинне починатия з 'pg_'. Максимальна довжина 48 символів"
+        }
+      },
+      "title": "Назва",
+      "treeView": "Вид дерева",
+      "type": "Тип",
+      "votes": "Голос(а)"
+    }
+  }
+}

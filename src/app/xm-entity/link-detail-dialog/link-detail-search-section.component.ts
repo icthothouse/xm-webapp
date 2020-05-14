@@ -1,8 +1,9 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateService } from '@ngx-translate/core';
-import { JhiEventManager } from 'ng-jhipster';
+import { MatDialogRef } from '@angular/material/dialog';
+import { XmEventManager } from '@xm-ngx/core';
+
+import { XmToasterService } from '@xm-ngx/toaster';
 import { filter, map } from 'rxjs/operators';
 
 import { XmConfigService } from '../../shared';
@@ -14,7 +15,6 @@ import { Spec } from '../shared/spec.model';
 import { XmEntity } from '../shared/xm-entity.model';
 import { XmEntityService } from '../shared/xm-entity.service';
 
-declare let swal: any;
 
 @Component({
     selector: 'xm-link-detail-search-section',
@@ -35,11 +35,11 @@ export class LinkDetailSearchSectionComponent implements OnInit {
     private page: number;
     private linkSpecQuery: any;
 
-    constructor(private activeModal: NgbActiveModal,
+    constructor(private activeModal: MatDialogRef<LinkDetailSearchSectionComponent>,
                 private xmEntityService: XmEntityService,
                 private linkService: LinkService,
-                private eventManager: JhiEventManager,
-                private translateService: TranslateService,
+                private eventManager: XmEventManager,
+                private toasterService: XmToasterService,
                 private configService: XmConfigService) {
     }
 
@@ -58,7 +58,7 @@ export class LinkDetailSearchSectionComponent implements OnInit {
     }
 
     public onCancel(): void {
-        this.activeModal.dismiss('cancel');
+        this.activeModal.close(false);
     }
 
     public onAdd(targetXmEntity: XmEntity): void {
@@ -71,12 +71,12 @@ export class LinkDetailSearchSectionComponent implements OnInit {
 
         this.linkService.create(link).subscribe(() => {
                 this.eventManager.broadcast({name: 'linkListModification'});
-                this.alert('success', 'xm-entity.link-detail-dialog.add.success');
+                this.toasterService.success('xm-entity.link-detail-dialog.add.success');
             }, () => {
-                this.alert('error', 'xm-entity.link-detail-dialog.add.error');
+                this.toasterService.error('xm-entity.link-detail-dialog.add.error');
                 this.showLoader = false;
             },
-            () => this.activeModal.dismiss(true));
+            () => this.activeModal.close(true));
     }
 
     public onSearch(): void {
@@ -108,15 +108,6 @@ export class LinkDetailSearchSectionComponent implements OnInit {
             filter((entity) => entity.hasOwnProperty('links')),
             map((entity) => entity.links.find((link) => link.key === this.linkSpec.key).filterQuery),
         );
-    }
-
-    private alert(type: string, key: string): void {
-        swal({
-            type,
-            text: this.translateService.instant(key),
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-primary',
-        });
     }
 
 }

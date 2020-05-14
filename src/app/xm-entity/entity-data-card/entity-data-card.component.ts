@@ -1,15 +1,13 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { JhiEventManager } from 'ng-jhipster';
+import { XmEventManager } from '@xm-ngx/core';
+import { XmToasterService } from '@xm-ngx/toaster';
 import { finalize } from 'rxjs/operators';
 
-import { Principal } from '../../shared/auth/principal.service';
 import { buildJsfAttributes, nullSafe } from '../../shared/jsf-extention/jsf-attributes-helper';
 import { XmEntitySpec } from '../shared/xm-entity-spec.model';
 import { XmEntity } from '../shared/xm-entity.model';
 import { XmEntityService } from '../shared/xm-entity.service';
 
-declare let swal: any;
 
 @Component({
     selector: 'xm-entity-data-card',
@@ -27,9 +25,8 @@ export class EntityDataCardComponent implements OnInit {
     public showLoader: boolean;
 
     constructor(private xmEntityService: XmEntityService,
-                private translateService: TranslateService,
-                private eventManager: JhiEventManager,
-                public principal: Principal) {
+                private toasterService: XmToasterService,
+                private eventManager: XmEventManager) {
     }
 
     public ngOnInit(): void {
@@ -44,11 +41,11 @@ export class EntityDataCardComponent implements OnInit {
                 (res) => {
                     this.eventManager.broadcast({name: 'xmEntityDetailModification', content: {entity: res.body}});
                     this.xmEntity = Object.assign(this.xmEntity, res.body);
-                    this.alert('success', 'xm-entity.entity-data-card.update-success');
+                    this.toasterService.success('xm-entity.entity-data-card.update-success');
                 },
                 (err) => {
                     if (!this.preventDefaultUpdateError) {
-                        this.alert('error', 'xm-entity.entity-data-card.update-error');
+                        this.toasterService.error('xm-entity.entity-data-card.update-error');
                     } else {
                         this.onSaveError.emit(err);
                     }
@@ -61,15 +58,6 @@ export class EntityDataCardComponent implements OnInit {
             this.jsfAttributes = buildJsfAttributes(this.xmEntitySpec.dataSpec, this.xmEntitySpec.dataForm);
             this.jsfAttributes.data = Object.assign(nullSafe(this.jsfAttributes.data), nullSafe(this.xmEntity.data));
         }
-    }
-
-    private alert(type: string, key: string): void {
-        swal({
-            type,
-            text: this.translateService.instant(key),
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-primary',
-        });
     }
 
 }

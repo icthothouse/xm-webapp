@@ -1,39 +1,42 @@
 import { Location } from '@angular/common';
-import { Component, DoCheck, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, DoCheck, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRouteSnapshot, NavigationEnd, Router } from '@angular/router';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+
 import { TranslateService } from '@ngx-translate/core';
+import { XmUiConfigService } from '@xm-ngx/core';
+import { takeUntilOnDestroy, takeUntilOnDestroyDestroy } from '@xm-ngx/shared/operators';
 import { JhiLanguageService } from 'ng-jhipster';
 
 import { iif, Observable, of } from 'rxjs';
-import { mergeMap, tap } from 'rxjs/operators';
-import { JhiLanguageHelper, Principal } from '../../shared';
+import { filter, mergeMap, tap } from 'rxjs/operators';
+import { JhiLanguageHelper } from '@xm-ngx/components/language';
+import { Principal } from '@xm-ngx/core/auth';
 import { XmConfigService } from '../../shared/spec/config.service';
-import { DashboardWrapperService } from '../../xm-dashboard';
+import { DashboardWrapperService, Layout } from '@xm-ngx/dynamic';
 import { DEBUG_INFO_ENABLED, VERSION } from '../../xm.constants';
 
-const misc = {
-    sidebarMiniActive: false,
-};
-
 declare const $: any;
+
 
 @Component({
     selector: 'xm-navbar',
     styleUrls: ['./navbar.component.scss'],
     templateUrl: './navbar.component.html',
 })
-export class NavbarComponent implements OnInit, DoCheck {
+export class NavbarComponent implements OnInit, OnDestroy, DoCheck {
 
     public routeData: any = {};
     public languages: any[];
-    public modalRef: NgbModalRef;
+    public modalRef: MatDialogRef<any>;
     public version: string;
     public tenantName: string;
     public title: string;
     public titleContent: string;
     public tenantLogoUrl: '../assets/img/logo-xm-online.png';
     public searchMask: string = '';
+    public navbarLayout: Layout[];
+    public isShowSearchPanel: boolean = true;
     @ViewChild('navbar-cmp', {static: false}) public button: any;
     protected mobileMenuVisible: any = 0;
     private previousPath: string;
@@ -49,6 +52,7 @@ export class NavbarComponent implements OnInit, DoCheck {
                 private element: ElementRef,
                 private location: Location,
                 private xmConfigService: XmConfigService,
+                private uiConfigService: XmUiConfigService<{ searchPanel: boolean }>,
                 private dashboardWrapperService: DashboardWrapperService) {
         this.version = DEBUG_INFO_ENABLED ? 'v' + VERSION : '';
         this.registerPopState();
@@ -59,6 +63,7 @@ export class NavbarComponent implements OnInit, DoCheck {
     // tslint:disable-next-line:cognitive-complexity
     public ngOnInit(): void {
         this.xmConfigService.getUiConfig().subscribe((result) => {
+            this.navbarLayout = result.navbar && result.navbar.layout ? result.navbar.layout : null;
             this.tenantName = result.name ? result.name : 'XM^online';
             if (this.tenantName === 'XM^online') {
                 this.tenantName += ' ' + this.version;
@@ -88,33 +93,17 @@ export class NavbarComponent implements OnInit, DoCheck {
 
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
-        if ($('body').hasClass('sidebar-mini')) {
-            misc.sidebarMiniActive = true;
-        }
-        $('#minimizeSidebar').click(() => {
 
-            if (misc.sidebarMiniActive === true) {
-                $('body').removeClass('sidebar-mini');
-                misc.sidebarMiniActive = false;
-
-            } else {
-                setTimeout(() => {
-                    $('body').addClass('sidebar-mini');
-
-                    misc.sidebarMiniActive = true;
-                }, 300);
-            }
-
-            // we simulate the window Resize so the charts will get updated in realtime.
-            const simulateWindowResize = setInterval(() => {
-                window.dispatchEvent(new Event('resize'));
-            }, 180);
-
-            // we stop the simulation of Window Resize after the animations are completed
-            setTimeout(() => {
-                clearInterval(simulateWindowResize);
-            }, 1000);
+        this.uiConfigService.config$().pipe(
+            filter((i) => Boolean(i)),
+            takeUntilOnDestroy(this),
+        ).subscribe((res) => {
+            this.isShowSearchPanel = res.hasOwnProperty('searchPanel') ? res.searchPanel : true;
         });
+    }
+
+    public ngOnDestroy(): void {
+        takeUntilOnDestroyDestroy(this);
     }
 
     public ngDoCheck(): void {
