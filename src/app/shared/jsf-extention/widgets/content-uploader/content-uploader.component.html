@@ -1,0 +1,51 @@
+<div class="mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field mat-form-field-should-float content-uploader">
+  <div class="mat-form-field-wrapper">
+    <div class="mat-form-field-flex">
+      <div class="mat-form-field-infix">
+      <span class="mat-form-field-label-wrapper">
+        <label class="mat-form-field-label">{{options.noTitle ? '' : options.title}}</label>
+      </span>
+        <input type="text"
+               hidden
+               [name]="controlName"
+               [placeholder]="options.title"
+               #controlName="ngModel"
+               [required]="options.required"
+               [disabled]="options.readonly"
+               [(ngModel)]="controlValue">
+
+        <div class="row flex-nowrap align-items-center" *ngIf="!controlValue">
+          <div class="col mw-0">
+
+            <div class="upload-area" *ngIf="!file">
+              <div class="upload-placeholder text-center">
+                {{'xm-entity.attachment-detail-dialog.upload' | translate}}
+              </div>
+
+              <input type="file"
+                     [title]="'xm-entity.attachment-detail-dialog.upload' | translate"
+                     class="file-input"
+                     (input)="updateFile($event)">
+            </div>
+          </div>
+        </div>
+
+        <div class="row flex-nowrap align-items-center" *ngIf="controlValue">
+          <div class="col mw-0">
+            <div class="truncate" *ngIf="!file">{{controlValue}}</div>
+            <div class="truncate" *ngIf="file">{{file?.name}}, {{file?.size}} {{'xm-entity.attachment-card.volume.bytes' | translate}}</div>
+          </div>
+          <div class="col-auto">
+            <button mat-icon-button type="button" (click)="resetFile()">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mat-error" *ngIf="uploadingSizeError">
+          {{options.validationMessages.maxFileSize | translate}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

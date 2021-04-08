@@ -14,6 +14,7 @@ import { ExtTextareaComponent } from './widgets/ext-textarea/ext-textarea.compon
 import { ContentTextareaComponent } from './widgets/content-textarea/content-textarea.component';
 import { LinkFieldComponent } from './widgets/link-field/link-field.component';
 import { FileUploadComponent } from './widgets/file-upload/file-upload.component';
+import { ContentUploaderComponent } from './widgets/content-uploader/content-uploader.component';
 import { MultilingualInputComponent } from './widgets/multilingual-input/multilingual-input.component';
 import { TextSectionComponent } from './widgets/text-section/text-section.component';
 import { ValidationComponent } from './widgets/validation-component/validation-component.component';
@@ -44,6 +45,7 @@ export const getJsfWidgets = () => {
         'email-matcher': EmailMatcherComponent,
         'text-section': TextSectionComponent,
         'file-upload': FileUploadComponent,
+        'content-uploader': ContentUploaderComponent,
     };
 };
 

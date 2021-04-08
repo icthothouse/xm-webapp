@@ -56,6 +56,7 @@ import { ExtTextareaComponent } from './jsf-extention/widgets/ext-textarea/ext-t
 import { ContentTextareaComponent } from './jsf-extention/widgets/content-textarea/content-textarea.component';
 import { LinkFieldComponent } from './jsf-extention/widgets/link-field/link-field.component';
 import { FileUploadComponent } from './jsf-extention/widgets/file-upload/file-upload.component';
+import { ContentUploaderComponent } from './jsf-extention/widgets/content-uploader/content-uploader.component';
 import { MultilingualInputComponent } from './jsf-extention/widgets/multilingual-input/multilingual-input.component';
 import { TextSectionComponent } from './jsf-extention/widgets/text-section/text-section.component';
 import { ValidationComponent } from './jsf-extention/widgets/validation-component/validation-component.component';
@@ -111,6 +112,7 @@ const PIPES = [XmEntityIconPipe];
         EmailMatcherComponent,
         TextSectionComponent,
         FileUploadComponent,
+        ContentUploaderComponent,
         PrivacyAndTermsDialogComponent,
         IdpComponent,
         PIPES,
@@ -174,6 +176,7 @@ const PIPES = [XmEntityIconPipe];
         EmailMatcherComponent,
         TextSectionComponent,
         FileUploadComponent,
+        ContentUploaderComponent,
         GooglePlaceModule,
         IdpComponent,
         PIPES,
