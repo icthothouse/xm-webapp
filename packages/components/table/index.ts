@@ -16,3 +16,7 @@ export {
     XmTableDynamicColumnComponent,
     XmTableDynamicColumnModule,
 } from './column/xm-table-dynamic-column';
+
+export {
+    XM_TABLE_ELEMENTS,
+} from './table.registry';

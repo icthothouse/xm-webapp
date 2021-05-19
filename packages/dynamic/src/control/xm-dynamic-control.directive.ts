@@ -63,7 +63,7 @@ export class XmDynamicControlDirective<V, O>
     @Input() public options: O;
 
     /** Component ref */
-    @Input() public selector: XmDynamicControlConstructor<V, O> | string;
+    @Input() public selector: string;
 
     /** Component value changes */
     @Output() public valueChange: EventEmitter<V> = new EventEmitter<V>();

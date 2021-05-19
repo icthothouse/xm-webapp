@@ -1,15 +1,6 @@
-import {
-    ComponentFactoryResolver,
-    Directive,
-    Injector,
-    OnChanges,
-    OnInit,
-    Renderer2,
-    SimpleChanges,
-    ViewContainerRef,
-} from '@angular/core';
+import { Directive, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { XmDynamic, XmDynamicConstructor, XmDynamicEntryModule } from '../interfaces';
-import { DynamicLoader } from '../loader/dynamic-loader';
+import { XmDynamicBase } from './xm-dynamic-base';
 
 
 /** Determines input(control) value. */
@@ -45,40 +36,28 @@ export interface XmDynamicPresentationEntryModule extends XmDynamicEntryModule<X
 }
 
 @Directive()
-export class XmDynamicPresentationBase<V, O> implements XmDynamicPresentation<V, O>, OnChanges, OnInit {
+export class XmDynamicPresentationBase<V, O> extends XmDynamicBase<XmDynamicPresentation<V, O>> implements XmDynamicPresentation<V, O>, OnChanges, OnInit {
     /** Component value */
     public value: V;
     /** Component options */
     public options: O;
     /** Component ref */
-    public selector: XmDynamicPresentationConstructor<V, O> | string;
+    public selector: string;
     /** Instance of created object */
     public instance: XmDynamicPresentation<V, O>;
-
+    /** Component css class */
     public class: string;
+    /** Component css style */
     public style: string;
 
-    constructor(public viewContainerRef: ViewContainerRef,
-                public injector: Injector,
-                protected renderer: Renderer2,
-                protected loaderService: DynamicLoader,
-                protected cfr: ComponentFactoryResolver) {
-    }
-
-    public ngOnChanges(changes: SimpleChanges): void {
+    public async ngOnChanges(changes: SimpleChanges): Promise<void> {
         if (changes.value) {
             this.updateValue();
         }
         if (changes.options) {
             this.updateOptions();
         }
-        if (changes.selector && !changes.selector.firstChange) {
-            this.createComponent().then();
-        }
-    }
-
-    public ngOnInit(): void {
-        this.createComponent().then();
+       await super.ngOnChanges(changes);
     }
 
     protected async createComponent(): Promise<void> {
@@ -101,19 +80,8 @@ export class XmDynamicPresentationBase<V, O> implements XmDynamicPresentation<V,
         this.instance.options = this.options;
     }
 
-    protected createInjector(): Injector {
-        return this.injector;
-    }
-
     protected async createInstance(): Promise<void> {
-        if (!this.selector) {
-            return;
-        }
-
-        const cfr = await this.loaderService.loadAndResolve<XmDynamicPresentation<V, O>>(this.selector as string, { injector: this.injector });
-
-        this.viewContainerRef.clear();
-        const c = this.viewContainerRef.createComponent(cfr, 0, this.createInjector());
+        const c = await this.createComponentRef();
         this.instance = c.instance;
 
         const el = c.location.nativeElement as HTMLElement;
