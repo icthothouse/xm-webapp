@@ -1,0 +1,72 @@
+<h1>Example of validation-processing</h1>
+
+<section>
+  <h4>languageRequired</h4>
+  <div>config: {{languageRequiredConfig | json}}</div>
+  <div>value: {{languageRequiredControl.value | json}}</div>
+  <mat-error>error: {{languageRequiredValidator(languageRequiredControl) | json}}</mat-error>
+</section>
+
+<section>
+  <h4>minArrayLength</h4>
+  <div>config: {{minArrayLengthConfig | json}}</div>
+  <div>value: {{minArrayLengthControl.value | json}}</div>
+  <mat-error>error: {{minArrayLengthValidator(minArrayLengthControl) | json}}</mat-error>
+</section>
+
+<section>
+  <h4>pattern</h4>
+  <div>config: {{patternConfig | json}}</div>
+  <div>value: {{patternControl.value | json}}</div>
+  <mat-error>error: {{patternValidator(patternControl) | json}}</mat-error>
+</section>
+
+<section>
+  <h4>required</h4>
+  <div>config: {{requiredConfig | json}}</div>
+  <div>value: {{requiredControl.value | json}}</div>
+  <mat-error>error: {{requiredValidator(requiredControl) | json}}</mat-error>
+</section>
+
+<section>
+  <h4>email</h4>
+  <div>config: {{emailConfig | json}}</div>
+  <div>value: {{emailControl.value | json}}</div>
+  <mat-error>error: {{emailValidator(emailControl) | json}}</mat-error>
+</section>
+
+<section>
+  <h4>minLength</h4>
+  <div>config: {{minLengthConfig | json}}</div>
+  <div>value: {{minLengthControl.value | json}}</div>
+  <mat-error>error: {{minLengthValidator(minLengthControl) | json}}</mat-error>
+</section>
+
+<section>
+  <h4>max</h4>
+  <div>config: {{maxConfig | json}}</div>
+  <div>value: {{maxControl.value | json}}</div>
+  <mat-error>error: {{maxValidator(maxControl) | json}}</mat-error>
+</section>
+
+<section>
+  <h4>min</h4>
+  <div>config: {{minConfig | json}}</div>
+  <div>value: {{minControl.value | json}}</div>
+  <mat-error>error: {{minValidator(minControl) | json}}</mat-error>
+</section>
+
+<section>
+  <h4>maxLength</h4>
+  <div>config: {{maxLengthConfig | json}}</div>
+  <div>value: {{maxLengthControl.value | json}}</div>
+  <mat-error>error: {{maxLengthValidator(maxLengthControl) | json}}</mat-error>
+</section>
+
+<section>
+  <h4>minDate</h4>
+  <div>Available types: TODAY | TOMORROW</div>
+  <div>config: {{minDateConfig | json}}</div>
+  <div>value: {{minDateControl.value | json}}</div>
+  <mat-error>error: {{minDateValidator(minDateControl) | json}}</mat-error>
+</section>

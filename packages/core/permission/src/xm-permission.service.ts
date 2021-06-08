@@ -46,7 +46,7 @@ export class XmPermissionService {
         }
         return this.privileges$().pipe(
             map((arr) => _.includes(arr, privilege)),
-            this.isSuperAdmin.bind(this),
+            switchMap((res) => this.isSuperAdmin(res)),
         );
     }
 

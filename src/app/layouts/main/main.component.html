@@ -5,15 +5,12 @@
 
 <div class="heatmap-container-wrapper">
   <div class="hidden-heatmap" id="heatmapContainer">
-    <div [class.xm-guest-layout]="isGuestLayout"
-         class="wrapper">
-
+    <div class="wrapper {{isGuestLayout ? 'xm-guest-layout' : 'xm-auth-layout'}}">
       <div xmGuestBackground></div>
 
       <div *ngIf="!isGuestLayout" class="sidebar">
         <xm-sidebar></xm-sidebar>
       </div>
-
 
       <div *ngIf="resolved$ | async"
            class="main-panel xm-main-panel"

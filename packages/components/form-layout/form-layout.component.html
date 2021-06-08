@@ -1,0 +1,16 @@
+<ng-template [ngForOf]="options"
+             let-item
+             ngFor>
+  <ng-template (conditionCheck)="toggleControlValidation(value.controls[item.name], $event)"
+               [xmConditionArguments]="{form: value.value}"
+               [xmCondition]="item.condition">
+    <ng-template [class]="item.class || 'col-12'"
+                 [control]="value.controls[item.name]"
+                 [value]="value.controls[item.name].value"
+                 [options]="item.options"
+                 [selector]="item.selector"
+                 [style]="item.style"
+                 xmDynamicFormControl>
+    </ng-template>
+  </ng-template>
+</ng-template>
