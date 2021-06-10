@@ -5,11 +5,11 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { XmUserService } from '@xm-ngx/core/user';
 import { DashboardWrapperService } from '@xm-ngx/dashboard';
-import { XmSharedTestingModule } from '@xm-ngx/shared';
 import { MockDashboardStore } from '../../../src/app/xm-dashboard/shared/testing/mock-dashboard-store';
 import { MockUserService } from '../../core/user/src/testing/mock-user.service';
 
 import { SidebarUserComponent } from './sidebar-user.component';
+import { XmTranslationTestingModule } from '@xm-ngx/translation';
 
 describe('SidebarUserComponent', () => {
     let component: SidebarUserComponent;
@@ -18,7 +18,7 @@ describe('SidebarUserComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             schemas: [NO_ERRORS_SCHEMA],
-            imports: [XmSharedTestingModule, HttpClientTestingModule, RouterTestingModule, NoopAnimationsModule],
+            imports: [XmTranslationTestingModule, HttpClientTestingModule, RouterTestingModule, NoopAnimationsModule],
             declarations: [SidebarUserComponent],
             providers: [
                 { provide: DashboardWrapperService, useClass: MockDashboardStore },

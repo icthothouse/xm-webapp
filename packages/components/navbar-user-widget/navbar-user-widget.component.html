@@ -1,0 +1,41 @@
+<ng-container *ngIf="user">
+  <div [matMenuTriggerFor]="menu"
+       class="navbar-user-title"
+       role="button"
+       tabindex="0">
+
+    <img [alt]="user.avatarUrl" [src]="user.avatarUrl"
+         class="navbar-user-img"
+         onerror="this.src='./assets/img/anonymous.png'">
+
+    <div class="mr-3">
+      <div class="navbar-user-name">{{ user.username }}</div>
+
+      <div *ngFor="let subtitle of config?.subtitles" class="navbar-user-subtitles">
+        <sidebar-user-subtitle [options]="subtitle" [value]="user.user"></sidebar-user-subtitle>
+      </div>
+    </div>
+
+    <span class="mat-expansion-indicator"></span>
+  </div>
+</ng-container>
+
+<mat-menu #menu="matMenu" xPosition="before">
+  <ng-container *ngFor="let item of menu$ | async as menu">
+    <a *xmPermission="item.permission"
+       [routerLink]="item.url"
+       mat-menu-item
+       routerLinkActive="active">
+      <mat-icon>{{item.icon}}</mat-icon>
+      <span [title]="item.title | translate">{{item.title | translate}}</span>
+    </a>
+
+  </ng-container>
+  <!--  logout is available for all users -->
+  <a [routerLink]="logoutControl.url"
+     mat-menu-item
+     routerLinkActive="active">
+    <mat-icon>{{logoutControl.icon}}</mat-icon>
+    <span [title]="logoutControl.title | translate">{{logoutControl.title | translate}}</span>
+  </a>
+</mat-menu>

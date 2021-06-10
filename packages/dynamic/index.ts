@@ -17,7 +17,6 @@ export { DynamicMultiSearcherService } from './src/searcher/dynamic-multi-search
 export { DynamicSearcher } from './src/searcher/dynamic-searcher';
 
 export {
-    getCellValue,
     XM_DYNAMIC_TABLE_CELL,
     XM_DYNAMIC_TABLE_ROW,
     XmDynamicCell,

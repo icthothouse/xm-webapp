@@ -7,7 +7,8 @@ import { clone, defaults } from 'lodash';
 
 export interface XmFileControlOptions extends XmTextTitleOptions, DataQa {
     multiple: boolean,
-    accept: string
+    accept: string,
+    required: boolean,
 }
 
 const XM_FILE_CONTROL_OPTIONS_DEFAULT: XmFileControlOptions = {
@@ -15,21 +16,37 @@ const XM_FILE_CONTROL_OPTIONS_DEFAULT: XmFileControlOptions = {
     dataQa: 'file-control',
     multiple: false,
     accept: '*',
+    required: false
 };
-
+/**
+ * For required you need to use validators
+ * @example
+ * ```json
+ * "validators": [
+ *  {
+ *    "type": "required"
+ *  }
+ * ],
+ * ```
+ */
 @Component({
     selector: 'xm-file-control',
     template: `
         <mat-form-field>
             <mat-label>{{options.title | translate}}</mat-label>
 
-            <input #input (change)="change($event.target.files)" hidden type="file"/>
+            <input #input
+                   (change)="change($event.target.files)"
+                   [required]="options.required"
+                   hidden
+                   type="file"/>
 
             <input #input
                    matInput
                    type="text"
                    [readonly]="true"
                    [value]="fileNames"
+                   [required]="options.required"
                    [attr.data-qa]="options.dataQa"
                    (click)="input.click()"
                    [attr.multiple]="options.multiple? '' : null"

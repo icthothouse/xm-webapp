@@ -9,23 +9,11 @@ import {
     OnInit,
     SimpleChanges,
 } from '@angular/core';
-import * as _ from 'lodash';
+import { getValue } from '@xm-ngx/shared/operators';
 import { XmDynamicPresentationBase } from '../presentation/xm-dynamic-presentation-base.directive';
 
 export const XM_DYNAMIC_TABLE_ROW = new InjectionToken<string>('XM_DYNAMIC_TABLE_ROW');
 export const XM_DYNAMIC_TABLE_CELL = new InjectionToken<string>('XM_DYNAMIC_TABLE_CELL');
-
-/**
- * @beta
- */
-export function getCellValue<V>(dynamicCell: XmDynamicCell, entity: unknown | V): V {
-    const field = dynamicCell.field;
-    if (field === null || field === undefined || field === '') {
-        return entity as V;
-    } else {
-        return _.get(entity, field, null);
-    }
-}
 
 /**
  * XmDynamicCellDirective cell configuration
@@ -88,7 +76,7 @@ export class XmDynamicCellDirective<V, O extends XmDynamicCell<O>>
 
     @Input()
     public getCellValue(): V | null {
-        return getCellValue(this._cell, this.row);
+        return getValue(this.row, this._cell.field);
     }
 
     public ngOnChanges(changes: SimpleChanges): void {

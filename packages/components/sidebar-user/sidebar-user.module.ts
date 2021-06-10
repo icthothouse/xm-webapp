@@ -15,7 +15,7 @@ import { XmTranslationModule } from '@xm-ngx/translation';
         XmTranslationModule,
         XmDynamicModule,
     ],
-    exports: [SidebarUserComponent],
+    exports: [SidebarUserComponent, SidebarUserSubtitle],
     declarations: [SidebarUserComponent, SidebarUserSubtitle],
 })
 export class XmSidebarUserModule {

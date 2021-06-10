@@ -1,0 +1,38 @@
+$navbar-user-icon-size: 42px !default;
+$navbar-user-icon-size-x: $navbar-user-icon-size !default;
+$navbar-user-icon-size-y: $navbar-user-icon-size !default;
+
+$navbar-user-img-border: solid 1px #fff !default;
+$navbar-user-img-border-radius: 50% !default;
+
+$navbar-user-padding-y: 15px !default;
+$navbar-user-padding-x: 12px !default;
+
+:host {
+  .navbar-user-img {
+    height: $navbar-user-icon-size-y;
+    width: $navbar-user-icon-size-x;
+    min-width: $navbar-user-icon-size-x;
+    border: $navbar-user-img-border;
+    border-radius: $navbar-user-img-border-radius;
+  }
+
+  .navbar-user-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    vertical-align: center;
+    padding: $navbar-user-padding-y $navbar-user-padding-x;
+  }
+
+  .navbar-user-name {
+    padding-left: $navbar-user-padding-x;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .navbar-user-subtitles {
+    padding-left: $navbar-user-padding-x;
+  }
+}

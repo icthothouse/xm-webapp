@@ -20,6 +20,10 @@ export const XM_ELEMENTS: XmDynamicEntries = [
     ...XM_ARRAY_ELEMENTS,
     ...XM_NAVBAR_ELEMENTS,
     {
+        selector: '@xm-ngx/components/navbar-user-widget',
+        loadChildren: () => import('@xm-ngx/components/navbar-user-widget').then(m => m.NavbarUserWidgetModule),
+    },
+    {
         selector: '@xm-ngx/administration/audits',
         loadChildren: () => import('@xm-ngx/administration/audits').then(m => m.AuditsModule),
     },
