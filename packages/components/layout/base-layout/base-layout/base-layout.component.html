@@ -1,0 +1,35 @@
+<mat-sidenav-container class="xm-base-layout-container">
+  <mat-sidenav #drawer
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false"
+               class="sidenav"
+               fixedInViewport>
+    <ng-content select="[xmBaseLayoutLeftSidebar]"></ng-content>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <mat-toolbar color="primary">
+      <button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        type="button">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-toolbar color="primary">
+      <ng-content select="[xmBaseLayoutToolbar]"></ng-content>
+    </mat-toolbar>
+
+    <ng-content select="[xmBaseLayoutContent]"></ng-content>
+
+  </mat-sidenav-content>
+
+  <mat-sidenav class="xm-base-layout-right-sidebar">
+    <ng-content select="[xmBaseLayoutRightSidebar]"></ng-content>
+  </mat-sidenav>
+</mat-sidenav-container>
