@@ -17,8 +17,10 @@
   </div>
 </nav>
 
-<nav class="xm-navbar" *ngIf="navbarVersion === XmNavbarConfigVersion.Second">
-  <xm-dynamic-widget-layout *ngIf="navbarLayout"
-                            class="xm-navbar-widgets-container"
-                            [layouts]="navbarLayout"></xm-dynamic-widget-layout>
+<nav *ngIf="navbarVersion === XmNavbarConfigVersion.Second" class="xm-navbar">
+  <div class="xm-navbar-container">
+    <xm-dynamic-widget-layout *ngIf="navbarLayout"
+                              [layouts]="navbarLayout"
+                              class="xm-navbar-widgets-container"></xm-dynamic-widget-layout>
+  </div>
 </nav>
