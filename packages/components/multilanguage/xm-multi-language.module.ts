@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MultiLanguageComponent } from '@xm-ngx/components/xm-multilanguage/xm-multi-language.component';
+import { MultiLanguageComponent } from '@xm-ngx/components/multilanguage/xm-multi-language.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { AngularEditorModule } from '@kolkov/angular-editor';

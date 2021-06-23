@@ -23,9 +23,9 @@ export * from './context/context.service';
 export * from './user/account.model';
 export * from './user/user.model';
 export * from './user/user.service';
-export * from '../../../packages/xm-account/src/xm-user-login-widget/login/user-login.model';
-export * from '../../../packages/xm-account/src/xm-user-login-widget/login/user-login.service';
-export * from '../../../packages/xm-account/src/xm-user-login-widget/login/user-login-form.component';
+export * from '../../../packages/account/src/user-login-widget/login/user-login.model';
+export * from '../../../packages/account/src/user-login-widget/login/user-login.service';
+export * from '../../../packages/account/src/user-login-widget/login/user-login-form.component';
 export * from './client/client.model';
 export * from './client/client.service';
 export * from './spec/config.service';
@@ -43,11 +43,11 @@ export * from './g-map/xmGMapApiInit.directive';
 export * from './services/parse-by-path.service';
 
 export * from '../../../packages/components/loader/loader.component';
-export * from '@xm-ngx/components/xm-per-page';
+export * from '@xm-ngx/components/per-page';
 export * from '../../../packages/components/no-data/no-data.component';
 export * from '../../../packages/components/maintenance/maintenance.component';
 export * from './components/privacy-and-terms-dialog/privacy-and-terms-dialog.component';
-export * from '../../../packages/components/xm-password-needed/xm-password-needed.component';
+export * from '../../../packages/components/password-needed/xm-password-needed.component';
 export * from './components/xm-confirmation-dialog/xm-confirm-dialog.component';
 
 export * from './password-strength-bar/password-strength-bar.component';

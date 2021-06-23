@@ -55,9 +55,9 @@ export class IdpCallbackComponent implements OnDestroy {
 
     private handleErrorException(err: IErrorTerm, config: XmUIConfig, params: Params) {
         this.isTermsShown = true;
-        const errObj = err.error || null;
+        const errObj = err && err.error || null;
         const termsErr = errObj && errObj.error === TERMS_ERROR;
-        const termsToken = errObj.oneTimeToken || null;
+        const termsToken = errObj && errObj.oneTimeToken || null;
         const termsConfig = this.extractTermConfig(config, TERMS_PROP);
         if (termsErr && termsToken && !this.isTermsShown && termsConfig[TERMS_PROP]) {
             this.loginService.showTermsDialog(termsToken, termsConfig).then((r) => {

@@ -1,8 +1,8 @@
 import { NgModuleFactoryLoader } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { DynamicSearcher } from '@xm-ngx/dynamic';
 
 import { DynamicTenantLoaderService } from './dynamic-tenant-loader.service';
+import { DynamicSearcher } from '../searcher/dynamic-searcher';
 
 describe('DynamicTenantLoaderService', () => {
     let service: DynamicTenantLoaderService;

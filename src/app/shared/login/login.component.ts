@@ -153,9 +153,9 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.loginService.loginSuccess();
             }
         }).catch((err) => {
-            const errObj = err.error || null;
+            const errObj = err && err.error || null;
             const termsErr = errObj && errObj.error === TERMS_ERROR;
-            const termsToken = errObj.oneTimeToken || null;
+            const termsToken = errObj && errObj.oneTimeToken || null;
             if (termsErr && termsToken && !this.isTermsShown) {
                 this.pushTermsAccepting(termsToken);
             }

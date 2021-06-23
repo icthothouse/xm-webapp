@@ -1,10 +1,10 @@
 import { ComponentFactory, Injectable, Injector, NgModuleFactory, NgModuleRef, Type } from '@angular/core';
-import { XmDynamicNgModuleFactory, XmDynamicEntryModule } from '../interfaces';
-import { DynamicSearcher } from '../searcher/dynamic-searcher';
 
-import { isComponentDef, isModuleDef } from './dynamic-loader.service';
-import { ModuleLoader } from './module-loader';
 import { TenantModuleLoaderService } from './tenant-module-loader.service';
+import { DynamicSearcher } from '../searcher/dynamic-searcher';
+import { ModuleLoader } from '../loader/module-loader';
+import { isComponentDef, isModuleDef } from '../loader/dynamic-loader.service';
+import { XmDynamicNgModuleFactory } from '../interfaces/xm-dynamic-entry';
 
 @Injectable({
     providedIn: 'root',
@@ -40,7 +40,7 @@ export class DynamicTenantLoaderService {
     public async loadTenantModuleRef<T>(
         selector: string,
         injector: Injector = this.moduleRef.injector,
-    ): Promise<NgModuleRef<XmDynamicEntryModule<T>> | null> {
+    ): Promise<NgModuleRef<T> | null> {
         if (!selector || typeof selector !== 'string') {
             return null;
         }
@@ -55,7 +55,7 @@ export class DynamicTenantLoaderService {
      */
     public async getComponentFromInjector<T>(
         selector: string,
-        moduleRef: NgModuleRef<XmDynamicEntryModule<T>>,
+        moduleRef: NgModuleRef<T>,
     ): Promise<ComponentFactory<T> | null> {
         const moduleFac = await this.dynamicSearcher.search(selector, { injector: moduleRef.injector });
 

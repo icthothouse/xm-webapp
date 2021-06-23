@@ -31,6 +31,7 @@
       "@xm-ngx/core": ["dist/packages/core"],
       "@xm-ngx/core/*": ["dist/packages/core/*"],
       "@xm-ngx/dynamic": ["dist/packages/dynamic"],
+      "@xm-ngx/dynamic/*": ["dist/packages/dynamic/*"],
       "@xm-ngx/components/*": ["dist/packages/components/*"],
       "@xm-ngx/translation": ["dist/packages/translation"]
     }

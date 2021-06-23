@@ -6,7 +6,7 @@ import { JhiLanguageHelper } from '@xm-ngx/components/language';
 
 import { AccountService, User, UserLogin, UserService } from '../../../../src/app/shared';
 
-import { UserLoginService } from '../../../xm-account/src/xm-user-login-widget/login/user-login.service';
+import { UserLoginService } from '../../../account/src/user-login-widget/login/user-login.service';
 
 @Component({
     selector: 'xm-user-mgmt-detail',

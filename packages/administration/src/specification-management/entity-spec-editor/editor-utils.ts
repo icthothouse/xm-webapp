@@ -1,4 +1,4 @@
-import { MultiLanguageDataModel } from '@xm-ngx/components/xm-multilanguage/xm-multi-language.component';
+import { MultiLanguageDataModel } from '@xm-ngx/components/multilanguage/xm-multi-language.component';
 
 export class EditorUtils {
 

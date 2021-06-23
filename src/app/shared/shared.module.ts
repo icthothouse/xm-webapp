@@ -7,8 +7,8 @@ import { ReCaptchaModule } from 'angular2-recaptcha';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { MarkdownModule } from 'ngx-markdown';
-import { UserLoginService } from '../../../packages/xm-account/src/xm-user-login-widget/login/user-login.service';
-import { XmUserLoginWidgetModule } from '../../../packages/xm-account/src/xm-user-login-widget/xm-user-login-widget.module';
+import { UserLoginService } from '../../../packages/account/src/user-login-widget/login/user-login.service';
+import { XmUserLoginWidgetModule } from '../../../packages/account/src/user-login-widget/xm-user-login-widget.module';
 
 import { MatModule } from '../mat.module';
 import {

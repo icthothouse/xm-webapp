@@ -9,7 +9,7 @@ import { Permission } from '../../../../src/app/shared/role/permission.model';
 })
 export class RoleConditionDialogComponent implements OnInit {
 
-    public condition: any;
+    public condition: string;
     public variables: string[];
     public transInfo: string;
     public permission: Permission;

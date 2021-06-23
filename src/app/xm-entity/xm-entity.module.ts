@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ModalCloseModule } from '@xm-ngx/components/modal-close';
-import { RatingModule } from '@xm-ngx/components/xm-rating';
+import { RatingModule } from '@xm-ngx/components/rating';
 import { EntityStateModule } from '@xm-ngx/entity/entity-state';
 import { StatesManagementDialogModule } from '@xm-ngx/entity/states-management-dialog';
 import { TagInputModule } from 'ngx-chips';

@@ -1,7 +1,7 @@
 import { ComponentFactory, Injectable, Injector, Type } from '@angular/core';
+import { DynamicTenantLoaderService } from '../extentions/dynamic-tenant-loader.service';
 import { DynamicLoader } from './dynamic-loader';
 import { DynamicLoaderService } from './dynamic-loader.service';
-import { DynamicTenantLoaderService } from './dynamic-tenant-loader.service';
 
 @Injectable({
     providedIn: 'root',

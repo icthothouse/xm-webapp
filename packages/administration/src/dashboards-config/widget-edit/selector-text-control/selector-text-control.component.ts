@@ -7,6 +7,7 @@ import {
 import { NgModelWrapper } from '@xm-ngx/components/ng-accessor';
 import { XmTextControlOptions } from '@xm-ngx/components/text';
 import { XmDynamicControl } from '@xm-ngx/dynamic';
+import { trim } from 'lodash';
 import { combineLatest, Observable } from 'rxjs';
 import { map, shareReplay, startWith } from 'rxjs/operators';
 
@@ -52,7 +53,7 @@ export class SelectorTextControlComponent
     }
 
     private filter(value: string, arr: ExtendedDynamicComponents[]): ExtendedDynamicComponents[] {
-        const filterValue = value.toLowerCase();
+        const filterValue = trim(value).toLowerCase();
         return arr.filter(option => option.globalSelector?.toLowerCase().includes(filterValue));
     }
 }

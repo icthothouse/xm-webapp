@@ -829,6 +829,7 @@
       "privilegeKey": "Ключ привилегии",
       "resourceCondition": "Условия ресурса"
     },
+    "selected": "Только выбраные",
     "variables": "Допустимые переменные"
   },
   "sessions": {

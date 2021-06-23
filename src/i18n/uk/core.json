@@ -829,6 +829,7 @@
       "privilegeKey": "Ключ привілею",
       "resourceCondition": "Умови ресурсу"
     },
+    "selected": "Тільки обрані",
     "variables": "Доступні змінні"
   },
   "settings": {

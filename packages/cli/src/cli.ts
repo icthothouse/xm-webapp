@@ -28,7 +28,7 @@ export function cli(terminalArgs: string[]): void {
             break;
         }
         case 'ext-lazy-module': {
-            new ExtLazyModuleCommand(config).execute();
+            new ExtLazyModuleCommand().execute();
             break;
         }
         case 'replace': {

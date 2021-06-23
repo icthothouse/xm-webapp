@@ -2,7 +2,7 @@ import { ApplicationRef, Injector } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { TranslationService } from '@xm-ngx/administration/translations/services/translation.service';
 import { DynamicTenantLoaderService } from '@xm-ngx/dynamic';
-import { of } from 'rxjs/observable/of';
+import { of } from 'rxjs';
 
 import { WidgetListService } from './widget-list.service';
 

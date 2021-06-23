@@ -58,11 +58,6 @@
               "node_modules/oboe/dist/oboe-browser.js",
               "node_modules/yamljs/dist/yaml.js",
               "node_modules/ajv/dist/ajv.min.js"
-            ],
-            "lazyModules": [
-              "src/app/ext-commons/ext-common/ext-common.module",
-              "src/app/ext-commons/ext-common-entity/ext-common-entity.module",
-              "src/app/ext-commons/ext-common-csp/ext-common-csp.module"
             ]
           },
           "configurations": {

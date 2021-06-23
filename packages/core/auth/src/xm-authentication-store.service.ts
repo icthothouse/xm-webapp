@@ -42,13 +42,15 @@ export class XmAuthenticationStoreService {
         return this.sessionStorage.retrieve(REFRESH_TOKEN) || this.localStorage.retrieve(REFRESH_TOKEN);
     }
 
-    public clear(): void {
+    public clear(saveIdpConfig?: boolean): void {
         this.localStorage.clear(AUTH_TOKEN);
         this.sessionStorage.clear(AUTH_TOKEN);
         this.localStorage.clear(REFRESH_TOKEN);
         this.sessionStorage.clear(REFRESH_TOKEN);
-        this.localStorage.clear(IDP_CLIENT);
-        this.sessionStorage.clear(IDP_CLIENT);
+        if (!saveIdpConfig) {
+            this.localStorage.clear(IDP_CLIENT);
+            this.sessionStorage.clear(IDP_CLIENT);
+        }
     }
 
 }

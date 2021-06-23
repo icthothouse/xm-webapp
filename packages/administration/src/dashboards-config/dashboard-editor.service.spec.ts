@@ -1,7 +1,7 @@
 import { Injector } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SidebarRightService } from '@xm-ngx/components/xm-sidebar-right';
+import { SidebarRightService } from '@xm-ngx/components/sidebar-right';
 import { XmToasterService } from '@xm-ngx/toaster';
 
 import { DashboardEditorService } from './dashboard-editor.service';

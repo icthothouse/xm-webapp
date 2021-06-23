@@ -79,7 +79,9 @@ $xm-text-on-surface:          $xm-text !default;
 $xm-set-enable-rounded:       true !default;
 $border-radius:               4px !default;
 
-$xm-theme:                    (
+$xm-theme:                    () !default;
+$xm-theme:                    map-merge(
+                              (
                                 is-dark-mode: $xm-is-dark-mode,
                                 // Primary
                                 primary: $xm-primary,
@@ -112,4 +114,5 @@ $xm-theme:                    (
                                 text-light: $xm-text-light,
                                 // Divider
                                 divider: $xm-divider,
-                              ) !default;
+                              ),
+                              $xm-theme);

@@ -3,8 +3,7 @@ import { QueryParams } from '@xm-ngx/components/entity-collection/i-entity-colle
 import { Link } from '@xm-ngx/entity/shared/link.model';
 import { XmEntity } from '@xm-ngx/entity/shared/xm-entity.model';
 import { ElasticQueryParams, Extra } from '@xm-ngx/entity/shared/xm-entity.service';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable, of } from 'rxjs';
 
 export class MockXmEntityService {
 

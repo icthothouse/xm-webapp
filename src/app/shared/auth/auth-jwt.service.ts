@@ -59,7 +59,7 @@ export class AuthServerProvider {
         this.setAutoRefreshTokens(isRememberMe);
         this.sessionService.isActive().pipe(
             filter(i => i === false),
-            switchMap(()=>this.logout())
+            switchMap(()=>this.logout(true))
         ).subscribe();
     }
 
@@ -151,9 +151,9 @@ export class AuthServerProvider {
         this.storeService.storeRefreshToken(jwt, rememberMe);
     }
 
-    public logout(): Observable<any> {
+    public logout(saveIdpConfig?: boolean): Observable<any> {
         return new Observable((observer) => {
-            this.storeService.clear();
+            this.storeService.clear(saveIdpConfig);
             this.refreshTokenService.clear();
             this.$sessionStorage.clear(TOKEN_STORAGE_KEY);
             this.$sessionStorage.clear(WIDGET_DATA);

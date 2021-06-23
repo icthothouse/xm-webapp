@@ -15,7 +15,7 @@ import { environment } from '@xm-ngx/core/environment';
 import { globalErrorHandlerFactory } from '@xm-ngx/core/global-error-handler';
 import { themeInitializerFactory } from '@xm-ngx/core/theme';
 import { XmDashboardModule } from '@xm-ngx/dashboard';
-import { XmDynamicModule } from '@xm-ngx/dynamic';
+import { XmDynamicExtensionModule, XmDynamicModule } from '@xm-ngx/dynamic';
 import { XmLoggerModule } from '@xm-ngx/logger';
 import { HttpLoaderFactory, LanguageService, TitleService, XmTranslationModule } from '@xm-ngx/translation';
 import { CookieService } from 'ngx-cookie-service';
@@ -51,6 +51,10 @@ import { XM_ELEMENTS } from '../registries/xm.registry';
         XmTranslationModule.forRoot(),
         XmDashboardModule.forRoot(),
         MarkdownModule.forRoot(),
+        XmDynamicExtensionModule.forRoot([
+// #regionstart dynamic-extension-modules
+// #regionend dynamic-extension-modules
+        ]),
         XmDynamicModule.forRoot(XM_ELEMENTS),
         LayoutModule,
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),

@@ -10,7 +10,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderModule } from '@xm-ngx/components/loader';
-import { PerPageModule } from '@xm-ngx/components/xm-per-page';
+import { PerPageModule } from '@xm-ngx/components/per-page';
 import { XmPermissionModule } from '@xm-ngx/core/permission';
 import { XmTranslationModule } from '@xm-ngx/translation';
 import { NgJhipsterModule } from 'ng-jhipster';

@@ -4,20 +4,20 @@ import { NgModule } from '@angular/core';
 import { CovalentTextEditorModule } from '@covalent/text-editor';
 import { XmDynamicModule } from '@xm-ngx/dynamic';
 
-import { XmSharedModule } from '../../shared/shared.module';
-import { ClockWidgetComponent } from './clock-widget/clock-widget.component';
-import { ExchangeWidgetComponent } from './exchange-widget/exchange-widget.component';
-import { FinanceService } from './exchange-widget/finance.service';
-import { IframeWidgetComponent } from './iframe-widget/iframe-widget.component';
-import { MdWidgetComponent } from './md-widget/md-widget.component';
-import { FeedService } from './news-widget/feed.service';
-import { NewsWidgetComponent } from './news-widget/news-widget.component';
-import { SignInUpWidgetComponent } from './sign-in-up-widget/sign-in-up-widget.component';
-import { TwitterTimelineWidgetComponent } from './twitter-timeline-widget/twitter-timeline-widget.component';
-import { TwitterTimelineService } from './twitter-timeline-widget/twitter-timeline.service';
-import { WeatherWidgetComponent } from './weather-widget/weather-widget.component';
-import { WeatherService } from './weather-widget/weather.service';
-import { WelcomeWidgetComponent } from './welcome-widget/welcome-widget.component';
+import { XmSharedModule } from '../../../shared/shared.module';
+import { ClockWidgetComponent } from '../clock-widget/clock-widget.component';
+import { ExchangeWidgetComponent } from '../exchange-widget/exchange-widget.component';
+import { FinanceService } from '../exchange-widget/finance.service';
+import { IframeWidgetComponent } from '../iframe-widget/iframe-widget.component';
+import { MdWidgetComponent } from '../md-widget/md-widget.component';
+import { FeedService } from '../news-widget/feed.service';
+import { NewsWidgetComponent } from '../news-widget/news-widget.component';
+import { SignInUpWidgetComponent } from '../sign-in-up-widget/sign-in-up-widget.component';
+import { TwitterTimelineWidgetComponent } from '../twitter-timeline-widget/twitter-timeline-widget.component';
+import { TwitterTimelineService } from '../twitter-timeline-widget/twitter-timeline.service';
+import { WeatherWidgetComponent } from '../weather-widget/weather-widget.component';
+import { WeatherService } from '../weather-widget/weather.service';
+import { WelcomeWidgetComponent } from '../welcome-widget/welcome-widget.component';
 
 @NgModule({
     imports: [

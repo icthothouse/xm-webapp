@@ -5,16 +5,15 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
+import { ConditionDashboardDialogComponent } from '@xm-ngx/administration/roles-management-detail/condition-dashboard-dialog/condition-dashboard-dialog.component';
 import { JhiLanguageHelper } from '@xm-ngx/components/language';
 import { TABLE_CONFIG_DEFAULT } from '@xm-ngx/components/table';
 import { takeUntilOnDestroy, takeUntilOnDestroyDestroy } from '@xm-ngx/shared/operators';
 import { XmToasterService } from '@xm-ngx/toaster';
 import { Subscription } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { XmConfigService } from '../../../../src/app/shared';
+import { Role, RoleService, XmConfigService } from '../../../../src/app/shared';
 import { Permission } from '../../../../src/app/shared/role/permission.model';
-import { Role } from '../../../../src/app/shared/role/role.model';
-import { RoleService } from '../../../../src/app/shared/role/role.service';
 import { RoleConditionDialogComponent } from './roles-management-condition-dialog.component';
 
 @Component({
@@ -161,13 +160,30 @@ export class RoleMgmtDetailComponent implements OnInit, OnDestroy {
     }
 
     public onEditResource(item: Permission): void {
-        this.openDialog(RoleConditionDialogComponent, item, item.resourceCondition,
-            item.resources, 'rolesManagement.permission.conditionResourceInfo')
-            .afterClosed()
-            .subscribe(
-                (result) => {
-                    item.resourceCondition = result || '';
-                });
+        if (item.privilegeKey === 'DASHBOARD.GET_LIST' || item.privilegeKey === 'DASHBOARD.GET_LIST.ITEM') {
+            const modalRef = this.modalService.open(ConditionDashboardDialogComponent, { width: '500px' });
+            modalRef.componentInstance.condition = item.resourceCondition;
+            modalRef.componentInstance.permission = item;
+            modalRef.afterClosed()
+                .subscribe(
+                    (result) => {
+                        if (result === false) {
+                            return;
+                        }
+                        item.resourceCondition = result || '';
+                    });
+        } else {
+            this.openDialog(RoleConditionDialogComponent, item, item.resourceCondition,
+                item.resources, 'rolesManagement.permission.conditionResourceInfo')
+                .afterClosed()
+                .subscribe(
+                    (result) => {
+                        if (result === false) {
+                        return;
+                        }
+                        item.resourceCondition = result || '';
+                    });
+        }
     }
 
     public onEditEnv(item: Permission): void {

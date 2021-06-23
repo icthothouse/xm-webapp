@@ -1,6 +1,6 @@
 @import 'src/styles/theme';
 
-$xm-ribbon-opacity: 0.4 !default;
+$xm-ribbon-opacity: 0.5 !default;
 $xm-ribbon-z-index: 9999 !default;
 $xm-ribbon-width:   200px !default;
 $xm-ribbon-padding: 1rem 50px !default;
@@ -13,14 +13,10 @@ $ribbon:            $xm-ribbon-width * 1.41421356237;
   text-align:       center;
   padding:          $xm-ribbon-padding;
   width:            $ribbon;
-  background-color: $xm-primary;
+  font-weight:      bold;
   opacity:          $xm-ribbon-opacity;
   @include transform(rotate(45deg));
   @include truncate($ribbon);
-}
-
-.xm-ribbon-text {
-  color: $xm-text-on-primary;
 }
 
 :host {

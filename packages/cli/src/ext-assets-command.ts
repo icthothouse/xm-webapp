@@ -12,7 +12,7 @@ export class ExtAssetsCommand implements Command {
     }
 
     public execute(): void {
-        const config = readAsJson(this.config.targetAngularConfig);
+        const config = readAsJson(this.config.sourceAngularConfig);
         this.updateAngularJsonAssets(config);
         saveAsJson(this.config.targetAngularConfig, config);
     }

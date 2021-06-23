@@ -1,13 +1,13 @@
-$xm-menu-item-color:        $xm-sidebar-color !default;
 $xm-menu-item-hover:        rgba(200, 200, 200, 0.2) !default;
-$xm-menu-item-active:       0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(#000, 0.4) !default;
-$xm-menu-item-active-color: $xm-primary !default;
+$xm-menu-item-active:       0 4px 20px 0 rgba(246, 126, 126, 0.14), 0 7px 10px -5px rgba(#000, 0.4) !default;
 $xm-menu-list-padding-left: 0 !default;
 $xm-menu-icon-font-size:    20px !default;
-$xm-menu-icon-color:        #a9afbb !default;
 
-@mixin menu-link($theme) {
+@mixin xm-menu-link-theme($theme) {
   cursor: pointer;
+
+  $xm-primary: map-get($theme, primary);
+  $xm-menu-item-active-color: map-get($theme, sidebar-text-active-color) or $xm-primary;
 
   &.expanded {
     background: $xm-menu-item-hover;
@@ -39,7 +39,7 @@ $xm-menu-icon-color:        #a9afbb !default;
   }
 }
 
-@mixin menu($theme) {
+@mixin xm-menu-theme($theme) {
 
   .menu-title {
 
@@ -64,7 +64,7 @@ $xm-menu-icon-color:        #a9afbb !default;
   }
 
   .mat-expansion-indicator {
-    margin-right: $sidebar-padding-x;
+    margin-right: $xm-sidebar-padding-x;
     margin-left:  auto;
 
     &::after {
@@ -77,21 +77,21 @@ $xm-menu-icon-color:        #a9afbb !default;
     white-space:    nowrap;
     display:        flex;
     flex-direction: row;
-    color:          $xm-menu-item-color;
-    padding:        $menu-item-padding-y $sidebar-padding-x $menu-item-padding-y $sidebar-padding-x * 2;
+    color:          inherit;
+    padding:        $xm-sidebar-menu-item-padding-y $xm-sidebar-padding-x $xm-sidebar-menu-item-padding-y $xm-sidebar-padding-x * 2;
 
 
     &:not(.active) > .mat-icon {
-      color: $xm-menu-icon-color;
+      color: inherit;
     }
 
-    & > span {
-      padding-left:  $sidebar-padding-x;
+    & > .xm-menu-item-text {
+      padding-left:  $xm-sidebar-padding-x;
       overflow:      hidden;
       text-overflow: ellipsis;
     }
 
-    @include menu-link($theme);
+    @include xm-menu-link-theme($theme);
   }
 
   .menu-icon {

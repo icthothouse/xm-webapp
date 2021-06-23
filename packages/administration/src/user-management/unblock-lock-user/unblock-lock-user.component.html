@@ -1,13 +1,8 @@
 <button (click)="changeState(user)"
-        *ngIf="!user.activated"
-        color="warn"
+        [color]="user.activated ? 'accent' : 'warn'"
+        [style]="user.activated ? 'color: #4caf50;': ''"
         mat-icon-button>
-  <mat-icon>lock_outline</mat-icon>
+  <mat-icon> {{user.activated ? 'lock_open' : 'lock_outline'}}</mat-icon>
+  <span *ngIf="options.title">{{options.title | translate}}</span>
 </button>
 
-<button (click)="changeState(user)" *ngIf="user.activated"
-        color="accent"
-        mat-icon-button
-        style="color: #4caf50">
-  <mat-icon>lock_open</mat-icon>
-</button>

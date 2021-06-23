@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { XmBalanceModule } from '@xm-ngx/xm-balance';
 import { TagInputModule } from 'ngx-chips';
 
-import { RatingModule } from '@xm-ngx/components/xm-rating';
+import { RatingModule } from '@xm-ngx/components/rating';
 import { XmSharedModule } from '../shared/shared.module';
 import { XmDynamicModule } from '@xm-ngx/dynamic';
 import { XmEntityModule } from '../xm-entity/xm-entity.module';

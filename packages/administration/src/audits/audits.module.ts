@@ -10,7 +10,7 @@ import { MatTableModule } from '@angular/material/table';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderModule } from '@xm-ngx/components/loader';
 import { NoDataModule } from '@xm-ngx/components/no-data';
-import { PerPageModule } from '@xm-ngx/components/xm-per-page';
+import { PerPageModule } from '@xm-ngx/components/per-page';
 import { XmTranslationModule } from '@xm-ngx/translation';
 import { NgJhipsterModule } from 'ng-jhipster';
 import { AuditsComponent } from './audits.component';

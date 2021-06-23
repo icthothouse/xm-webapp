@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { XmLogoModule } from '@xm-ngx/components/logo';
 import { XmMenuModule } from '@xm-ngx/components/menu';
-import { XmPoweredByModule } from '@xm-ngx/components/xm-powered-by';
+import { XmPoweredByModule } from '@xm-ngx/components/powered-by';
 import { XmSidebarUserModule } from '@xm-ngx/components/sidebar-user';
 import { XmUiConfigService } from '@xm-ngx/core/config';
 import { XmDynamicModule } from '@xm-ngx/dynamic';

@@ -840,6 +840,7 @@
       "privilegeKey": "Privilege key",
       "resourceCondition": "Resource Condition"
     },
+    "selected": "Only selected",
     "variables": "Available variables"
   },
   "sessions": {

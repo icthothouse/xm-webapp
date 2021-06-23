@@ -2,14 +2,32 @@ import { Component, Inject, Input, Optional } from '@angular/core';
 import { XmAlertService } from '@xm-ngx/alert';
 import { XM_DYNAMIC_TABLE_ROW } from '@xm-ngx/dynamic';
 import { XmToasterService } from '@xm-ngx/toaster';
+import { Translate } from '@xm-ngx/translation';
+import { defaultsDeep } from 'lodash';
 import { User, UserService } from '../../../../../src/app/shared';
+
+export interface UnblockLockUserOptions {
+    title?: Translate;
+}
+
+const DEFAULT_OPTIONS = {
+    title: null
+}
 
 @Component({
     selector: 'xm-unblock-lock-user',
     templateUrl: './unblock-lock-user.component.html',
 })
 export class UnblockLockUserComponent {
+    public get options(): UnblockLockUserOptions {
+        return this._options;
+    }
+
+    @Input() public set options(value: UnblockLockUserOptions) {
+        this._options = defaultsDeep(value, DEFAULT_OPTIONS);
+    }
     @Input() public user: User;
+     private _options: UnblockLockUserOptions = DEFAULT_OPTIONS;
 
     constructor(
         protected alertService: XmAlertService,

@@ -10,7 +10,6 @@ export { XmDynamicFormControlDirective, IFormControl } from './src/control/xm-dy
 export { DynamicLoader } from './src/loader/dynamic-loader';
 export { DynamicLoaderService } from './src/loader/dynamic-loader.service';
 export { DynamicMultiLoaderService } from './src/loader/dynamic-multi-loader.service';
-export { DynamicTenantLoaderService } from './src/loader/dynamic-tenant-loader.service';
 export { DynamicInjectionTokenSearcherService } from './src/searcher/dynamic-injection-token-searcher.service';
 export { DynamicInjectorSearcherService } from './src/searcher/dynamic-injector-searcher.service';
 export { DynamicMultiSearcherService } from './src/searcher/dynamic-multi-searcher.service';
@@ -56,3 +55,8 @@ export { XM_DYNAMIC_ENTRIES } from './src/dynamic.injectors';
 export { XmDynamicModule, dynamicModuleInitializer } from './src/xm-dynamic.module';
 
 export { DynamicComponents, DynamicModule } from './src/_bc';
+
+export { DynamicTenantLoaderService } from './src/extentions/dynamic-tenant-loader.service';
+export { TenantModuleLoaderService } from './src/extentions/tenant-module-loader.service';
+export { XmDynamicExtensionModule, dynamicExtensionModuleInitializer, } from './src/extentions/xm-dynamic-extension.module';
+export { XM_DYNAMIC_EXTENSIONS, XmDynamicExtensionEntry } from './src/extentions/xm-dynamic-extension.injectors';

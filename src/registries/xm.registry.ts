@@ -121,7 +121,7 @@ export const XM_ELEMENTS: XmDynamicEntries = [
     },
     {
         selector: '@xm-ngx/components/xm-ribbon',
-        loadChildren: () => import('@xm-ngx/components/xm-ribbon').then(m => m.XmRibbonModule),
+        loadChildren: () => import('@xm-ngx/components/ribbon').then(m => m.XmRibbonModule),
     },
     {
         selector: '@xm-ngx/components/mat-fab',
@@ -153,19 +153,19 @@ export const XM_ELEMENTS: XmDynamicEntries = [
     },
     {
         selector: '@xm-ngx/account/xm-user-login-widget',
-        loadChildren: () => import('@xm-ngx/account/xm-user-login-widget').then(m => m.XmUserLoginWidgetModule),
+        loadChildren: () => import('@xm-ngx/account/user-login-widget').then(m => m.XmUserLoginWidgetModule),
     },
     {
         selector: '@xm-ngx/account/xm-user-security-settings',
-        loadChildren: () => import('@xm-ngx/account/xm-user-security-settings').then(m => m.XmUserSecuritySettingsModule),
+        loadChildren: () => import('@xm-ngx/account/user-security-settings').then(m => m.XmUserSecuritySettingsModule),
     },
     {
         selector: '@xm-ngx/account/xm-user-settings-widget',
-        loadChildren: () => import('@xm-ngx/account/xm-user-settings-widget').then(m => m.XmUserSettingsWidgetModule),
+        loadChildren: () => import('@xm-ngx/account/user-settings-widget').then(m => m.XmUserSettingsWidgetModule),
     },
     {
         selector: '@xm-ngx/account/xm-user-password-widget',
-        loadChildren: () => import('@xm-ngx/account/xm-user-password-widget').then(m => m.XmUserPasswordWidgetModule),
+        loadChildren: () => import('@xm-ngx/account/user-password-widget').then(m => m.XmUserPasswordWidgetModule),
     },
     {
         selector: '@xm-ngx/components/number-control',

@@ -6,14 +6,14 @@ import { GuestBackgroundModule } from '@xm-ngx/components/guest-background/guest
 import { LanguageModule } from '@xm-ngx/components/language';
 import { LoaderModule } from '@xm-ngx/components/loader';
 import { RouteLoadingDirectiveModule } from '@xm-ngx/components/route-loading';
-import { XmPasswordNeededModule } from '@xm-ngx/components/xm-password-needed';
-import { XmRibbonModule } from '@xm-ngx/components/xm-ribbon';
+import { XmPasswordNeededModule } from '@xm-ngx/components/password-needed';
+import { XmRibbonModule } from '@xm-ngx/components/ribbon';
 import { XmDynamicModule } from '@xm-ngx/dynamic';
 import { XmEntityModule } from '@xm-ngx/entity';
 import { XmSharedModule } from '@xm-ngx/shared';
 import { XmBalanceModule } from '@xm-ngx/xm-balance';
 import { XmMaintenanceViewModule } from '@xm-ngx/components/maintenance';
-import { XmSidebarRightModule } from '@xm-ngx/components/xm-sidebar-right';
+import { XmSidebarRightModule } from '@xm-ngx/components/sidebar-right';
 import { XmSidebarModule } from '../modules/xm-sidebar';
 import { InputModule } from '../shared/directives/input.module';
 import { XmTimelineModule } from '../xm-timeline/xm-timeline.module';

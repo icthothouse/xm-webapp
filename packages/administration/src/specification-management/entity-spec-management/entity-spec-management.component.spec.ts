@@ -2,7 +2,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
 import { XmTranslationTestingModule } from '@xm-ngx/translation';
-import { of } from 'rxjs/observable/of';
+import { of } from 'rxjs';
 import { XmConfigService } from '../../../../../src/app/shared';
 
 import { EntitySpecManagementComponent } from './entity-spec-management.component';

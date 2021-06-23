@@ -1,13 +1,24 @@
-@import './sidebar';
-@import '../../layouts/main/main-theme';
-@import '../../../../packages/components/menu/menu-theme';
-@import '../../../../packages/components/sidebar-user/user-theme';
+$xm-sidebar-color:               inherit !default;
+$xm-sidebar-menu-item-padding-y: 15px !default;
+$xm-sidebar-padding-x:           12px !default;
+$xm-sidebar-opacity:             0.93 !default;
 
 @mixin xm-sidebar-theme($theme) {
-  @include menu($theme);
-  @include user-theme($theme);
+
+  $surface: map-get($theme, surface);
+  $on-surface: map-get($theme, on-surface);
+
+  $xm-sidebar-backdrop: map-get($theme, sidebar-backdrop) or $surface;
+  $xm-sidebar-background: map-get($theme, sidebar-background) or $surface;
+  $xm-sidebar-text-color: map-get($theme, sidebar-text-color) or $on-surface;
 
   .xm-sidebar {
-    @include xm-sidebar($theme);
+    color: $xm-sidebar-text-color;
+    background: $xm-sidebar-background;
+  }
+
+  .xm-sidebar-background {
+    opacity:    $xm-sidebar-opacity;
+    background: $xm-sidebar-backdrop;
   }
 }

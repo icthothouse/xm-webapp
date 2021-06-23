@@ -1,0 +1,12 @@
+@mixin xm-ribbon-theme($theme) {
+  $xm-primary: map-get($theme, primary);
+  $xm-text-on-primary: map-get($theme, on-primary);
+
+  .xm-ribbon-text {
+    color: $xm-text-on-primary;
+  }
+
+  .xm-ribbon {
+    background-color: $xm-primary;
+  }
+}
