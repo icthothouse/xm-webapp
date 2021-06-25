@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <xm-loading-bar [visible]="loading" class="on-top"></xm-loading-bar>
+
+  <div class="row  justify-content-end">
+    <button mat-icon-button
+            [disabled]="loading"
+            (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="row justify-content-center mt-3 mb-5">
+    <h4>{{config.title | translate}}</h4>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <button mat-button
+            [disabled]="loading"
+            (click)="onDecline()">
+      {{config.buttons.decline | translate}}
+    </button>
+    <button mat-raised-button
+            color="primary"
+            [disabled]="loading"
+            (click)="onAccept()"
+            class="ml-4">
+      {{config.buttons.accept | translate}}
+    </button>
+  </div>
+</div>

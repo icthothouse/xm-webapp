@@ -3,7 +3,13 @@ import { XmSessionService } from '@xm-ngx/core';
 import { XmUiConfigService } from '@xm-ngx/core/config';
 import { takeUntilOnDestroy, takeUntilOnDestroyDestroy } from '@xm-ngx/shared/operators';
 import { Observable } from 'rxjs';
-import { IHelpNavLink } from '../../../../src/app/account';
+import { Translate } from '@xm-ngx/translation';
+
+export interface IHelpNavLink {
+    url: string;
+    icon?: string;
+    text?: Translate;
+}
 
 @Component({
     selector: 'xm-navbar-help-link-widget',
@@ -36,8 +42,8 @@ export class XmNavbarHelpLinkWidget implements OnInit {
         this.xmUiConfigService.config$()
             .pipe(takeUntilOnDestroy(this))
             .subscribe((config) => {
-            this.helpConfig = config.helpConfig || null;
-        });
+                this.helpConfig = config.helpConfig || null;
+            });
     }
 
     public ngOnDestroy(): void {

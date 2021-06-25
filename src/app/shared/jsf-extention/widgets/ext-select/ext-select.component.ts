@@ -215,7 +215,6 @@ export class ExtSelectComponent implements OnInit, OnDestroy, AfterViewInit {
         );
     }
 
-    // tslint:disable-next-line:cognitive-complexity
     private fetchData(options: any): void {
         if (options.sourceField) {
             const array = new Function(

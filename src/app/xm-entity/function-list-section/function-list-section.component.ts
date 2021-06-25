@@ -70,8 +70,7 @@ export class FunctionListSectionComponent implements OnInit, OnChanges, OnDestro
         const nextSpec: NextSpec = this.stateSpec.next.filter((it) => it.stateKey === stateKey)[0];
         if (!nextSpec) {
             // exceptional case: user should never be able to change state outside the state tree
-            // tslint:disable-next-line:max-line-length
-            throw new Error(`XM error: trying to change entity state from "${this.stateSpec.name}" to "${stateKey}", not allowed`);
+           throw new Error(`XM error: trying to change entity state from "${this.stateSpec.name}" to "${stateKey}", not allowed`);
         }
 
         let title = this.translateService.instant('xm-entity.function-list-card.change-state.title');

@@ -42,7 +42,7 @@
         <div class="selector-bg pt-2" mat-dialog-content>
           <ng-container *ngIf="config">
             <xm-export-tree [selectedSpec]="spec"
-                            (onNodesSelected)="onParamsChecked($event)"
+                            (nodesSelected)="onParamsChecked($event)"
                             [style.display]="(spec.key === currentSpecKey) ? 'block' : 'none'"
                             *ngFor="let spec of config">
             </xm-export-tree>

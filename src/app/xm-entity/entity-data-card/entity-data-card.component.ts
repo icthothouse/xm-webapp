@@ -20,7 +20,7 @@ export class EntityDataCardComponent implements OnInit {
     @Input() public xmEntity: XmEntity;
     @Input() public xmEntitySpec: XmEntitySpec;
     @Input() public preventDefaultUpdateError?: boolean;
-    @Output() public onSaveError: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() public saveError: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     public jsfAttributes: JsfAttributes;
     public showLoader: boolean;
@@ -50,7 +50,7 @@ export class EntityDataCardComponent implements OnInit {
                     if (!this.preventDefaultUpdateError) {
                         this.toasterService.error('xm-entity.entity-data-card.update-error');
                     } else {
-                        this.onSaveError.emit(err);
+                        this.saveError.emit(err);
                     }
                 },
             );

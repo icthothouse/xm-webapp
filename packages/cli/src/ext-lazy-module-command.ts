@@ -6,8 +6,8 @@ import fs from 'fs';
 export class ExtLazyModuleCommand implements Command {
 
     public sources: string[] = [
-        'src/app/ext/*',
         'src/app/ext-commons/*',
+        'src/app/ext/*',
     ];
 
     public template = (selector: string, file: string, module: string) => `    {
@@ -40,11 +40,12 @@ export class ExtLazyModuleCommand implements Command {
             const directory = i.slice(i.lastIndexOf('/'), i.length).replace('/', '');
             const className = directory.split('-').map((e) => e[0].toUpperCase() + e.slice(1)).join('') + 'Module';
             const path = i.replace('src/app', '.') + `/module/${directory}.module`;
-            let selector = directory.replace('-webapp-ext', '');
-            selector = selector.startsWith('ext-') ? selector : ('ext-' + selector);
+            const selector = directory.replace('-webapp-ext', '');
             const template = this.template(selector, path, className);
             modules.push(template);
-            console.info('Update xm.module.ts lazyModules:', path);
+            console.info(`Update xm.module.ts selector: "${selector}", lazyModules: "${path}"`);
+            /** Backward compatibility: ext- will be removed in the next release. */
+            modules.push(this.template('ext-' + selector, path, className));
         });
         return modules.join('');
     }

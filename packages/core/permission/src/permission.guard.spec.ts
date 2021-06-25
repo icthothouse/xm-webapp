@@ -1,7 +1,7 @@
 import { inject, TestBed } from '@angular/core/testing';
 
 import { PermissionGuard } from './permission.guard';
-import { MockPermissionService } from './testing/mock-permission.service';
+import { MockPermissionService } from '@xm-ngx/core/permission/testing';
 import { XmPermissionService } from './xm-permission.service';
 
 describe('PermissionGuard', () => {

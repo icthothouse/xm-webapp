@@ -24,7 +24,7 @@ export const CURRENCY_DEFAULT: ICurrencyOptions = {
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.Default,
 })
-export class CurrencyValue implements XmDynamicPresentation<string, ICurrencyOptions> {
+export class CurrencyValueComponent implements XmDynamicPresentation<string, ICurrencyOptions> {
 
     @Input() public value: string;
     public _options: ICurrencyOptions;
@@ -41,10 +41,10 @@ export class CurrencyValue implements XmDynamicPresentation<string, ICurrencyOpt
 }
 
 @NgModule({
-    exports: [CurrencyValue],
-    declarations: [CurrencyValue],
+    exports: [CurrencyValueComponent],
+    declarations: [CurrencyValueComponent],
     imports: [CommonModule],
 })
 export class XmCurrencyValueModule implements XmDynamicPresentationEntryModule {
-    public entry: XmDynamicPresentationConstructor = CurrencyValue;
+    public entry: XmDynamicPresentationConstructor = CurrencyValueComponent;
 }

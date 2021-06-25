@@ -20,7 +20,9 @@ export interface XmEnumOptions {
 
 @Component({
     selector: 'xm-enum',
-    template: '{{(titles[value + \'\'] || value) | translate}}',
+    template: `
+        {{(titles[value + ''] || value) | translate}}
+    `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.Default,
 })

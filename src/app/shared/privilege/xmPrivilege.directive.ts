@@ -1,4 +1,3 @@
-/* tslint:disable:member-ordering */
 import { AfterContentInit, Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Principal } from '../auth/principal.service';
@@ -44,7 +43,6 @@ export class XmPrivilegeDirective implements OnInit, OnDestroy, AfterContentInit
     }
 
     public ngOnDestroy(): void {
-        // eslint-disable-next-line no-unused-expressions
         this.privilegeSubscription
             ? this.privilegeSubscription.unsubscribe()
             : console.info('no privilegeSubscription');

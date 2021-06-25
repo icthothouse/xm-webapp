@@ -96,7 +96,6 @@ export class LoginService {
     public loginSuccess(): void {
         this.document.body.classList.remove('xm-public-screen');
         if (this.router.url === '/register'
-            // eslint-disable-next-line @typescript-eslint/prefer-includes
             || ((/activate/).test(this.router.url))
             || this.router.url === '/finishReset'
             || this.router.url === '/requestReset') {

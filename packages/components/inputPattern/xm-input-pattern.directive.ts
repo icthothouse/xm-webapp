@@ -3,15 +3,16 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 @Directive({
     selector: '[xmInputPattern]',
 })
-export class InputPatternDirective {
+export class XmInputPatternDirective {
     @Input() private regexp: string;
 
     private regex: RegExp;
-    private specialKeys: string[] = [ 'Backspace', 'Tab', 'End', 'Home', 'ArrowLeft', 'ArrowRight', 'Space' ];
+    private specialKeys: string[] = ['Backspace', 'Tab', 'End', 'Home', 'ArrowLeft', 'ArrowRight', 'Space'];
 
-    constructor(private el: ElementRef) {}
+    constructor(private el: ElementRef) {
+    }
 
-    @HostListener('keydown', [ '$event' ])
+    @HostListener('keydown', ['$event'])
     public onKeyDown(event: KeyboardEvent): any {
         this.regex = new RegExp(this.regexp);
         if (this.specialKeys.includes(event.key) || event.ctrlKey === true) {

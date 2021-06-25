@@ -1,5 +1,5 @@
 import { PermissionDirective } from './permission.directive';
-import { MockPermissionService } from './testing/mock-permission.service';
+import { MockPermissionService } from '@xm-ngx/core/permission/testing';
 
 describe('PermissionDirective', () => {
     it('should create an instance', () => {

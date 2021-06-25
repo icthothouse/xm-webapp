@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/prefer-string-starts-ends-with */
 import { Component, NgModule, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';

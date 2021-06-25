@@ -223,11 +223,11 @@ export class EntityListComponent implements OnInit, OnDestroy {
         ).subscribe(
             () => {
                 console.info(`Exported ${entityOptions.typeKey}`);
-            }, // tslint:disable-line
+            },
             (err) => {
                 console.info(err);
                 this.showLoader = false;
-            }, // tslint:disable-line
+            },
         );
     }
 

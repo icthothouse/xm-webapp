@@ -7,7 +7,7 @@ import { of } from 'rxjs';
 
 import { ConditionDashboardDialogComponent } from './condition-dashboard-dialog.component';
 
-describe('RolesManagementDashboardsDetailComponent', () => {
+describe('ConditionDashboardDialogComponent', () => {
     let component: ConditionDashboardDialogComponent;
     let fixture: ComponentFixture<ConditionDashboardDialogComponent>;
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import { XmUIConfig } from '../xm-ui-config-model';
+import { XmUIConfig } from '@xm-ngx/core/config';
 
 @Injectable()
 export class MockUiConfigService<T extends XmUIConfig = XmUIConfig> {

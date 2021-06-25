@@ -20,7 +20,7 @@ export class XmAceEditorDirective<O = unknown> implements OnDestroy {
     public _showGutter: boolean = true;
     public editor: Editor;
     public oldText: string;
-    @Output('textChanged') public textChanged: EventEmitter<string> = new EventEmitter<string>();
+    @Output() public textChanged: EventEmitter<string> = new EventEmitter<string>();
 
     constructor(elementRef: ElementRef) {
         this.editor = ace.edit(elementRef.nativeElement);

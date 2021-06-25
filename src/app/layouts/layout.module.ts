@@ -15,7 +15,7 @@ import { XmBalanceModule } from '@xm-ngx/xm-balance';
 import { XmMaintenanceViewModule } from '@xm-ngx/components/maintenance';
 import { XmSidebarRightModule } from '@xm-ngx/components/sidebar-right';
 import { XmSidebarModule } from '../modules/xm-sidebar';
-import { InputModule } from '../shared/directives/input.module';
+import { XmInputPatternModule } from '@xm-ngx/components/inputPattern';
 import { XmTimelineModule } from '../xm-timeline/xm-timeline.module';
 import { FooterComponent } from './footer/footer.component';
 import { XmMainComponent } from './main/main.component';
@@ -27,7 +27,7 @@ import { PageRibbonComponent } from './profiles/page-ribbon.component';
         XmPasswordNeededModule,
         LanguageModule,
         LoaderModule,
-        InputModule,
+        XmInputPatternModule,
         XmBalanceModule,
         XmMaintenanceViewModule,
         XmEntityModule,

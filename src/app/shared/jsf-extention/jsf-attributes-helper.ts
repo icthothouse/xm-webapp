@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { environment } from '../../../environments/environment';
 import { CurrentLocationComponent } from './widgets/current-location/current-location.component';
 import { DatetimePickerComponent } from './widgets/datetime-picker/datetime-picker.component';
@@ -62,7 +61,6 @@ export const buildJsfAttributes = (spec: any, form: any) => {
         entity: conditionalForm(input.dataForm, 'entity') || extractElement(input, 'entity'),
         options: conditionalForm(input.dataForm, 'options') || extractElement(input, 'options') || {},
         widgets: getJsfWidgets(),
-        // tslint:disable-next-line
         formLayout: formLayout(),
     } || null;
     jsfAttributes.options.data = jsfAttributes.data;
@@ -109,7 +107,6 @@ const interpolate = (spec: any) => {
     if (typeof (spec) === 'string') {
         spec = spec.replace(/\\\\/g, '\\\\\\\\');
         try {
-            // @ts-ignore
             return new Function('$', 'return `' + spec + '`;').call(this, $);
         } catch (e) {
             return transpilingForIE(spec, $);
@@ -199,7 +196,6 @@ export const processValidationMessages = (jsfAttributes) => {
         field = field.properties || {};
 
         const path = key.split('.');
-        // tslint:disable-next-line:forin
         for (const i in path) {
             field = field[path[i]];
         }

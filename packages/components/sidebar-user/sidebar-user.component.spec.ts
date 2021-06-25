@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { XmUserService } from '@xm-ngx/core/user';
 import { DashboardWrapperService } from '@xm-ngx/dashboard';
 import { MockDashboardStore } from '../../../src/app/xm-dashboard/shared/testing/mock-dashboard-store';
-import { MockUserService } from '../../core/user/src/testing/mock-user.service';
+import { MockUserService } from '@xm-ngx/core/user/testing';
 
 import { SidebarUserComponent } from './sidebar-user.component';
 import { XmTranslationTestingModule } from '@xm-ngx/translation';

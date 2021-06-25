@@ -4,12 +4,7 @@ import { finalize, map } from 'rxjs/operators';
 
 import { XmConfigService } from '../../shared';
 import { Translate } from '@xm-ngx/translation';
-
-export interface IHelpNavLink {
-    url: string;
-    icon?: string;
-    text?: string | Translate;
-}
+import { IHelpNavLink } from '@xm-ngx/components/navbar';
 
 export interface IHelpConfig {
     title?: string | Translate;

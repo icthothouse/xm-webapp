@@ -31,7 +31,6 @@ export class ExtAutocompleteService {
         private i18nNamePipe: I18nNamePipe,
     ) {}
 
-    // tslint:disable-next-line:cognitive-complexity
     public fetchData(options: ExtAutocompleteOptions): Observable<any[]> {
         return this.http.get(options.url, {observe: 'response'}).pipe(map((response: HttpResponse<any>) => {
             const json = response.body;

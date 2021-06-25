@@ -22,7 +22,6 @@ export class ValidationComponent implements OnInit, OnDestroy {
                 private eventManager: XmEventManager) {
     }
 
-    // tslint:disable-next-line:cognitive-complexity
     public ngOnInit(): void {
         this.options = this.layoutNode.options || {};
         this.jsf.initializeControl(this);
@@ -51,7 +50,6 @@ export class ValidationComponent implements OnInit, OnDestroy {
                 }
             }
             if (it.errors) {
-                // tslint:disable-next-line:forin
                 for (const key in it.errors) {
                     const control = this.resolveComponentByPath(formGroup, key.split('[')
                         .join('.').split(']').join('.').split('.'));

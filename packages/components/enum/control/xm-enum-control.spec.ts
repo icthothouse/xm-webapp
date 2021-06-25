@@ -9,7 +9,7 @@ import { ControlErrorModule } from '@xm-ngx/components/control-error';
 import { XmEnumControlComponent } from '@xm-ngx/components/enum';
 import { XmPermissionModule, XmPermissionService } from '@xm-ngx/core/permission';
 import { XmTranslationTestingModule } from '@xm-ngx/translation';
-import { MockPermissionService } from '../../../core/permission/src/testing/mock-permission.service';
+import { MockPermissionService } from '@xm-ngx/core/permission/testing';
 
 describe('XmEnumControlComponent', () => {
     let component: XmEnumControlComponent;

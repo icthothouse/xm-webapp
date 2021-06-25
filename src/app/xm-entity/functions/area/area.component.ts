@@ -49,7 +49,6 @@ export class AreaComponent implements AfterViewInit {
 
     public onClickAddPolygon(): void {
         const modalRef = this.modalService.open(OsmPolygonDialogComponent, {width: '500px'});
-        // eslint-disable-next-line @typescript-eslint/unbound-method
         modalRef.componentInstance.addPolygonInternal = this.addPolygonInternal.bind(this);
     }
 

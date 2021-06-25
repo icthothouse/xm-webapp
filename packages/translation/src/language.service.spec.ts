@@ -3,8 +3,8 @@ import { XmUiConfigService } from '@xm-ngx/core/config';
 import { XmUserService } from '@xm-ngx/core/user';
 import { XmTranslationTestingModule } from '@xm-ngx/translation';
 import { SessionStorageService } from 'ngx-webstorage';
-import { MockUiConfigService } from '../../core/config/src/testing/mock-ui-config.service';
-import { MockUserService } from '../../core/user/src/testing/mock-user.service';
+import { MockUiConfigService } from '@xm-ngx/core/config/testing';
+import { MockUserService } from '@xm-ngx/core/user/testing';
 
 import { LanguageService } from './language.service';
 

@@ -1,7 +1,7 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { XmUiConfigService } from '@xm-ngx/core/config';
-import { MockUiConfigService } from '../../core/config/src/testing/mock-ui-config.service';
+import { MockUiConfigService } from '@xm-ngx/core/config/testing';
 
 import { XmRibbonComponent } from './xm-ribbon.component';
 

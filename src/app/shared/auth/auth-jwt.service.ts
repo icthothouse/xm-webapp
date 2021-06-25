@@ -138,7 +138,6 @@ export class AuthServerProvider {
 
             return Promise.resolve(jwt);
         } else {
-            // eslint-disable-next-line prefer-promise-reject-errors
             return Promise.reject('auth-jwt-service Promise reject'); // Put appropriate error message here
         }
     }

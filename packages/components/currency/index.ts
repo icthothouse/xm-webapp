@@ -1,6 +1,6 @@
 export {
     CURRENCY_DEFAULT,
-    CurrencyValue,
+    CurrencyValueComponent,
     ICurrencyOptions,
     XmCurrencyValueModule,
-} from './currency-value';
+} from './currency-value.component';

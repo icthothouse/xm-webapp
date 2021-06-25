@@ -17,7 +17,7 @@ import { Container } from './container';
 import { SidebarRightConfig, SidebarRightService } from './sidebar-right.service';
 
 @Directive({ selector: '[xmContainerOutlet]' })
-export class ContainerOutlet {
+export class ContainerOutletDirective {
     constructor(public viewContainerRef: ViewContainerRef) {
     }
 }
@@ -32,7 +32,7 @@ export class ContainerOutlet {
 })
 export class XmSidebarRight implements OnInit, OnDestroy {
 
-    @ViewChild(ContainerOutlet, { static: true }) public xmContainerOutlet: ContainerOutlet;
+    @ViewChild(ContainerOutletDirective, { static: true }) public xmContainerOutlet: ContainerOutletDirective;
 
     @HostBinding('style.width') public width: string;
 
@@ -92,7 +92,7 @@ export class XmSidebarRight implements OnInit, OnDestroy {
 }
 
 @NgModule({
-    declarations: [XmSidebarRight, ContainerOutlet],
+    declarations: [XmSidebarRight, ContainerOutletDirective],
     exports: [XmSidebarRight],
     imports: [CommonModule],
 })

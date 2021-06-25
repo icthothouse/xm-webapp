@@ -31,7 +31,6 @@ function getTextContent(elements: DebugElement[]): string {
         .join('');
 }
 
-// tslint:disable-next-line:max-classes-per-file
 @Component({
     template: `
         <div>

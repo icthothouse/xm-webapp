@@ -16,7 +16,7 @@
                                   (edit)="contentHidden = false"
                                   [disableSubmit]="disableSubmit"
                                   (isEditChange)="isEditChange.emit($event)"
-                                  (change)="onEditChange($event)"
+                                  (changeEvent)="onEditChange($event)"
                                   (save)="save.emit($event)"
                                   [disabled]="loading"
                                   [xm-loading]="loading"

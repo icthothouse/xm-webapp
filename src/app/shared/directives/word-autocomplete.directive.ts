@@ -61,7 +61,6 @@ export class WordAutocompleteDirective implements OnInit {
         this.onRemoveHint();
     }
 
-    // tslint:disable-next-line:cognitive-complexity
     public onKeydown(ev: any): boolean {
         if (ev.keyCode === KEY_CODE.ENTER) {
             const word = this.wordListEl.querySelector('.word-item.active');

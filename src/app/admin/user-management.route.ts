@@ -18,7 +18,6 @@ export class UserResolve implements CanActivate {
     }
 }
 
-// tslint:disable-next-line:max-classes-per-file
 @Injectable()
 export class UserResolvePagingParams implements Resolve<any> {
 

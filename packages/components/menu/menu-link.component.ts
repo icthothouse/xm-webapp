@@ -5,8 +5,8 @@ import { MenuItem } from './menu-models';
     selector: 'xm-menu-link, [xm-menu-link]',
     template: `
         <a [routerLink]="item.url"
-           (click)="submit.next()"
-           (keyup.enter)="submit.next()"
+           (click)="submitEvent.next()"
+           (keyup.enter)="submitEvent.next()"
            class="menu-link"
            routerLinkActive="active">
             <mat-icon class="menu-icon">{{item.icon}}</mat-icon>
@@ -21,5 +21,5 @@ export class MenuLinkComponent {
 
     @Input() public item: MenuItem;
     @Input() public disabled: boolean;
-    @Output() public submit: EventEmitter<void> = new EventEmitter<void>();
+    @Output() public submitEvent: EventEmitter<void> = new EventEmitter<void>();
 }

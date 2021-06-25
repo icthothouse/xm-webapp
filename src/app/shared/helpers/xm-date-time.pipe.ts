@@ -1,4 +1,4 @@
-import { OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 import { LanguageService } from '@xm-ngx/translation';
 import * as _ from 'lodash';
 
@@ -14,7 +14,7 @@ import { XmConfigService } from '../index';
  * and formating also can be override from config UI
  */
 @Pipe({name: 'xmDateTime'})
-export class XmDateTimePipe implements PipeTransform, OnInit {
+export class XmDateTimePipe implements PipeTransform {
 
     public account: {
         langKey: string;
@@ -27,6 +27,7 @@ export class XmDateTimePipe implements PipeTransform, OnInit {
     constructor(private principal: Principal,
                 private languageService: LanguageService,
                 private xmConfigService: XmConfigService) {
+        this.locale = this.languageService.locale;
         this.principal.identity().then((account) => this.account = _.defaultsDeep(account, {langKey: 'en'}));
         this.dicFormats = {en: 'MM/DD/YYYY HH:mm', ru: 'DD.MM.YYYY HH:mm', uk: 'DD.MM.YYYY HH:mm'};
         this.xmConfigService.getUiConfig().subscribe((resp) => this.dicFormatsConfig = resp.datesFormats || {});
@@ -37,10 +38,6 @@ export class XmDateTimePipe implements PipeTransform, OnInit {
         timeMoment.utc();
         timeMoment.utcOffset(offset ? offset : this.getOffset());
         return timeMoment.format(format ? format : this.getDefaultFormat());
-    }
-
-    public ngOnInit(): void {
-        this.locale = this.languageService.locale;
     }
 
     private getOffset(): string {

@@ -32,11 +32,9 @@ export class PerPageComponent {
     @Input() public sizes: number[] = [10, 20, 50];
     @Input() public itemsPerPage: number = 10;
     @Output() public itemsPerPageChange: EventEmitter<number> = new EventEmitter<number>();
-    @Output() public onChange: EventEmitter<number> = new EventEmitter<number>();
 
     public onChangeSelect(): void {
         this.itemsPerPageChange.emit(this.itemsPerPage);
-        this.onChange.emit(this.itemsPerPage);
     }
 
 }

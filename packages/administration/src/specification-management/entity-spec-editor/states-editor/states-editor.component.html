@@ -38,7 +38,7 @@
       <xm-multi-language-control
         [value]="toMultiLanguageDataModel(state.name)"
         [options]="{title: ('admin-config.specification-mng.editor.name' | translate)}"
-        (onValueChange)="fromMultiLanguageDataModel(state.name, $event)"
+        (valueChange)="fromMultiLanguageDataModel(state.name, $event)"
       ></xm-multi-language-control>
 
       <div class="row">

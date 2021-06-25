@@ -1,4 +1,3 @@
-/* tslint:disable:bool-param-default */
 import { XmUser } from '@xm-ngx/core/user';
 import { UserLogin } from '../../../../packages/account/src/user-login-widget/login/user-login.model';
 
@@ -23,7 +22,6 @@ export class User implements XmUser {
     public tfaEnabled?: boolean;
     public imageUrl?: string;
 
-    // tslint:disable-next-line:cognitive-complexity
     constructor(
         id?: any,
         userKey?: string,

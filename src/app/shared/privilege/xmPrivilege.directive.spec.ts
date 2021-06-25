@@ -15,7 +15,6 @@ import { XmPrivilegeDirective } from './xmPrivilege.directive';
 class Mock {
 }
 
-// tslint:disable-next-line:max-classes-per-file
 @Component({
     template: `
         <div>

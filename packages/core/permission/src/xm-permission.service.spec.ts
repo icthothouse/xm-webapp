@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { XmUserService } from '@xm-ngx/core/user';
-import { MockUserService } from '../../user/src/testing/mock-user.service';
+import { MockUserService } from '@xm-ngx/core/user/testing';
 
 import { XmPermissionService } from './xm-permission.service';
 

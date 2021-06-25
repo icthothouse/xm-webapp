@@ -99,7 +99,6 @@ export class RolesMatrixComponent implements OnInit, OnDestroy {
                         result.permissions.forEach((item) => {
                             item.roles = item.roles || [];
                             item.roles = result.roles.map((el) => {
-                                // eslint-disable-next-line @typescript-eslint/prefer-includes
                                 const value = item.roles.indexOf(el) !== -1;
                                 item.data = { ...item.data, [el]: { checked: value, valueOrg: value } };
                                 return { value, valueOrg: value };
@@ -251,7 +250,6 @@ export class RolesMatrixComponent implements OnInit, OnDestroy {
             const allSet = clearItemsbyRoles.every((x) => x.value);
             if (
                 (sortBy.msName && item.msName !== sortBy.msName) ||
-                // eslint-disable-next-line @typescript-eslint/prefer-includes
                 (sortBy.query && item.privilegeKey.indexOf(sortBy.query.toUpperCase()) === -1) ||
                 (sortBy.permitted_filter === 'anyset' && anySet !== true) ||
                 (sortBy.permitted_filter === 'notset' && anySet !== false) ||

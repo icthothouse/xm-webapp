@@ -68,7 +68,6 @@ export class FunctionService {
      * @param url - resource url
      * @param inputContext - resource context
      */
-    // tslint:disable-next-line:no-identical-functions
     private callXmDownloadFunction(url: string, inputContext: any = {}): Observable<HttpResponse<any>> {
         return this.http
             .post(url, inputContext, {observe: 'response', responseType: 'arraybuffer'})

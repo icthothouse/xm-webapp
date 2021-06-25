@@ -41,13 +41,13 @@
       </mat-form-field>
 
       <xm-multi-language-control
-        (onValueChange)="fromMultiLanguageDataModel(entitySpec.name, $event)"
+              (valueChange)="fromMultiLanguageDataModel(entitySpec.name, $event)"
         [options]="{title: ('admin-config.specification-mng.editor.name' | translate)}"
         [value]="toMultiLanguageDataModel(entitySpec.name)"
       ></xm-multi-language-control>
 
       <xm-multi-language-control
-        (onValueChange)="fromMultiLanguageDataModel(entitySpec.pluralName, $event)"
+              (valueChange)="fromMultiLanguageDataModel(entitySpec.pluralName, $event)"
         [options]="{title: ('admin-config.specification-mng.editor.plural-name' | translate)}"
         [value]="toMultiLanguageDataModel(entitySpec.pluralName)"
       ></xm-multi-language-control>

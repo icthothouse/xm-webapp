@@ -2,7 +2,7 @@
 
   <!-- category-link -->
   <ng-template #categoryLink>
-    <div (submit)="toggleMenu(category)"
+    <div (submitEvent)="toggleMenu(category)"
          *permitted="category.permission"
          [item]="category"
          xm-menu-link>

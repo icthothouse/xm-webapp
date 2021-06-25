@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/unbound-method */
 import { MediaMarshaller } from '@angular/flex-layout';
 
 export const fixFlexLayout = (): void => {

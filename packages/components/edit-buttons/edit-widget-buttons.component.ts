@@ -30,7 +30,7 @@ export class EditWidgetButtonsComponent implements OnInit, OnDestroy {
     @Output() public edit: EventEmitter<void> = new EventEmitter<void>();
     @Output() public save: EventEmitter<void> = new EventEmitter<void>();
     @Output() public cancel: EventEmitter<void> = new EventEmitter<void>();
-    @Output() public change: EventEmitter<EditWidgetButtonsEvent> = new EventEmitter<EditWidgetButtonsEvent>();
+    @Output() public changeEvent: EventEmitter<EditWidgetButtonsEvent> = new EventEmitter<EditWidgetButtonsEvent>();
 
     constructor(
         private eventManager: XmEventManager,
@@ -71,7 +71,7 @@ export class EditWidgetButtonsComponent implements OnInit, OnDestroy {
             isEdit: this.isEdit,
             event,
         };
-        this.change.emit(payload);
+        this.changeEvent.emit(payload);
         this.eventManager.broadcast<EditWidgetButtonsEvent>({
             name: XM_EDIT_WIDGET_BUTTONS_CHANGE_EVENT,
             payload,

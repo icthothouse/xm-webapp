@@ -12,7 +12,6 @@ export class BalanceSpecWrapperService {
     constructor(private balanceSpecService: BalanceSpecService) {
     }
 
-    // tslint:disable-next-line:cognitive-complexity
     public spec(force: boolean = false, mockSpec: boolean = false): Promise<Spec> {
         if (!force && this.promise) {
             return this.promise;

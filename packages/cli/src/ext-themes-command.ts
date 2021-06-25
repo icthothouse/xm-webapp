@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as glob from 'glob';
 import * as _ from 'lodash';
-import * as sass from 'node-sass';
+import * as sass from 'sass';
 import packageImporter from 'node-sass-package-importer';
 import * as path from 'path';
 import { Command } from './command';

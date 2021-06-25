@@ -32,7 +32,7 @@ export class EntityCardCompactComponent extends EntityCardComponent implements O
 
     @Input() public preventDefaultUpdateError?: boolean;
     @Input() public entityUiConfig: EntityUiConfig;
-    @Output() public onSaveError: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() public saveError: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     public jsfAttributes: JsfAttributes;
     public showLoader: boolean;
@@ -143,7 +143,7 @@ export class EntityCardCompactComponent extends EntityCardComponent implements O
                     if (!this.preventDefaultUpdateError) {
                         this.toasterService.error('xm-entity.entity-data-card.update-error');
                     } else {
-                        this.onSaveError.emit(err);
+                        this.saveError.emit(err);
                     }
                 },
             );

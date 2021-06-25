@@ -161,7 +161,6 @@ export class ExtMultiSelectComponent implements OnInit, OnDestroy, AfterViewInit
         }
         const refPointer = removeRecursiveReferences(this.layoutNode.dataPointer + '/-',
             this.jsf.dataRecursiveRefMap, this.jsf.arrayMap);
-        // tslint:disable-next-line:forin
         for (const i in item) {
             const newFormControl = buildFormGroup(this.jsf.templateRefLibrary[refPointer]);
             newFormControl.setValue(item[i]);

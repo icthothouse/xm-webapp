@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable, NgModule, Pipe } from '@angular/core';
+import { EventEmitter, Injectable, NgModule, Pipe, PipeTransform } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import {
     DefaultLangChangeEvent,
@@ -13,7 +13,7 @@ import { XmTranslateService } from '../xm-translate-service';
 @Injectable()
 @Pipe({ name: 'translate' })
 /** @public */
-export class MockTranslatePipe {
+export class MockTranslatePipe implements PipeTransform {
     public transform: (args: string) => Observable<string> = (arg) => of(arg);
 }
 

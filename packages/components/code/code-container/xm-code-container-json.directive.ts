@@ -12,7 +12,7 @@ export class XmCodeContainerJsonDirective {
         return this._isFormatted;
     }
 
-    @Input('isFormatted')
+    @Input()
     public set isFormatted(value: boolean | undefined) {
         this._isFormatted = value !== false;
         this.update();
@@ -24,7 +24,7 @@ export class XmCodeContainerJsonDirective {
         return this._xmCodeContainerJson;
     }
 
-    @Input('xmCodeContainerJson')
+    @Input()
     public set xmCodeContainerJson(value: object) {
         this._xmCodeContainerJson = value;
         this.update();

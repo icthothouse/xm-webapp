@@ -156,9 +156,9 @@ export class Rating implements OnInit, ControlValueAccessor, Validator {
      * -------------------------------------------------------------------------
      */
     @Output()
-    public onHover: EventEmitter<any> = new EventEmitter();
+    public hover: EventEmitter<number> = new EventEmitter();
     @Output()
-    public onLeave: EventEmitter<any> = new EventEmitter();
+    public leave: EventEmitter<number> = new EventEmitter();
 
     /*
      * -------------------------------------------------------------------------
@@ -282,7 +282,7 @@ export class Rating implements OnInit, ControlValueAccessor, Validator {
     public setHovered(hovered: number): void {
         if (!this.readonly && !this.disabled) {
             this.hovered = hovered;
-            this.onHover.emit(hovered);
+            this.hover.emit(hovered);
         }
     }
 
@@ -297,7 +297,7 @@ export class Rating implements OnInit, ControlValueAccessor, Validator {
     public resetHovered(): void {
         this.hovered = 0;
         this.hoveredPercent = undefined;
-        this.onLeave.emit(this.hovered);
+        this.leave.emit(this.hovered);
     }
 
 

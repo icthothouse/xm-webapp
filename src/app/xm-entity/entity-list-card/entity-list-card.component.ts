@@ -5,7 +5,7 @@ import { TABLE_CONFIG_DEFAULT } from '@xm-ngx/components/table';
 import { Spec, XmEntity, XmEntityService, XmEntitySpec, XmEntitySpecWrapperService } from '@xm-ngx/entity';
 import * as _ from 'lodash';
 import { Observable, of } from 'rxjs';
-import { catchError, finalize, map, tap } from 'rxjs/operators';
+import { catchError, finalize, map, take, tap } from 'rxjs/operators';
 
 import { ContextService, XmConfigService } from '../../shared';
 import { getFieldValue } from '../../shared/helpers/entity-list-helper';
@@ -60,7 +60,15 @@ export class EntityListCardComponent implements OnInit, OnChanges {
             this.getCurrentEntitiesConfig();
             this.predicate = 'id';
             this.reverse = false;
-            this.load();
+
+            if (!this.spec) {
+                this.loadSpec().pipe(take(1)).subscribe((spec: Spec) => {
+                    this.spec = spec;
+                    this.load();
+                })
+            } else {
+                this.load();
+            }
         }
     }
 
@@ -106,7 +114,6 @@ export class EntityListCardComponent implements OnInit, OnChanges {
         }
     }
 
-    // tslint:disable-next-line:cognitive-complexity
     private load(): void {
         // TODO: move processing of options.entities to onChange hook.
         //  Will options ever change after component initialization?
@@ -175,7 +182,7 @@ export class EntityListCardComponent implements OnInit, OnChanges {
             return this.xmEntitySpecWrapperService.xmSpecByKey(xmEntity.typeKey);
         }
 
-        console.info(`No spec found by options=${entityOptions} or entity=${xmEntity}`); // tslint:disable-line
+        console.info(`No spec found by options=${entityOptions} or entity=${xmEntity}`);
 
         throw new Error('No spec found');
     }
@@ -195,7 +202,7 @@ export class EntityListCardComponent implements OnInit, OnChanges {
                 return xmEntities.map((e) => this.enrichEntity(e));
             }),
             catchError((err) => {
-                console.info(err); // tslint:disable-line
+                console.info(err);
                 this.showLoader = false;
                 return of([]);
             }),
@@ -244,4 +251,11 @@ export class EntityListCardComponent implements OnInit, OnChanges {
         return entity;
     }
 
+    private loadSpec(): Observable<Spec> {
+        return this.xmEntitySpecWrapperService.entitySpec$()
+            .pipe(
+                take(1),
+                map((specs: XmEntitySpec[]) => ({types: specs}))
+            );
+    }
 }

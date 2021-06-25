@@ -35,8 +35,6 @@ export class TextSectionComponent implements OnInit {
             });
         fg.updateValueAndValidity();
     }
-
-    // tslint:disable-next-line:cognitive-complexity
     private processTemplateString(data: any): void {
         const text =
             this.options.dynamicContent.value ?

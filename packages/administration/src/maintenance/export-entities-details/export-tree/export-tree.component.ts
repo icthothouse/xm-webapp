@@ -22,7 +22,7 @@ export class ExportTreeComponent implements OnDestroy {
             this.exportEntitiesService.initialize(spec.treeModel);
         }
     }
-    @Output() public onNodesSelected: EventEmitter<unknown> = new EventEmitter<unknown>();
+    @Output() public nodesSelected: EventEmitter<unknown> = new EventEmitter<unknown>();
 
     public currentSpec: ExportConfig;
 
@@ -163,6 +163,6 @@ export class ExportTreeComponent implements OnDestroy {
             }
             selection.push(selected);
         });
-        this.onNodesSelected.emit({specKey, selection});
+        this.nodesSelected.emit({specKey, selection});
     }
 }
