@@ -67,7 +67,7 @@ export class SwitchThemeWidget implements OnInit {
     }
 
     public changeTheme(theme: SwitchThemeOptionsTheme): void {
-        if (this.loading || !this.config?.themes) {
+        if (this.loading || !this.config?.themes || !theme) {
             return;
         }
         const options: XmTheme = {

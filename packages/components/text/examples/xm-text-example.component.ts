@@ -22,6 +22,8 @@ export class XmTextExampleComponent {
     };
 
     public passwordControlOptions: XmPasswordControlOptions = {
+        autocomplete: 'password',
+        required: false,
         id: 'password-id',
         dataQa: 'password-example-control',
         title: { en: 'Password control' },

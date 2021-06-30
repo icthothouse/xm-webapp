@@ -1,0 +1,43 @@
+<xm-text-control #text [value]="selector"></xm-text-control>
+<xm-ace-editor-control #ace [value]="options"></xm-ace-editor-control>
+
+<button color="primary"
+        mat-flat-button
+        (click)="onApply(text.value, ace.value)">Apply
+</button>
+
+
+<h3>ng-accessor</h3>
+
+<h6>value - {{ngValue}}</h6>
+
+<ng-container [value]="ngValue"
+              (valueChange)="ngValue = $event"
+              [selector]="selector"
+              [options]="options"
+              xmDynamicControl></ng-container>
+
+
+<h6>ngModel - {{ngModelValue}}</h6>
+
+<ng-container [(ngModel)]="ngModelValue"
+              [selector]="selector"
+              [options]="options"
+              xmDynamicControl></ng-container>
+
+
+<h6>formControl({{formControl.status}}) - {{formControl.value}}</h6>
+
+<ng-container [formControl]="formControl"
+              [selector]="selector"
+              [options]="options"
+              xmDynamicControl></ng-container>
+
+
+<h6>formGroup({{formGroup.status}}) - {{formGroup.value | json}}</h6>
+<form [formGroup]="formGroup">
+  <ng-container formControlName="control"
+                [selector]="selector"
+                [options]="options"
+                xmDynamicControl></ng-container>
+</form>

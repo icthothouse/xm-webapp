@@ -1,18 +1,27 @@
 import { Component, Input } from '@angular/core';
 import { NgFormAccessor } from '@xm-ngx/components/ng-accessor';
+import * as _ from 'lodash';
 import { XmPasswordControlOptions } from './xm-password-control-options';
+
+export const XM_PASSWORD_OPTIONS_DEFAULT: XmPasswordControlOptions = {
+    id: 'password',
+    required: false,
+    title: 'Password',
+    dataQa: 'password-input',
+    autocomplete: 'password'
+};
 
 @Component({
     selector: 'xm-password-control',
     template: `
         <mat-form-field>
-            <mat-label>{{ options?.title | translate}}</mat-label>
+            <mat-label>{{ options.title | translate}}</mat-label>
 
             <input [formControl]="control"
-                   [id]="options?.id"
-                   [required]="options?.required"
-                   autocomplete="password"
-                   [attr.data-qa]="options?.dataQa || 'password-input'"
+                   [id]="options.id"
+                   [required]="options.required"
+                   [autocomplete]="options.autocomplete"
+                   [attr.data-qa]="options.dataQa"
                    matInput
                    [type]="'password'"
                    #password
@@ -29,6 +38,15 @@ import { XmPasswordControlOptions } from './xm-password-control-options';
     `,
 })
 export class XmPasswordControl extends NgFormAccessor<string> {
-    @Input() public options: XmPasswordControlOptions;
+    private _options: XmPasswordControlOptions = _.clone(XM_PASSWORD_OPTIONS_DEFAULT);
+
+    public get options(): XmPasswordControlOptions {
+        return this._options;
+    }
+
+    @Input()
+    public set options(value: XmPasswordControlOptions) {
+        this._options = _.defaultsDeep(value, XM_PASSWORD_OPTIONS_DEFAULT);
+    }
 }
 
