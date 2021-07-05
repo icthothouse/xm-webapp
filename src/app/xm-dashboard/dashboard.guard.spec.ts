@@ -4,7 +4,7 @@ import { XmLoggerService } from '@xm-ngx/logger';
 import { MockXmLogger } from '@xm-ngx/logger/testing';
 
 import { DashboardGuard } from './dashboard.guard';
-import { DashboardWrapperService } from './shared/dashboard-wrapper.service';
+import { DashboardStore } from './shared/dashboard-store.service';
 import { DefaultDashboardService } from './shared/default-dashboard.service';
 
 describe('DashboardGuard', () => {
@@ -15,7 +15,7 @@ describe('DashboardGuard', () => {
             providers: [
                 DashboardGuard,
                 { provide: XmLoggerService, useClass: MockXmLogger },
-                { provide: DashboardWrapperService, useValue: {} },
+                { provide: DashboardStore, useValue: {} },
                 { provide: DefaultDashboardService, useValue: {} },
             ],
             imports: [RouterTestingModule],

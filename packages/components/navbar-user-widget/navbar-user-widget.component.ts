@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserWidgetBase } from './user-widget.base';
+import { UserWidgetBase } from '@xm-ngx/components/sidebar-user';
 
 @Component({
     selector: 'xm-navbar-user-widget',

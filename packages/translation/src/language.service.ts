@@ -6,8 +6,9 @@ import { XmUserService } from '@xm-ngx/core/user';
 import { OnInitialize } from '@xm-ngx/shared/interfaces';
 import { takeUntilOnDestroy, takeUntilOnDestroyDestroy } from '@xm-ngx/shared/operators';
 import { SessionStorageService } from 'ngx-webstorage';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { filter, first, map } from 'rxjs/operators';
+import * as moment from 'moment';
 
 import { getBrowserLocale } from './getBrowserLocale';
 import { LANGUAGES } from './language.constants';
@@ -139,23 +140,20 @@ export class LanguageService implements OnDestroy, OnInitialize {
     }
 
     public init(): void {
-        if (!this.getSessionLocale()) {
-            this.configService.config$()
-                .pipe(
-                    filter((c) => Boolean(c)),
-                    first(),
-                )
-                .subscribe((c) => {
-                    const locale = c && c.langs && c.langs[0] ? c.langs[0] : null;
-                    this.translate.setDefaultLang(locale);
-                    this.update(locale);
-                });
-        } else {
-            const locale = this.locale;
+        (
+            this.getSessionLocale()
+                ? of(this.locale)
+                : this.configService.config$()
+                    .pipe(
+                        filter((c) => Boolean(c)),
+                        first(),
+                        map(c => c && c.langs && c.langs[0] ? c.langs[0] : null)
+                    )
+        ).subscribe(locale => {
+            moment.locale(locale);
             this.translate.setDefaultLang(locale);
             this.update(locale);
-        }
-
+        });
     }
 
     protected update(locale: string): void {

@@ -3,7 +3,7 @@ import { XmUiConfigService } from '@xm-ngx/core/config';
 import * as _ from 'lodash';
 import { Observable, zip } from 'rxjs';
 import { filter, map, take } from 'rxjs/operators';
-import { DashboardWrapperService } from './dashboard-wrapper.service';
+import { DashboardStore } from './dashboard-store.service';
 import { Dashboard } from './dashboard.model';
 
 function getWithConfig(idOrSlug: number | string | null, dashboards: Dashboard[]): Dashboard | null {
@@ -18,7 +18,7 @@ export class DefaultDashboardService {
 
     constructor(
         private xmConfigService: XmUiConfigService,
-        private dashboardWrapperService: DashboardWrapperService,
+        private dashboardWrapperService: DashboardStore,
     ) {
     }
 

@@ -69,9 +69,7 @@ export class XmDynamicListComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.widgetListService.loadWithConfig({
-            modules: this.config.modules,
-        });
+        this.widgetListService.load();
 
         const widgets$ = this.widgetListService.widgets$.pipe(shareReplay(1));
 

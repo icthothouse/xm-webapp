@@ -1,2 +1,2 @@
-export { LoadingBarModule } from '@xm-ngx/components/loading-bar/loading-bar.component';
-export { LoadingBarComponent } from '@xm-ngx/components/loading-bar/loading-bar.component';
+export { LoadingBarModule } from './loading-bar.component';
+export { LoadingBarComponent } from './loading-bar.component';

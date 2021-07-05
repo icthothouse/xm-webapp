@@ -24,10 +24,10 @@ export interface LinksGroupWidgetConfig {
 @Component({
     selector: 'xm-links-group-widget',
     template: `
-        <div *ngIf="config?.list" class="mb-3">
-            <nav [backgroundColor]="'accent'"
+        <div *ngIf="config?.list">
+            <nav [color]="'primary'"
                  mat-tab-nav-bar
-                 class="rounded"
+                 class="rounded bg-surface pb-3 font-weight-bold"
                  role="group">
                 <ng-container *ngFor="let item of config.list">
                     <ng-container *xmIfDashboardSlug="item.permittedByDashboardSlug">
@@ -38,6 +38,8 @@ export interface LinksGroupWidgetConfig {
                            mat-tab-link
                            #rla="routerLinkActive"
                            [active]="rla.isActive"
+                           class="text-uppercase font-weight-bold"
+                           [ngClass]="{'text-primary':rla.isActive}"
                            type="button">
                             {{item.title | translate}}
                         </a>

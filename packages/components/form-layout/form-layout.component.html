@@ -6,6 +6,7 @@
                [xmCondition]="item.condition">
     <ng-template [class]="item.class || 'col-12'"
                  [control]="value.controls[item.name]"
+                 [formControl]="value.controls[item.name]"
                  [value]="value.controls[item.name].value"
                  [options]="item.options"
                  [selector]="item.selector"

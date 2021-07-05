@@ -1,8 +1,8 @@
-import { MenuItem } from '@xm-ngx/components/menu/menu-models';
+import { MenuItem } from '@xm-ngx/components/menu';
 import { combineLatest, Observable } from 'rxjs';
 import { Directive, Input, OnDestroy, OnInit } from '@angular/core';
-import { SidebarUserSubtitleOptions } from '@xm-ngx/components/sidebar-user/sidebar-user-subtitle';
-import { DashboardWrapperService } from '@xm-ngx/dashboard';
+import { SidebarUserSubtitleOptions } from './sidebar-user-subtitle';
+import { DashboardStore } from '@xm-ngx/dashboard';
 import { XmUser, XmUserService } from '@xm-ngx/core/user';
 import { ContextService } from '../../../src/app/shared';
 import { ActivationEnd, Router } from '@angular/router';
@@ -83,7 +83,7 @@ export class UserWidgetBase implements OnInit, OnDestroy {
     };
 
     constructor(
-        protected readonly dashboardService: DashboardWrapperService,
+        protected readonly dashboardService: DashboardStore,
         protected readonly userService: XmUserService,
         protected readonly contextService: ContextService,
         protected readonly router: Router,

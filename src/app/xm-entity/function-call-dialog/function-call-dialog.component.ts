@@ -13,12 +13,14 @@ import { XM_EVENT_LIST } from '../../xm.constants';
 import { FunctionSpec } from '../shared/function-spec.model';
 import { FunctionService } from '../shared/function.service';
 import { XmEntity } from '../shared/xm-entity.model';
+import { JsonSchemaFormService } from '@ajsf/core';
 
 declare let $: any;
 
 @Component({
     selector: 'xm-function-call-dialog',
     templateUrl: './function-call-dialog.component.html',
+    providers: [JsonSchemaFormService]
 })
 export class FunctionCallDialogComponent implements OnInit, AfterViewInit {
 

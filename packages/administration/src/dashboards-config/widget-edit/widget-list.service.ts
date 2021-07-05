@@ -1,6 +1,11 @@
-import { ApplicationRef, Injectable, Injector } from '@angular/core';
-import { TranslationService } from '@xm-ngx/administration/translations/services/translation.service';
-import { XM_DYNAMIC_ENTRIES, DynamicTenantLoaderService, XmDynamicEntry } from '@xm-ngx/dynamic';
+import { Inject, Injectable, Injector } from '@angular/core';
+import {
+    DynamicTenantLoaderService,
+    XM_DYNAMIC_ENTRIES,
+    XM_DYNAMIC_EXTENSIONS,
+    XmDynamicEntry,
+    XmDynamicExtensionEntry
+} from '@xm-ngx/dynamic';
 import * as _ from 'lodash';
 import { from, Observable, Subject } from 'rxjs';
 
@@ -23,17 +28,16 @@ export class WidgetListService {
     public widgets$: Observable<ExtendedDynamicComponents[]> = this.widgets.asObservable();
 
     constructor(
-        private translationService: TranslationService,
+        @Inject(XM_DYNAMIC_EXTENSIONS) private dynamicExtensions: XmDynamicExtensionEntry[],
+        @Inject(XM_DYNAMIC_ENTRIES) private dynamicEntries: XmDynamicEntry[],
         private loader: DynamicTenantLoaderService,
         private injector: Injector,
-        private applicationRef: ApplicationRef,
     ) {
     }
 
-    public loadWithConfig(config: { modules: string [] }): void {
-        const globalWithGlobalSelector = provideFullSelector(_.flatMap(this.getRootDynamics()));
-
-        const moduleSelectors = config.modules.map(i => `ext-${i.substring(0, i.indexOf('-ext'))}`);
+    public load(): void {
+        const globalWithGlobalSelector = provideFullSelector(_.flatMap(this.dynamicEntries));
+        const moduleSelectors = _.flatMap(this.dynamicExtensions).map(i => i.selector);
         const moduleLoaders = moduleSelectors.map((ext) => this.loader.loadTenantModuleRef(ext, this.injector));
         from(Promise.all(moduleLoaders)).subscribe((modules) => {
             const components = modules.map(i => _.flatMap(i.injector.get(XM_DYNAMIC_ENTRIES, [])));
@@ -41,15 +45,5 @@ export class WidgetListService {
             const allComponents = _.uniq(_.flatMap([...componentsWithGlobalSelector, globalWithGlobalSelector]));
             this.widgets.next(allComponents);
         });
-    }
-
-    public load(): void {
-        this.translationService.loadConfig().subscribe((config) => {
-            this.loadWithConfig({ modules: config?.exts || [] });
-        });
-    }
-
-    public getRootDynamics(): ExtendedDynamicComponents[] {
-        return this.applicationRef['_injector'].get(XM_DYNAMIC_ENTRIES);
     }
 }

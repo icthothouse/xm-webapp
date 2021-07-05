@@ -2,7 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { XmLogger, XmLoggerService } from '@xm-ngx/logger';
 import { Observable, ReplaySubject } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { DashboardWrapperService } from '../shared/dashboard-wrapper.service';
+import { DashboardStore } from '../shared/dashboard-store.service';
 import { DashboardWidget } from '../shared/widget.model';
 
 export interface Page<C = unknown, L = unknown> {
@@ -25,7 +25,7 @@ export class PageService<T extends Page = Page> implements OnDestroy {
     private logger: XmLogger;
 
     constructor(
-        private dashboard: DashboardWrapperService,
+        private dashboard: DashboardStore,
         protected loggerService: XmLoggerService,
     ) {
         this.logger = this.loggerService.create({ name: 'PageService' });

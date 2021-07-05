@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { XmSessionService } from '@xm-ngx/core';
 import { XmUiConfigService } from '@xm-ngx/core/config';
-import { DashboardWrapperService } from '@xm-ngx/dashboard';
+import { DashboardStore } from '@xm-ngx/dashboard';
 import { Defaults, takeUntilOnDestroy, takeUntilOnDestroyDestroy } from '@xm-ngx/shared/operators';
 import { iif, Observable, of } from 'rxjs';
 import { filter, mergeMap, tap } from 'rxjs/operators';
@@ -53,7 +53,7 @@ export class XmNavbarSearchWidget implements OnInit {
     constructor(
         private router: Router,
         private uiConfigService: XmUiConfigService<SearchConfig>,
-        private dashboardWrapperService: DashboardWrapperService,
+        private dashboardWrapperService: DashboardStore,
         private location: Location,
         private xmSessionService: XmSessionService,
     ) {

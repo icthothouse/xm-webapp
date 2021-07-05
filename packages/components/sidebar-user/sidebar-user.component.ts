@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { matExpansionAnimations } from '@angular/material/expansion';
 import * as _ from 'lodash';
 import { MenuItem } from '../menu/menu-models';
-import { UserWidgetBase } from '@xm-ngx/components/navbar-user-widget/user-widget.base';
+import { UserWidgetBase } from './user-widget.base';
 
 
 @Component({

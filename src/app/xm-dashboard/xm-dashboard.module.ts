@@ -7,7 +7,7 @@ import { XmSharedModule } from '@xm-ngx/shared';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PendingChangesGuard } from './pending-changes.guard';
-import { DashboardWrapperService } from './shared/dashboard-wrapper.service';
+import { DashboardStore } from './shared/dashboard-store.service';
 import { DashboardService } from './shared/dashboard.service';
 import { WidgetService } from './shared/widget.service';
 import { XmDashboardRoutingModule } from './xm-dashboard-routing.module';
@@ -31,7 +31,7 @@ export class XmDashboardModule {
             ngModule: XmDashboardModule,
             providers: [
                 DashboardService,
-                DashboardWrapperService,
+                DashboardStore,
             ],
         };
     }

@@ -18,3 +18,10 @@ export {
     XmLinkViewCopyComponent,
     XmLinkViewCopyModule,
 } from './xm-link-view-copy';
+
+export {
+    XmLinkButtonModule
+} from './link-button/xm-link-button.module';
+export {
+    XmLinkButtonComponent
+} from './link-button/xm-link-button.component';

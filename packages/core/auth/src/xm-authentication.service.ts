@@ -3,22 +3,20 @@ import { Injectable } from '@angular/core';
 import { XmSessionService } from '@xm-ngx/core';
 import { Observable, of } from 'rxjs';
 import { catchError, switchMap, take, tap } from 'rxjs/operators';
-import {
-    AuthTokenResponse,
-    GuestTokenResponse,
-    XmAuthenticationRepository
-} from './xm-authentication-repository.service';
+import { XmAuthenticationRepository } from './xm-authentication-repository.service';
 import { XmAuthenticationStoreService } from './xm-authentication-store.service';
 import { AuthRefreshTokenService } from './auth-refresh-token.service';
+import { GuestTokenResponse } from './guest-token.response';
+import { AuthTokenResponse } from './auth-token.response';
+import { XmAuthenticationConfig } from './xm-authentication-config.service';
 
-export const ERROR_CODE_UNAUTHORIZED = 401;
-export const TOKEN_URL = 'uaa/oauth/token';
 
 @Injectable()
 export class XmAuthenticationService {
 
     constructor(
         private authenticationRepository: XmAuthenticationRepository,
+        private authenticationConfig: XmAuthenticationConfig,
         private storeService: XmAuthenticationStoreService,
         private refreshTokenService: AuthRefreshTokenService,
         private sessionService: XmSessionService,
@@ -26,11 +24,11 @@ export class XmAuthenticationService {
     }
 
     public verifyRefreshToken(req: HttpRequest<unknown>): boolean {
-        return req.url.endsWith(TOKEN_URL);
+        return req.url.endsWith(this.authenticationConfig.tokenUrl);
     }
 
     public refreshShouldHappen(response: HttpErrorResponse): boolean {
-        return response.status === ERROR_CODE_UNAUTHORIZED;
+        return response.status === this.authenticationConfig.errorCodeUnauthorized;
     }
 
     public refreshToken(): Observable<unknown | null> {
@@ -51,7 +49,7 @@ export class XmAuthenticationService {
     }
 
     public getHeaders(token: string): { [name: string]: string | string[] } {
-        return {Authorization: `Bearer ${token}`};
+        return { Authorization: `Bearer ${token}` };
     }
 
     private updateTokens(res: AuthTokenResponse | GuestTokenResponse): void {

@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { I18nNamePipe, Principal, XmConfigService } from '../shared';
 import { LIST_DEFAULT_FIELDS } from '../shared/constants/default-lists-fields.constants';
-import { DashboardWrapperService } from '@xm-ngx/dashboard';
+import { DashboardStore } from '@xm-ngx/dashboard';
 import { Link, Spec, XmEntitySpec, XmEntitySpecWrapperService } from '../xm-entity';
 import { EntityListCardOptions } from '../xm-entity/entity-list-card/entity-list-card-options.model';
 
@@ -60,7 +60,7 @@ export class ApplicationComponent implements OnInit, OnDestroy {
                 protected modalService: MatDialog,
                 protected eventManager: XmEventManager,
                 protected i18nNamePipe: I18nNamePipe,
-                protected dashboardWrapperService: DashboardWrapperService) {
+                protected dashboardWrapperService: DashboardStore) {
         this.searchQuery = activatedRoute.snapshot.params.search ? activatedRoute.snapshot.params.search : '';
     }
 

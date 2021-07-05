@@ -173,7 +173,7 @@ export const XM_ELEMENTS: XmDynamicEntries = [
     },
     {
         selector: '@xm-ngx/components/dynamic-list-widget',
-        loadChildren: () => import('@xm-ngx/components/dynamic/xm-dynamic-list.module').then(m => m.XmDynamicListModule),
+        loadChildren: () => import('@xm-ngx/administration/xm-dynamic-list.module').then(m => m.XmDynamicListModule),
     },
     {
         selector: '@xm-ngx/documentation/examples',

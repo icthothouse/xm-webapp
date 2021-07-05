@@ -1,17 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { TOKEN_URL } from './xm-authentication.service';
 import { XmAuthenticationStoreService } from './xm-authentication-store.service';
-
-export interface GuestTokenResponse {
-    access_token: string;
-}
-
-export interface AuthTokenResponse extends GuestTokenResponse {
-    refresh_token: string;
-    expires_in: number;
-}
+import { GuestTokenResponse } from './guest-token.response';
+import { AuthTokenResponse } from './auth-token.response';
+import { XmAuthenticationConfig } from './xm-authentication-config.service';
 
 const DEFAULT_CONTENT_TYPE = 'application/x-www-form-urlencoded';
 const DEFAULT_AUTH_TOKEN = 'Basic d2ViYXBwOndlYmFwcA==';
@@ -20,6 +13,7 @@ const DEFAULT_AUTH_TOKEN = 'Basic d2ViYXBwOndlYmFwcA==';
 export class XmAuthenticationRepository {
     constructor(
         private httpClient: HttpClient,
+        private authenticationConfig: XmAuthenticationConfig,
         private storeService: XmAuthenticationStoreService,
     ) {
     }
@@ -35,7 +29,7 @@ export class XmAuthenticationRepository {
             .set('grant_type', 'refresh_token')
             .set('refresh_token', this.storeService.getRefreshToken());
 
-        return this.httpClient.post<AuthTokenResponse>(TOKEN_URL, body, {headers});
+        return this.httpClient.post<AuthTokenResponse>(this.authenticationConfig.tokenUrl, body, { headers });
     }
 
 
@@ -48,7 +42,7 @@ export class XmAuthenticationRepository {
         return this.httpClient.post<GuestTokenResponse>(
             'uaa/oauth/token',
             data,
-            {headers},
+            { headers },
         );
     }
 }

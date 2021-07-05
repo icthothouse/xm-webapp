@@ -1,8 +1,9 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { ConditionModule } from '@xm-ngx/components/condition';
-import { XmDynamicModule } from '@xm-ngx/dynamic';
-import { FormLayoutComponent } from './form-layout.component';
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
+import {ConditionModule} from '@xm-ngx/components/condition';
+import {XmDynamicModule} from '@xm-ngx/dynamic';
+import {FormLayoutComponent} from './form-layout.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { FormLayoutComponent } from './form-layout.component';
         CommonModule,
         XmDynamicModule,
         ConditionModule,
+        ReactiveFormsModule,
     ],
 })
 export class FormLayoutModule {

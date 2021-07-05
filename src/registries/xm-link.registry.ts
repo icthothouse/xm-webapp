@@ -18,4 +18,8 @@ export const XM_LINK_ELEMENTS: XmDynamicEntry[] = [
         selector: '@xm-ngx/components/xm-link-copy',
         loadChildren: () => import('@xm-ngx/components/link').then(m => m.XmLinkViewCopyModule),
     },
+    {
+        selector: '@xm-ngx/components/link-button',
+        loadChildren: () => import('@xm-ngx/components/link').then(m => m.XmLinkButtonModule),
+    },
 ];

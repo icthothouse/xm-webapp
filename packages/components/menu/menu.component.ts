@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { matExpansionAnimations } from '@angular/material/expansion';
 import { NavigationEnd, Router } from '@angular/router';
 import { XmPublicUiConfigService } from '@xm-ngx/core';
-import { Dashboard, DashboardWrapperService } from '@xm-ngx/dashboard';
+import { Dashboard, DashboardStore } from '@xm-ngx/dashboard';
 import { XmEntitySpec, XmEntitySpecWrapperService } from '@xm-ngx/entity';
 import { transpilingForIE } from '@xm-ngx/json-scheme-form';
 import { JavascriptCode } from '@xm-ngx/shared/interfaces';
@@ -154,7 +154,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     public activeCategories: MenuCategory;
 
     constructor(
-        protected readonly dashboardService: DashboardWrapperService,
+        protected readonly dashboardService: DashboardStore,
         protected readonly router: Router,
         protected readonly principal: Principal,
         protected readonly uiConfigService: XmPublicUiConfigService<{ sidebar?: { hideAdminConsole?: boolean; hideApplication?: boolean; } }>,

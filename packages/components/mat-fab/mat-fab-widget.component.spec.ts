@@ -2,9 +2,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { XmSharedTestingModule } from '@xm-ngx/shared';
 
 import { MatFabWidget } from './mat-fab-widget.component';
+import { XmTranslationTestingModule } from '@xm-ngx/translation';
 
 describe('MatFabWidget', () => {
     let component: MatFabWidget;
@@ -12,7 +12,7 @@ describe('MatFabWidget', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [XmSharedTestingModule, HttpClientTestingModule, RouterTestingModule],
+            imports: [XmTranslationTestingModule, HttpClientTestingModule, RouterTestingModule],
             declarations: [MatFabWidget],
             schemas: [NO_ERRORS_SCHEMA],
         })

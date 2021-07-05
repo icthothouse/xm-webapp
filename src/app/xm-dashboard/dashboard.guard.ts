@@ -4,7 +4,7 @@ import { environment } from '@xm-ngx/core/environment';
 import { XmLogger, XmLoggerService } from '@xm-ngx/logger';
 import { Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { DashboardWrapperService } from './shared/dashboard-wrapper.service';
+import { DashboardStore } from './shared/dashboard-store.service';
 import { DefaultDashboardService } from './shared/default-dashboard.service';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class DashboardGuard implements CanActivate, CanActivateChild {
     private logger: XmLogger;
 
     constructor(
-        private dashboardWrapperService: DashboardWrapperService,
+        private dashboardWrapperService: DashboardStore,
         private defaultDashboardService: DefaultDashboardService,
         loggerService: XmLoggerService,
         private router: Router,

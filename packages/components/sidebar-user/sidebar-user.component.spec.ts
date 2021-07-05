@@ -4,8 +4,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { XmUserService } from '@xm-ngx/core/user';
-import { DashboardWrapperService } from '@xm-ngx/dashboard';
-import { MockDashboardStore } from '../../../src/app/xm-dashboard/shared/testing/mock-dashboard-store';
+import { DashboardStore } from '@xm-ngx/dashboard';
+import { MockDashboardStore } from '@xm-ngx/dashboards/testing';
 import { MockUserService } from '@xm-ngx/core/user/testing';
 
 import { SidebarUserComponent } from './sidebar-user.component';
@@ -21,7 +21,7 @@ describe('SidebarUserComponent', () => {
             imports: [XmTranslationTestingModule, HttpClientTestingModule, RouterTestingModule, NoopAnimationsModule],
             declarations: [SidebarUserComponent],
             providers: [
-                { provide: DashboardWrapperService, useClass: MockDashboardStore },
+                { provide: DashboardStore, useClass: MockDashboardStore },
                 { provide: XmUserService, useClass: MockUserService },
             ],
         })

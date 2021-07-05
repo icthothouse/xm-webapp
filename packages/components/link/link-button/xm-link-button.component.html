@@ -1,0 +1,13 @@
+<ng-container *xmPermission="options.permitted">
+  <ng-container *xmIfDashboardSlug="options.permittedByDashboardSlug">
+    <a [color]="options.color"
+       [matTooltip]="options.tooltip | translate"
+       [routerLink]="this.options.navigateTo"
+       class="mat-fab-button"
+       mat-flat-button
+       routerLinkActive="active">
+      <mat-icon>{{options.icon}}</mat-icon>
+      {{options.title | translate}}
+    </a>
+  </ng-container>
+</ng-container>

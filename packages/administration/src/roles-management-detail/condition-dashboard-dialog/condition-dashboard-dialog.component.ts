@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { XmTextControlOptions, XmTextViewOptions } from '@xm-ngx/components/text';
-import { Dashboard, DashboardWrapperService } from '@xm-ngx/dashboard';
+import { Dashboard, DashboardStore } from '@xm-ngx/dashboard';
 import { takeUntilOnDestroy, takeUntilOnDestroyDestroy } from '@xm-ngx/shared/operators';
 import { Translate } from '@xm-ngx/translation';
 import { Permission } from '../../../../../src/app/shared/role/permission.model';
@@ -63,7 +63,7 @@ export class ConditionDashboardDialogComponent implements OnInit, OnDestroy {
 
     constructor(
         public activeModal: MatDialogRef<ConditionDashboardDialogComponent>,
-        private dashboardWrapperService: DashboardWrapperService,
+        private dashboardWrapperService: DashboardStore,
     ) {
     }
 

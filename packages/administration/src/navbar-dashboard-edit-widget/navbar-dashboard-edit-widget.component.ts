@@ -8,7 +8,7 @@ import {
 } from '@xm-ngx/administration/dashboards-config';
 import { DashboardConfig } from '@xm-ngx/administration/dashboards-config/injectors';
 import { XmEventManager } from '@xm-ngx/core';
-import { Dashboard, DashboardWrapperService, PageService } from '@xm-ngx/dashboard';
+import { Dashboard, DashboardStore, PageService } from '@xm-ngx/dashboard';
 import { takeUntilOnDestroy, takeUntilOnDestroyDestroy } from '@xm-ngx/shared/operators';
 import { skip, take } from 'rxjs/operators';
 
@@ -47,7 +47,7 @@ export class NavbarDashboardEditWidgetComponent implements OnInit, OnDestroy {
     public isEditing: boolean;
 
     constructor(
-        protected readonly wrapperService: DashboardWrapperService,
+        protected readonly wrapperService: DashboardStore,
         protected readonly eventManager: XmEventManager,
         private pageService: PageService,
         protected readonly dashboardConfig: DashboardConfig,
