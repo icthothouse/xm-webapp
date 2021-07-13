@@ -26,20 +26,19 @@ export class ExtThemesCommand implements Command {
             const name = matches[1];
             const outFile = `${this.destPath}/${name}.css`;
 
-            const res = sass.renderSync({
+            sass.render({
                 file,
                 includePaths: ['src', 'src/styles', this.config.extDir],
                 importer: packageImporter(),
                 sourceMap: false,
                 outFile: outFile,
                 outputStyle: 'compressed',
+            }, (err, res) => {
+                fs.writeFileSync(outFile, res.css);
+                console.info(`Building: ${outFile}`);
             });
 
-            fs.writeFileSync(outFile, res.css);
 
-            console.info(`Building: ${outFile}`);
         }
-
-        console.info('Finished building CSS.');
     }
 }

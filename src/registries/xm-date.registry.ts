@@ -23,6 +23,10 @@ export const XM_DATE_ELEMENTS: XmDynamicEntry[] = [
         loadChildren: () => import('@xm-ngx/components/date/xm-date-range-control').then(m => m.XmDateRangeControlModule),
     },
     {
+        selector: '@xm-ngx/components/date-range-filter-control',
+        loadChildren: () => import('@xm-ngx/components/date/xm-date-range-filter-control').then(m => m.XmDateRangeFilterControlModule),
+    },
+    {
         selector: '@xm-ngx/components/datetime-control',
         loadChildren: () => import('@xm-ngx/components/date/xm-datetime-control').then(m => m.XmDatetimeControlModule),
     },

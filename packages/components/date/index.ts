@@ -17,6 +17,10 @@ export {
     XmDateRangeControlValue,
     XmDateRangeControlModule,
 } from './xm-date-range-control';
+export {
+    DateRangeFilterControlComponent,
+    XmDateRangeFilterControlModule,
+} from './xm-date-range-filter-control';
 
 export {
     XmDateView,

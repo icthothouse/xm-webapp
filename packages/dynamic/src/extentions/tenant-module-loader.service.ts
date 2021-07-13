@@ -22,6 +22,8 @@ export class TenantModuleLoaderService {
             throw new ArgumentException(`ModuleLoader The "${selector}" is not defined!`);
         }
         const moduleCtor: XmDynamicExtensionConstructor<T> = await entry.loadChildren();
-        return await this.compiler.compileModuleAsync(moduleCtor);
+        const compiled = await this.compiler.compileModuleAsync(moduleCtor);
+        this.compiler.clearCacheFor(moduleCtor);
+        return compiled;
     }
 }

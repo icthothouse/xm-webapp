@@ -1,0 +1,32 @@
+$cBorder: #747474 !default;
+
+.xm-custom-input-icon {
+  position: relative;
+
+  .to-display {
+    position:    absolute;
+    left:        0;
+    top:         50%;
+    margin:      -7px 0 0 0;
+    white-space: nowrap;
+    overflow:    hidden;
+    max-width:   85%;
+  }
+
+  .mat-input-element {
+    padding-right: 30px;
+  }
+
+  .icon {
+    position:  absolute;
+    right:     0;
+    bottom:    6px;
+    font-size: 16px;
+    color:     $cBorder;
+  }
+
+  .abs {
+    z-index: 2;
+    opacity: 0;
+  }
+}

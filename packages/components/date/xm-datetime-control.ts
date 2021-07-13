@@ -13,12 +13,13 @@ import {XmDateControlOptions} from './xm-date-control';
 import {DateTimeAdapter, OWL_DATE_TIME_FORMATS, OWL_DATE_TIME_LOCALE, OwlDateTimeModule} from 'ng-pick-datetime';
 import {NgFormAccessor} from '@xm-ngx/components/ng-accessor';
 import {MomentDateTimeAdapter} from 'ng-pick-datetime/date-time/adapter/moment-adapter/moment-date-time-adapter.class';
-import {Moment} from 'moment';
 import {takeUntilOnDestroy, takeUntilOnDestroyDestroy} from '@xm-ngx/shared/operators';
-
+import { filter, map } from 'rxjs/operators';
+import * as moment from 'moment';
 
 export interface XmDatetimeControlOptions extends XmDateControlOptions {
     ignoreSeconds: boolean;
+    startAt?: XmDateTimeControlValue;
 }
 
 
@@ -32,6 +33,7 @@ const MY_CUSTOM_FORMATS = {
     monthYearA11yLabel: 'MMMM YYYY'
 };
 
+type XmDateTimeControlValue = moment.Moment | string;
 
 @Component({
     selector: 'xm-datetime-control',
@@ -45,7 +47,8 @@ const MY_CUSTOM_FORMATS = {
                    [name]="options?.name"
                    [required]="options?.required"
                    matInput>
-            <owl-date-time #dt1></owl-date-time>
+            <owl-date-time #dt1 [startAt]="options?.startAt || null">
+            </owl-date-time>
 
             <mat-error *xmControlErrors="control?.errors; message as message">{{message}}</mat-error>
 
@@ -62,24 +65,18 @@ const MY_CUSTOM_FORMATS = {
         </mat-form-field>
     `,
 })
-export class XmDatetimeControl extends NgFormAccessor<Moment> implements OnInit, OnDestroy{
+export class XmDatetimeControl extends NgFormAccessor<XmDateTimeControlValue> implements OnInit, OnDestroy{
     @Input() public options: XmDatetimeControlOptions;
 
     public ngOnInit(): void {
         super.ngOnInit();
 
-        this.control.valueChanges
-            .pipe(
-                takeUntilOnDestroy(this)
-            )
-            .subscribe((value: Moment) => {
-                if (!value) {
-                    return;
-                }
-                if ((this.control.value as Moment)?.seconds() !== 0 && this.options.ignoreSeconds) {
-                    this.control.patchValue(value.seconds(0));
-                }
-            })
+        this.control.valueChanges.pipe(
+            takeUntilOnDestroy(this),
+            filter(value => !!value),
+            map(value => moment.isMoment(value) ? value : moment(value)),
+            filter(value => value.seconds() !== 0 && this.options.ignoreSeconds)
+        ).subscribe((value: moment.Moment) => this.control.patchValue(value.seconds(0)))
     }
 
 
@@ -109,6 +106,6 @@ export class XmDatetimeControl extends NgFormAccessor<Moment> implements OnInit,
     exports: [XmDatetimeControl],
     declarations: [XmDatetimeControl],
 })
-export class XmDatetimeControlModule implements XmDynamicEntryModule<XmDynamicControl<Moment, XmDatetimeControlOptions>> {
-    public entry: XmDynamicControlConstructor<Moment, XmDatetimeControlOptions> = XmDatetimeControl;
+export class XmDatetimeControlModule implements XmDynamicEntryModule<XmDynamicControl<XmDateTimeControlValue, XmDatetimeControlOptions>> {
+    public entry: XmDynamicControlConstructor<XmDateTimeControlValue, XmDatetimeControlOptions> = XmDatetimeControl;
 }

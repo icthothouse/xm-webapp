@@ -47,7 +47,7 @@ export class TagListSectionComponent implements OnInit, OnChanges, OnDestroy {
 
     public onAdd(xmTag: Tag): void {
         const tag: Tag = {
-            typeKey: 'DEFAULT',
+            typeKey: this.xmEntity?.typeKey,
             name: xmTag.name.toUpperCase(),
             startDate: new Date().toJSON(),
             xmEntity: this.xmEntity,

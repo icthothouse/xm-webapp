@@ -27,6 +27,7 @@ export class ModuleLoader {
             elModuleFactory = elementModuleOrFactory;
         } else {
             elModuleFactory = await this.compiler.compileModuleAsync(elementModuleOrFactory) as XmDynamicNgModuleFactory<T>;
+            this.compiler.clearCacheFor(elementModuleOrFactory);
         }
 
         return elModuleFactory;

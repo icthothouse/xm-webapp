@@ -1,6 +1,5 @@
 import { Directive, EmbeddedViewRef, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
-import { takeUntilOnDestroy, takeUntilOnDestroyDestroy } from '@xm-ngx/shared/operators';
-import { ReplaySubject } from 'rxjs';
+import { ReplaySubject, Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { PermissionCheckStrategy, XmPermissionService } from './xm-permission.service';
 
@@ -59,6 +58,7 @@ export class PermissionDirective implements OnInit, OnDestroy {
     private elseTemplateRef: TemplateRef<PermissionContext> | null = null;
     private thenViewRef: EmbeddedViewRef<PermissionContext> | null = null;
     private elseViewRef: EmbeddedViewRef<PermissionContext> | null = null;
+    private subscription: Subscription;
     private update$: ReplaySubject<void> = new ReplaySubject(1);
 
     constructor(
@@ -104,12 +104,11 @@ export class PermissionDirective implements OnInit, OnDestroy {
     }
 
     public ngOnDestroy(): void {
-        takeUntilOnDestroyDestroy(this);
+      this.subscription.unsubscribe();
     }
 
     public ngOnInit(): void {
-        this.update$.pipe(
-            takeUntilOnDestroy(this),
+        this.subscription = this.update$.pipe(
             switchMap(() => this.permissionService.hasPrivilegesBy(this.context.$implicit, this.strategy)),
         ).subscribe((allow: boolean) => {
             this.context.allow = allow;
