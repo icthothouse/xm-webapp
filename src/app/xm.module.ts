@@ -14,7 +14,7 @@ import { XmCoreConfigModule } from '@xm-ngx/core/config';
 import { environment } from '@xm-ngx/core/environment';
 import { globalErrorHandlerFactory } from '@xm-ngx/core/global-error-handler';
 import { themeInitializerFactory } from '@xm-ngx/core/theme';
-import { XmDashboardModule } from '@xm-ngx/dashboard';
+import { XmDashboardDynamicRouteResolverGuard, XmDashboardModule } from '@xm-ngx/dashboard';
 import { XmDynamicExtensionModule, XmDynamicModule } from '@xm-ngx/dynamic';
 import { XmLoggerModule } from '@xm-ngx/logger';
 import { HttpLoaderFactory, LanguageService, TitleService, XmTranslationModule } from '@xm-ngx/translation';
@@ -30,6 +30,7 @@ import { XmApplicationConfigService } from './shared/spec';
 import { XmRoutingModule } from './xm-routing.module';
 import { XM_MAT_DIALOG_DEFAULT_OPTIONS } from './xm.constants';
 import { XM_ELEMENTS } from '../registries/xm.registry';
+import { XmDynamicRouteModule } from '@xm-ngx/dynamic/route';
 
 @NgModule({
     imports: [
@@ -49,6 +50,7 @@ import { XM_ELEMENTS } from '../registries/xm.registry';
         XmLoggerModule.forRoot(),
         XmAlertModule.forRoot(),
         XmTranslationModule.forRoot(),
+        XmDynamicRouteModule.forRoot({ routeResolverGuard: XmDashboardDynamicRouteResolverGuard }),
         XmDashboardModule.forRoot(),
         MarkdownModule.forRoot(),
         XmDynamicExtensionModule.forRoot([

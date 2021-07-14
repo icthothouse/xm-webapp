@@ -51,6 +51,7 @@
       "@xm-ngx/account/*": ["packages/account/src/*"],
       "@xm-ngx/entity/*": ["src/app/xm-entity/*"],
       "@xm-ngx/dynamic": ["packages/dynamic"],
+      "@xm-ngx/dynamic/route": ["packages/dynamic/route"],
       "@xm-ngx/dashboard": ["packages/dashboard/src"],
       "@xm-ngx/dashboard/testing": ["packages/dashboard/testing"],
       "@xm-ngx/xm-balance": ["src/app/xm-balance"],
