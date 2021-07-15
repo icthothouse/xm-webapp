@@ -24,11 +24,11 @@ export class DashboardGuard implements CanActivate, CanActivateChild {
     }
 
     public canActivate(next: ActivatedRouteSnapshot): Observable<boolean | UrlTree> {
-        return this.resolve(next.params.id);
+        return this.resolve(next.data?.dashboard?.id || null);
     }
 
     public canActivateChild(next: ActivatedRouteSnapshot): Observable<boolean | UrlTree> {
-        return this.resolve(next.params.id);
+        return this.resolve(next.data?.dashboard?.id || null);
     }
 
     public resolve(idOrSlug: number | string | null): Observable<boolean | UrlTree> {
@@ -53,7 +53,7 @@ export class DashboardGuard implements CanActivate, CanActivateChild {
         return this.defaultDashboardService.getDefaultOrFirstAvailable().pipe(
             map((d) => {
                 const newUrl = d ? `/dashboard/${d.config?.slug || d.id}` : environment.notFoundUrl;
-                this.logger.info(`DashboardGuard redirect router.url=${this.router.url}, newUrl=${newUrl}`);
+                this.logger.info(`Redirect router.url=${this.router.url}, newUrl=${newUrl}`);
                 return this.router.parseUrl(newUrl);
             }),
         );

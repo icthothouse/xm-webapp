@@ -1,12 +1,22 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot } from '@angular/router';
+import {
+    ActivatedRouteSnapshot,
+    CanActivate,
+    CanActivateChild,
+    CanLoad,
+    Route,
+    Router,
+    RouterStateSnapshot,
+    UrlSegment
+} from '@angular/router';
 import { XmToasterService } from '@xm-ngx/toaster';
 
 import { Principal } from './principal.service';
 import { StateStorageService } from './state-storage.service';
+import { PermissionGuardData } from '../../../../packages/core/permission';
 
 @Injectable()
-export class UserRouteAccessService implements CanActivate, CanActivateChild {
+export class UserRouteAccessService implements CanActivate, CanActivateChild, CanLoad {
 
     constructor(
         private router: Router,
@@ -15,15 +25,27 @@ export class UserRouteAccessService implements CanActivate, CanActivateChild {
         private alertService: XmToasterService) {
     }
 
-    public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Promise<boolean> {
-        return this.canActivateFunc(route, state);
+    public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
+        return this.canActivateFunc(route.data as PermissionGuardData, state.url);
     }
 
-    public canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Promise<boolean> {
-        return this.canActivateFunc(route, state);
+    public canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
+        return this.canActivateFunc(route.data as PermissionGuardData, state.url);
     }
 
-    public checkLogin(url: string, privileges: any = {}): Promise<boolean> {
+    public canLoad(route: Route, _segments: UrlSegment[]): Promise<boolean> {
+        return this.canActivateFunc(route.data as PermissionGuardData, this.router.url);
+    }
+
+    private canActivateFunc(data: PermissionGuardData, url: string): Promise<boolean> {
+        const privileges = data.privileges || { value: [] };
+        if (!(privileges.value && privileges.value.length)) {
+            return Promise.resolve(true);
+        }
+        return this.checkLogin(url, privileges);
+    }
+
+    private checkLogin(url: string, privileges: any = {}): Promise<boolean> {
         const principal = this.principal;
         return Promise.resolve(principal.identity().then((account) => {
             if (account && privileges.value && privileges.value.length) {
@@ -31,7 +53,7 @@ export class UserRouteAccessService implements CanActivate, CanActivateChild {
                     .then((result) => {
                         if (result instanceof Array) {
                             if (result.length) {
-                                this.alertService.warning('error.privilegeInsufficient', {name: result.join(', ')});
+                                this.alertService.warning('error.privilegeInsufficient', { name: result.join(', ') });
                             }
                             return !result.length;
                         }
@@ -43,14 +65,5 @@ export class UserRouteAccessService implements CanActivate, CanActivateChild {
             this.router.navigate(['/']);
             return false;
         }));
-    }
-
-    private canActivateFunc(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Promise<boolean> {
-        const privilagesPath = 'privileges';
-        const privileges = route.data[privilagesPath] || {};
-        if (!(privileges.value && privileges.value.length)) {
-            return true;
-        }
-        return this.checkLogin(state.url, privileges);
     }
 }

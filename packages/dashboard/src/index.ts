@@ -5,6 +5,7 @@ export { getWidgetsComponent, getWidgetComponent } from './components/dashboard/
 
 export { DashboardGuard } from './guards/dashboard.guard';
 export { PendingChangesGuard } from './guards/pending-changes.guard';
+export { XmDashboardDynamicRouteResolverGuard } from './dynamic-route/xm-dashboard-dynamic-route-resolver-guard.service';
 
 export {
     Dashboard,

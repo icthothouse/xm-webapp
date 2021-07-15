@@ -52,11 +52,11 @@ export class DashboardComponent extends DashboardBase implements OnInit, OnDestr
 
         this.route.params
             .pipe(takeUntilOnDestroy(this))
-            .subscribe((params) => {
+            .subscribe(() => {
                 this.showLoader = true;
                 this.dashboard = null;
                 this.cdf.detectChanges();
-                this.pageService.load(params.id);
+                this.pageService.load(this.route.snapshot.data?.dashboard?.id || null);
             });
 
         this.pageService.active$()
