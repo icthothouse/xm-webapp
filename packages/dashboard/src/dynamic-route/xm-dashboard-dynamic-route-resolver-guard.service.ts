@@ -92,10 +92,16 @@ export class XmDashboardDynamicRouteResolverGuard extends XmDynamicRouteResolver
                 }
                 this.routes = this.dashboardRoutesFactory(dashboards);
 
-                // Add default empty page dashboard
+                // Add the default empty page
                 if (!_.find(this.routes, d => d.path === '')) {
                     // Redirect to first available
                     this.routes.unshift({ path: '', pathMatch: 'full', canActivate: [DashboardGuard], })
+                }
+
+                // Add the default not-found page
+                if (!_.find(this.routes, d => d.path === '**')) {
+                    // Redirect to first available
+                    this.routes.push({ path: '**', canActivate: [DashboardGuard], })
                 }
 
                 return true;
